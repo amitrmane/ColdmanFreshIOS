@@ -24,9 +24,12 @@
 		DFD83B5F25A6E1F40096FCBC /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD83B5725A6E1F40096FCBC /* Protocols.swift */; };
 		DFD83B6025A6E1F40096FCBC /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD83B5825A6E1F40096FCBC /* DatePickerDialog.swift */; };
 		DFD83B6125A6E1F40096FCBC /* CustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD83B5925A6E1F40096FCBC /* CustomElements.swift */; };
+		F0F857C21ACA9E5D0DCB1687 /* Pods_ColdmanFresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744775290AA13BA4DDC98B8B /* Pods_ColdmanFresh.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		744775290AA13BA4DDC98B8B /* Pods_ColdmanFresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColdmanFresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		927874A4D225F1F93B31C262 /* Pods-ColdmanFresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColdmanFresh.release.xcconfig"; path = "Target Support Files/Pods-ColdmanFresh/Pods-ColdmanFresh.release.xcconfig"; sourceTree = "<group>"; };
 		DFD83B2F25A6DF220096FCBC /* ColdmanFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColdmanFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD83B3225A6DF220096FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD83B3425A6DF220096FCBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		DFD83B5725A6E1F40096FCBC /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		DFD83B5825A6E1F40096FCBC /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		DFD83B5925A6E1F40096FCBC /* CustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomElements.swift; sourceTree = "<group>"; };
+		F5F1DB3C33A65DCE6D3C3751 /* Pods-ColdmanFresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColdmanFresh.debug.xcconfig"; path = "Target Support Files/Pods-ColdmanFresh/Pods-ColdmanFresh.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +57,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F857C21ACA9E5D0DCB1687 /* Pods_ColdmanFresh.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8965626CED325C3D2B05E8EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5F1DB3C33A65DCE6D3C3751 /* Pods-ColdmanFresh.debug.xcconfig */,
+				927874A4D225F1F93B31C262 /* Pods-ColdmanFresh.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		93DD990A8B396FA89B297A97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				744775290AA13BA4DDC98B8B /* Pods_ColdmanFresh.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DFD83B2625A6DF220096FCBC = {
 			isa = PBXGroup;
 			children = (
 				DFD83B3125A6DF220096FCBC /* ColdmanFresh */,
 				DFD83B3025A6DF220096FCBC /* Products */,
+				8965626CED325C3D2B05E8EC /* Pods */,
+				93DD990A8B396FA89B297A97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,9 +148,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DFD83B4325A6DF240096FCBC /* Build configuration list for PBXNativeTarget "ColdmanFresh" */;
 			buildPhases = (
+				E7625762BC89770141C866C5 /* [CP] Check Pods Manifest.lock */,
 				DFD83B2B25A6DF220096FCBC /* Sources */,
 				DFD83B2C25A6DF220096FCBC /* Frameworks */,
 				DFD83B2D25A6DF220096FCBC /* Resources */,
+				89001F283E667C7DF6CE42E0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -180,6 +207,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		89001F283E667C7DF6CE42E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ColdmanFresh/Pods-ColdmanFresh-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ColdmanFresh/Pods-ColdmanFresh-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ColdmanFresh/Pods-ColdmanFresh-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7625762BC89770141C866C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ColdmanFresh-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DFD83B2B25A6DF220096FCBC /* Sources */ = {
@@ -343,6 +412,7 @@
 		};
 		DFD83B4425A6DF240096FCBC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5F1DB3C33A65DCE6D3C3751 /* Pods-ColdmanFresh.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -363,6 +433,7 @@
 		};
 		DFD83B4525A6DF240096FCBC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 927874A4D225F1F93B31C262 /* Pods-ColdmanFresh.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

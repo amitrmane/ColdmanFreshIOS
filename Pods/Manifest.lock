@@ -1,0 +1,43 @@
+PODS:
+  - Alamofire (5.4.0)
+  - IQKeyboardManager (6.5.6)
+  - SDWebImage (5.10.0):
+    - SDWebImage/Core (= 5.10.0)
+  - SDWebImage/Core (5.10.0)
+  - Siren (5.1.2)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - IQKeyboardManager
+  - SDWebImage (~> 5.0)
+  - Siren (from `https://github.com/ArtSabintsev/Siren.git`, branch `swift5.0`)
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManager
+    - SDWebImage
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  Siren:
+    :branch: swift5.0
+    :git: https://github.com/ArtSabintsev/Siren.git
+
+CHECKOUT OPTIONS:
+  Siren:
+    :commit: ef6d9ffa4226ced10d1b46d03c38c1b794b22788
+    :git: https://github.com/ArtSabintsev/Siren.git
+
+SPEC CHECKSUMS:
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
+  Siren: ee674e4ab57f5cc23186202a11313bc50a661a61
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 7f9f1b441bf218e3eac3650df7b411a41d27587e
+
+COCOAPODS: 1.8.4

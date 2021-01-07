@@ -1,0 +1,6 @@
+framework module Pods_ColdmanFresh {
+  umbrella header "Pods-ColdmanFresh-umbrella.h"
+
+  export *
+  module * { export * }
+}
