@@ -1,9 +1,8 @@
 //
 //  Constants.swift
-//  Football09
+//  ColdmanFresh
 //
-//  Created by Prasad Patil on 29/11/19.
-//  Copyright © 2019 Prasad Patil. All rights reserved.
+//  Created by Prasad Patil on 07/01/21.
 //
 
 import Foundation
@@ -31,24 +30,25 @@ class Constants {
     static let locationManager = CLLocationManager()
 
     struct ApiEndPoint {
-        static let resturant = "Resturant/resturant"
-        static let category = "Category/cateogry"
-        static let findAllDiscount = "Discount/findAllDiscount"
-        static let findAllMenu = "Menu/findAllMenu"
-        static let findAllTax = "Tax/findAllTax"
-        static let resturantById = "Resturant/resturantById/"
-        static let addUser = "User/addUser"
-        static let login = "User/login"
-        static let generateOtp = "Otp/generateOtp/"
-        static let verfiyOtp = "Otp/verify"
-        static let findUserFromMobile = "User/findByMobileNumber/"
-        static let findAddresByUserid = "User/findAddresByUserid/"
-        static let addAddress = "User/addUserAddresByUserId"
-        static let updateAddress = "User/address"
-        static let saveOrder = "Order/saveOrder"
-        static let updateOrder = "Order/updateOrderStatus"
-        static let orderHistory = "Order/getOrderDetailsByUserId/"
-        static let orderDetailsById = "Order/findOrderDetailsByOrderId/"
+        static let slider = "slider"
+        static let organization = "organization"
+        static let gate = "gate"
+        static let timeslot = "timeslot"
+        static let order_details = "order_details"
+        static let update_profile = "update_profile"
+        static let orders = "orders"
+        static let send_otp = "send_otp"
+        static let resend_otp = "resend_otp"
+        static let address = "address"
+        static let check_order_status = "check-order-status"
+        static let discount_coupon = "discount_coupon"
+        static let verify_otp = "verify_otp"
+        static let sign_up = "sign-up"
+        static let update_address = "update-address"
+        static let add_address = "add-address"
+        static let save_order = "save-order"
+        static let menus = "menus"
+        static let coupons = "coupons"
     }
   
     struct WebLinks {
@@ -59,6 +59,11 @@ class Constants {
     
     struct Keys {
         static let cart = "Cart"
+    }
+    
+    struct AppColors {
+        static let bgRed = UIColor(hexString: "CF292B")
+        static let bgGreen = UIColor(hexString: "4fb68d")
     }
 }
 

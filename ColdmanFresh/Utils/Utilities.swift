@@ -1,9 +1,8 @@
 //
 //  Utilities.swift
-//  Football09
+//  ColdmanFresh
 //
-//  Created by Prasad Patil on 29/11/19.
-//  Copyright © 2010 Prasad Patil. All rights reserved.
+//  Created by Prasad Patil on 07/01/21.
 //
 
 import UIKit

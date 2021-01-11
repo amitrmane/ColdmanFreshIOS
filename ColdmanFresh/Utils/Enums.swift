@@ -1,9 +1,9 @@
 //
 //  Enums.swift
-//  Football09
+//  ColdmanFresh
 //
-//  Created by Prasad Patil on 29/11/19.
-//  Copyright © 2019 Prasad Patil. All rights reserved.
+//  Created by Prasad Patil on 07/01/21.
+//  Copyright © 2021 Prasad Patil. All rights reserved.
 //
 
 import Foundation

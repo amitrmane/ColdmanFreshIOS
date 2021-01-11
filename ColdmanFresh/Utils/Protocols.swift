@@ -1,9 +1,9 @@
 //
 //  Protocols.swift
-//  MSDCA
+//  ColdmanFresh
 //
-//  Created by WSLT83 on 14/02/19.
-//  Copyright © 2019 WSLT82. All rights reserved.
+//  Created by Prasad Patil on 07/01/21.
+//  Copyright © 2021 Prasad Patil. All rights reserved.
 //
 
 import Foundation
