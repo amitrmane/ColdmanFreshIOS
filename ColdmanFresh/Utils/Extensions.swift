@@ -89,10 +89,10 @@ extension String {
         return emailTest.evaluate(with: self)
     }
     
-    func validatePhone(value: String) -> Bool {
+    func validatePhone() -> Bool {
         let PHONE_REGEX = "^((\\+)|(00))[0-9]{6,14}$";
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        let result =  phoneTest.evaluate(with: value)
+        let result =  phoneTest.evaluate(with: self)
         return result
     }
     func isValidatePhone() -> Bool {
