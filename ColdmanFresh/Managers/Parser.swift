@@ -56,6 +56,7 @@ class Menu : Codable {
     var menu_shortcode = ""
     var menu_description = ""
     var variation = [Variation]()
+    var selectedVariation : Variation!
     var addedToCart = false
     var menuCount = 1
 

@@ -52,9 +52,9 @@ class Constants {
     }
   
     struct WebLinks {
-        static var cancellation_and_refund = "http://landing.menukart.online/public/docs/Cancellations and Refunds.docx"
-        static var privacy_policy = "http://landing.menukart.online/public/docs/Menukart Privacy Policy.docx"
-        static var terms_and_conditions = "http://landing.menukart.online/public/docs/Menukart (Terms & Conditions).docx"
+        static var cancellation_and_refund = "http://coldmanfresh.edigito.in/cancellation-policy"
+        static var privacy_policy = "http://coldmanfresh.edigito.in/privacy-policy"
+        static var terms_and_conditions = "http://coldmanfresh.edigito.in/privacy-policy"
     }
     
     struct Keys {

@@ -186,7 +186,7 @@ class Utilities: NSObject {
 
         }
 
-    /*class func getCurrentUser() -> UserProfile? {
+    class func getCurrentUser() -> UserProfile? {
         let defaults = UserDefaults.standard
         guard let userData = defaults.object(forKey: "User") as? Data else {
             return nil
@@ -198,7 +198,7 @@ class Utilities: NSObject {
             return user
         }
         return nil
-    }*/
+    }
     
     class func getCharges(amount: Double, distanceInKM: Double, planSelected: String) -> Double {
         

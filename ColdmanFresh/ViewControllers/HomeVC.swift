@@ -25,8 +25,25 @@ class HomeVC: SuperViewController {
         // Do any additional setup after loading the view.
         self.getSliderImages()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.refreshData()
+    }
 
 
+    @IBAction func cartTapped(_ sender: UIButton) {
+        let addedMenus = Menu.getSavedCartItems()
+        if addedMenus.count > 0 {
+            let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
+            cartvc.addedMenus = addedMenus
+//            cartvc.currentAddress = self.currentAddress == nil ? self.currentLocation : self.currentAddress
+            self.navigationController?.pushViewController(cartvc, animated: true)
+        }else {
+            self.showAlert("No items in cart, please select restaurant and add items.")
+        }
+    }
+    
 }
 
 extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -46,8 +63,11 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
         cell.pageControl.numberOfPages = self.sliderData.count
         cell.pageControl.currentPage = indexPath.item
         
+        cell.ivSlider.contentMode = .scaleAspectFit
         if let url = URL(string: data.slider_image) {
-            cell.ivSlider.sd_setImage(with: url, completed: nil)
+            cell.ivSlider.sd_setImage(with: url, placeholderImage: UIImage(named: "image-placeholder"), options: .continueInBackground) { (i, e, t, u) in
+                cell.ivSlider.contentMode = .scaleToFill
+            }
         }
         
         return cell
@@ -92,7 +112,7 @@ extension HomeVC : UITableViewDataSource, UITableViewDelegate {
         }
         
         if let url = URL(string: m.menu_logo) {
-            cell.ivMenu.sd_setImage(with: url, completed: nil)
+            cell.ivMenu.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"), options: .continueInBackground, completed: nil)
         }
         
         cell.lblStarRating.text = " ₹ " + m.menu_price + " "
@@ -158,6 +178,17 @@ extension HomeVC : UITableViewDataSource, UITableViewDelegate {
         let menu = self.menus[sender.tag]
         menu.menuCount += 1
         menu.displayPrice = menu.price * Double(menu.menuCount)
+        for m in self.addedMenus {
+            if m.menu_id == menu.menu_id {
+                m.displayPrice = menu.displayPrice
+                m.menuCount = menu.menuCount
+            }
+        }
+        if self.addedMenus.count > 0 {
+            Menu.saveCartItems(self.addedMenus)
+        }else {
+            Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
+        }
         refreshData()
     }
 
@@ -177,6 +208,12 @@ extension HomeVC : UITableViewDataSource, UITableViewDelegate {
         }
         menu.menuCount -= menu.menuCount > 1 ? 1 : 0
         menu.displayPrice = menu.price * Double(menu.menuCount)
+        for m in self.addedMenus {
+            if m.menu_id == menu.menu_id {
+                m.displayPrice = menu.displayPrice
+                m.menuCount = menu.menuCount
+            }
+        }
         if self.addedMenus.count > 0 {
             Menu.saveCartItems(self.addedMenus)
         }else {
@@ -195,6 +232,7 @@ extension HomeVC : UITableViewDataSource, UITableViewDelegate {
                     m.menuCount = menu.menuCount
                 }
             }
+            Menu.saveCartItems(self.addedMenus)
         }
         if self.addedMenus.count == 0 {
 //            self.viewBaseGoToCart.isHidden = true
