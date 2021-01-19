@@ -18,6 +18,7 @@
 		DFB1377725A6F758006408CF /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1377625A6F758006408CF /* TabBarVC.swift */; };
 		DFB1377B25A6F7C6006408CF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1377A25A6F7C6006408CF /* SettingsVC.swift */; };
 		DFB734A525B607DB0085E1EC /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB734A425B607DB0085E1EC /* CartVC.swift */; };
+		DFB734A825B6A4820085E1EC /* VariationPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB734A725B6A4820085E1EC /* VariationPopupVC.swift */; };
 		DFD07E7625AC2A1D000B8273 /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD07E7525AC2A1D000B8273 /* CollectionViewCells.swift */; };
 		DFD83B3325A6DF220096FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD83B3225A6DF220096FCBC /* AppDelegate.swift */; };
 		DFD83B3525A6DF220096FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD83B3425A6DF220096FCBC /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 		DFB1377625A6F758006408CF /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		DFB1377A25A6F7C6006408CF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		DFB734A425B607DB0085E1EC /* CartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
+		DFB734A725B6A4820085E1EC /* VariationPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationPopupVC.swift; sourceTree = "<group>"; };
 		DFD07E7525AC2A1D000B8273 /* CollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCells.swift; sourceTree = "<group>"; };
 		DFD83B2F25A6DF220096FCBC /* ColdmanFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColdmanFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD83B3225A6DF220096FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,9 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				DF56602825AF381D00A1DCA0 /* SuperViewController.swift */,
+				DFB1377625A6F758006408CF /* TabBarVC.swift */,
 				DFD83B3625A6DF220096FCBC /* HomeVC.swift */,
 				DFB1377A25A6F7C6006408CF /* SettingsVC.swift */,
-				DFB1377625A6F758006408CF /* TabBarVC.swift */,
+				DFB734A725B6A4820085E1EC /* VariationPopupVC.swift */,
 				DFB734A425B607DB0085E1EC /* CartVC.swift */,
 				DF56602525AF381D00A1DCA0 /* OrderHistoryVC.swift */,
 				DF56602625AF381D00A1DCA0 /* OTPVerificationVC.swift */,
@@ -320,6 +323,7 @@
 				DF56602E25AF381D00A1DCA0 /* WebVC.swift in Sources */,
 				DFD83B4E25A6E1770096FCBC /* Reachability.swift in Sources */,
 				DF56602C25AF381D00A1DCA0 /* OrderHistoryVC.swift in Sources */,
+				DFB734A825B6A4820085E1EC /* VariationPopupVC.swift in Sources */,
 				DF56602F25AF381D00A1DCA0 /* SuperViewController.swift in Sources */,
 				DFD83B5B25A6E1F40096FCBC /* Utilities.swift in Sources */,
 				DFD83B5C25A6E1F40096FCBC /* Enums.swift in Sources */,

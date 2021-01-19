@@ -160,18 +160,27 @@ extension HomeVC : UITableViewDataSource, UITableViewDelegate {
     
     @objc func addToCartTapped(_ sender: UIButton) {
         let menu = self.menus[sender.tag]
-        menu.addedToCart = !menu.addedToCart
-        if menu.addedToCart {
-            menu.menuCount = 1
-            menu.displayPrice = menu.price * Double(menu.menuCount)
-            self.addedMenus.append(menu)
+        
+        let variationvc = mainStoryboard.instantiateViewController(withIdentifier: "VariationPopupVC") as! VariationPopupVC
+        variationvc.variations = menu.variation.filter({ $0.variation_status == "active" })
+        variationvc.selectedVariation = { (vr) in
+            
+            menu.addedToCart = !menu.addedToCart
+            menu.selectedVariation = vr
+            if menu.addedToCart {
+                menu.menuCount = 1
+                menu.displayPrice = menu.price * Double(menu.menuCount)
+                self.addedMenus.append(menu)
+            }
+            if self.addedMenus.count > 0 {
+                Menu.saveCartItems(self.addedMenus)
+            }else {
+                Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
+            }
+            self.refreshData()
         }
-        if self.addedMenus.count > 0 {
-            Menu.saveCartItems(self.addedMenus)
-        }else {
-            Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
-        }
-        self.refreshData()
+        self.navigationController?.present(variationvc, animated: false, completion: nil)
+       
     }
     
     @objc func plusTapped(_ sender: UIButton) {

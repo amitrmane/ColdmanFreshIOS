@@ -137,6 +137,7 @@ class Variation : Codable {
     var group_name = ""
     var rate = ""
     var variation_status = ""
+    var selected = false
 
     class func getVariationData(array: [JSON]) -> [Variation] {
         var dataArr = [Variation]()
