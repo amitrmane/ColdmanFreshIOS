@@ -358,17 +358,20 @@ extension CartVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymentCom
     internal func showPaymentForm(){
         let cartValues = self.addedMenus.map({ $0.displayPrice })
         let val = cartValues.reduce(0, +)
-//        let user = Utilities.getCurrentUser()
+        guard let user = Utilities.getCurrentUser() else {
+            self.showAlert("Please login first!")
+            return
+        }
         let options: [String:Any] = [
             "amount": "\(val * 100)", //This is in currency subunits. 100 = 100 paise= INR 1.
             "currency": "INR",//We support more that 92 international currencies.
             "description": "Coldman fresh order",
-            //"order_id": "CFORDER\(UUID().uuidString)",
-            "image": "",
+            //"order_id": "CFORDER\(UUID().uuidString)", // send when build is live only not for testing
+            "image": "http://coldmanfresh.edigito.in/assets/images/logo/logo.jpg",
             "name": "Coldman fresh",
             "prefill": [
-                "contact": "9797979797",
-                "email": "foo@bar.com"
+                "contact": "\(user.mobileno)",
+                "email": "\(user.email)"
             ],
             "theme": [
                 "color": "#4FB68D"

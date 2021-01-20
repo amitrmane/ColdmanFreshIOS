@@ -152,6 +152,7 @@ class SignUpVC: SuperViewController {
             params["lname"] = lname
             params["birthdate"] = ""
             params["mobileno"] = mob
+            params["organization_id"] = ""
             
             self.showActivityIndicator()
             

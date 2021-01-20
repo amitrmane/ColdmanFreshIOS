@@ -208,7 +208,7 @@ class ApiManager: NSObject {
         
         let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.sign_up)!
         
-        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
+        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
             .responseJSON { response in
                 
                 guard response.error == nil
@@ -216,6 +216,9 @@ class ApiManager: NSObject {
                 {
                     DispatchQueue.main.async(execute: {
                         print("--------error-------------\n")
+                        if let d = response.data {
+                            print(String(data: d, encoding: .utf8) ?? "")
+                        }
                         // show alert
                         completion(nil)
                     })
@@ -246,7 +249,7 @@ class ApiManager: NSObject {
         
         let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.save_order)!
         
-        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
+        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
             .responseJSON { response in
                 
                 guard response.error == nil

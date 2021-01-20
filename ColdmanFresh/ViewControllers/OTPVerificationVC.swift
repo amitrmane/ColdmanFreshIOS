@@ -120,6 +120,12 @@ class OTPVerificationVC: SuperViewController {
                             self.navigationController?.popToRootViewController(animated: false)
                         }else {
                             print(user.id)
+                            let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
+                            cartvc.addedMenus = self.addedMenus
+//                            cartvc.backDelegate = self
+                            cartvc.user = user
+                            self.navigationController?.pushViewController(cartvc, animated: true)
+
 //                            let summaryvc = mainStoryboard.instantiateViewController(withIdentifier: "OrderSummaryVC") as! OrderSummaryVC
 //                            summaryvc.user = user
 //                            summaryvc.restaurent = self.restaurent
@@ -172,11 +178,17 @@ extension OTPVerificationVC : LoginSuccessProtocol {
         if self.isFromSettings {
             self.navigationController?.popToRootViewController(animated: false)
         }else {
-//            if profile.user_id == "" && profile.id == 0 {
-//                print(profile.mobile)
-//                self.mobileNo = profile.mobile
-//                self.callLogin()
-//            }else {
+            if profile.user_id == "" && profile.id == 0 {
+                print(profile.mobileno)
+                self.mobileNo = profile.mobileno
+                self.verifyUserByNumber()
+            }else {
+                let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
+                cartvc.addedMenus = self.addedMenus
+//                            cartvc.backDelegate = self
+                cartvc.user = profile
+                self.navigationController?.pushViewController(cartvc, animated: true)
+
 //                let summaryvc = mainStoryboard.instantiateViewController(withIdentifier: "OrderSummaryVC") as! OrderSummaryVC
 //                summaryvc.user = profile
 //                summaryvc.restaurent = self.restaurent
@@ -185,7 +197,7 @@ extension OTPVerificationVC : LoginSuccessProtocol {
 //                summaryvc.selectedAddr = self.selectedAddr
 //                summaryvc.selectedOffer = self.selectedOffer
 //                self.navigationController?.pushViewController(summaryvc, animated: true)
-//            }
+            }
         }
     }
 }
