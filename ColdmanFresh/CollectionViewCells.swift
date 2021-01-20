@@ -11,5 +11,6 @@ class SliderCell: UICollectionViewCell {
     
     @IBOutlet weak var ivSlider: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
+    @IBOutlet weak var lblName: UILabel!
+
 }

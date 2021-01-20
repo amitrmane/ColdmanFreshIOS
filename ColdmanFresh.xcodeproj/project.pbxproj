@@ -15,6 +15,7 @@
 		DF56603025AF381D00A1DCA0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602925AF381D00A1DCA0 /* SignUpVC.swift */; };
 		DF56603125AF381D00A1DCA0 /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602A25AF381D00A1DCA0 /* SupportVC.swift */; };
 		DF56603225AF381D00A1DCA0 /* PhoneVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602B25AF381D00A1DCA0 /* PhoneVerificationVC.swift */; };
+		DF5E6D1425B8C6600055AC5F /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5E6D1325B8C6600055AC5F /* ProductListVC.swift */; };
 		DFB1377725A6F758006408CF /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1377625A6F758006408CF /* TabBarVC.swift */; };
 		DFB1377B25A6F7C6006408CF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB1377A25A6F7C6006408CF /* SettingsVC.swift */; };
 		DFB734A525B607DB0085E1EC /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB734A425B607DB0085E1EC /* CartVC.swift */; };
@@ -51,6 +52,7 @@
 		DF56602925AF381D00A1DCA0 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		DF56602A25AF381D00A1DCA0 /* SupportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
 		DF56602B25AF381D00A1DCA0 /* PhoneVerificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationVC.swift; sourceTree = "<group>"; };
+		DF5E6D1325B8C6600055AC5F /* ProductListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListVC.swift; sourceTree = "<group>"; };
 		DFB1377625A6F758006408CF /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		DFB1377A25A6F7C6006408CF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		DFB734A425B607DB0085E1EC /* CartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				DF56602825AF381D00A1DCA0 /* SuperViewController.swift */,
 				DFB1377625A6F758006408CF /* TabBarVC.swift */,
 				DFD83B3625A6DF220096FCBC /* HomeVC.swift */,
+				DF5E6D1325B8C6600055AC5F /* ProductListVC.swift */,
 				DFB1377A25A6F7C6006408CF /* SettingsVC.swift */,
 				DFB734A725B6A4820085E1EC /* VariationPopupVC.swift */,
 				DFB734A425B607DB0085E1EC /* CartVC.swift */,
@@ -305,6 +308,7 @@
 				DF56602D25AF381D00A1DCA0 /* OTPVerificationVC.swift in Sources */,
 				DFD83B3725A6DF220096FCBC /* HomeVC.swift in Sources */,
 				DFD83B4F25A6E1770096FCBC /* Parser.swift in Sources */,
+				DF5E6D1425B8C6600055AC5F /* ProductListVC.swift in Sources */,
 				DFB734A525B607DB0085E1EC /* CartVC.swift in Sources */,
 				DFD83B5F25A6E1F40096FCBC /* Protocols.swift in Sources */,
 				DF56603225AF381D00A1DCA0 /* PhoneVerificationVC.swift in Sources */,
@@ -476,6 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7TC6GNZWML;
 				INFOPLIST_FILE = ColdmanFresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -497,6 +502,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7TC6GNZWML;
 				INFOPLIST_FILE = ColdmanFresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

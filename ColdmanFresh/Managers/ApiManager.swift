@@ -242,4 +242,42 @@ class ApiManager: NSObject {
             }
     }
 
+    class func saveOrderApi(params: [String: Any], completion: @escaping (_ data: JSON?) -> Void) {
+        
+        let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.save_order)!
+        
+        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
+            .responseJSON { response in
+                
+                guard response.error == nil
+                else
+                {
+                    DispatchQueue.main.async(execute: {
+                        print("--------error-------------\n")
+                        // show alert
+                        completion(nil)
+                    })
+                    return
+                }
+                if let value: Any = response.value as Any? {
+                    
+                    let json = JSON.init(value)
+                    
+                    //print("json",json)
+                    
+                    ApiManager.parseResponse(json: json) { (parsedjson) in
+                        completion(parsedjson)
+                    }
+                }
+                else
+                {
+                    print("error fetching response")
+                    DispatchQueue.main.async {
+                        // show alert
+                        completion(nil)
+                    }
+                }
+            }
+    }
+
 }

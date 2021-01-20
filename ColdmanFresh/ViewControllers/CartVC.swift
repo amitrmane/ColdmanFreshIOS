@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Razorpay
 
 protocol BackRefresh {
     func updateData(_ data: Any)
@@ -43,11 +44,14 @@ class CartVC: SuperViewController {
     var backDelegate : BackRefresh!
 //    var currentAddress : Address!
 //    var selectedOffer : Offers!
+    var razorpay: RazorpayCheckout!
+    var paymentId = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyTest, andDelegate: self)
         self.getTaxes()
         DispatchQueue.main.async {
             self.refreshData()
@@ -96,6 +100,7 @@ class CartVC: SuperViewController {
     }
         
     @IBAction func checkOutTapped(_ sender: UIButton) {
+        self.showPaymentForm()
         /*let cartValues = self.addedMenus.map({ $0.displayPrice })
         let val = cartValues.reduce(0, +)
         if let minval = self.restaurent.restaurant_food_min_price.toDouble(), val < minval {
@@ -265,6 +270,7 @@ extension CartVC : LoginSuccessProtocol, BackRefresh {
     func loginSuccess(profile: UserProfile) {
         print(profile)
         user = profile
+        self.callSaveOrderAPI(paymentId: paymentId)
 //        let ordervc = mainStoryboard.instantiateViewController(withIdentifier: "OrderSummaryVC") as! OrderSummaryVC
 //        ordervc.restaurent = self.restaurent
 //        ordervc.user = self.user
@@ -333,4 +339,138 @@ extension CartVC {
             }
         }*/
     }
+}
+
+// MARK: Razor Pay Payment
+extension CartVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymentCompletionProtocol {
+    func onPaymentError(_ code: Int32, description str: String) {
+        print("Payment failed with code: \(code), msg: \(str)")
+        self.showAlert("Payment failed with code: \(code), msg: \(str)")
+    }
+    
+    func onPaymentSuccess(_ payment_id: String) {
+        print("Payment Success payment id: \(payment_id)")
+        self.paymentId = payment_id
+        self.callSaveOrderAPI(paymentId: payment_id)
+    }
+    
+    
+    internal func showPaymentForm(){
+        let cartValues = self.addedMenus.map({ $0.displayPrice })
+        let val = cartValues.reduce(0, +)
+//        let user = Utilities.getCurrentUser()
+        let options: [String:Any] = [
+            "amount": "\(val * 100)", //This is in currency subunits. 100 = 100 paise= INR 1.
+            "currency": "INR",//We support more that 92 international currencies.
+            "description": "Coldman fresh order",
+            //"order_id": "CFORDER\(UUID().uuidString)",
+            "image": "",
+            "name": "Coldman fresh",
+            "prefill": [
+                "contact": "9797979797",
+                "email": "foo@bar.com"
+            ],
+            "theme": [
+                "color": "#4FB68D"
+            ]
+        ]
+        razorpay.open(options, displayController: self)
+    }
+    
+    public func onPaymentError(_ code: Int32, description str: String, andData response: [AnyHashable : Any]?) {
+        print("Payment failed with code: \(code), msg: \(str)")
+        self.showAlert("Payment failed with code: \(code) \nMessage: \(str)")
+    }
+    
+    public func onPaymentSuccess(_ payment_id: String, andData response: [AnyHashable : Any]?) {
+        print("Payment Success payment id: \(payment_id), andData: \(String(describing: response))")
+    }
+    
+    func callSaveOrderAPI(paymentId: String) {
+        let cartValues = self.addedMenus.map({ $0.displayPrice })
+        let val = cartValues.reduce(0, +)
+        
+//        var calculatedTax = 0.0
+//        for tax in self.allTaxes {
+//            if let res = self.restaurent, tax.restaurant_id == res.restaurant_id {
+//                if let cgst = tax.cgst.toDouble(), let sgst = tax.sgst.toDouble() {
+//                    calculatedTax = ((val/100) * cgst) + ((val/100) * sgst)
+//                }
+//            }
+//        }
+//
+//        var offerdiscount = 0.0
+//        var offercoupon = ""
+//        if let offer = self.selectedOffer {
+//            offerdiscount = offer.userDiscount.toDouble() ?? 0
+//            offercoupon = offer.discount_coupon
+//        }
+//  pay_GR7AtlUIKkf3qM
+//        let total = (charges + val + calculatedTax.roundTo(places: 2)) - (offerdiscount)
+
+        guard ApiManager.checkuser_online() else {
+            return
+        }
+                
+        self.showActivityIndicator()
+        
+        var params = [String: Any]()
+//        [{"restaurant_id":"3","menu_id":"7","menu_name":"snow_idli","menu_price":"100","qty":"2","cgst":"5","sgst":"5"}]
+        var orderItemDetails = [[String: Any]]()
+        
+        for menu in self.addedMenus {
+            var menuItem = [String: Any]()
+            menuItem["menu_id"] = "\(menu.menu_id)"
+            menuItem["menu_name"] = menu.menu_name
+            menuItem["menu_price"] = menu.menu_price
+            menuItem["qty"] = "\(menu.menuCount)"
+            menuItem["menu_variation"] = "\(menu.selectedVariation != nil ? menu.selectedVariation.name : "")"
+            orderItemDetails.append(menuItem)
+        }
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: orderItemDetails, options: [.prettyPrinted])
+        let jsonString = String(data: jsonData!, encoding: .utf8)
+        params["order"] = "\(jsonString!)"
+        params["user_id"] = "83"//self.user.user_id
+        params["total"] = val
+        params["transaction_id"] = paymentId
+        params["discount_amount"] = ""
+        params["coupon"] = ""
+
+        print(params)
+        
+        ApiManager.saveOrderApi(params: params) { (json) in
+            self.hideActivityIndicator()
+            
+            if let dict = json?.dictionary {
+                if let status = dict["status"]?.number, status == 200, let orderId = dict["order_id"]?.number {
+                    print(orderId)
+                    self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "Order placed successfully!\n Order ID : \(orderId)", buttons: ["OK"]) { (i) in
+                        Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
+                        if let del = self.backDelegate {
+                            del.updateData(self.addedMenus)
+                        }
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+//                    let placeOrdervc = mainStoryboard.instantiateViewController(withIdentifier: "OrderPlacedVC") as! OrderPlacedVC
+//                    placeOrdervc.restaurent = self.restaurent
+//                    placeOrdervc.user = self.user
+//                    placeOrdervc.addedMenus = self.addedMenus
+//                    placeOrdervc.allTaxes = self.allTaxes
+//                    placeOrdervc.paymentDetails = self.paymentDetails
+//                    placeOrdervc.isCOD = self.isCOD
+//                    placeOrdervc.appOrderId = orderId.intValue
+//                    placeOrdervc.selectedAddr = self.selectedAddr
+//                    self.navigationController?.pushViewController(placeOrdervc, animated: true)
+                }else {
+                    self.showError(message: dict["message"]?.string ?? "Order placing failed, please try again")
+                }
+            }else {
+                self.showError(message: "Order placing failed, please try again")
+            }
+        }
+        
+    }
+
+    
 }

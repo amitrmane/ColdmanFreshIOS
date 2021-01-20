@@ -11,7 +11,7 @@ import SDWebImage
 class HomeVC: SuperViewController {
 
     @IBOutlet weak var cvSlider: UICollectionView!
-    @IBOutlet weak var tblMenu: UITableView!
+    @IBOutlet weak var cvCategories: UICollectionView!
     @IBOutlet weak var btnCart: BadgeButton!
     @IBOutlet weak var lblCartValue: UILabel!
 
@@ -37,6 +37,7 @@ class HomeVC: SuperViewController {
         if addedMenus.count > 0 {
             let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
             cartvc.addedMenus = addedMenus
+            cartvc.backDelegate = self
 //            cartvc.currentAddress = self.currentAddress == nil ? self.currentLocation : self.currentAddress
             self.navigationController?.pushViewController(cartvc, animated: true)
         }else {
@@ -53,36 +54,64 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sliderData.count
+        if collectionView == self.cvSlider {
+            return self.sliderData.count
+        }
+        return self.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
-        let data = self.sliderData[indexPath.item]
+        if collectionView == self.cvSlider {
+            let data = self.sliderData[indexPath.item]
+            
+            cell.pageControl.numberOfPages = self.sliderData.count
+            cell.pageControl.currentPage = indexPath.item
+            
+            cell.ivSlider.contentMode = .scaleAspectFit
+            if let url = URL(string: data.slider_image) {
+                cell.ivSlider.sd_setImage(with: url, placeholderImage: UIImage(named: "image-placeholder"), options: .continueInBackground) { (i, e, t, u) in
+                    cell.ivSlider.contentMode = .scaleToFill
+                }
+            }
+            return cell
+        }
+        let data = self.categories[indexPath.item]
         
-        cell.pageControl.numberOfPages = self.sliderData.count
-        cell.pageControl.currentPage = indexPath.item
-        
-        cell.ivSlider.contentMode = .scaleAspectFit
-        if let url = URL(string: data.slider_image) {
+        cell.lblName.text = data.category_name
+                
+        if let url = URL(string: Constants.baseDownloadURL + data.category_img) {
             cell.ivSlider.sd_setImage(with: url, placeholderImage: UIImage(named: "image-placeholder"), options: .continueInBackground) { (i, e, t, u) in
-                cell.ivSlider.contentMode = .scaleToFill
             }
         }
-        
+
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
+        if self.cvCategories == collectionView {
+            let listvc = mainStoryboard.instantiateViewController(withIdentifier: "ProductListVC") as! ProductListVC
+            listvc.addedMenus = addedMenus
+            listvc.backDelegate = self
+            listvc.allMenus = self.menus
+            listvc.categories = self.categories
+            listvc.selectedCategory = self.categories[indexPath.item]
+            self.navigationController?.pushViewController(listvc, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        if collectionView == self.cvSlider {
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        }
+        return CGSize(width: (collectionView.frame.width / 2 - 10), height: (collectionView.frame.width / 2 - 10))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.cvCategories {
+            return 10
+        }
         return 0
     }
     
@@ -91,145 +120,7 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
     }
 }
 
-extension HomeVC : UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.menus.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
-        
-        let m = self.menus[indexPath.row]
-        
-        cell.lblTitle.text = m.menu_displayname
-        if let first = self.categories.filter({ $0.id == m.menu_categoryid }).first {
-            cell.lblFoodType.text = first.category_olname.uppercased()
-        }
-        
-        if let url = URL(string: m.menu_logo) {
-            cell.ivMenu.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"), options: .continueInBackground, completed: nil)
-        }
-        
-        cell.lblStarRating.text = " ₹ " + m.menu_price + " "
-        cell.lblMenuCount.text = "\(m.menuCount)"
-        
-        if m.menu_status == "Available" {
-            cell.lblDeliveryTime.text = " \(m.menu_status) "
-            cell.lblDeliveryTime.backgroundColor = Constants.AppColors.bgGreen
-            if m.addedToCart {
-                cell.btnAdd.isHidden = true
-                cell.viewBaseCounter.isHidden = false
-            }else {
-                cell.btnAdd.isHidden = false
-                cell.viewBaseCounter.isHidden = true
-            }
-        }else {
-            cell.lblDeliveryTime.text = " \(m.menu_status) "
-            cell.lblDeliveryTime.backgroundColor = Constants.AppColors.bgRed
-            cell.btnAdd.isHidden = true
-            cell.viewBaseCounter.isHidden = true
-        }
-        cell.btnAdd.tag = indexPath.row
-        cell.btnAdd.addTarget(self, action: #selector(addToCartTapped(_:)), for: .touchUpInside)
-        
-        cell.btnPlus.tag = indexPath.row
-        cell.btnPlus.addTarget(self, action: #selector(plusTapped), for: .touchUpInside)
-
-        cell.btnMinus.tag = indexPath.row
-        cell.btnMinus.addTarget(self, action: #selector(minusTapped), for: .touchUpInside)
-
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 270
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    @objc func addToCartTapped(_ sender: UIButton) {
-        let menu = self.menus[sender.tag]
-        
-        let variationvc = mainStoryboard.instantiateViewController(withIdentifier: "VariationPopupVC") as! VariationPopupVC
-        variationvc.variations = menu.variation.filter({ $0.variation_status == "active" })
-        variationvc.selectedVariation = { (vr) in
-            
-            menu.addedToCart = !menu.addedToCart
-            menu.selectedVariation = vr
-            if menu.addedToCart {
-                menu.menuCount = 1
-                menu.displayPrice = menu.price * Double(menu.menuCount)
-                self.addedMenus.append(menu)
-            }
-            if self.addedMenus.count > 0 {
-                Menu.saveCartItems(self.addedMenus)
-            }else {
-                Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
-            }
-            self.refreshData()
-        }
-        self.navigationController?.present(variationvc, animated: false, completion: nil)
-       
-    }
-    
-    @objc func plusTapped(_ sender: UIButton) {
-        let menu = self.menus[sender.tag]
-        menu.menuCount += 1
-        menu.displayPrice = menu.price * Double(menu.menuCount)
-        for m in self.addedMenus {
-            if m.menu_id == menu.menu_id {
-                m.displayPrice = menu.displayPrice
-                m.menuCount = menu.menuCount
-            }
-        }
-        if self.addedMenus.count > 0 {
-            Menu.saveCartItems(self.addedMenus)
-        }else {
-            Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
-        }
-        refreshData()
-    }
-
-    @objc func minusTapped(_ sender: UIButton) {
-        let menu = self.menus[sender.tag]
-        if menu.menuCount == 1 && menu.addedToCart {
-            var idx : Int!
-            for (i, m) in self.addedMenus.enumerated() {
-                if m.menu_id == menu.menu_id {
-                    idx = i
-                }
-            }
-            if let i = idx {
-                menu.addedToCart = false
-                self.addedMenus.remove(at: i)
-            }
-        }
-        menu.menuCount -= menu.menuCount > 1 ? 1 : 0
-        menu.displayPrice = menu.price * Double(menu.menuCount)
-        for m in self.addedMenus {
-            if m.menu_id == menu.menu_id {
-                m.displayPrice = menu.displayPrice
-                m.menuCount = menu.menuCount
-            }
-        }
-        if self.addedMenus.count > 0 {
-            Menu.saveCartItems(self.addedMenus)
-        }else {
-            Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
-        }
-        refreshData()
-    }
+extension HomeVC {
 
     func refreshData(firstLoad: Bool = false) {
         if firstLoad {
@@ -241,11 +132,13 @@ extension HomeVC : UITableViewDataSource, UITableViewDelegate {
                     m.menuCount = menu.menuCount
                 }
             }
-            Menu.saveCartItems(self.addedMenus)
+            if self.addedMenus.count > 0 {
+                Menu.saveCartItems(self.addedMenus)
+            }else {
+                Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
+            }
         }
         if self.addedMenus.count == 0 {
-//            self.viewBaseGoToCart.isHidden = true
-//            self.constraintGoToCartHeight.constant = 0
             self.menus.forEach { (m) in
                 m.menuCount = 0
                 m.displayPrice = m.price
@@ -258,22 +151,18 @@ extension HomeVC : UITableViewDataSource, UITableViewDelegate {
             let val = self.addedMenus.map { $0.displayPrice }
             self.lblCartValue.text = " ₹ \(val.reduce(0, +)) "
 
-//            self.viewBaseGoToCart.isHidden = false
-//            self.constraintGoToCartHeight.constant = 50
-//            self.lblGoToCart.text = "Go To Cart (\(self.addedMenus.count) items added)"
-//            var itemTotal = 0.0
-//            for m in self.addedMenus {
-//                itemTotal += m.displayPrice
-//            }
-//            self.lblItemsTotal.text = "Items Total \n ₹ \(itemTotal.roundTo(places: 2))"
         }
-        self.tblMenu.reloadData()
+        self.cvCategories.reloadData()
     }
 
 }
 
 
-extension HomeVC {
+extension HomeVC : BackRefresh {
+
+    func updateData(_ data: Any) {
+        self.refreshData(firstLoad: true)
+    }
     
     func getSliderImages() {
         
