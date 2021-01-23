@@ -73,7 +73,7 @@ class CartVC: SuperViewController {
         }else {
             Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
         }
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     @IBAction func addresschangeTapped(_ sender: UIButton) {
@@ -434,7 +434,7 @@ extension CartVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymentCom
         let jsonData = try? JSONSerialization.data(withJSONObject: orderItemDetails, options: [.prettyPrinted])
         let jsonString = String(data: jsonData!, encoding: .utf8)
         params["order"] = "\(jsonString!)"
-        params["user_id"] = "83"//self.user.user_id
+        params["user_id"] = self.user.user_id
         params["total"] = val
         params["transaction_id"] = paymentId
         params["discount_amount"] = ""

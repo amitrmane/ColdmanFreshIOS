@@ -129,7 +129,7 @@ class ApiManager: NSObject {
         
         let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.send_otp)!
         
-        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
+        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
             .responseJSON { response in
                 
                 guard response.error == nil

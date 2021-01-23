@@ -799,7 +799,7 @@
                                         <rect key="frame" x="15" y="94" width="324" height="52.5"/>
                                         <string key="text">Feel free to call us on following number
 
-8380053000</string>
+020-6768240</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.29411764709999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -832,7 +832,7 @@
                                         <rect key="frame" x="15" y="287.5" width="324" height="70"/>
                                         <string key="text">You can reach us by sending email with your query
 
-happiness@menukart.in</string>
+support@coldmanfresh.com</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.29411764709999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1239,7 +1239,7 @@ happiness@menukart.in</string>
                                     <constraint firstAttribute="height" constant="50" id="H10-t3-xVu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Proceed to Checkout">
+                                <state key="normal" title="Proceed to Pay">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1255,7 +1255,7 @@ happiness@menukart.in</string>
                                 <rect key="frame" x="10" y="97.5" width="394" height="694.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="TNF-5T-7lu">
-                                    <rect key="frame" x="0.0" y="141" width="394" height="330"/>
+                                    <rect key="frame" x="0.0" y="141" width="394" height="250"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-O0-G8K">
@@ -1372,7 +1372,7 @@ happiness@menukart.in</string>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-cW-Iqy" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="86" width="364" height="234"/>
+                                            <rect key="frame" x="15" y="86" width="364" height="154"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2r-hU-qPd">
                                                     <rect key="frame" x="5" y="10" width="182" height="16"/>
@@ -1716,7 +1716,7 @@ happiness@menukart.in</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ryh-hk-D3h">
-                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="92.5" width="414" height="769.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="PIf-t1-9Lr" customClass="MenuCell" customModule="ColdmanFresh" customModuleProvider="target">
@@ -1962,7 +1962,7 @@ happiness@menukart.in</string>
                             <constraint firstItem="Ll4-Ya-aAd" firstAttribute="trailing" secondItem="Ryh-hk-D3h" secondAttribute="trailing" id="DCR-wG-uAc"/>
                             <constraint firstItem="ICC-YK-ri1" firstAttribute="height" secondItem="5pw-Ng-kXu" secondAttribute="height" id="GTX-Ui-sYn"/>
                             <constraint firstItem="itq-Fp-ih5" firstAttribute="centerX" secondItem="Ll4-Ya-aAd" secondAttribute="centerX" id="H06-Nw-L7Y"/>
-                            <constraint firstItem="Ryh-hk-D3h" firstAttribute="top" secondItem="5pw-Ng-kXu" secondAttribute="bottom" constant="5" id="KVt-iM-xhS"/>
+                            <constraint firstItem="Ryh-hk-D3h" firstAttribute="top" secondItem="itq-Fp-ih5" secondAttribute="bottom" constant="10" id="KVt-iM-xhS"/>
                             <constraint firstItem="5pw-Ng-kXu" firstAttribute="leading" secondItem="Ll4-Ya-aAd" secondAttribute="leading" constant="15" id="Pgu-Fz-89z"/>
                             <constraint firstItem="itq-Fp-ih5" firstAttribute="top" secondItem="5pw-Ng-kXu" secondAttribute="top" constant="2" id="Tfr-IO-kmE"/>
                             <constraint firstItem="ICC-YK-ri1" firstAttribute="centerY" secondItem="itq-Fp-ih5" secondAttribute="centerY" id="Tma-lr-MHj"/>

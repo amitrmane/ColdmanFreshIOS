@@ -45,25 +45,27 @@ class ProductListVC: SuperViewController {
     }
     
     @IBAction func cartTapped(_ sender: UIButton) {
-        if let user = Utilities.getCurrentUser() {
-            let addedMenus = Menu.getSavedCartItems()
-            if addedMenus.count > 0 {
+        let addedMenus = Menu.getSavedCartItems()
+        if addedMenus.count > 0 {
+            
+            if let user = Utilities.getCurrentUser() {
                 let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
                 cartvc.addedMenus = addedMenus
                 cartvc.backDelegate = self
                 cartvc.user = user
-    //            cartvc.currentAddress = self.currentAddress == nil ? self.currentLocation : self.currentAddress
+                //            cartvc.currentAddress = self.currentAddress == nil ? self.currentLocation : self.currentAddress
                 self.navigationController?.pushViewController(cartvc, animated: true)
+                
             }else {
-                self.showAlert("No items in cart, please select restaurant and add items.")
+                let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "PhoneVerificationVC") as! PhoneVerificationVC
+                loginvc.addedMenus = self.addedMenus
+                //        loginvc.delegate = self
+                self.navigationController?.pushViewController(loginvc, animated: true)
             }
-
         }else {
-            let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "PhoneVerificationVC") as! PhoneVerificationVC
-            loginvc.addedMenus = self.addedMenus
-            //        loginvc.delegate = self
-            self.navigationController?.pushViewController(loginvc, animated: true)
+            self.showAlert("No items in cart, please select category and add items.")
         }
+
     }
 
 

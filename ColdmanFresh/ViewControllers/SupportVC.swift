@@ -22,11 +22,11 @@ class SupportVC: SuperViewController {
     }
     
     @IBAction func callTapped(_ sender: UIButton) {
-        if let url = URL(string: "tel://08380053000"), UIApplication.shared.canOpenURL(url) {
+        if let url = URL(string: "tel://02067682401"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:]) { (s) in
                 print(s)
             }
-        }else if let url = URL(string: "telprompt://08380053000"), UIApplication.shared.canOpenURL(url) {
+        }else if let url = URL(string: "telprompt://02067682401"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:]) { (s) in
                 print(s)
             }
@@ -44,7 +44,7 @@ class SupportVC: SuperViewController {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["happiness@menukart.in"])
+            mail.setToRecipients(["support@coldmanfresh.com"])
             mail.setMessageBody("Hello Team, ", isHTML: false)
 
             present(mail, animated: true)
