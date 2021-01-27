@@ -59,7 +59,8 @@ class Constants {
     
     struct Keys {
         static let cart = "Cart"
-        static let razorPayKeyTest = "rzp_test_sY4RuQtxewxAOq"
+        static let razorPayKeyTest = "rzp_test_R54itHzYCHYenG" //"rzp_test_sY4RuQtxewxAOq"
+        static let razorPaySecret = "WUuzL9VlHF8oLWDFhgwKqSJ6"
     }
     
     struct AppColors {

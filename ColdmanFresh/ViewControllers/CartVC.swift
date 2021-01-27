@@ -42,8 +42,9 @@ class CartVC: SuperViewController {
 //    var allTaxes = [Tax]()
     var user : UserProfile!
     var backDelegate : BackRefresh!
-//    var currentAddress : Address!
-//    var selectedOffer : Offers!
+    var allAddress = [Address]()
+    var currentAddress : Address!
+    var selectedOffer : Offers!
     var razorpay: RazorpayCheckout!
     var paymentId = ""
 
@@ -56,9 +57,9 @@ class CartVC: SuperViewController {
         DispatchQueue.main.async {
             self.refreshData()
         }
-//        if let addrs = self.currentAddress {
-//            self.lblAddress.text = addrs.addressDetails
-//        }
+        if let addrs = self.currentAddress {
+            self.lblAddress.text = addrs.address
+        }
         if let user = Utilities.getCurrentUser() {
             self.user = user
         }
@@ -77,26 +78,26 @@ class CartVC: SuperViewController {
     }
 
     @IBAction func addresschangeTapped(_ sender: UIButton) {
-//        if let user = self.user {
-//            let addressvc = mainStoryboard.instantiateViewController(withIdentifier: "AddressListViewController") as! AddressListViewController
-//            addressvc.user = user
-//            addressvc.isFromHome = true
+        if let user = self.user {
+            let addressvc = mainStoryboard.instantiateViewController(withIdentifier: "AddressListViewController") as! AddressListViewController
+            addressvc.user = user
+            addressvc.isFromHome = true
 //            addressvc.delegate = self
-//            addressvc.selectedAddr = self.currentAddress
-//            self.navigationController?.pushViewController(addressvc, animated: true)
-//        }
+            addressvc.selectedAddr = self.currentAddress
+            self.navigationController?.pushViewController(addressvc, animated: true)
+        }
     }
     
     @IBAction func offersTapped(_ sender: UIButton) {
-//        let offersvc = mainStoryboard.instantiateViewController(withIdentifier: "OffersVC") as! OffersVC
-//        offersvc.addedMenus = self.addedMenus
+        let offersvc = mainStoryboard.instantiateViewController(withIdentifier: "OffersVC") as! OffersVC
+        offersvc.addedMenus = self.addedMenus
 //        offersvc.allTaxes = self.allTaxes
-//        offersvc.backDelegate = self
-//        offersvc.currentAddress = self.currentAddress
+        offersvc.backDelegate = self
+        offersvc.currentAddress = self.currentAddress
 //        offersvc.restaurent = self.restaurent
-//        offersvc.user = self.user
-//        offersvc.selectedOffer = self.selectedOffer
-//        self.navigationController?.pushViewController(offersvc, animated: true)
+        offersvc.user = self.user
+        offersvc.selectedOffer = self.selectedOffer
+        self.navigationController?.pushViewController(offersvc, animated: true)
     }
         
     @IBAction func checkOutTapped(_ sender: UIButton) {
@@ -339,6 +340,30 @@ extension CartVC {
             }
         }*/
     }
+    
+    func getUserAdresses() {
+        
+        guard ApiManager.checkuser_online() else {
+            return
+        }
+        
+        self.showActivityIndicator()
+                
+        ApiManager.getUserAddresses(userid: user.user_id) { (json) in
+            self.hideActivityIndicator()
+            
+            if let array = json?.array {
+                self.allAddress = Address.getAllAddresses(array: array)
+                if let addrs = self.allAddress.filter({ $0.primaryAddress == "1" }).first {
+                    self.currentAddress = addrs
+                }
+            }else {
+                self.showError(message: "Failed, please try again")
+            }
+        }
+        
+    }
+
 }
 
 // MARK: Razor Pay Payment

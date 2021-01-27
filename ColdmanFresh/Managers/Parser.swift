@@ -386,3 +386,190 @@ class OrderDetails {
         return resArr
     }
 }
+
+class Address {
+    var id = ""
+    var user_id = ""
+    var address = ""
+    var lattitude : Double = 0
+    var longitude : Double = 0
+    var title = ""
+    var primaryAddress = ""
+    var created_at = ""
+    var landmark = ""
+    var door_flat_no = ""
+    var myaddress = ""
+    var fname = ""
+    var lname = ""
+    var email = ""
+    var mobileno = ""
+    var city = ""
+    var pincode = ""
+
+    class func getAllAddresses(array: [JSON]) -> [Address] {
+        var resArr = [Address]()
+        for dict in array {
+            let res = Address()
+            if let value = dict["id"].number {
+                res.id = "\(value.intValue)"
+            }
+            if let value = dict["id"].string {
+                res.id = value
+            }
+            if let value = dict["user_id"].string {
+                res.user_id = value
+            }
+            if let value = dict["address"].string {
+                res.address = value
+            }
+            if let value = dict["myaddress"].string {
+                res.myaddress = value
+            }
+            if let value = dict["primary_address"].string {
+                res.primaryAddress = value
+            }
+            if let value = dict["created_at"].string {
+                res.created_at = value
+            }
+            if let value = dict["door_flat_no"].string {
+                res.door_flat_no = value
+            }
+            if let value = dict["landmark"].string {
+                res.landmark = value
+            }
+            if let value = dict["lattitude"].number {
+                res.lattitude = value.doubleValue
+            }
+            if let value = dict["longitude"].number {
+                res.longitude = value.doubleValue
+            }
+            if let value = dict["latitude"].string, let val = value.toDouble() {
+                res.lattitude = val
+            }
+            if let value = dict["longitude"].string, let val = value.toDouble()  {
+                res.longitude = val
+            }
+            if let value = dict["title"].string {
+                res.title = value
+            }
+            if let value = dict["fname"].string {
+                res.fname = value
+            }
+            if let value = dict["lname"].string {
+                res.lname = value
+            }
+            if let value = dict["email"].string {
+                res.email = value
+            }
+            if let value = dict["mobileno"].string {
+                res.mobileno = value
+            }
+            if let value = dict["city"].string {
+                res.city = value
+            }
+            if let value = dict["pincode"].string {
+                res.pincode = value
+            }
+
+            resArr.append(res)
+        }
+        return resArr
+    }
+
+}
+
+class Offers {
+    
+    var discount_id = ""
+    var restaurant_id = ""
+    var discount_title = ""
+    var discount_coupon = ""
+    var discount_category = ""
+    var discount_menu = ""
+    var discount_ordertype = ""
+    var discount_type = ""
+    var discount_applicable_on = ""
+    var discount_from = ""
+    var discount_from_date : Date!
+    var discount_to_date : Date!
+    var discount_to = ""
+    var discount_amount = ""
+    var discount_max = ""
+    var applicable_amount_greater_than = ""
+    var applicable_amount_less_than = ""
+    var discount_all_days = ""
+    var discount_days = ""
+    var discount_status = ""
+    var discount_created_at = ""
+    var userDiscount = ""
+
+    class func getAllOffers(array: [JSON]) -> [Offers] {
+        var resArr = [Offers]()
+        for dict in array {
+            let res = Offers()
+            if let value = dict["discount_id"].string {
+                res.discount_id = value
+            }
+            if let value = dict["restaurant_id"].string {
+                res.restaurant_id = value
+            }
+            if let value = dict["discount_title"].string {
+                res.discount_title = value
+            }
+            if let value = dict["discount_coupon"].string {
+                res.discount_coupon = value
+            }
+            if let value = dict["discount_category"].string {
+                res.discount_category = value
+            }
+            if let value = dict["discount_menu"].string {
+                res.discount_menu = value
+            }
+            if let value = dict["discount_ordertype"].string {
+                res.discount_ordertype = value
+            }
+            if let value = dict["discount_type"].string {
+                res.discount_type = value
+            }
+            if let value = dict["discount_applicable_on"].string {
+                res.discount_applicable_on = value
+            }
+            if let value = dict["discount_from"].string {
+                res.discount_from = value
+                if let date = Date().dateFromString(Date.DateFormat.yyyyMMddHHmmss.rawValue, dateString: value) {
+                    res.discount_from_date = date
+                }
+            }
+            if let value = dict["discount_to"].string {
+                res.discount_to = value
+                if let date = Date().dateFromString(Date.DateFormat.yyyyMMddHHmmss.rawValue, dateString: value) {
+                    res.discount_to_date = date
+                }
+            }
+            if let value = dict["discount_amount"].string {
+                res.discount_amount = value
+            }
+            if let value = dict["applicable_amount_greater_than"].string {
+                res.applicable_amount_greater_than = value
+            }
+            if let value = dict["applicable_amount_less_than"].string {
+                res.applicable_amount_less_than = value
+            }
+            if let value = dict["discount_all_days"].string {
+                res.discount_all_days = value
+            }
+            if let value = dict["discount_days"].string {
+                res.discount_days = value
+            }
+            if let value = dict["discount_status"].string {
+                res.discount_status = value
+            }
+            if let value = dict["discount_all_days"].string {
+                res.discount_created_at = value
+            }
+            resArr.append(res)
+        }
+        return resArr
+    }
+
+}

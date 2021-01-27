@@ -11,7 +11,7 @@ import Foundation
 protocol LoginSuccessProtocol {
     func loginSuccess(profile: UserProfile)
 }
-//
-//protocol AddressSelectionProtocol {
-//    func selectedAddress(addr: Address)
-//}
+
+protocol AddressSelectionProtocol {
+    func selectedAddress(addr: Address)
+}

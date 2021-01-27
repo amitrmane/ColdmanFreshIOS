@@ -125,6 +125,10 @@ extension String {
         return self.count
     }
     
+    var trimmed : String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     var afterStrippingCurrency : Float {
         
         
