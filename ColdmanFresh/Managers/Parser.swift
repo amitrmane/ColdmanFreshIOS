@@ -44,10 +44,12 @@ class SliderData {
 class Menu : Codable {
     var menu_id = ""
     var restaurant_id = ""
+    var order_menu_id = ""
     var menu_logo = ""
     var menu_status = ""
     var menu_foodtype = ""
     var menu_name = ""
+    var qty = ""
     var menu_displayname = ""
     var menu_price = ""
     var price = 0.0
@@ -55,6 +57,7 @@ class Menu : Codable {
     var menu_categoryid = ""
     var menu_shortcode = ""
     var menu_description = ""
+    var menu_variation = ""
     var variation = [Variation]()
     var selectedVariation : Variation!
     var addedToCart = false
@@ -67,6 +70,9 @@ class Menu : Codable {
             let data = Menu()
             if let value = dict["menu_id"].string {
                 data.menu_id = value
+            }
+            if let value = dict["order_menu_id"].string {
+                data.order_menu_id = value
             }
             if let value = dict["restaurant_id"].string {
                 data.restaurant_id = value
@@ -82,6 +88,9 @@ class Menu : Codable {
             }
             if let value = dict["menu_name"].string {
                 data.menu_name = value
+            }
+            if let value = dict["qty"].string {
+                data.qty = value
             }
             if let value = dict["menu_displayname"].string {
                 data.menu_displayname = value
@@ -101,6 +110,9 @@ class Menu : Codable {
             }
             if let value = dict["variation"].array {
                 data.variation = Variation.getVariationData(array: value)
+            }
+            if let value = dict["menu_variation"].string {
+                data.menu_variation = value
             }
             dataArr.append(data)
         }
@@ -281,5 +293,96 @@ class UserProfile : Codable {
             print(error.localizedDescription)
         }
         return user
+    }
+}
+
+class OrderDetails {
+    
+    var order_id = ""
+    var discount_amount = ""
+    var coupon = ""
+    var gate = ""
+    var totalall = ""
+    var payment_type = ""
+    var transaction_id = ""
+    var transaction_date = ""
+    var created_at = ""
+    var to_delivery_address = ""
+    var to_latitude = ""
+    var to_longitude = ""
+    var from_address = ""
+    var from_latitude = ""
+    var from_longitude = ""
+    var order_status = ""
+    var menus = [Menu]()
+
+    class func getOrderDetails(dict: [String: JSON]) -> OrderDetails? {
+        let response = OrderDetails()
+        
+        if let value = dict["order_id"]?.string {
+            response.order_id = value
+        }else {
+            return nil
+        }
+        if let value = dict["coupon"]?.string {
+            response.coupon = value
+        }
+        if let value = dict["discount_amount"]?.string {
+            response.discount_amount = value
+        }
+        if let value = dict["gate"]?.string {
+            response.gate = value
+        }
+        if let value = dict["totalall"]?.string {
+            response.totalall = value
+        }
+        if let value = dict["payment_type"]?.string {
+            response.payment_type = value
+        }
+        if let value = dict["transaction_id"]?.string {
+            response.transaction_id = value
+        }
+        if let value = dict["transaction_date"]?.string {
+            response.transaction_date = value
+        }
+        if let value = dict["created_at"]?.string {
+            response.created_at = value
+        }
+        if let value = dict["to_delivery_address"]?.string {
+            response.to_delivery_address = value
+        }
+        if let value = dict["to_latitude"]?.string {
+            response.to_latitude = value
+        }
+        if let value = dict["to_longitude"]?.string {
+            response.to_longitude = value
+        }
+        if let value = dict["from_address"]?.string {
+            response.from_address = value
+        }
+        if let value = dict["from_latitude"]?.string {
+            response.from_latitude = value
+        }
+        if let value = dict["from_longitude"]?.string {
+            response.from_longitude = value
+        }
+        if let value = dict["order_status"]?.string {
+            response.order_status = value
+        }
+        if let value = dict["menus"]?.array {
+            response.menus = Menu.getMenuData(array: value)
+        }
+        return response
+        
+    }
+    
+    class func getAllOrders(array: [JSON]) -> [OrderDetails] {
+        var resArr = [OrderDetails]()
+        for dict in array {
+            if let value = dict.dictionary, let order = OrderDetails.getOrderDetails(dict: value) {
+                resArr.append(order)
+            }
+        }
+        return resArr
     }
 }
