@@ -119,7 +119,36 @@ extension OffersVC {
         let cartValues = self.addedMenus.map({ $0.displayPrice })
         let val = cartValues.reduce(0, +)
         
+        var params = [String: Any]()
         
+        params["coupon"] = offer.discount_id
+        params["totalall"] = val
+
+        self.showActivityIndicator()
+        
+        ApiManager.applyOffer(params: params) { (json) in
+            self.hideActivityIndicator()
+            
+            if let dict = json?.dictionary {
+                if let status = dict["status"]?.string, status == "200" {
+                    self.selectedOffer = offer
+                    if let amount = dict["discount_amount"]?.number {
+                        self.selectedOffer.userDiscount = "\(amount)"
+                    }
+                    self.showAlert(dict["msg"]?.string ?? "Offer applied successfully!", title: AlertMessages.ALERT_TITLE, dismissButtonTitle: "OK") { (action) in
+                        if let del = self.backDelegate {
+                            del.updateData(self.selectedOffer ?? offer)
+                        }
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }else {
+                    self.showError(message: dict["message"]?.string ?? "Offer not valid, please try different offer.")
+                }
+            }else {
+                self.showError(message: "Offer not valid, please try different offer.")
+            }
+        }
+
         
         /*var calculatedTax = 0.0
         
@@ -148,7 +177,6 @@ extension OffersVC {
         
         let total = charges + val + calculatedTax.roundTo(places: 2)
         
-        var params = [String: Any]()
         var orderItemDetails = [[String: Any]]()
         
         for menu in self.addedMenus {
@@ -181,28 +209,6 @@ extension OffersVC {
 
         print(params)
         
-        ApiManager.applyDiscountCouponApi(params: params) { (json, b, error) in
-            self.hideActivityIndicator()
-            
-            if b, let dict = json?.dictionary {
-                if let status = dict["status"]?.string, status == "200" {
-                    self.selectedOffer = offer
-                    if let amount = dict["discount_amount"]?.string {
-                        self.selectedOffer.userDiscount = amount
-                    }
-                    self.showAlert(dict["message"]?.string ?? "Offer applied successfully!", title: AlertMessages.ALERT_TITLE, dismissButtonTitle: "OK") { (action) in
-                        if let del = self.backDelegate {
-                            del.updateData(offer)
-                        }
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }else {
-                    self.showError(message: dict["message"]?.string ?? "Offer not valid, please try different offer.")
-                }
-            }else {
-                self.showError(message: "Offer not valid, please try different offer.")
-            }
-        }
          */
     }
 }

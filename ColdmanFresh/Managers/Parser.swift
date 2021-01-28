@@ -534,6 +534,9 @@ class Offers {
             if let value = dict["discount_applicable_on"].string {
                 res.discount_applicable_on = value
             }
+            if let value = dict["discount_max"].string {
+                res.discount_max = value
+            }
             if let value = dict["discount_from"].string {
                 res.discount_from = value
                 if let date = Date().dateFromString(Date.DateFormat.yyyyMMddHHmmss.rawValue, dateString: value) {
@@ -544,6 +547,7 @@ class Offers {
                 res.discount_to = value
                 if let date = Date().dateFromString(Date.DateFormat.yyyyMMddHHmmss.rawValue, dateString: value) {
                     res.discount_to_date = date
+                    res.discount_to = date.stringFromDate(Date.DateFormat.dateMonth)
                 }
             }
             if let value = dict["discount_amount"].string {

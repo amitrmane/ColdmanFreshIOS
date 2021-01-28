@@ -1391,7 +1391,7 @@ support@coldmanfresh.com</string>
                                 <rect key="frame" x="10" y="97.5" width="394" height="694.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="TNF-5T-7lu">
-                                    <rect key="frame" x="0.0" y="141" width="394" height="250"/>
+                                    <rect key="frame" x="0.0" y="141" width="394" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-O0-G8K">
@@ -1508,7 +1508,7 @@ support@coldmanfresh.com</string>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-cW-Iqy" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="141" width="364" height="99"/>
+                                            <rect key="frame" x="15" y="141" width="364" height="149"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2r-hU-qPd">
                                                     <rect key="frame" x="5" y="10" width="182" height="16"/>
@@ -1842,6 +1842,47 @@ support@coldmanfresh.com</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A63-at-SHM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3075" y="-929"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="71y-ov-0T8">
+            <objects>
+                <viewController id="s7u-mH-fva" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Iub-Z0-SRR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ft4-UH-vsQ">
+                                <rect key="frame" x="20" y="57" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="2Im-aE-mUn"/>
+                                    <constraint firstAttribute="width" constant="35" id="R6H-di-orm"/>
+                                </constraints>
+                                <state key="normal" image="arrow-left"/>
+                                <connections>
+                                    <action selector="backTapped:" destination="y0k-bd-sus" eventType="touchUpInside" id="0cc-oj-xBB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkout " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wci-BM-Y7F">
+                                <rect key="frame" x="65" y="59" width="284" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="swK-HN-vQs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ft4-UH-vsQ" firstAttribute="leading" secondItem="swK-HN-vQs" secondAttribute="leading" constant="20" id="1xt-gN-gSK"/>
+                            <constraint firstItem="Wci-BM-Y7F" firstAttribute="top" secondItem="swK-HN-vQs" secondAttribute="top" constant="15" id="7jE-7a-SUH"/>
+                            <constraint firstItem="Wci-BM-Y7F" firstAttribute="top" secondItem="Ft4-UH-vsQ" secondAttribute="top" constant="2" id="AwE-b8-hCV"/>
+                            <constraint firstItem="Wci-BM-Y7F" firstAttribute="centerX" secondItem="swK-HN-vQs" secondAttribute="centerX" id="MDW-1T-guY"/>
+                            <constraint firstItem="Wci-BM-Y7F" firstAttribute="leading" secondItem="Ft4-UH-vsQ" secondAttribute="trailing" constant="10" id="l7B-ce-qPc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btC-LN-XNw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3967" y="-930"/>
         </scene>
         <!--Product ListVC-->
         <scene sceneID="atS-tn-TsM">

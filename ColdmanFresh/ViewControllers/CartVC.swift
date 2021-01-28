@@ -82,7 +82,7 @@ class CartVC: SuperViewController {
             let addressvc = mainStoryboard.instantiateViewController(withIdentifier: "AddressListViewController") as! AddressListViewController
             addressvc.user = user
             addressvc.isFromHome = true
-//            addressvc.delegate = self
+            addressvc.delegate = self
             addressvc.selectedAddr = self.currentAddress
             self.navigationController?.pushViewController(addressvc, animated: true)
         }
@@ -218,6 +218,11 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func refreshData() {
+        
+        if let addrs = self.currentAddress {
+            self.lblAddress.text = addrs.address
+        }
+        
         let cartValues = self.addedMenus.map({ $0.displayPrice })
         let val = cartValues.reduce(0, +)
         self.lblCartTotal.text = "₹ \(String(format: "%.2f", val))"
@@ -250,23 +255,23 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
         
         self.lblTax.text = "₹ \(String(format: "%.2f", calculatedTax.roundTo(places: 2)))"*/
         
-//        var offerdiscount = 0.0
-//        if let offer = self.selectedOffer {
-//            offerdiscount = offer.userDiscount.toDouble() ?? 0
-//            self.lblPromoDiscount.text = "- ₹ \(offerdiscount)"
-//        }else {
-//            self.lblPromoDiscount.text = "- ₹ 0.00"
-//        }
-//        let total = (charges + val + calculatedTax.roundTo(places: 2)) - (offerdiscount)
+        var offerdiscount = 0.0
+        if let offer = self.selectedOffer {
+            offerdiscount = offer.userDiscount.toDouble() ?? 0
+            self.lblPromoDiscount.text = "- ₹ \(offerdiscount)"
+        }else {
+            self.lblPromoDiscount.text = "- ₹ 0.00"
+        }
+        let total = (val) - (offerdiscount)
         
-        self.lblSubTotal.text = "₹ \(String(format: "%.2f", val))"
+        self.lblSubTotal.text = "₹ \(String(format: "%.2f", total))"
         
         self.tblMenu.reloadData()
     }
     
 }
 
-extension CartVC : LoginSuccessProtocol, BackRefresh {
+extension CartVC : LoginSuccessProtocol, BackRefresh, AddressSelectionProtocol {
     
     func loginSuccess(profile: UserProfile) {
         print(profile)
@@ -280,18 +285,18 @@ extension CartVC : LoginSuccessProtocol, BackRefresh {
 //        self.navigationController?.pushViewController(ordervc, animated: true)
     }
     
-//    func selectedAddress(addr: Address) {
-//        self.currentAddress = addr
-//        self.lblAddress.text = addr.addressDetails
-//        self.refreshData()
-//    }
+    func selectedAddress(addr: Address) {
+        self.currentAddress = addr
+        self.lblAddress.text = addr.address
+        self.refreshData()
+    }
     
     func updateData(_ data: Any) {
-//        if let offer = data as? Offers {
-//            self.selectedOffer = offer
-//            self.lblOffers.text = "\(offer.discount_coupon) applied successfully! \nYou will get ₹ \(offer.userDiscount) off!"
-//            self.refreshData()
-//        }
+        if let offer = data as? Offers {
+            self.selectedOffer = offer
+            self.lblOffers.text = "\(offer.discount_coupon) applied successfully! \nYou will get ₹ \(offer.userDiscount) off!"
+            self.refreshData()
+        }
     }
 }
 

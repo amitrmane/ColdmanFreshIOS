@@ -199,7 +199,7 @@ extension HomeVC : BackRefresh {
                 if let array = dict["menus"]?.array {
                     self.menus = Menu.getMenuData(array: array)
                 }
-                if let array = dict["categories"]?.array {
+                if let array = dict["main_categories"]?.array {
                     self.categories = Categories.getCategoriesData(array: array)
                 }
                 self.refreshData(firstLoad: true)

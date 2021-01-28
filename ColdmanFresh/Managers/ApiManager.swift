@@ -39,6 +39,16 @@ class ApiManager: NSObject {
                     }else {
                         completion(json)
                     }
+                }else if let status = dict["status"]?.string, status == "200" {
+                    if let dict = dict["data"]?.dictionary {
+                        let newjson = JSON(dict)
+                        completion(newjson)
+                    }else if let array = dict["data"]?.array {
+                        let newjson = JSON(array)
+                        completion(newjson)
+                    }else {
+                        completion(json)
+                    }
                 }else {
                     completion(nil)
                     // show alert
@@ -461,6 +471,44 @@ class ApiManager: NSObject {
                     let json = JSON.init(value)
                     
                     //print("json",json)
+                    
+                    ApiManager.parseResponse(json: json) { (parsedjson) in
+                        completion(parsedjson)
+                    }
+                }
+                else
+                {
+                    print("error fetching response")
+                    DispatchQueue.main.async {
+                        // show alert
+                        completion(nil)
+                    }
+                }
+            }
+    }
+
+    class func applyOffer(params: [String: Any], completion: @escaping (_ data: JSON?) -> Void) {
+        
+        let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.discount_coupon)!
+        
+        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .responseJSON { response in
+                
+                guard response.error == nil
+                else
+                {
+                    DispatchQueue.main.async(execute: {
+                        print("--------error-------------\n")
+                        // show alert
+                        completion(nil)
+                    })
+                    return
+                }
+                if let value: Any = response.value as Any? {
+                    
+                    let json = JSON.init(value)
+                    
+                    print("json",json)
                     
                     ApiManager.parseResponse(json: json) { (parsedjson) in
                         completion(parsedjson)
