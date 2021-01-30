@@ -11,6 +11,6 @@ target 'ColdmanFresh' do
     pod 'SDWebImage', '~> 5.0'
     pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift5.0' # Swift 5.0
     pod 'razorpay-pod', '1.1.11'
-
+    pod 'DropDown'
 
 end

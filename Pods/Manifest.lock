@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.0)
+  - DropDown (2.3.13)
   - IQKeyboardManager (6.5.6)
   - razorpay-pod (1.1.11)
   - SDWebImage (5.10.0):
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - DropDown
   - IQKeyboardManager
   - razorpay-pod (= 1.1.11)
   - SDWebImage (~> 5.0)
@@ -19,6 +21,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DropDown
     - IQKeyboardManager
     - razorpay-pod
     - SDWebImage
@@ -36,12 +39,13 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   razorpay-pod: 968635ba3bed4572f5ea9fe72be705225dcbce48
   SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   Siren: ee674e4ab57f5cc23186202a11313bc50a661a61
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 567ff8aee5f694d7a290b11a4fed78b699f83b54
+PODFILE CHECKSUM: a71b1d4ef1a1fee7c735b43455f57567a69dcbc8
 
 COCOAPODS: 1.8.4

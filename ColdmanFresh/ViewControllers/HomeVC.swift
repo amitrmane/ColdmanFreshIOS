@@ -154,7 +154,7 @@ extension HomeVC {
                 Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
             }
         }
-        if self.addedMenus.count == 0 {
+        if Menu.getSavedCartItems().count == 0 {
             self.menus.forEach { (m) in
                 m.menuCount = 0
                 m.displayPrice = m.price

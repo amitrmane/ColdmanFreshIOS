@@ -620,3 +620,57 @@ class Offers {
     }
 
 }
+
+class Gate {
+    var gate_id = ""
+    var gate_name = ""
+    var gate_created_at = ""
+
+    class func getData(array: [JSON]) -> [Gate] {
+        var dataArr = [Gate]()
+        
+        for dict in array {
+            let data = Gate()
+            if let value = dict["gate_id"].string {
+                data.gate_id = value
+            }
+            if let value = dict["gate_name"].string {
+                data.gate_name = value
+            }
+            if let value = dict["gate_created_at"].string {
+                data.gate_created_at = value
+            }
+            dataArr.append(data)
+        }
+        
+        return dataArr
+    }
+    
+}
+
+class Timeslot {
+    var timeslot_id = ""
+    var timeslot_name = ""
+    var timeslot_created_at = ""
+
+    class func getData(array: [JSON]) -> [Timeslot] {
+        var dataArr = [Timeslot]()
+        
+        for dict in array {
+            let data = Timeslot()
+            if let value = dict["timeslot_id"].string {
+                data.timeslot_id = value
+            }
+            if let value = dict["timeslot_name"].string {
+                data.timeslot_name = value
+            }
+            if let value = dict["timeslot_created_at"].string {
+                data.timeslot_created_at = value
+            }
+            dataArr.append(data)
+        }
+        
+        return dataArr
+    }
+    
+}

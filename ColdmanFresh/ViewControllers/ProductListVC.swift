@@ -118,12 +118,15 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
             cell.viewBaseCounter.isHidden = true
         }
         cell.btnAdd.tag = indexPath.row
+        cell.btnAdd.imageView!.tag = indexPath.section
         cell.btnAdd.addTarget(self, action: #selector(addToCartTapped(_:)), for: .touchUpInside)
         
         cell.btnPlus.tag = indexPath.row
+        cell.btnPlus.imageView!.tag = indexPath.section
         cell.btnPlus.addTarget(self, action: #selector(plusTapped), for: .touchUpInside)
 
         cell.btnMinus.tag = indexPath.row
+        cell.btnMinus.imageView!.tag = indexPath.section
         cell.btnMinus.addTarget(self, action: #selector(minusTapped), for: .touchUpInside)
 
         return cell
@@ -171,7 +174,11 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     @objc func addToCartTapped(_ sender: UIButton) {
-        let menu = self.menus[sender.tag]
+        let sub = self.subCategories[sender.imageView!.tag]
+
+        let filtered = self.menus.filter({ $0.menu_categoryid == sub.id })
+
+        let menu = filtered[sender.tag]
         
         let variations = menu.variation.filter({ $0.variation_status == "active" })
         
@@ -215,7 +222,11 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     @objc func plusTapped(_ sender: UIButton) {
-        let menu = self.menus[sender.tag]
+        let sub = self.subCategories[sender.imageView!.tag]
+
+        let filtered = self.menus.filter({ $0.menu_categoryid == sub.id })
+
+        let menu = filtered[sender.tag]
         menu.menuCount += 1
         menu.displayPrice = menu.price * Double(menu.menuCount)
         for m in self.addedMenus {
@@ -233,7 +244,10 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
     }
 
     @objc func minusTapped(_ sender: UIButton) {
-        let menu = self.menus[sender.tag]
+        let sub = self.subCategories[sender.imageView!.tag]
+
+        let filtered = self.menus.filter({ $0.menu_categoryid == sub.id })
+        let menu = filtered[sender.tag]
         if menu.menuCount == 1 && menu.addedToCart {
             var idx : Int!
             for (i, m) in self.addedMenus.enumerated() {

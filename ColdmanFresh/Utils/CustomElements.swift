@@ -235,9 +235,12 @@ class CustomTextField: UITextField {
     @IBInspectable var rightPadding:CGFloat = 10.0
     @IBInspectable var showLeftView:Bool = false
     @IBInspectable var leftImage:UIImage?
-    
+    @IBInspectable var showRightView:Bool = false
+    @IBInspectable var rightImage:UIImage?
+
     private var  imageView = UIImageView()
-    
+    private var  rightImageView = UIImageView()
+
     @IBInspectable var placeHolderColor: UIColor? {
         get {
             return self.placeHolderColor
@@ -267,6 +270,16 @@ class CustomTextField: UITextField {
             imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
             imageView.image = leftImage
             leftView = imageView
+            
+        }
+        
+        if showRightView
+        {
+            rightViewMode = .always
+            rightImageView = UIImageView(frame: CGRect(x: -5, y: 0, width: 20, height: 20))
+            rightImageView.image = rightImage
+            rightImageView.contentMode = .scaleAspectFit
+            rightView = rightImageView
             
         }
         
