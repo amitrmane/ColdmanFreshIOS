@@ -17,6 +17,7 @@ class ProductListVC: SuperViewController {
     var allMenus = [Menu]()
     var menus = [Menu]()
     var categories = [Categories]()
+    var subCategories = [SubCategories]()
     var addedMenus = [Menu]()
     var selectedCategory : Categories!
     var backDelegate : BackRefresh!
@@ -25,9 +26,9 @@ class ProductListVC: SuperViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.tblMenu.tableFooterView = UIView(frame: CGRect.zero)
         if let cat = self.selectedCategory {
             self.lblCategoryTitle.text = cat.category_name
-            self.menus = self.allMenus.filter({ $0.menu_categoryid == cat.id })
             self.refreshData(firstLoad: true)
         }
     }
@@ -74,17 +75,22 @@ class ProductListVC: SuperViewController {
 extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.subCategories.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.menus.count
+        let sub = self.subCategories[section]
+        return self.menus.filter({ $0.menu_categoryid == sub.id }).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         
-        let m = self.menus[indexPath.row]
+        let sub = self.subCategories[indexPath.section]
+
+        let filtered = self.menus.filter({ $0.menu_categoryid == sub.id })
+        
+        let m = filtered[indexPath.row]
         
         cell.lblTitle.text = m.menu_displayname
         
@@ -133,6 +139,35 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40)
+        let headerView = UIView(frame: frame)
+        headerView.backgroundColor = .white
+        
+        let sub = self.subCategories[section]
+        let filtered = self.menus.filter({ $0.menu_categoryid == sub.id })
+
+        let label = UILabel(frame: CGRect(x: 23, y: 0, width: frame.width - 43, height: frame.height))
+        label.backgroundColor = Constants.AppColors.bgGreen.withAlphaComponent(0.1)
+        label.textColor = .black
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont(name: Constants.APP_BOLD_FONT, size: 17)
+        label.text = sub.category_olname + " (\(filtered.count))"
+        
+        let line = UILabel(frame: CGRect(x: 23, y: 39, width: frame.width - 43, height: 1))
+        line.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+
+        headerView.addSubview(label)
+        headerView.addSubview(line)
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     @objc func addToCartTapped(_ sender: UIButton) {

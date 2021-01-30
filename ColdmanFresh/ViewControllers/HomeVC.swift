@@ -18,6 +18,7 @@ class HomeVC: SuperViewController {
     var sliderData = [SliderData]()
     var menus = [Menu]()
     var categories = [Categories]()
+    var subCategories = [SubCategories]()
     var addedMenus = [Menu]()
 
     override func viewDidLoad() {
@@ -93,7 +94,7 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
         
         cell.lblName.text = data.category_name
                 
-        if let url = URL(string: Constants.baseDownloadURL + data.category_img) {
+        if let url = URL(string: Constants.baseDownloadURL + "maincategory/\(data.category_img)") {
             cell.ivSlider.sd_setImage(with: url, placeholderImage: UIImage(named: "image-placeholder"), options: .continueInBackground) { (i, e, t, u) in
             }
         }
@@ -104,12 +105,14 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         if self.cvCategories == collectionView {
+            let cat = self.categories[indexPath.item]
             let listvc = mainStoryboard.instantiateViewController(withIdentifier: "ProductListVC") as! ProductListVC
             listvc.addedMenus = addedMenus
             listvc.backDelegate = self
-            listvc.allMenus = self.menus
+            listvc.menus = self.menus
             listvc.categories = self.categories
-            listvc.selectedCategory = self.categories[indexPath.item]
+            listvc.subCategories = self.subCategories.filter({ $0.maincategory == cat.id })
+            listvc.selectedCategory = cat
             self.navigationController?.pushViewController(listvc, animated: true)
         }
     }
@@ -201,6 +204,9 @@ extension HomeVC : BackRefresh {
                 }
                 if let array = dict["main_categories"]?.array {
                     self.categories = Categories.getCategoriesData(array: array)
+                }
+                if let array = dict["sub_categories"]?.array {
+                    self.subCategories = SubCategories.getCategoriesData(array: array)
                 }
                 self.refreshData(firstLoad: true)
             }

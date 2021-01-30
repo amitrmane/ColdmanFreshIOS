@@ -59,6 +59,8 @@ class CartVC: SuperViewController {
         }
         if let addrs = self.currentAddress {
             self.lblAddress.text = addrs.address
+        }else {
+            getUserAdresses()
         }
         if let user = Utilities.getCurrentUser() {
             self.user = user
@@ -357,10 +359,12 @@ extension CartVC {
         ApiManager.getUserAddresses(userid: user.user_id) { (json) in
             self.hideActivityIndicator()
             
-            if let array = json?.array {
+            if let dict = json?.dictionary,
+               let array = dict["address"]?.array {
                 self.allAddress = Address.getAllAddresses(array: array)
                 if let addrs = self.allAddress.filter({ $0.primaryAddress == "1" }).first {
                     self.currentAddress = addrs
+                    self.refreshData()
                 }
             }else {
                 self.showError(message: "Failed, please try again")

@@ -195,6 +195,46 @@ class Categories : Codable {
             if let value = dict["id"].string {
                 data.id = value
             }
+            if let value = dict["maincategory_name"].string {
+                data.category_name = value
+            }
+            if let value = dict["maincategory_olname"].string {
+                data.category_olname = value
+            }
+            if let value = dict["maincategory_img"].string {
+                data.category_img = value
+            }
+            if let value = dict["maincategory_on_off"].string {
+                data.category_on_off = value
+            }
+            if let value = dict["maincategory_created_at"].string {
+                data.category_created_at = value
+            }
+            dataArr.append(data)
+        }
+        
+        return dataArr
+    }
+    
+}
+
+class SubCategories : Codable {
+    var id = ""
+    var category_name = ""
+    var category_olname = ""
+    var category_img = ""
+    var category_on_off = ""
+    var category_created_at = ""
+    var maincategory = ""
+
+    class func getCategoriesData(array: [JSON]) -> [SubCategories] {
+        var dataArr = [SubCategories]()
+        
+        for dict in array {
+            let data = SubCategories()
+            if let value = dict["id"].string {
+                data.id = value
+            }
             if let value = dict["category_name"].string {
                 data.category_name = value
             }
@@ -209,6 +249,9 @@ class Categories : Codable {
             }
             if let value = dict["category_created_at"].string {
                 data.category_created_at = value
+            }
+            if let value = dict["maincategory"].string {
+                data.maincategory = value
             }
             dataArr.append(data)
         }

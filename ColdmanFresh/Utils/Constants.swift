@@ -14,7 +14,7 @@ let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 class Constants {
    
     static let baseURL:String = "http://apicmf.edigito.in/"
-    static let baseDownloadURL:String = "http://coldmanfresh.edigito.in/uploads/category/"
+    static let baseDownloadURL:String = "http://coldmanfresh.edigito.in/uploads/"
     static let appBarColour = UIColor.red//(hexString: "4884ED")//UIColor(red: 24.0/255.0, green: 153.0/255.0, blue: 203.0/255.0, alpha: 1)
     
     static let APP_REGULAR_FONT =  "HelveticaNeue"
