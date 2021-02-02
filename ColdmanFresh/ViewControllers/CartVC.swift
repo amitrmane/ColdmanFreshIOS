@@ -97,6 +97,10 @@ class CartVC: SuperViewController {
     }
         
     @IBAction func checkOutTapped(_ sender: UIButton) {
+        guard let _ = self.currentAddress else {
+            self.showAlert("Select address")
+            return
+        }
         let summaryvc = mainStoryboard.instantiateViewController(withIdentifier: "CheckoutVC") as! CheckoutVC
         summaryvc.user = user
         summaryvc.addedMenus = self.addedMenus
@@ -161,7 +165,11 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
     @objc func plusTapped(_ sender: UIButton) {
         let menu = self.addedMenus[sender.tag]
         menu.menuCount += 1
-        menu.displayPrice = menu.price * Double(menu.menuCount)
+        if let vari = menu.selectedVariation, let rate = vari.rate.toDouble() {
+            menu.displayPrice = rate * Double(menu.menuCount)
+        }else {
+            menu.displayPrice = menu.price * Double(menu.menuCount)
+        }
         refreshData()
     }
     
@@ -169,8 +177,14 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
         let menu = self.addedMenus[sender.tag]
         if menu.menuCount > 1 {
             menu.menuCount -= 1
+            if let vari = menu.selectedVariation, let rate = vari.rate.toDouble() {
+                menu.displayPrice = rate * Double(menu.menuCount)
+            }else {
+                menu.displayPrice = menu.price * Double(menu.menuCount)
+            }
+        }else {
+            self.addedMenus.remove(at: sender.tag)
         }
-        menu.displayPrice = menu.price * Double(menu.menuCount)
         refreshData()
     }
     

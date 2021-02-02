@@ -16,7 +16,7 @@ class VariationPopupVC: SuperViewController {
     @IBOutlet weak var tblHeight: NSLayoutConstraint!
 
     var variations = [Variation]()
-    var selectedVariation : ((_ variation: Variation) -> Void)?
+    var selectedVariation : ((_ variation: Variation?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,12 @@ class VariationPopupVC: SuperViewController {
     
 
     @IBAction func addTapped(_ sender: UIButton) {
-        if let selected = self.selectedVariation, let first = self.variations.filter({$0.selected }).first {
-            selected(first)
+        if let selected = self.selectedVariation {
+            if let first = self.variations.filter({$0.selected }).first {
+                selected(first)
+            }else {
+                selected(nil)
+            }
         }
         self.dismiss(animated: false, completion: nil)
     }

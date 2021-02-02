@@ -192,7 +192,11 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
                 menu.selectedVariation = vr
                 if menu.addedToCart {
                     menu.menuCount = 1
-                    menu.displayPrice = menu.price * Double(menu.menuCount)
+                    if let vari = vr, let rate = vari.rate.toDouble() {
+                        menu.displayPrice = rate * Double(menu.menuCount)
+                    }else {
+                        menu.displayPrice = menu.price * Double(menu.menuCount)
+                    }
                     self.addedMenus.append(menu)
                 }
                 if self.addedMenus.count > 0 {
@@ -228,7 +232,11 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
 
         let menu = filtered[sender.tag]
         menu.menuCount += 1
-        menu.displayPrice = menu.price * Double(menu.menuCount)
+        if let vari = menu.selectedVariation, let rate = vari.rate.toDouble() {
+            menu.displayPrice = rate * Double(menu.menuCount)
+        }else {
+            menu.displayPrice = menu.price * Double(menu.menuCount)
+        }
         for m in self.addedMenus {
             if m.menu_id == menu.menu_id {
                 m.displayPrice = menu.displayPrice
@@ -261,7 +269,11 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
             }
         }
         menu.menuCount -= menu.menuCount > 1 ? 1 : 0
-        menu.displayPrice = menu.price * Double(menu.menuCount)
+        if let vari = menu.selectedVariation, let rate = vari.rate.toDouble() {
+            menu.displayPrice = rate * Double(menu.menuCount)
+        }else {
+            menu.displayPrice = menu.price * Double(menu.menuCount)
+        }
         for m in self.addedMenus {
             if m.menu_id == menu.menu_id {
                 m.displayPrice = menu.displayPrice

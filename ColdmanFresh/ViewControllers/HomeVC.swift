@@ -85,7 +85,7 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
             cell.ivSlider.contentMode = .scaleAspectFit
             if let url = URL(string: data.slider_image) {
                 cell.ivSlider.sd_setImage(with: url, placeholderImage: UIImage(named: "image-placeholder"), options: .continueInBackground) { (i, e, t, u) in
-                    cell.ivSlider.contentMode = .scaleToFill
+//                    cell.ivSlider.contentMode = .scaleToFill
                 }
             }
             return cell
