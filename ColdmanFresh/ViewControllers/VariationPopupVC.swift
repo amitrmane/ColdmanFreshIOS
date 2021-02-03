@@ -14,7 +14,9 @@ class VariationPopupVC: SuperViewController {
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var tblHeight: NSLayoutConstraint!
+    @IBOutlet weak var lblDescription: UILabel!
 
+    var selectedMenu : Menu!
     var variations = [Variation]()
     var selectedVariation : ((_ variation: Variation?) -> Void)?
     
@@ -23,6 +25,13 @@ class VariationPopupVC: SuperViewController {
 
         // Do any additional setup after loading the view.
         self.tblHeight.constant = CGFloat(self.variations.count * 50)
+        if let menu = self.selectedMenu {
+            if menu.menu_description != "" {
+                self.lblDescription.text = menu.menu_description
+            }else {
+                self.lblDescription.text = "NA"
+            }
+        }
     }
     
 

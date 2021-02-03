@@ -185,6 +185,7 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
         if variations.count > 0 {
             
             let variationvc = mainStoryboard.instantiateViewController(withIdentifier: "VariationPopupVC") as! VariationPopupVC
+            variationvc.selectedMenu = menu
             variationvc.variations = variations
             variationvc.selectedVariation = { (vr) in
                 
