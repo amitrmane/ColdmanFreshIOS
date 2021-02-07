@@ -674,3 +674,30 @@ class Timeslot {
     }
     
 }
+
+class Organization {
+    var organization_id = ""
+    var organization_name = ""
+    var organization_created_at = ""
+
+    class func getData(array: [JSON]) -> [Organization] {
+        var dataArr = [Organization]()
+        
+        for dict in array {
+            let data = Organization()
+            if let value = dict["organization_id"].string {
+                data.organization_id = value
+            }
+            if let value = dict["organization_name"].string {
+                data.organization_name = value
+            }
+            if let value = dict["organization_created_at"].string {
+                data.organization_created_at = value
+            }
+            dataArr.append(data)
+        }
+        
+        return dataArr
+    }
+    
+}

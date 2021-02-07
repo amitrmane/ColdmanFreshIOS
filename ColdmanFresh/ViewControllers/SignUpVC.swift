@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DropDown
 
 class SignUpVC: SuperViewController {
 
@@ -15,13 +16,18 @@ class SignUpVC: SuperViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfMobile: UITextField!
+    @IBOutlet weak var tfBirthDate: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var ivLogo: UIImageView!
+    @IBOutlet weak var tfPromoCode: UITextField!
 
     var delegate : LoginSuccessProtocol!
     var mobileNo = ""
     var user : UserProfile!
+    var organizations = [Organization]()
+    var selectedOrganization : Organization!
+    var selectedDate : Date!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,7 @@ class SignUpVC: SuperViewController {
         // Do any additional setup after loading the view.
         self.tfMobile.text = mobileNo
         self.tfMobile.isUserInteractionEnabled = false
+        self.getOrganizationList()
         if let u = self.user {
             self.lblTitle.text = "Edit Profile"
             self.tfName.text = u.fname + " " + u.lname
@@ -80,6 +87,11 @@ class SignUpVC: SuperViewController {
 //            return
 //        }
         
+        guard let org = self.selectedOrganization else {
+            self.showAlert("Select promo code")
+            return
+        }
+        
         if let u = self.user {
             // update user
             var params = [String: Any]()
@@ -95,41 +107,40 @@ class SignUpVC: SuperViewController {
             params["user_id"] = "\(u.id)"
             params["fname"] = fname
             params["lname"] = lname
-            params["birthdate"] = ""
+            params["birthdate"] = self.tfBirthDate.text
             params["mobileno"] = mob
-            
+            params["organization_id"] = org.organization_id
+
             self.showActivityIndicator()
             
-            /*ApiManager.updateProfile(params: params, imageData: nil, fileName: "", mimeType: "") { (json, success, error) in
+            ApiManager.updateProfile(params: params, imageData: nil, fileName: "", mimeType: "") { (json) in
                 self.hideActivityIndicator()
-                if success {
-                    if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-                        let user = UserProfile()
-                        user.fname = fname
-                        user.lname = lname
-                        user.mobile = mob
-                        user.email = email
-                        user.id = u.id
-                        user.user_id = u.user_id
-                        let defaults = UserDefaults.standard
-                        
-                        // Use PropertyListEncoder to convert Player into Data / NSData
-                        do {
-                            defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
-                        }catch {
-                            print(error.localizedDescription)
-                        }
-                        self.delegate.loginSuccess(profile: user)
-                        self.dismiss(animated: true, completion: {
-                            
-                        })
-                    }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-                        self.showAlert(message)
+                if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
+                    let user = UserProfile()
+                    user.fname = fname
+                    user.lname = lname
+                    user.mobileno = mob
+                    user.email = email
+                    user.birthdate = self.tfBirthDate.text ?? ""
+                    user.organization_id = org.organization_id
+                    user.id = u.id
+                    user.user_id = u.user_id
+                    let defaults = UserDefaults.standard
+                    
+                    // Use PropertyListEncoder to convert Player into Data / NSData
+                    do {
+                        defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
+                    }catch {
+                        print(error.localizedDescription)
                     }
-                }else {
-                    self.showAlert(error.rawValue)
+                    self.delegate.loginSuccess(profile: user)
+                    self.dismiss(animated: true, completion: {
+                        
+                    })
+                }else if let dict = json?.dictionary, let message = dict["message"]?.string {
+                    self.showAlert(message)
                 }
-            }*/
+            }
         }else {
             
             var params = [String: Any]()
@@ -150,79 +161,56 @@ class SignUpVC: SuperViewController {
             params["password"] = "12345"
             params["fname"] = fname
             params["lname"] = lname
-            params["birthdate"] = ""
+            params["birthdate"] = self.tfBirthDate.text
             params["mobileno"] = mob
-            params["organization_id"] = ""
+            params["organization_id"] = org.organization_id
             
             self.showActivityIndicator()
             
             ApiManager.signUp(params: params) { (json) in
                 self.hideActivityIndicator()
-//                if success {
-                    if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-                        self.showActivityIndicator()
-                        
-                        ApiManager.verifyOTP(mobNo: mob) { (json) in
-                            self.hideActivityIndicator()
-//                            if success {
-                                if let dict = json?.dictionary {
-                                    if let user = UserProfile.getUserDetails(dict: dict) {
-                                        self.delegate.loginSuccess(profile: user)
-                                        self.dismiss(animated: true, completion: {
-                                            
-                                        })
-                                        
-                                    }else {
-                                        let user = UserProfile()
-                                        user.fname = fname
-                                        user.lname = lname
-                                        user.mobileno = mob
-                                        user.email = email
-                                        let defaults = UserDefaults.standard
-                                        
-                                        // Use PropertyListEncoder to convert Player into Data / NSData
-                                        do {
-                                            defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
-                                        }catch {
-                                            print(error.localizedDescription)
-                                        }
-                                        self.delegate.loginSuccess(profile: user)
-                                        self.dismiss(animated: true, completion: {
-                                            
-                                        })
-                                    }
-                                }else {
-                                    self.showError(message: "User registration failed, please try again.")
+                if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
+                    self.showActivityIndicator()
+                    
+                    ApiManager.verifyOTP(mobNo: mob) { (json) in
+                        self.hideActivityIndicator()
+                        if let dict = json?.dictionary {
+                            if let user = UserProfile.getUserDetails(dict: dict) {
+                                self.delegate.loginSuccess(profile: user)
+                                self.dismiss(animated: true, completion: {
+                                    
+                                })
+                                
+                            }else {
+                                let user = UserProfile()
+                                user.fname = fname
+                                user.lname = lname
+                                user.mobileno = mob
+                                user.email = email
+                                user.birthdate = self.tfBirthDate.text ?? ""
+                                user.organization_id = org.organization_id
+                                let defaults = UserDefaults.standard
+                                
+                                // Use PropertyListEncoder to convert Player into Data / NSData
+                                do {
+                                    defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
+                                }catch {
+                                    print(error.localizedDescription)
                                 }
-//                            }else {
-//                                self.showError(message: "User registration failed, please try again.")
-//                            }
+                                self.delegate.loginSuccess(profile: user)
+                                self.dismiss(animated: true, completion: {
+                                    
+                                })
+                            }
+                        }else {
+                            self.showError(message: "User registration failed, please try again.")
                         }
-                    }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-                        self.showAlert(message)
                     }
-//                }else {
-//                    self.showAlert(error.rawValue)
-//                }
+                }else if let dict = json?.dictionary, let message = dict["message"]?.string {
+                    self.showAlert(message)
+                }
             }
             
-            /*ApiManager.signUp(param: params) { (json, success, error) in
-                self.hideActivityIndicator()
-                if success {
-                    if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-                        if let userdict = dict["result"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
-                            self.delegate.loginSuccess(profile: user)
-                            self.dismiss(animated: true, completion: {
-                                
-                            })
-                        }
-                    }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-                        self.showAlert(message)
-                    }
-                }else {
-                    self.showAlert(error.rawValue)
-                }
-            }*/
         }
     }
     
@@ -232,6 +220,76 @@ class SignUpVC: SuperViewController {
         addressvc.webUrl = contentLink
         addressvc.pageTitle = pageName
         self.navigationController?.pushViewController(addressvc, animated: true)
+    }
+    
+    func showOrganizationDropDown(_ textField: UITextField) {
+        let dropDown = DropDown()
+
+        // The view to which the drop down will appear on
+        dropDown.anchorView = textField // UIView or UIBarButtonItem
+
+        // The list of items to display. Can be changed dynamically
+        dropDown.dataSource = self.organizations.map { $0.organization_name }
+        
+        // Action triggered on selection
+        dropDown.selectionAction = { [weak self] (index, item) in
+            let org = self?.organizations[index]
+            self?.selectedOrganization = org
+            textField.text = org?.organization_name
+        }
+        
+        // Top of drop down will be below the anchorView
+        dropDown.bottomOffset = CGPoint(x: 0, y:(textField.bounds.height))
+
+        dropDown.dismissMode = .automatic
+        dropDown.direction = .any
+        
+        dropDown.show()
+    }
+
+    func showDatePicker(_ textField: UITextField) {
+        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: Date(), minimumDate: Date(), maximumDate: nil, datePickerMode: UIDatePicker.Mode.date) { (date) in
+            if let d = date {
+                self.selectedDate = d
+                textField.text = d.stringFromDate(Date.DateFormat.ddMMyyyy)
+            }
+        }
+    }
+    
+    override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.tfBirthDate {
+            self.showDatePicker(textField)
+            return false
+        }
+        if textField == self.tfPromoCode {
+            self.showOrganizationDropDown(textField)
+            return false
+        }
+        return true
+    }
+
+}
+
+extension SignUpVC {
+    
+    func getOrganizationList() {
+        
+        guard ApiManager.checkuser_online() else {
+            return
+        }
+        
+        self.showActivityIndicator()
+                
+        ApiManager.getOrganizationList() { (json) in
+            self.hideActivityIndicator()
+            
+            if let array = json?.array {
+                self.organizations = Organization.getData(array: array)
+            }else {
+                self.showError(message: "Failed, please try again")
+            }
+        }
+        
     }
 
 }

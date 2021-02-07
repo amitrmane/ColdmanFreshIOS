@@ -25,6 +25,7 @@ class HomeVC: SuperViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.getSliderImages()
+        NotificationCenter.default.addObserver(self, selector: #selector(orderSuccess), name: NSNotification.Name.init("orderSuccess"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -111,7 +112,7 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
             listvc.backDelegate = self
             listvc.menus = self.menus
             listvc.categories = self.categories
-            listvc.subCategories = self.subCategories.filter({ $0.maincategory == cat.id })
+            listvc.subCategories = self.subCategories.filter({ $0.maincategory == cat.id && $0.category_on_off == "1" })
             listvc.selectedCategory = cat
             self.navigationController?.pushViewController(listvc, animated: true)
         }
@@ -178,6 +179,12 @@ extension HomeVC : BackRefresh {
 
     func updateData(_ data: Any) {
         self.refreshData(firstLoad: true)
+    }
+    
+    @objc func orderSuccess() {
+        if let tabbar = self.tabBarController {
+            tabbar.selectedIndex = 1
+        }
     }
     
     func getSliderImages() {

@@ -22,6 +22,10 @@ class MenuCell: UITableViewCell {
     @IBOutlet weak var btnMinus: UIButton!
     @IBOutlet weak var viewBaseCounter: CustomView!
 
+    @IBOutlet weak var lblGate: UILabel!
+    @IBOutlet weak var lblTimeSlot: UILabel!
+    @IBOutlet weak var lblPickupTime: UILabel!
+    @IBOutlet weak var btnViewMore: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

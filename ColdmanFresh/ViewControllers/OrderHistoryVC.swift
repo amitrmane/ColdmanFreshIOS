@@ -89,14 +89,15 @@ extension OrderHistoryVC : UITableViewDataSource, UITableViewDelegate {
         cell.lblTitle.text = "Order ID: \(order.order_id)"
         cell.lblDeliveryTime.text = order.transaction_date
         
-        var items = "Ordered Items :\n"
+        let items = "Items count: \(order.menus.count) "
         
-        for m in order.menus {
-            items += "\n-> \(m.menu_name) x \(m.qty)\n"
-        }
+//        for m in order.menus {
+//            items += "\n-> \(m.menu_name) x \(m.qty)\n"
+//        }
         
         cell.lblMenuCount.text = items
         cell.lblOrderValue.text = " ₹ \(String(format: "%.2f", order.totalall.toDouble() ?? 0.00)) "
+        cell.lblGate.text = "  \(order.gate) "
          
         cell.lblFoodType.text = "  \(order.order_status) "
         if order.order_status == "Cancelled" {

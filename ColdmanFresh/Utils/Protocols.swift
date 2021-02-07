@@ -15,3 +15,7 @@ protocol LoginSuccessProtocol {
 protocol AddressSelectionProtocol {
     func selectedAddress(addr: Address)
 }
+
+protocol OrderSuccess {
+    func orderSuccessfullyPlaced()
+}

@@ -335,6 +335,7 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
         params["pickuptime"] = self.selectedDate.stringFromDate(Date.DateFormat.yyyyMMddHHmmss)
         params["gate"] = self.selectedGate.gate_id
         params["timeslot"] = self.selectedTimeslot.timeslot_name
+        params["delivery_address"] = self.currentAddress.address
 
         print(params)
         
@@ -346,6 +347,7 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
                     print(orderId)
                     self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "Order placed successfully!\n Order ID : \(orderId)", buttons: ["OK"]) { (i) in
                         Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
+                        NotificationCenter.default.post(Notification(name: NSNotification.Name.init("orderSuccess")))
                         self.navigationController?.popToRootViewController(animated: true)
                     }
 //                    let placeOrdervc = mainStoryboard.instantiateViewController(withIdentifier: "OrderPlacedVC") as! OrderPlacedVC
