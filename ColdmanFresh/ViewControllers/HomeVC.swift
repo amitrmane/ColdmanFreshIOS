@@ -20,11 +20,15 @@ class HomeVC: SuperViewController {
     var categories = [Categories]()
     var subCategories = [SubCategories]()
     var addedMenus = [Menu]()
+    var refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.getSliderImages()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
+        self.cvCategories.addSubview(refreshControl)
         NotificationCenter.default.addObserver(self, selector: #selector(orderSuccess), name: NSNotification.Name.init("orderSuccess"), object: nil)
     }
     
@@ -33,6 +37,10 @@ class HomeVC: SuperViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.refreshData()
         }
+    }
+    
+    @objc func refreshPage() {
+        self.getSliderImages()
     }
 
 
@@ -111,6 +119,7 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
             listvc.addedMenus = addedMenus
             listvc.backDelegate = self
             listvc.menus = self.menus
+            listvc.allMenus = self.menus
             listvc.categories = self.categories
             listvc.subCategories = self.subCategories.filter({ $0.maincategory == cat.id && $0.category_on_off == "1" })
             listvc.selectedCategory = cat
@@ -170,6 +179,9 @@ extension HomeVC {
 
         }
         self.cvCategories.reloadData()
+        if self.refreshControl.isRefreshing {
+            self.refreshControl.endRefreshing()
+        }
     }
 
 }

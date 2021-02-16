@@ -16,7 +16,7 @@ class SettingsVC: SuperViewController {
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var btnLogin: CustomButton!
 
-    var settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "Help & Support"]
+    var settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
     var profile : UserProfile!
 
     override func viewDidLoad() {
@@ -113,6 +113,9 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
         case "Cancellation & Refund Policy":
             cell.ivMenu.image = UIImage(named: "terms")
             break
+        case "FAQs":
+            cell.ivMenu.image = UIImage(named: "faq")
+            break
         case "Help & Support":
             cell.ivMenu.image = UIImage(named: "support")
             break
@@ -133,12 +136,12 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
         switch setting {
         case "Manage Addresses":
             guard let user = self.profile else {
-//                self.showAlert("Please login first.")
+                self.showAlert("Please login first.")
                 return
             }
-//            let addressvc = mainStoryboard.instantiateViewController(withIdentifier: "AddressListViewController") as! AddressListViewController
-//            addressvc.user = user
-//            self.navigationController?.pushViewController(addressvc, animated: true)
+            let addressvc = mainStoryboard.instantiateViewController(withIdentifier: "AddressListViewController") as! AddressListViewController
+            addressvc.user = user
+            self.navigationController?.pushViewController(addressvc, animated: true)
             break
         case "Terms & Conditions":
             if let link = Constants.WebLinks.terms_and_conditions.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: link) {
@@ -153,6 +156,11 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
         case "Cancellation & Refund Policy":
             if let link = Constants.WebLinks.cancellation_and_refund.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: link) {
                 openWeb(contentLink: url, pageName: "Cancellation & Refund Policy")
+            }
+            break
+        case "FAQs":
+            if let link = Constants.WebLinks.faqs.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: link) {
+                openWeb(contentLink: url, pageName: "FAQs")
             }
             break
         case "Help & Support":

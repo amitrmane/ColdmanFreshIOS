@@ -86,25 +86,28 @@ extension OrderHistoryVC : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         
         let order = self.history[indexPath.row]
-        cell.lblTitle.text = "Order ID: \(order.order_id)"
+        cell.lblTitle.text = "Token ID: \(order.order_id)"
         cell.lblDeliveryTime.text = order.transaction_date
         
         let items = "Items count: \(order.menus.count) "
-        
-//        for m in order.menus {
-//            items += "\n-> \(m.menu_name) x \(m.qty)\n"
-//        }
-        
+                
         cell.lblMenuCount.text = items
         cell.lblOrderValue.text = " ₹ \(String(format: "%.2f", order.totalall.toDouble() ?? 0.00)) "
         cell.lblGate.text = "  \(order.gate) "
-         
+        cell.lblTimeSlot.text = "  \(order.timeslot) "
+        cell.lblPickupTime.text = "  \(order.pickup_date) "
+
         cell.lblFoodType.text = "  \(order.order_status) "
         if order.order_status == "Cancelled" {
             cell.lblFoodType.backgroundColor = Constants.AppColors.bgRed
-        }else {
+        }else if order.order_status.lowercased().contains("picked") || order.order_status.lowercased().contains("deliver")  {
             cell.lblFoodType.backgroundColor = Constants.AppColors.bgGreen
+        }else {
+            cell.lblFoodType.backgroundColor = UIColor.darkGray
         }
+        
+        cell.btnViewMore.tag = indexPath.row
+        cell.btnViewMore.addTarget(self, action: #selector(viewMoreTapped(_:)), for: .touchUpInside)
 
         return cell
     }
@@ -120,10 +123,15 @@ extension OrderHistoryVC : UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-//        let order = self.history[indexPath.row]
-//        let ordervc = mainStoryboard.instantiateViewController(withIdentifier: "OrderDetailsVC") as! OrderDetailsVC
-//        ordervc.orderDetails = order
-//        self.navigationController?.pushViewController(ordervc, animated: true)
+
+    }
+    
+    @objc func viewMoreTapped(_ sender: UIButton) {
+        
+        let order = self.history[sender.tag]
+        let ordervc = mainStoryboard.instantiateViewController(withIdentifier: "OrderDetailsVC") as! OrderDetailsVC
+        ordervc.orderDetails = order
+        self.navigationController?.pushViewController(ordervc, animated: true)
 
     }
 

@@ -37,6 +37,11 @@ extension WebVC : WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print(error)
+        self.hideActivityIndicator()
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        self.showActivityIndicator()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -49,5 +54,10 @@ extension WebVC : WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print(error)
+        self.hideActivityIndicator()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.hideActivityIndicator()
     }
 }

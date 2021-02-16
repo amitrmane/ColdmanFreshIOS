@@ -55,6 +55,7 @@ class Constants {
         static var cancellation_and_refund = "http://coldmanfresh.edigito.in/cancellation-policy"
         static var privacy_policy = "http://coldmanfresh.edigito.in/privacy-policy"
         static var terms_and_conditions = "http://coldmanfresh.edigito.in/privacy-policy"
+        static var faqs = "http://coldmanfresh.edigito.in/faq"
     }
     
     struct Keys {

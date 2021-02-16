@@ -16,6 +16,7 @@
 		DF56603125AF381D00A1DCA0 /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602A25AF381D00A1DCA0 /* SupportVC.swift */; };
 		DF56603225AF381D00A1DCA0 /* PhoneVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602B25AF381D00A1DCA0 /* PhoneVerificationVC.swift */; };
 		DF5E6D1425B8C6600055AC5F /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5E6D1325B8C6600055AC5F /* ProductListVC.swift */; };
+		DF75298925DAED7A008696F6 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75298825DAED7A008696F6 /* OrderDetailsVC.swift */; };
 		DFA611E125C1E0B1003177F8 /* AddAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA611DE25C1E0B1003177F8 /* AddAddressVC.swift */; };
 		DFA611E225C1E0B1003177F8 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA611DF25C1E0B1003177F8 /* AddressListViewController.swift */; };
 		DFA611E325C1E0B1003177F8 /* OffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA611E025C1E0B1003177F8 /* OffersVC.swift */; };
@@ -57,6 +58,7 @@
 		DF56602A25AF381D00A1DCA0 /* SupportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
 		DF56602B25AF381D00A1DCA0 /* PhoneVerificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationVC.swift; sourceTree = "<group>"; };
 		DF5E6D1325B8C6600055AC5F /* ProductListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListVC.swift; sourceTree = "<group>"; };
+		DF75298825DAED7A008696F6 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
 		DFA611DE25C1E0B1003177F8 /* AddAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressVC.swift; sourceTree = "<group>"; };
 		DFA611DF25C1E0B1003177F8 /* AddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
 		DFA611E025C1E0B1003177F8 /* OffersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersVC.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				DFB734A725B6A4820085E1EC /* VariationPopupVC.swift */,
 				DFB734A425B607DB0085E1EC /* CartVC.swift */,
 				DFA611E525C59B97003177F8 /* CheckoutVC.swift */,
+				DF75298825DAED7A008696F6 /* OrderDetailsVC.swift */,
 				DF56602525AF381D00A1DCA0 /* OrderHistoryVC.swift */,
 				DF56602625AF381D00A1DCA0 /* OTPVerificationVC.swift */,
 				DF56602B25AF381D00A1DCA0 /* PhoneVerificationVC.swift */,
@@ -343,6 +346,7 @@
 				DFD83B4E25A6E1770096FCBC /* Reachability.swift in Sources */,
 				DF56602C25AF381D00A1DCA0 /* OrderHistoryVC.swift in Sources */,
 				DFA611E625C59B97003177F8 /* CheckoutVC.swift in Sources */,
+				DF75298925DAED7A008696F6 /* OrderDetailsVC.swift in Sources */,
 				DFB734A825B6A4820085E1EC /* VariationPopupVC.swift in Sources */,
 				DF56602F25AF381D00A1DCA0 /* SuperViewController.swift in Sources */,
 				DFD83B5B25A6E1F40096FCBC /* Utilities.swift in Sources */,
@@ -496,7 +500,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 7TC6GNZWML;
 				INFOPLIST_FILE = ColdmanFresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -518,7 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 7TC6GNZWML;
 				INFOPLIST_FILE = ColdmanFresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

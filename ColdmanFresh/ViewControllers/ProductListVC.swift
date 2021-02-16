@@ -13,6 +13,7 @@ class ProductListVC: SuperViewController {
     @IBOutlet weak var lblCategoryTitle: UILabel!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnCart: BadgeButton!
+    @IBOutlet weak var searchBar: UISearchBar!
 
     var allMenus = [Menu]()
     var menus = [Menu]()
@@ -319,12 +320,35 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
         }
         self.tblMenu.reloadData()
     }
+    
+    func reloadOnSearch(searchText: String) {
+        if searchText != "" {
+            self.menus = self.allMenus.filter({ (m) -> Bool in
+                return m.menu_displayname.lowercased().hasPrefix(searchText.lowercased())
+            })
+        }else {
+            self.menus = self.allMenus
+        }
+        self.tblMenu.reloadData()
+    }
 
 }
 
-extension ProductListVC : BackRefresh {
+extension ProductListVC : BackRefresh, UISearchBarDelegate {
 
     func updateData(_ data: Any) {
         self.refreshData(firstLoad: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.reloadOnSearch(searchText: searchBar.text ?? "")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.reloadOnSearch(searchText: searchBar.text ?? "")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.reloadOnSearch(searchText: searchBar.text ?? "")
     }
 }

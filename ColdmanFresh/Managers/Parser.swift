@@ -357,6 +357,13 @@ class OrderDetails {
     var from_latitude = ""
     var from_longitude = ""
     var order_status = ""
+    var timeslot = ""
+    var pickup_date = ""
+    var date_time = ""
+    var payment_mode = ""
+    var cost = ""
+    var currency = ""
+    var ordered_user_address = ""
     var menus = [Menu]()
 
     class func getOrderDetails(dict: [String: JSON]) -> OrderDetails? {
@@ -411,6 +418,27 @@ class OrderDetails {
         }
         if let value = dict["order_status"]?.string {
             response.order_status = value
+        }
+        if let value = dict["timeslot"]?.string {
+            response.timeslot = value
+        }
+        if let value = dict["pickup_date"]?.string {
+            response.pickup_date = value
+        }
+        if let value = dict["date_time"]?.string {
+            response.date_time = value
+        }
+        if let value = dict["payment_mode"]?.string {
+            response.payment_mode = value
+        }
+        if let value = dict["currency"]?.string {
+            response.currency = value
+        }
+        if let value = dict["cost"]?.string {
+            response.cost = value
+        }
+        if let value = dict["ordered_user_address"]?.string {
+            response.ordered_user_address = value
         }
         if let value = dict["menus"]?.array {
             response.menus = Menu.getMenuData(array: value)
