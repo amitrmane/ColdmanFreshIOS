@@ -63,7 +63,7 @@ class AddressListViewController: SuperViewController {
                 }
                 self.tblAddresses.reloadData()
             }else {
-                self.showError(message: "Failed, please try again")
+                self.showError(message: "No address found, please add new address.")
             }
         }
         

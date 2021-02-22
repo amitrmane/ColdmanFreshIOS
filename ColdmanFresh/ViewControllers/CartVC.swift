@@ -322,9 +322,12 @@ extension CartVC {
                 if let addrs = self.allAddress.filter({ $0.primaryAddress == "1" }).first {
                     self.currentAddress = addrs
                     self.refreshData()
+                }else if self.allAddress.count == 1, let addrs = self.allAddress.first {
+                    self.currentAddress = addrs
+                    self.refreshData()
                 }
             }else {
-                self.showError(message: "Failed, please try again")
+//                self.showError(message: "Please ")
             }
         }
         

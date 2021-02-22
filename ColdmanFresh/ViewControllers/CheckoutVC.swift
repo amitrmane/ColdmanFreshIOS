@@ -44,7 +44,9 @@ class CheckoutVC: SuperViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyTest, andDelegate: self)
+        razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyLive, andDelegate: self)
+        self.tfDate.text = Date().stringFromDate(Date.DateFormat.yyyyMMdd)
+        self.selectedDate = Date()
         self.getGateList()
         self.refreshData()
     }
@@ -179,10 +181,10 @@ extension CheckoutVC : LoginSuccessProtocol {
     }
     
     func showDatePicker(_ textField: UITextField) {
-        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: Date(), minimumDate: Date(), maximumDate: nil, datePickerMode: UIDatePicker.Mode.dateAndTime) { (date) in
+        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: Date(), minimumDate: Date(), maximumDate: nil, datePickerMode: UIDatePicker.Mode.date) { (date) in
             if let d = date {
                 self.selectedDate = d
-                textField.text = d.stringFromDate(Date.DateFormat.yyyyMMddHHmmss)
+                textField.text = d.stringFromDate(Date.DateFormat.yyyyMMdd)
             }
         }
     }
@@ -272,7 +274,7 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
             "currency": "INR",//We support more that 92 international currencies.
             "description": "Coldman fresh order",
             //"order_id": "CFORDER\(UUID().uuidString)", // send when build is live only not for testing
-            "image": "http://coldmanfresh.edigito.in/assets/images/logo/logo.jpg",
+            "image": "http://coldmanfresh.in/assets/images/logo/logo.jpg",
             "name": "Coldman fresh",
             "prefill": [
                 "contact": "\(user.mobileno)",

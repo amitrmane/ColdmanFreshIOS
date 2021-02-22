@@ -35,7 +35,7 @@ class SettingsVC: SuperViewController {
             self.lblMobile.text = "Mobile - NA"
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
-            self.settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "Help & Support"]
+            self.settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
             self.tblSettings.reloadData()
             return
         }
@@ -46,7 +46,7 @@ class SettingsVC: SuperViewController {
             self.lblMobile.text = "Mobile - NA"
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
-            self.settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "Help & Support"]
+            self.settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
             self.tblSettings.reloadData()
             return
         }

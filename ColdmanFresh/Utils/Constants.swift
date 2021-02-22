@@ -13,8 +13,8 @@ let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
 class Constants {
    
-    static let baseURL:String = "http://apicmf.edigito.in/"
-    static let baseDownloadURL:String = "http://coldmanfresh.edigito.in/uploads/"
+    static let baseURL:String = "http://coldmanfresh.in/api/"//http://coldmanfresh.in/api/
+    static let baseDownloadURL:String = "http://coldmanfresh.in/uploads/"
     static let appBarColour = UIColor.red//(hexString: "4884ED")//UIColor(red: 24.0/255.0, green: 153.0/255.0, blue: 203.0/255.0, alpha: 1)
     
     static let APP_REGULAR_FONT =  "HelveticaNeue"
@@ -52,16 +52,17 @@ class Constants {
     }
   
     struct WebLinks {
-        static var cancellation_and_refund = "http://coldmanfresh.edigito.in/cancellation-policy"
-        static var privacy_policy = "http://coldmanfresh.edigito.in/privacy-policy"
-        static var terms_and_conditions = "http://coldmanfresh.edigito.in/privacy-policy"
-        static var faqs = "http://coldmanfresh.edigito.in/faq"
+        static var cancellation_and_refund = "http://coldmanfresh.in/cancellation-policy"
+        static var privacy_policy = "http://coldmanfresh.in/privacy-policy"
+        static var terms_and_conditions = "http://coldmanfresh.in/privacy-policy"
+        static var faqs = "http://coldmanfresh.in/faq"
     }
     
     struct Keys {
         static let cart = "Cart"
         static let razorPayKeyTest = "rzp_test_R54itHzYCHYenG" //"rzp_test_sY4RuQtxewxAOq"
         static let razorPaySecret = "WUuzL9VlHF8oLWDFhgwKqSJ6"
+        static let razorPayKeyLive = "rzp_live_lm5zXbaVJNF3VR"
     }
     
     struct AppColors {
