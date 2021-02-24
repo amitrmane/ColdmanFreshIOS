@@ -81,6 +81,9 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sub = self.subCategories[section]
+        if !sub.isExpanded {
+            return 0
+        }
         return self.menus.filter({ $0.menu_categoryid == sub.id }).count
     }
     
@@ -159,19 +162,41 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
         label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
         label.font = UIFont(name: Constants.APP_BOLD_FONT, size: 17)
-        label.text = sub.category_olname + " (\(filtered.count))"
+        label.text =  " " + sub.category_olname + " (\(filtered.count))"
         
         let line = UILabel(frame: CGRect(x: 23, y: 39, width: frame.width - 43, height: 1))
         line.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
 
+        let arrow = Arrow(origin: CGPoint(x: frame.width - 40, y: 12), size: 15)
+        arrow.backgroundColor = .clear
+        arrow.tintColor = .black
+        if sub.isExpanded {
+            arrow.position = .up
+        }else {
+            arrow.position = .down
+        }
+        
+        let button = UIButton(frame: frame)
+        button.backgroundColor = .clear
+        button.tag = section
+        button.addTarget(self, action: #selector(headerTapped(_:)), for: .touchUpInside)
+        
         headerView.addSubview(label)
+        headerView.addSubview(arrow)
         headerView.addSubview(line)
+        headerView.addSubview(button)
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+    
+    @objc func headerTapped(_ sender: UIButton) {
+        let sub = self.subCategories[sender.tag]
+        sub.isExpanded = !sub.isExpanded
+        self.tblMenu.reloadData()
     }
     
     @objc func addToCartTapped(_ sender: UIButton) {

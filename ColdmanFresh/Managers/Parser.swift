@@ -226,6 +226,7 @@ class SubCategories : Codable {
     var category_on_off = ""
     var category_created_at = ""
     var maincategory = ""
+    var isExpanded = false
 
     class func getCategoriesData(array: [JSON]) -> [SubCategories] {
         var dataArr = [SubCategories]()

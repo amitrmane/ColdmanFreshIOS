@@ -1139,3 +1139,48 @@ class CouponView: UIView {
     }
 }
 
+//MARK: Arrow
+
+enum Position {
+    case left
+    case down
+    case right
+    case up
+}
+
+class Arrow: UIImageView {
+    
+    var position: Position = .down {
+        didSet{
+            switch position {
+            case .left:
+                self.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+                break
+                
+            case .down:
+                self.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
+                break
+                
+            case .right:
+                self.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
+                break
+                
+            case .up:
+                self.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                break
+            }
+        }
+    }
+    
+    init(origin: CGPoint, size: CGFloat) {
+        super.init(frame: CGRect(x: origin.x, y: origin.y, width: size, height: size))
+        self.image = UIImage(named: "down_arrow")?.withRenderingMode(.alwaysTemplate)// UIImage(named: "down_arrow")
+//        self.image.tintColor = Constants.appBarColour
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
