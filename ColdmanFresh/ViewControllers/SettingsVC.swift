@@ -16,7 +16,7 @@ class SettingsVC: SuperViewController {
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var btnLogin: CustomButton!
 
-    var settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
+    var settingsArray = ["Manage Addresses", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
     var profile : UserProfile!
 
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class SettingsVC: SuperViewController {
             self.lblMobile.text = "Mobile - NA"
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
-            self.settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
+            self.settingsArray = ["Manage Addresses",  "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
             self.tblSettings.reloadData()
             return
         }
@@ -46,7 +46,7 @@ class SettingsVC: SuperViewController {
             self.lblMobile.text = "Mobile - NA"
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
-            self.settingsArray = ["Manage Addresses", "Terms & Conditions", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
+            self.settingsArray = ["Manage Addresses", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
             self.tblSettings.reloadData()
             return
         }

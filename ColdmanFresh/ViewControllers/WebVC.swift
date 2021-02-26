@@ -16,6 +16,7 @@ class WebVC: SuperViewController {
 
     var webUrl : URL!
     var pageTitle = ""
+    var isFromSignUp = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,11 @@ class WebVC: SuperViewController {
     }
     
     @IBAction func backTapped(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if isFromSignUp {
+            self.dismiss(animated: true, completion: nil)
+        }else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 

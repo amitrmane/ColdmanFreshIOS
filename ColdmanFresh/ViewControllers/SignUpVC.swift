@@ -230,7 +230,8 @@ class SignUpVC: SuperViewController {
         let addressvc = mainStoryboard.instantiateViewController(withIdentifier: "WebVC") as! WebVC
         addressvc.webUrl = contentLink
         addressvc.pageTitle = pageName
-        self.navigationController?.pushViewController(addressvc, animated: true)
+        addressvc.isFromSignUp = true
+        self.present(addressvc, animated: true, completion: nil)
     }
     
     func showOrganizationDropDown(_ textField: UITextField) {
