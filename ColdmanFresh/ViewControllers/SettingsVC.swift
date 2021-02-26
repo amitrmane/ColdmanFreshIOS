@@ -169,6 +169,7 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
             break
         case "Logout":
             Utilities.removeValueForKeyFromDefaults("User")
+            Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
             self.profile = nil
             self.viewDidAppear(true)
             break

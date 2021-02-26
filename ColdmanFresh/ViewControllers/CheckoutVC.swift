@@ -352,16 +352,6 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
                         NotificationCenter.default.post(Notification(name: NSNotification.Name.init("orderSuccess")))
                         self.navigationController?.popToRootViewController(animated: true)
                     }
-//                    let placeOrdervc = mainStoryboard.instantiateViewController(withIdentifier: "OrderPlacedVC") as! OrderPlacedVC
-//                    placeOrdervc.restaurent = self.restaurent
-//                    placeOrdervc.user = self.user
-//                    placeOrdervc.addedMenus = self.addedMenus
-//                    placeOrdervc.allTaxes = self.allTaxes
-//                    placeOrdervc.paymentDetails = self.paymentDetails
-//                    placeOrdervc.isCOD = self.isCOD
-//                    placeOrdervc.appOrderId = orderId.intValue
-//                    placeOrdervc.selectedAddr = self.selectedAddr
-//                    self.navigationController?.pushViewController(placeOrdervc, animated: true)
                 }else {
                     self.showError(message: dict["message"]?.string ?? "Order placing failed, please try again")
                 }

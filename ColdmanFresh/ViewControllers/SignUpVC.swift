@@ -33,14 +33,25 @@ class SignUpVC: SuperViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tfMobile.text = mobileNo
-        self.tfMobile.isUserInteractionEnabled = false
+        if mobileNo != "" {
+            self.tfMobile.text = mobileNo
+            self.tfMobile.isUserInteractionEnabled = false
+        }
         self.getOrganizationList()
         if let u = self.user {
             self.lblTitle.text = "Edit Profile"
             self.tfName.text = u.fname + " " + u.lname
             self.tfMobile.text = u.mobileno
             self.tfEmail.text = u.email
+            self.tfBirthDate.text = u.birthdate
+            if let date = Date().dateFromString(Date.DateFormat.yyyyMMdd.rawValue, dateString: u.birthdate) {
+                self.selectedDate = date
+            }else if let date = Date().dateFromString(Date.DateFormat.ddMMyyyy.rawValue, dateString: u.birthdate) {
+                self.selectedDate = date
+            }
+            if let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
+                self.tfPromoCode.text = org.organization_name
+            }
             self.btnLogin.setTitle("Back to settings", for: .normal)
             self.btnSignUp.setTitle("Save", for: .normal)
         }
@@ -67,7 +78,12 @@ class SignUpVC: SuperViewController {
 
     @IBAction func signUpTapped(_ sender: UIButton) {
         self.view.endEditing(true)
-       guard let name = self.tfName.text, name != "" else {
+        guard let org = self.selectedOrganization else {
+            self.showAlert("Select promo code")
+            return
+        }
+        
+        guard let name = self.tfName.text, name != "" else {
             self.showAlert("Enter name")
             return
         }
@@ -82,15 +98,8 @@ class SignUpVC: SuperViewController {
             return
         }
 
-//        guard let pwd = self.tfPassword.text, pwd != "" else {
-//            self.showAlert("Enter password")
-//            return
-//        }
+
         
-        guard let org = self.selectedOrganization else {
-            self.showAlert("Select promo code")
-            return
-        }
         
         if let u = self.user {
             // update user
@@ -208,6 +217,8 @@ class SignUpVC: SuperViewController {
                     }
                 }else if let dict = json?.dictionary, let message = dict["message"]?.string {
                     self.showAlert(message)
+                }else {
+                    self.showError(message: "User registration failed, please try again.")
                 }
             }
             
@@ -248,10 +259,11 @@ class SignUpVC: SuperViewController {
     }
 
     func showDatePicker(_ textField: UITextField) {
-        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: Date(), minimumDate: Date(), maximumDate: nil, datePickerMode: UIDatePicker.Mode.date) { (date) in
+        
+        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: self.selectedDate ?? Date(), minimumDate: nil, maximumDate: Date(), datePickerMode: UIDatePicker.Mode.date) { (date) in
             if let d = date {
                 self.selectedDate = d
-                textField.text = d.stringFromDate(Date.DateFormat.ddMMyyyy)
+                textField.text = d.stringFromDate(Date.DateFormat.yyyyMMdd)
             }
         }
     }
@@ -285,6 +297,10 @@ extension SignUpVC {
             
             if let array = json?.array {
                 self.organizations = Organization.getData(array: array)
+                if let u = self.user, let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
+                    self.selectedOrganization = org
+                    self.tfPromoCode.text = org.organization_name
+                }
             }else {
                 self.showError(message: "Failed, please try again")
             }

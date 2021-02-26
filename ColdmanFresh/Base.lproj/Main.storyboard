@@ -669,7 +669,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpR-cT-mtv" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                <rect key="frame" x="41.5" y="257.5" width="331" height="300"/>
+                                <rect key="frame" x="41.5" y="220" width="331" height="375"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qp-HC-Xg1">
                                         <rect key="frame" x="20" y="30" width="291" height="21"/>
@@ -717,14 +717,33 @@
                                             <action selector="loginTapped:" destination="dlm-S7-gTw" eventType="touchUpInside" id="mvX-jo-y2E"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-IM-cAh" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="300" width="291" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <state key="normal" title="Not registered yet? SIGN UP">
+                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signUpTapped:" destination="dlm-S7-gTw" eventType="touchUpInside" id="zGS-F3-5Ov"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="ffh-IM-cAh" firstAttribute="trailing" secondItem="IW4-vM-NcO" secondAttribute="trailing" id="2xh-HB-kdc"/>
                                     <constraint firstItem="pTT-fo-KSC" firstAttribute="top" secondItem="9Ny-fc-4Wv" secondAttribute="bottom" constant="20" id="33M-oj-sIa"/>
                                     <constraint firstItem="IW4-vM-NcO" firstAttribute="top" secondItem="pTT-fo-KSC" secondAttribute="bottom" constant="28" id="3mW-bU-DxW"/>
-                                    <constraint firstAttribute="bottom" secondItem="IW4-vM-NcO" secondAttribute="bottom" constant="25" id="AcV-J4-jjj"/>
+                                    <constraint firstItem="ffh-IM-cAh" firstAttribute="leading" secondItem="IW4-vM-NcO" secondAttribute="leading" id="Agj-Vb-g22"/>
                                     <constraint firstItem="4qp-HC-Xg1" firstAttribute="trailing" secondItem="9Ny-fc-4Wv" secondAttribute="trailing" id="Nku-L5-Ixs"/>
                                     <constraint firstItem="4qp-HC-Xg1" firstAttribute="top" secondItem="TpR-cT-mtv" secondAttribute="top" constant="30" id="NwX-QL-eGa"/>
+                                    <constraint firstAttribute="bottom" secondItem="ffh-IM-cAh" secondAttribute="bottom" constant="25" id="T7X-PE-zv3"/>
+                                    <constraint firstItem="ffh-IM-cAh" firstAttribute="height" secondItem="IW4-vM-NcO" secondAttribute="height" id="Uve-Ew-cLd"/>
                                     <constraint firstItem="9Ny-fc-4Wv" firstAttribute="top" secondItem="4qp-HC-Xg1" secondAttribute="bottom" constant="21" id="Wy0-Sg-pHE"/>
                                     <constraint firstItem="IW4-vM-NcO" firstAttribute="leading" secondItem="pTT-fo-KSC" secondAttribute="leading" id="Xn7-Ea-ms1"/>
                                     <constraint firstItem="IW4-vM-NcO" firstAttribute="trailing" secondItem="pTT-fo-KSC" secondAttribute="trailing" id="acO-bj-RZW"/>
@@ -732,8 +751,8 @@
                                     <constraint firstItem="pTT-fo-KSC" firstAttribute="trailing" secondItem="9Ny-fc-4Wv" secondAttribute="trailing" id="gEX-cb-I0D"/>
                                     <constraint firstItem="pTT-fo-KSC" firstAttribute="leading" secondItem="9Ny-fc-4Wv" secondAttribute="leading" id="iLo-At-P5X"/>
                                     <constraint firstAttribute="trailing" secondItem="9Ny-fc-4Wv" secondAttribute="trailing" constant="20" id="por-7Y-xnY"/>
+                                    <constraint firstItem="ffh-IM-cAh" firstAttribute="top" secondItem="IW4-vM-NcO" secondAttribute="bottom" constant="25" id="rPi-Y4-jqJ"/>
                                     <constraint firstItem="4qp-HC-Xg1" firstAttribute="leading" secondItem="9Ny-fc-4Wv" secondAttribute="leading" id="sfd-kC-7N0"/>
-                                    <constraint firstAttribute="height" constant="300" id="vU6-RY-j2P"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

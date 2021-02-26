@@ -43,6 +43,12 @@ class PhoneVerificationVC: SuperViewController {
         }
     }
     
+    @IBAction func signUpTapped(_ sender: UIButton) {
+        let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
+        signupvc.delegate = self
+        self.present(signupvc, animated: true, completion: nil)
+    }
+    
     @IBAction func loginTapped(_ sender: UIButton) {
         self.view.endEditing(true)
         guard let no = self.tfPhoneNumber.text, no.isPhoneNumber else {
@@ -96,10 +102,83 @@ class PhoneVerificationVC: SuperViewController {
     
 }
 
-extension PhoneVerificationVC  {
+extension PhoneVerificationVC : LoginSuccessProtocol {
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
                 
         return range.location <= 10
     }
+    
+    func loginSuccess(profile: UserProfile) {
+        if self.isFromSettings {
+            if profile.user_id == "" && profile.id == 0 {
+                print(profile.mobileno)
+                self.verifyUserByNumber(mobNo: profile.mobileno)
+            }else {
+                self.navigationController?.popToRootViewController(animated: false)
+            }
+        }else {
+            if profile.user_id == "" && profile.id == 0 {
+                print(profile.mobileno)
+                self.verifyUserByNumber(mobNo: profile.mobileno)
+            }else {
+                let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
+                cartvc.addedMenus = self.addedMenus
+                cartvc.user = profile
+                self.navigationController?.pushViewController(cartvc, animated: true)
+            }
+        }
+    }
+    
+    func verifyUserByNumber(mobNo: String) {
+        guard ApiManager.checkuser_online() else {
+            self.showError(message: "Please check your internet connection")
+            return
+        }
+        
+        self.showActivityIndicator()
+        
+        ApiManager.verifyOTP(mobNo: mobNo) { (json) in
+            self.hideActivityIndicator()
+//            if success {
+                if let dict = json?.dictionary {
+                    if let userdict = dict["userdetails"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
+                        if self.isFromSettings {
+                            self.navigationController?.popToRootViewController(animated: false)
+                        }else {
+                            print(user.id)
+                            let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
+                            cartvc.addedMenus = self.addedMenus
+//                            cartvc.backDelegate = self
+                            cartvc.user = user
+                            self.navigationController?.pushViewController(cartvc, animated: true)
+
+                        }
+                    }else {
+                        self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "User not found, do you want to register with this mobile number?", buttons: ["No", "Yes"]) { (i) in
+                            if i == 0 {
+                                self.navigationController?.popViewController(animated: true)
+                            }else {
+                                let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
+                                signupvc.delegate = self
+                                signupvc.mobileNo = mobNo
+                                self.present(signupvc, animated: true, completion: nil)
+                            }
+                        }
+                    }
+                }else {
+                    self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "User not found, do you want to register with this mobile number?", buttons: ["No", "Yes"]) { (i) in
+                        if i == 0 {
+                            self.navigationController?.popViewController(animated: true)
+                        }else {
+                            let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
+                            signupvc.delegate = self
+                            signupvc.mobileNo = mobNo
+                            self.present(signupvc, animated: true, completion: nil)
+                        }
+                    }
+                }
+        }
+    }
+
 }
