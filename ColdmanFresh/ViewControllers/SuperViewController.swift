@@ -354,12 +354,12 @@ class SuperViewController: UIViewController {
     
     func showNoRecordsViewWithLabel(_ tableView: UITableView, message: String) {
         let v1 = UIView(frame: tableView.frame)
-        let noDataLbl = UILabel(frame: v1.frame)
+        let noDataLbl = UILabel(frame: CGRect(x: 0, y: 0, width: v1.frame.width, height: v1.frame.height))
         noDataLbl.text = message
         noDataLbl.numberOfLines = 0
         noDataLbl.textAlignment = .center
         noDataLbl.lineBreakMode = .byWordWrapping
-        noDataLbl.center = tableView.center
+//        noDataLbl.center = tableView.center
         v1.addSubview(noDataLbl)
         tableView.backgroundView  = v1
     }

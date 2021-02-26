@@ -78,7 +78,13 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.cvSlider {
+            if self.sliderData.count > 0 {
+                collectionView.backgroundView = nil
+            }
             return self.sliderData.count
+        }
+        if self.categories.count > 0 {
+            collectionView.backgroundView = nil
         }
         return self.categories.count
     }
@@ -184,6 +190,18 @@ extension HomeVC {
         }
     }
 
+    func showNoRecordsViewWithLabel(_ tableView: UICollectionView, message: String) {
+        let v1 = UIView(frame: tableView.frame)
+        let noDataLbl = UILabel(frame: CGRect(x: 0, y: 0, width: v1.frame.width, height: v1.frame.height))
+        noDataLbl.text = message
+        noDataLbl.numberOfLines = 0
+        noDataLbl.textAlignment = .center
+        noDataLbl.lineBreakMode = .byWordWrapping
+//        noDataLbl.center = v1.center
+        v1.addSubview(noDataLbl)
+        tableView.backgroundView  = v1
+    }
+       
 }
 
 
@@ -207,8 +225,10 @@ extension HomeVC : BackRefresh {
             if let array = json?.array {
                 self.sliderData = SliderData.getSliderData(array: array)
                 self.cvSlider.reloadData()
-                self.getMenus()
+            }else {
+                self.showNoRecordsViewWithLabel(self.cvSlider, message: "Failed to fetch data, please try again later.")
             }
+            self.getMenus()
         }
     }
     
@@ -228,6 +248,8 @@ extension HomeVC : BackRefresh {
                     self.subCategories = SubCategories.getCategoriesData(array: array)
                 }
                 self.refreshData(firstLoad: true)
+            }else {
+                self.showNoRecordsViewWithLabel(self.cvCategories, message: "Failed to fetch categories, please try again later. \n To reload just tap again on home button")
             }
         }
     }
