@@ -274,7 +274,7 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
             "currency": "INR",//We support more that 92 international currencies.
             "description": "Coldman fresh order",
             //"order_id": "CFORDER\(UUID().uuidString)", // send when build is live only not for testing
-            "image": "http://coldmanfresh.in/assets/images/logo/logo.jpg",
+            "image": "https://coldmanfresh.in/assets/images/logo/logo.jpg",
             "name": "Coldman fresh",
             "prefill": [
                 "contact": "\(user.mobileno)",
