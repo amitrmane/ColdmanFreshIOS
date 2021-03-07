@@ -17,6 +17,7 @@
 		DF56603225AF381D00A1DCA0 /* PhoneVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602B25AF381D00A1DCA0 /* PhoneVerificationVC.swift */; };
 		DF5E6D1425B8C6600055AC5F /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5E6D1325B8C6600055AC5F /* ProductListVC.swift */; };
 		DF75298925DAED7A008696F6 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75298825DAED7A008696F6 /* OrderDetailsVC.swift */; };
+		DF93203D25F4EE69000AA167 /* WelcomeAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93203C25F4EE69000AA167 /* WelcomeAlertVC.swift */; };
 		DFA611E125C1E0B1003177F8 /* AddAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA611DE25C1E0B1003177F8 /* AddAddressVC.swift */; };
 		DFA611E225C1E0B1003177F8 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA611DF25C1E0B1003177F8 /* AddressListViewController.swift */; };
 		DFA611E325C1E0B1003177F8 /* OffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA611E025C1E0B1003177F8 /* OffersVC.swift */; };
@@ -59,6 +60,7 @@
 		DF56602B25AF381D00A1DCA0 /* PhoneVerificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationVC.swift; sourceTree = "<group>"; };
 		DF5E6D1325B8C6600055AC5F /* ProductListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListVC.swift; sourceTree = "<group>"; };
 		DF75298825DAED7A008696F6 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
+		DF93203C25F4EE69000AA167 /* WelcomeAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeAlertVC.swift; sourceTree = "<group>"; };
 		DFA611DE25C1E0B1003177F8 /* AddAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressVC.swift; sourceTree = "<group>"; };
 		DFA611DF25C1E0B1003177F8 /* AddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
 		DFA611E025C1E0B1003177F8 /* OffersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersVC.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				DFA611DE25C1E0B1003177F8 /* AddAddressVC.swift */,
 				DFA611DF25C1E0B1003177F8 /* AddressListViewController.swift */,
 				DFA611E025C1E0B1003177F8 /* OffersVC.swift */,
+				DF93203C25F4EE69000AA167 /* WelcomeAlertVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				DFD83B4F25A6E1770096FCBC /* Parser.swift in Sources */,
 				DF5E6D1425B8C6600055AC5F /* ProductListVC.swift in Sources */,
 				DFB734A525B607DB0085E1EC /* CartVC.swift in Sources */,
+				DF93203D25F4EE69000AA167 /* WelcomeAlertVC.swift in Sources */,
 				DFD83B5F25A6E1F40096FCBC /* Protocols.swift in Sources */,
 				DF56603225AF381D00A1DCA0 /* PhoneVerificationVC.swift in Sources */,
 				DFB1377B25A6F7C6006408CF /* SettingsVC.swift in Sources */,

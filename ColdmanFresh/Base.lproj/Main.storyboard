@@ -1483,6 +1483,91 @@ support@coldmanfresh.in</string>
             </objects>
             <point key="canvasLocation" x="2129" y="725"/>
         </scene>
+        <!--Welcome AlertVC-->
+        <scene sceneID="zdx-1M-2wf">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeAlertVC" modalPresentationStyle="overFullScreen" id="qz0-qn-lHJ" customClass="WelcomeAlertVC" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5za-rW-9pp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF5-SA-6aI">
+                                <rect key="frame" x="0.0" y="183.5" width="414" height="448"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="HXe-vP-W6U">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="HXe-vP-W6U" firstAttribute="centerX" secondItem="gF5-SA-6aI" secondAttribute="centerX" id="AIq-on-ICq"/>
+                                    <constraint firstItem="HXe-vP-W6U" firstAttribute="leading" secondItem="gF5-SA-6aI" secondAttribute="leading" id="BCn-0g-5up"/>
+                                    <constraint firstAttribute="trailing" secondItem="HXe-vP-W6U" secondAttribute="trailing" id="NDP-z0-Sqf"/>
+                                    <constraint firstAttribute="bottom" secondItem="HXe-vP-W6U" secondAttribute="bottom" id="bUC-Np-poM"/>
+                                    <constraint firstItem="HXe-vP-W6U" firstAttribute="centerY" secondItem="gF5-SA-6aI" secondAttribute="centerY" id="hSL-gB-zcs"/>
+                                    <constraint firstItem="HXe-vP-W6U" firstAttribute="top" secondItem="gF5-SA-6aI" secondAttribute="top" id="quj-oz-4Aa"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="qz0-qn-lHJ" id="Edb-vA-g2O"/>
+                                </connections>
+                            </scrollView>
+                            <button clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVT-DR-PSd">
+                                <rect key="frame" x="118" y="656.5" width="178" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="0Ab-43-sdu"/>
+                                </constraints>
+                                <state key="normal" title="  Don't show again" image="unchecked-checkbox">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="  Don't show again" image="checked-checkbox"/>
+                                <connections>
+                                    <action selector="dontShowAgainTapped:" destination="qz0-qn-lHJ" eventType="touchUpInside" id="hob-Zc-xRd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmS-fy-bxE" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
+                                <rect key="frame" x="167.5" y="716.5" width="79" height="40"/>
+                                <color key="backgroundColor" red="0.30980392159999998" green="0.71372549019999998" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Qdo-or-wPJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="    CLOSE    ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeTapped:" destination="qz0-qn-lHJ" eventType="touchUpInside" id="hXl-rx-tmQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fR2-Gf-kY2"/>
+                        <color key="backgroundColor" white="1" alpha="0.69952340677481928" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gF5-SA-6aI" firstAttribute="leading" secondItem="fR2-Gf-kY2" secondAttribute="leading" id="AFJ-Hv-feN"/>
+                            <constraint firstItem="eVT-DR-PSd" firstAttribute="top" secondItem="gF5-SA-6aI" secondAttribute="bottom" constant="25" id="DsX-Xb-hYu"/>
+                            <constraint firstItem="gF5-SA-6aI" firstAttribute="centerY" secondItem="fR2-Gf-kY2" secondAttribute="centerY" multiplier="0.9" id="ILx-Q5-VDE"/>
+                            <constraint firstItem="gF5-SA-6aI" firstAttribute="centerX" secondItem="fR2-Gf-kY2" secondAttribute="centerX" id="IyF-PJ-sUl"/>
+                            <constraint firstItem="qmS-fy-bxE" firstAttribute="centerX" secondItem="eVT-DR-PSd" secondAttribute="centerX" id="Jn9-rT-bnM"/>
+                            <constraint firstItem="qmS-fy-bxE" firstAttribute="top" secondItem="eVT-DR-PSd" secondAttribute="bottom" constant="25" id="Xh3-Zb-hUa"/>
+                            <constraint firstItem="eVT-DR-PSd" firstAttribute="centerX" secondItem="fR2-Gf-kY2" secondAttribute="centerX" id="eMM-rT-TfJ"/>
+                            <constraint firstItem="gF5-SA-6aI" firstAttribute="height" secondItem="5za-rW-9pp" secondAttribute="height" multiplier="0.5" id="nOR-fN-HGg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ivInfo" destination="HXe-vP-W6U" id="fX2-Cu-f1h"/>
+                        <outlet property="scrollV" destination="gF5-SA-6aI" id="iK8-bG-mxl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pLr-jA-bWE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3012" y="729"/>
+        </scene>
         <!--Cart-->
         <scene sceneID="teR-zv-8Eu">
             <objects>
@@ -4019,7 +4104,9 @@ support@coldmanfresh.in</string>
         <image name="Cart" width="25" height="25"/>
         <image name="Explore" width="30" height="30"/>
         <image name="Settings" width="30" height="30"/>
+        <image name="alert" width="1045" height="698"/>
         <image name="arrow-left" width="25" height="19"/>
+        <image name="checked-checkbox" width="30" height="30"/>
         <image name="checkmark-white" width="26" height="26"/>
         <image name="customer" width="50" height="50"/>
         <image name="home-pin" width="50" height="50"/>
@@ -4032,6 +4119,7 @@ support@coldmanfresh.in</string>
         <image name="shopping-cart" width="50" height="50"/>
         <image name="sort-down" width="20" height="20"/>
         <image name="truck" width="24" height="24"/>
+        <image name="unchecked-checkbox" width="30" height="30"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

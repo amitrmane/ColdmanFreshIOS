@@ -25,7 +25,19 @@ class HomeVC: SuperViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.getSliderImages()
+        
+        if let _ = Utilities.getValueForKeyFromUserDefaults("isAlertConfirmed") {
+            self.getSliderImages()
+        }else {
+            self.getSliderImages()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let messageVC = mainStoryboard.instantiateViewController(withIdentifier: "WelcomeAlertVC") as! WelcomeAlertVC
+                messageVC.closeCallBack = {
+                    self.getSliderImages()
+                }
+                self.present(messageVC, animated: true, completion: nil)
+            }
+        }
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
         self.cvCategories.addSubview(refreshControl)
