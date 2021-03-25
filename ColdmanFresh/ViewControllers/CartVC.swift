@@ -33,6 +33,7 @@ class CartVC: SuperViewController {
     @IBOutlet weak var viewAddress: UIView!
     @IBOutlet weak var btnAddress: UIButton!
     @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var viewAddressHeight: NSLayoutConstraint!
 
     @IBOutlet weak var btnProceedCheckout: UIButton!
     @IBOutlet weak var btnBack: UIButton!
@@ -53,13 +54,20 @@ class CartVC: SuperViewController {
         DispatchQueue.main.async {
             self.refreshData()
         }
-        if let addrs = self.currentAddress {
-            self.lblAddress.text = addrs.address
-        }else {
-            getUserAdresses()
-        }
         if let user = Utilities.getCurrentUser() {
             self.user = user
+            if user.customer_type == "2" {
+                self.viewAddress.isHidden = false
+                self.viewAddressHeight.constant = 55
+                if let addrs = self.currentAddress {
+                    self.lblAddress.text = addrs.address
+                }else {
+                    getUserAdresses()
+                }
+            }else {
+                self.viewAddress.isHidden = true
+                self.viewAddressHeight.constant = 0
+            }
         }
     }
     
@@ -97,9 +105,11 @@ class CartVC: SuperViewController {
     }
         
     @IBAction func checkOutTapped(_ sender: UIButton) {
-        guard let _ = self.currentAddress else {
-            self.showAlert("Select address")
-            return
+        if self.user.customer_type == "2" {
+            guard let _ = self.currentAddress else {
+                self.showAlert("Select address")
+                return
+            }
         }
         let summaryvc = mainStoryboard.instantiateViewController(withIdentifier: "CheckoutVC") as! CheckoutVC
         summaryvc.user = user

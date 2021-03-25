@@ -635,6 +635,7 @@ extension Date {
         case createEvent = "EEEE, dd MMM, yyyy hh:mm a"
         case currentDay = "EEEE"
         case yyyyMMdd = "yyyy-MM-dd"
+        case ddMMyyyydash = "dd-MM-yyyy"
         case HHmmss = "HH:mm:ss"
         case yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss"
         case yyyyMMddTHHmmss = "yyyy-MM-dd'T'HH:mm:ss"

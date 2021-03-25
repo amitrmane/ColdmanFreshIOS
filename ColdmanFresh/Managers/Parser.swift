@@ -282,6 +282,8 @@ class UserProfile : Codable {
     var oauth_uid = ""
     var user_device_id = ""
     var organization_id = ""
+    var customer_type = ""
+    var pincode = ""
 
     class func getUserDetails(dict: [String: JSON]) -> UserProfile? {
         let user = UserProfile()
@@ -324,6 +326,15 @@ class UserProfile : Codable {
         }
         if let value = dict["birthdate"]?.string {
             user.birthdate = value
+        }
+        if let value = dict["pincode"]?.string {
+            user.pincode = value
+        }
+        if let value = dict["organization_id"]?.string {
+            user.organization_id = value
+        }
+        if let value = dict["customer_type"]?.string {
+            user.customer_type = value
         }
         if let value = dict["created_at"]?.string {
             user.created_at = value
@@ -722,6 +733,41 @@ class Organization {
             }
             if let value = dict["organization_created_at"].string {
                 data.organization_created_at = value
+            }
+            dataArr.append(data)
+        }
+        
+        return dataArr
+    }
+    
+}
+
+class Pincode {
+    var pincodeId = ""
+    var pincode = ""
+    var area = ""
+    var status = ""
+    var charges = ""
+
+    class func getData(array: [JSON]) -> [Pincode] {
+        var dataArr = [Pincode]()
+        
+        for dict in array {
+            let data = Pincode()
+            if let value = dict["pincodeId"].string {
+                data.pincodeId = value
+            }
+            if let value = dict["pincode"].string {
+                data.pincode = value
+            }
+            if let value = dict["area"].string {
+                data.area = value
+            }
+            if let value = dict["status"].string {
+                data.status = value
+            }
+            if let value = dict["charges"].string {
+                data.charges = value
             }
             dataArr.append(data)
         }

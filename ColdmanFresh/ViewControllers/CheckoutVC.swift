@@ -19,10 +19,12 @@ class CheckoutVC: SuperViewController {
 
     @IBOutlet weak var viewAddress: UIView!
     @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var viewAddressHeight: NSLayoutConstraint!
 
     @IBOutlet weak var btnPayOnline: UIButton!
     @IBOutlet weak var btnBack: UIButton!
     
+    @IBOutlet weak var viewSelection: UIView!
     @IBOutlet weak var tfGate: UITextField!
     @IBOutlet weak var tfDate: UITextField!
     @IBOutlet weak var tfTimeslot: UITextField!
@@ -49,6 +51,24 @@ class CheckoutVC: SuperViewController {
         self.selectedDate = Date()
         self.getGateList()
         self.refreshData()
+        if let u = self.user {
+            if u.customer_type == "2" {
+                self.viewAddress.isHidden = false
+                self.viewAddressHeight.constant = 55
+            }else {
+                self.viewAddress.isHidden = true
+                self.viewAddressHeight.constant = 0
+            }
+        }else {
+            self.user = Utilities.getCurrentUser()
+            if let u = self.user, u.customer_type == "2" {
+                self.viewAddress.isHidden = false
+                self.viewAddressHeight.constant = 55
+            }else {
+                self.viewAddress.isHidden = true
+                self.viewAddressHeight.constant = 0
+            }
+        }
     }
     
     @IBAction func backTapped(_ sender: UIButton) {
@@ -56,17 +76,19 @@ class CheckoutVC: SuperViewController {
     }
     
     @IBAction func payOnlineTapped(_ sender: UIButton) {
-        guard let _ = self.selectedGate else {
-            self.showAlert("Select gate")
-            return
-        }
-        guard let _ = self.selectedDate else {
-            self.showAlert("Select date")
-            return
-        }
-        guard let _ = self.selectedTimeslot else {
-            self.showAlert("Select time slot")
-            return
+        if let u = self.user, u.customer_type != "2" {
+            guard let _ = self.selectedGate else {
+                self.showAlert("Select gate")
+                return
+            }
+            guard let _ = self.selectedDate else {
+                self.showAlert("Select date")
+                return
+            }
+            guard let _ = self.selectedTimeslot else {
+                self.showAlert("Select time slot")
+                return
+            }
         }
         self.showPaymentForm()
     }
@@ -334,10 +356,26 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
         params["transaction_id"] = paymentId
         params["discount_amount"] = offerdiscount
         params["coupon"] = self.selectedOffer == nil ? "" : self.selectedOffer.discount_coupon
-        params["pickuptime"] = self.selectedDate.stringFromDate(Date.DateFormat.yyyyMMddHHmmss)
-        params["gate"] = self.selectedGate.gate_id
-        params["timeslot"] = self.selectedTimeslot.timeslot_name
-        params["delivery_address"] = self.currentAddress.address
+        if self.selectedDate != nil {
+            params["pickuptime"] = self.selectedDate.stringFromDate(Date.DateFormat.yyyyMMddHHmmss)
+        }else {
+            params["pickuptime"] = ""
+        }
+        if self.selectedGate != nil {
+            params["gate"] = self.selectedGate.gate_id
+        }else {
+            params["gate"] = ""
+        }
+        if self.selectedTimeslot != nil {
+            params["timeslot"] = self.selectedTimeslot.timeslot_name
+        }else {
+            params["timeslot"] = ""
+        }
+        if self.user.customer_type == "2" && self.currentAddress != nil {
+            params["delivery_address"] = self.currentAddress.address
+        }else {
+            params["delivery_address"] = ""
+        }
 
         print(params)
         

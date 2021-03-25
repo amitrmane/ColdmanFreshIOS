@@ -49,6 +49,7 @@ class Constants {
         static let save_order = "save-order"
         static let menus = "menus"
         static let coupons = "coupons"
+        static let pincode = "pincode"
     }
   
     struct WebLinks {

@@ -21,6 +21,8 @@ class SignUpVC: SuperViewController {
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var ivLogo: UIImageView!
     @IBOutlet weak var tfPromoCode: UITextField!
+    @IBOutlet weak var btnCorporate: UIButton!
+    @IBOutlet weak var btnHomeDelivery: UIButton!
 
     var delegate : LoginSuccessProtocol!
     var mobileNo = ""
@@ -28,6 +30,8 @@ class SignUpVC: SuperViewController {
     var organizations = [Organization]()
     var selectedOrganization : Organization!
     var selectedDate : Date!
+    var pincodes = [Pincode]()
+    var selectedPincode : Pincode!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +53,35 @@ class SignUpVC: SuperViewController {
             }else if let date = Date().dateFromString(Date.DateFormat.ddMMyyyy.rawValue, dateString: u.birthdate) {
                 self.selectedDate = date
             }
-            if let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
-                self.tfPromoCode.text = org.organization_name
+            if u.customer_type == "2" {
+                self.btnCorporate.isSelected = false
+                self.btnHomeDelivery.isSelected = true
+                if let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
+                    self.tfPromoCode.text = pin.pincode
+                    self.selectedPincode = pin
+                }else if let pin = self.pincodes.filter({ $0.pincodeId == u.organization_id }).first {
+                    self.tfPromoCode.text = pin.pincode
+                    self.selectedPincode = pin
+                }else if let pin = self.pincodes.first {
+                    self.selectedPincode = pin
+                    self.tfPromoCode.text = pin.pincode
+                }
+            }else {
+                self.btnCorporate.isSelected = true
+                self.btnHomeDelivery.isSelected = false
+                if let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
+                    self.tfPromoCode.text = org.organization_name
+                    self.selectedOrganization = org
+                }else if let org = self.organizations.first {
+                    self.selectedOrganization = org
+                    self.tfPromoCode.text = org.organization_name
+                }
             }
             self.btnLogin.setTitle("Back to settings", for: .normal)
             self.btnSignUp.setTitle("Save", for: .normal)
+        }else {
+            self.btnCorporate.isSelected = true
+            self.btnHomeDelivery.isSelected = false
         }
     }
 
@@ -62,6 +90,31 @@ class SignUpVC: SuperViewController {
             
         })
 
+    }
+    
+    @IBAction func corporateTapped(_ sender: UIButton) {
+        updateRadioButtonSelection()
+    }
+    
+    @IBAction func homeDeliveryTapped(_ sender: UIButton) {
+        updateRadioButtonSelection()
+    }
+    
+    func updateRadioButtonSelection() {
+        self.btnCorporate.isSelected = !btnCorporate.isSelected
+        self.btnHomeDelivery.isSelected = !btnHomeDelivery.isSelected
+        
+        if btnCorporate.isSelected {
+            if let org = self.organizations.first {
+                self.selectedOrganization = org
+                self.tfPromoCode.text = org.organization_name
+            }
+        }else {
+            if let pin = self.pincodes.first {
+                self.selectedPincode = pin
+                self.tfPromoCode.text = pin.pincode
+            }
+        }
     }
     
     @IBAction func termsTapped(_ sender: UIButton) {
@@ -78,10 +131,6 @@ class SignUpVC: SuperViewController {
 
     @IBAction func signUpTapped(_ sender: UIButton) {
         self.view.endEditing(true)
-        guard let org = self.selectedOrganization else {
-            self.showAlert("Select promo code")
-            return
-        }
         
         guard let name = self.tfName.text, name != "" else {
             self.showAlert("Enter name")
@@ -116,9 +165,11 @@ class SignUpVC: SuperViewController {
             params["user_id"] = "\(u.id)"
             params["fname"] = fname
             params["lname"] = lname
-            params["birthdate"] = self.tfBirthDate.text
+            params["birthdate"] = self.selectedDate == nil ? "" : self.selectedDate.stringFromDate(.ddMMyyyydash)
             params["mobileno"] = mob
-            params["organization_id"] = org.organization_id
+            params["customer_type"] = self.btnCorporate.isSelected ? "1" : "2"
+            params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
+            params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
 
             self.showActivityIndicator()
             
@@ -131,7 +182,8 @@ class SignUpVC: SuperViewController {
                     user.mobileno = mob
                     user.email = email
                     user.birthdate = self.tfBirthDate.text ?? ""
-                    user.organization_id = org.organization_id
+                    user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
+                    user.customer_type = self.btnCorporate.isSelected ? "1" : "2"
                     user.id = u.id
                     user.user_id = u.user_id
                     let defaults = UserDefaults.standard
@@ -153,11 +205,6 @@ class SignUpVC: SuperViewController {
         }else {
             
             var params = [String: Any]()
-//            params["email"] = email
-//            params["password"] = "12345"
-//            params["name"] = name
-//            params["role"] = "User"
-//            params["mobileNumber"] = mob
             var fname = ""
             var lname = ""
             let separr = name.components(separatedBy: " ")
@@ -170,10 +217,12 @@ class SignUpVC: SuperViewController {
             params["password"] = "12345"
             params["fname"] = fname
             params["lname"] = lname
-            params["birthdate"] = self.tfBirthDate.text
+            params["birthdate"] = self.selectedDate == nil ? "" : self.selectedDate.stringFromDate(.ddMMyyyydash)
             params["mobileno"] = mob
-            params["organization_id"] = org.organization_id
-            
+            params["customer_type"] = self.btnCorporate.isSelected ? "1" : "2"
+            params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
+            params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
+
             self.showActivityIndicator()
             
             ApiManager.signUp(params: params) { (json) in
@@ -184,7 +233,7 @@ class SignUpVC: SuperViewController {
                     ApiManager.verifyOTP(mobNo: mob) { (json) in
                         self.hideActivityIndicator()
                         if let dict = json?.dictionary {
-                            if let user = UserProfile.getUserDetails(dict: dict) {
+                            if let userdict = dict["userdetails"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
                                 self.delegate.loginSuccess(profile: user)
                                 self.dismiss(animated: true, completion: {
                                     
@@ -197,7 +246,8 @@ class SignUpVC: SuperViewController {
                                 user.mobileno = mob
                                 user.email = email
                                 user.birthdate = self.tfBirthDate.text ?? ""
-                                user.organization_id = org.organization_id
+                                user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
+                                user.customer_type = self.btnCorporate.isSelected ? "1" : "2"
                                 let defaults = UserDefaults.standard
                                 
                                 // Use PropertyListEncoder to convert Player into Data / NSData
@@ -240,22 +290,35 @@ class SignUpVC: SuperViewController {
         // The view to which the drop down will appear on
         dropDown.anchorView = textField // UIView or UIBarButtonItem
 
-        // The list of items to display. Can be changed dynamically
-        dropDown.dataSource = self.organizations.map { $0.organization_name }
-        
-        // Action triggered on selection
-        dropDown.selectionAction = { [weak self] (index, item) in
-            let org = self?.organizations[index]
-            self?.selectedOrganization = org
-            textField.text = org?.organization_name
-        }
-        
         // Top of drop down will be below the anchorView
         dropDown.bottomOffset = CGPoint(x: 0, y:(textField.bounds.height))
 
         dropDown.dismissMode = .automatic
         dropDown.direction = .any
         
+        if self.btnCorporate.isSelected {
+            // The list of items to display. Can be changed dynamically
+            dropDown.dataSource = self.organizations.map { $0.organization_name }
+            
+            // Action triggered on selection
+            dropDown.selectionAction = { [weak self] (index, item) in
+                let org = self?.organizations[index]
+                self?.selectedOrganization = org
+                textField.text = org?.organization_name
+            }
+        }else {
+            // The list of items to display. Can be changed dynamically
+            dropDown.dataSource = self.pincodes.map { $0.pincode }
+            
+            // Action triggered on selection
+            dropDown.selectionAction = { [weak self] (index, item) in
+                let org = self?.pincodes[index]
+                self?.selectedPincode = org
+                textField.text = org?.pincode
+            }
+
+        }
+
         dropDown.show()
     }
 
@@ -298,9 +361,40 @@ extension SignUpVC {
             
             if let array = json?.array {
                 self.organizations = Organization.getData(array: array)
-                if let u = self.user, let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
+                if let u = self.user, u.customer_type == "1", let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
                     self.selectedOrganization = org
                     self.tfPromoCode.text = org.organization_name
+                }else if let org = self.organizations.first {
+                    self.selectedOrganization = org
+                    self.tfPromoCode.text = org.organization_name
+                }
+                self.getPincodeList()
+            }else {
+                self.showError(message: "Failed, please try again")
+            }
+        }
+        
+    }
+
+    func getPincodeList() {
+        
+        guard ApiManager.checkuser_online() else {
+            return
+        }
+        
+        self.showActivityIndicator()
+                
+        ApiManager.getPincodeList() { (json) in
+            self.hideActivityIndicator()
+            
+            if let array = json?.array {
+                self.pincodes = Pincode.getData(array: array).filter({ $0.status == "1" })
+                if let u = self.user, let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
+                    self.selectedPincode = pin
+                    self.tfPromoCode.text = pin.pincode
+                }else if let u = self.user, let pin = self.pincodes.filter({ $0.pincodeId == u.organization_id }).first {
+                    self.tfPromoCode.text = pin.pincode
+                    self.selectedPincode = pin
                 }
             }else {
                 self.showError(message: "Failed, please try again")
