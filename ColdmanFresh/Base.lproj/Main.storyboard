@@ -1290,7 +1290,7 @@ support@coldmanfresh.in</string>
                                                 <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showRightView" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="sort-down"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="down_arrow"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
@@ -1783,44 +1783,44 @@ support@coldmanfresh.in</string>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrJ-zO-Cuz">
-                                                    <rect key="frame" x="5" y="34" width="182" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Charges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrJ-zO-Cuz">
+                                                    <rect key="frame" x="5" y="39" width="182" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-W1-Lby">
-                                                    <rect key="frame" x="197" y="34" width="157" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-W1-Lby">
+                                                    <rect key="frame" x="197" y="39" width="157" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promo Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rax-V0-TF0">
-                                                    <rect key="frame" x="5" y="50" width="182" height="16"/>
+                                                    <rect key="frame" x="5" y="71" width="182" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- ₹ 0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pv-tA-8wl">
-                                                    <rect key="frame" x="197" y="50" width="157" height="16"/>
+                                                    <rect key="frame" x="197" y="71" width="157" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grand Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3q6-uj-y7V">
-                                                    <rect key="frame" x="5" y="98" width="182" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <rect key="frame" x="5" y="119" width="182" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 115.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgY-hH-Jnc">
-                                                    <rect key="frame" x="197" y="98" width="157" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <rect key="frame" x="197" y="119" width="157" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVk-JB-9JU">
-                                                    <rect key="frame" x="5" y="81" width="349" height="1"/>
+                                                    <rect key="frame" x="5" y="102" width="349" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="6J2-oZ-mQt"/>
@@ -1857,7 +1857,7 @@ support@coldmanfresh.in</string>
                                                 <constraint firstItem="3q6-uj-y7V" firstAttribute="top" secondItem="oVk-JB-9JU" secondAttribute="bottom" constant="16" id="cys-rP-vvB"/>
                                                 <constraint firstItem="oVk-JB-9JU" firstAttribute="trailing" secondItem="2Pv-tA-8wl" secondAttribute="trailing" id="eLw-g7-YxA"/>
                                                 <constraint firstItem="2Pv-tA-8wl" firstAttribute="trailing" secondItem="ZAd-W1-Lby" secondAttribute="trailing" id="eQl-bs-UMo"/>
-                                                <constraint firstItem="LrJ-zO-Cuz" firstAttribute="top" secondItem="acx-nx-LcP" secondAttribute="bottom" id="hX9-FN-xzD"/>
+                                                <constraint firstItem="LrJ-zO-Cuz" firstAttribute="top" secondItem="acx-nx-LcP" secondAttribute="bottom" constant="5" id="hX9-FN-xzD"/>
                                                 <constraint firstItem="Gk3-0W-tCP" firstAttribute="top" secondItem="a8b-cW-Iqy" secondAttribute="top" constant="10" id="lJx-5D-Saz"/>
                                                 <constraint firstItem="ZAd-W1-Lby" firstAttribute="centerY" secondItem="LrJ-zO-Cuz" secondAttribute="centerY" id="nqu-j8-rR0"/>
                                                 <constraint firstItem="2Pv-tA-8wl" firstAttribute="centerY" secondItem="Rax-V0-TF0" secondAttribute="centerY" id="p5I-Mt-qVh"/>
@@ -2175,7 +2175,7 @@ support@coldmanfresh.in</string>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tje-eg-a8Y" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="76" width="384" height="129"/>
+                                            <rect key="frame" x="15" y="76" width="384" height="150"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myG-fT-jG2">
                                                     <rect key="frame" x="5" y="10" width="192" height="16"/>
@@ -2201,44 +2201,44 @@ support@coldmanfresh.in</string>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-BK-9dK">
-                                                    <rect key="frame" x="5" y="34" width="192" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Charges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-BK-9dK">
+                                                    <rect key="frame" x="5" y="39" width="192" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKs-am-8ag">
-                                                    <rect key="frame" x="207" y="34" width="167" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKs-am-8ag">
+                                                    <rect key="frame" x="207" y="39" width="167" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promo Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaB-Ws-Vih">
-                                                    <rect key="frame" x="5" y="50" width="192" height="16"/>
+                                                    <rect key="frame" x="5" y="71" width="192" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- ₹ 0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlM-L6-llN">
-                                                    <rect key="frame" x="207" y="50" width="167" height="16"/>
+                                                    <rect key="frame" x="207" y="71" width="167" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grand Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFq-IF-Kxr">
-                                                    <rect key="frame" x="5" y="98" width="192" height="16"/>
+                                                    <rect key="frame" x="5" y="119" width="192" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 115.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6E-49-8cb">
-                                                    <rect key="frame" x="207" y="98" width="167" height="16"/>
+                                                    <rect key="frame" x="207" y="119" width="167" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTd-q5-L45">
-                                                    <rect key="frame" x="5" y="81" width="369" height="1"/>
+                                                    <rect key="frame" x="5" y="102" width="369" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="PtO-1x-cET"/>
@@ -2270,7 +2270,7 @@ support@coldmanfresh.in</string>
                                                 <constraint firstItem="LlM-L6-llN" firstAttribute="trailing" secondItem="iKs-am-8ag" secondAttribute="trailing" id="aIG-pC-2jk"/>
                                                 <constraint firstItem="O6E-49-8cb" firstAttribute="leading" secondItem="dFq-IF-Kxr" secondAttribute="trailing" constant="10" id="bHy-Df-NmI"/>
                                                 <constraint firstItem="mvA-BK-9dK" firstAttribute="width" secondItem="s0s-TN-pHJ" secondAttribute="width" id="dRC-zo-9wC"/>
-                                                <constraint firstItem="mvA-BK-9dK" firstAttribute="top" secondItem="s0s-TN-pHJ" secondAttribute="bottom" id="eBz-jx-zui"/>
+                                                <constraint firstItem="mvA-BK-9dK" firstAttribute="top" secondItem="s0s-TN-pHJ" secondAttribute="bottom" constant="5" id="eBz-jx-zui"/>
                                                 <constraint firstItem="vlb-af-jRd" firstAttribute="leading" secondItem="myG-fT-jG2" secondAttribute="trailing" constant="10" id="heJ-8h-mYH"/>
                                                 <constraint firstItem="O6E-49-8cb" firstAttribute="trailing" secondItem="LlM-L6-llN" secondAttribute="trailing" id="i2q-YN-tWe"/>
                                                 <constraint firstItem="iKs-am-8ag" firstAttribute="trailing" secondItem="fmc-Q1-dxF" secondAttribute="trailing" id="jPz-EG-zLR"/>
@@ -2287,7 +2287,7 @@ support@coldmanfresh.in</string>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gea-Fd-Jsq">
-                                            <rect key="frame" x="15" y="220" width="384" height="270"/>
+                                            <rect key="frame" x="15" y="241" width="384" height="249"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gate " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Woo-nn-Va6">
                                                     <rect key="frame" x="5" y="10" width="374" height="16"/>
@@ -2540,6 +2540,7 @@ support@coldmanfresh.in</string>
                         <outlet property="btnPayOnline" destination="sME-HN-Tdw" id="fB8-6c-M7N"/>
                         <outlet property="lblAddress" destination="X9O-LC-FAt" id="eXW-f7-reW"/>
                         <outlet property="lblCartTotal" destination="vlb-af-jRd" id="Ycd-Mk-C7k"/>
+                        <outlet property="lblDelivery" destination="iKs-am-8ag" id="rZ6-7J-bA5"/>
                         <outlet property="lblPromoDiscount" destination="LlM-L6-llN" id="beO-Br-TYd"/>
                         <outlet property="lblSubTotal" destination="O6E-49-8cb" id="BuD-uF-srx"/>
                         <outlet property="tblMenu" destination="qdp-6X-v21" id="DjE-dP-SkY"/>
@@ -3080,35 +3081,35 @@ support@coldmanfresh.in</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8j-cv-7eS">
-                                <rect key="frame" x="153" y="71" width="108" height="21"/>
+                                <rect key="frame" x="153" y="71" width="108" height="21.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IV5-lP-YUn">
-                                <rect key="frame" x="0.0" y="102" width="414" height="0.0"/>
+                                <rect key="frame" x="0.0" y="92.5" width="414" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="FwQ-fb-Ygo"/>
                                 </constraints>
                             </mapView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-pin" translatesAutoresizingMaskIntoConstraints="NO" id="btS-JH-qPr">
-                                <rect key="frame" x="207" y="102" width="0.0" height="0.0"/>
+                                <rect key="frame" x="207" y="92.5" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="2E9-dR-Iiz"/>
                                     <constraint firstAttribute="height" id="obZ-IE-ptc"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzz-xK-nAD" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                <rect key="frame" x="20" y="112" width="374" height="745"/>
+                                <rect key="frame" x="20" y="92.5" width="374" height="764.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CX-hy-D5O">
-                                        <rect key="frame" x="10" y="10" width="354" height="0.0"/>
+                                        <rect key="frame" x="10" y="0.0" width="354" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Title*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VVM-O0-pQe" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="25" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="15" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="93t-uY-S0E"/>
@@ -3120,7 +3121,7 @@ support@coldmanfresh.in</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter First Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MsE-Pv-fBc" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="80" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="70" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Vdn-A7-iVj"/>
@@ -3132,7 +3133,7 @@ support@coldmanfresh.in</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Last Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kY-Ov-EyA" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="135" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="125" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="kDD-eY-jLM"/>
@@ -3144,7 +3145,7 @@ support@coldmanfresh.in</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="El7-b1-K0X" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="190" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="180" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ezu-Kn-lB6"/>
@@ -3156,7 +3157,7 @@ support@coldmanfresh.in</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Mobile Number*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EjH-vu-Z5M" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="245" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="235" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="IEu-Zh-Pi0"/>
@@ -3168,7 +3169,7 @@ support@coldmanfresh.in</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Address*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ya-OW-0aL" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="300" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="290" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="MZF-HY-UbB"/>
@@ -3180,7 +3181,7 @@ support@coldmanfresh.in</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Door/flat No*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQ3-x0-XS6" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="355" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="345" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="GGt-u3-4xm"/>
@@ -3192,7 +3193,7 @@ support@coldmanfresh.in</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Landmark*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUl-KB-nTJ" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="410" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="400" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="o9R-UO-4l7"/>
@@ -3203,20 +3204,40 @@ support@coldmanfresh.in</string>
                                             <outlet property="delegate" destination="xf3-z4-xDf" id="R28-zS-zEJ"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Pincode*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8rL-tN-cMv" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="465" width="334" height="40"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Pincode*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8rL-tN-cMv" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="455" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Rmj-HQ-pAb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAddPadding" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColour">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showRightView" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="down_arrow"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="xf3-z4-xDf" id="HfN-ad-C0K"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter City*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Bv-bH-EEV" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="520" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="510" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Ikx-5B-lMy"/>
@@ -3228,7 +3249,7 @@ support@coldmanfresh.in</string>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9b-wp-oJD" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="575" width="334" height="40"/>
+                                        <rect key="frame" x="20" y="565" width="334" height="40"/>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="O4p-y2-xzh"/>
@@ -3267,7 +3288,7 @@ support@coldmanfresh.in</string>
                                     <constraint firstItem="pQ3-x0-XS6" firstAttribute="trailing" secondItem="OUl-KB-nTJ" secondAttribute="trailing" id="ZCn-Ef-MPh"/>
                                     <constraint firstItem="N9b-wp-oJD" firstAttribute="trailing" secondItem="5ya-OW-0aL" secondAttribute="trailing" id="ZUw-R7-fr8"/>
                                     <constraint firstAttribute="trailing" secondItem="5ya-OW-0aL" secondAttribute="trailing" constant="20" id="cs7-RG-isd"/>
-                                    <constraint firstItem="0CX-hy-D5O" firstAttribute="top" secondItem="uzz-xK-nAD" secondAttribute="top" constant="10" id="dMp-4O-SWu"/>
+                                    <constraint firstItem="0CX-hy-D5O" firstAttribute="top" secondItem="uzz-xK-nAD" secondAttribute="top" id="dMp-4O-SWu"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="N9b-wp-oJD" secondAttribute="bottom" constant="10" id="gfi-Fp-VK6"/>
                                     <constraint firstItem="8rL-tN-cMv" firstAttribute="leading" secondItem="9Bv-bH-EEV" secondAttribute="leading" id="h8A-Dp-WMZ"/>
                                     <constraint firstItem="pQ3-x0-XS6" firstAttribute="leading" secondItem="OUl-KB-nTJ" secondAttribute="leading" id="hRE-Sj-IJ9"/>
@@ -3308,11 +3329,11 @@ support@coldmanfresh.in</string>
                             <constraint firstItem="n7F-Go-o4b" firstAttribute="bottom" secondItem="uzz-xK-nAD" secondAttribute="bottom" constant="5" id="P87-lC-qXL"/>
                             <constraint firstItem="Kqv-Sh-MZE" firstAttribute="leading" secondItem="n7F-Go-o4b" secondAttribute="leading" constant="20" id="Pdk-Gl-xqb"/>
                             <constraint firstItem="btS-JH-qPr" firstAttribute="centerX" secondItem="IV5-lP-YUn" secondAttribute="centerX" id="SaS-dQ-KSG"/>
-                            <constraint firstItem="IV5-lP-YUn" firstAttribute="top" secondItem="W8j-cv-7eS" secondAttribute="bottom" constant="10" id="Utk-wn-BmY"/>
+                            <constraint firstItem="IV5-lP-YUn" firstAttribute="top" secondItem="W8j-cv-7eS" secondAttribute="bottom" id="Utk-wn-BmY"/>
                             <constraint firstItem="n7F-Go-o4b" firstAttribute="trailing" secondItem="IV5-lP-YUn" secondAttribute="trailing" id="Xzh-BL-EdC"/>
                             <constraint firstItem="btS-JH-qPr" firstAttribute="centerY" secondItem="IV5-lP-YUn" secondAttribute="centerY" id="Z1f-FY-Rbg"/>
                             <constraint firstItem="W8j-cv-7eS" firstAttribute="centerY" secondItem="Kqv-Sh-MZE" secondAttribute="centerY" id="Zz0-c1-x4Z"/>
-                            <constraint firstItem="uzz-xK-nAD" firstAttribute="top" secondItem="IV5-lP-YUn" secondAttribute="bottom" constant="10" id="chB-wc-Kb2"/>
+                            <constraint firstItem="uzz-xK-nAD" firstAttribute="top" secondItem="IV5-lP-YUn" secondAttribute="bottom" id="chB-wc-Kb2"/>
                             <constraint firstItem="Kqv-Sh-MZE" firstAttribute="top" secondItem="n7F-Go-o4b" secondAttribute="top" constant="20" id="nYQ-Bb-F9n"/>
                             <constraint firstItem="IV5-lP-YUn" firstAttribute="leading" secondItem="n7F-Go-o4b" secondAttribute="leading" id="swu-nk-OtW"/>
                             <constraint firstItem="uzz-xK-nAD" firstAttribute="leading" secondItem="n7F-Go-o4b" secondAttribute="leading" constant="20" id="xsj-ct-RvJ"/>
@@ -4142,6 +4163,7 @@ support@coldmanfresh.in</string>
         <image name="checked-checkbox" width="30" height="30"/>
         <image name="checkmark-white" width="26" height="26"/>
         <image name="customer" width="50" height="50"/>
+        <image name="down_arrow" width="28" height="28"/>
         <image name="home-pin" width="50" height="50"/>
         <image name="image-placeholder" width="512" height="512"/>
         <image name="logofull" width="1024" height="1024"/>

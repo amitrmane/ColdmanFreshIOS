@@ -45,28 +45,36 @@ class CartVC: SuperViewController {
     var allAddress = [Address]()
     var currentAddress : Address!
     var selectedOffer : Offers!
+    var organizations = [Organization]()
+    var selectedOrganization : Organization!
+    var pincodes = [Pincode]()
+    var selectedPincode : Pincode!
+    var charges = "0"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.getTaxes()
         DispatchQueue.main.async {
             self.refreshData()
         }
         if let user = Utilities.getCurrentUser() {
             self.user = user
             if user.customer_type == "2" {
-                self.viewAddress.isHidden = false
-                self.viewAddressHeight.constant = 55
-                if let addrs = self.currentAddress {
-                    self.lblAddress.text = addrs.address
-                }else {
-                    getUserAdresses()
+                if let pin = Utilities.getCurrentUserTypeDetails() as? Pincode {
+                    self.selectedPincode = pin
+                    self.lblAddress.text = "Please select address"
                 }
+                getUserAdresses()
+                self.btnAddress.isHidden = false
             }else {
-                self.viewAddress.isHidden = true
-                self.viewAddressHeight.constant = 0
+                self.btnAddress.isHidden = true
+                if let org = Utilities.getCurrentUserTypeDetails() as? Organization {
+                    self.selectedOrganization = org
+                    self.lblAddress.text = org.address
+                }else {
+                    self.getOrganizationList()
+                }
             }
         }
     }
@@ -116,6 +124,11 @@ class CartVC: SuperViewController {
         summaryvc.addedMenus = self.addedMenus
         summaryvc.currentAddress = self.currentAddress
         summaryvc.selectedOffer = self.selectedOffer
+        summaryvc.organizations = self.organizations
+        summaryvc.selectedOrganization = self.selectedOrganization
+        summaryvc.pincodes = self.pincodes
+        summaryvc.selectedPincode = self.selectedPincode
+        summaryvc.charges = self.charges
         self.navigationController?.pushViewController(summaryvc, animated: true)
     }
     
@@ -216,11 +229,7 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func refreshData() {
-        
-        if let addrs = self.currentAddress {
-            self.lblAddress.text = addrs.address
-        }
-        
+                
         let cartValues = self.addedMenus.map({ $0.displayPrice })
         let val = cartValues.reduce(0, +)
         self.lblCartTotal.text = "₹ \(String(format: "%.2f", val))"
@@ -232,7 +241,29 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
         }else {
             self.lblPromoDiscount.text = "- ₹ 0.00"
         }
-        let total = (val) - (offerdiscount)
+        
+        var charge = 0.0
+        if let u = self.user, u.customer_type == "2", let addrs = self.currentAddress {
+            self.lblAddress.text = addrs.address
+            if let pin = self.pincodes.filter({ $0.pincode == addrs.pincode }).first {
+                self.selectedPincode = pin
+                self.charges = pin.charges
+                charge = self.charges.toDouble() ?? 0.0
+                self.lblDelivery.text = "₹ \(String(format: "%.2f", charge))"
+            }else if let pin = self.selectedPincode, pin.pincode == addrs.pincode {
+                self.selectedPincode = pin
+                self.charges = pin.charges
+                charge = self.charges.toDouble() ?? 0.0
+                self.lblDelivery.text = "₹ \(String(format: "%.2f", charge))"
+            }else if let pin = self.selectedPincode {
+                self.selectedPincode = pin
+                self.charges = pin.charges
+                charge = self.charges.toDouble() ?? 0.0
+                self.lblDelivery.text = "₹ \(String(format: "%.2f", charge))"
+            }
+        }
+        
+        let total = (val + charge) - (offerdiscount)
         
         self.lblSubTotal.text = "₹ \(String(format: "%.2f", total))"
         
@@ -291,30 +322,31 @@ extension CartVC {
         }*/
     }
     
-    func getTaxes() {
-        /*guard ApiManager.checkuser_online() else {
+    func getOrganizationList() {
+        
+        guard ApiManager.checkuser_online() else {
             return
         }
         
         self.showActivityIndicator()
-        self.tblMenu.reloadData()
-        ApiManager.getTax() { (json, success, error) in
+                
+        ApiManager.getOrganizationList() { (json) in
             self.hideActivityIndicator()
-            if success {
-                if let dict = json?.dictionary {
-                    if dict["status"]?.number == 200 {
-                        if let arr = dict["list"]?.array {
-                            self.allTaxes = Tax.getAllTaxes(array: arr)
-                        }
-                    }
+            
+            if let array = json?.array {
+                self.organizations = Organization.getData(array: array)
+                if let u = self.user, u.customer_type == "1", let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
+                    self.selectedOrganization = org
+                    
+                    self.lblAddress.text = org.organization_name
                 }
-                self.refreshData()
             }else {
-                self.showAlert(error.rawValue)
+                self.showError(message: "Failed, please try again")
             }
-        }*/
+        }
+        
     }
-    
+
     func getUserAdresses() {
         
         guard ApiManager.checkuser_online() else {
@@ -329,18 +361,55 @@ extension CartVC {
             if let dict = json?.dictionary,
                let array = dict["address"]?.array {
                 self.allAddress = Address.getAllAddresses(array: array)
-                if let addrs = self.allAddress.filter({ $0.primaryAddress == "1" }).first {
+                if let pin = self.selectedPincode, let addrs = self.allAddress.filter({ $0.pincode == pin.pincode }).first {
+                    self.currentAddress = addrs
+                    self.refreshData()
+                }else if let addrs = self.allAddress.filter({ $0.primaryAddress == "1" }).first {
                     self.currentAddress = addrs
                     self.refreshData()
                 }else if self.allAddress.count == 1, let addrs = self.allAddress.first {
                     self.currentAddress = addrs
                     self.refreshData()
                 }
+                self.refreshData()
             }else {
 //                self.showError(message: "Please ")
+            }
+            self.getPincodeList()
+        }
+        
+    }
+    
+    func getPincodeList() {
+        
+        guard ApiManager.checkuser_online() else {
+            return
+        }
+        
+        self.showActivityIndicator()
+                
+        ApiManager.getPincodeList() { (json) in
+            self.hideActivityIndicator()
+            
+            if let array = json?.array {
+                self.pincodes = Pincode.getData(array: array).filter({ $0.status == "1" })
+                if let pin = self.selectedPincode, let addrs = self.allAddress.filter({ $0.pincode == pin.pincode }).first {
+                    self.currentAddress = addrs
+                    self.refreshData()
+                }else if let addrs = self.allAddress.filter({ $0.primaryAddress == "1" }).first {
+                    self.currentAddress = addrs
+                    self.refreshData()
+                }else if self.allAddress.count == 1, let addrs = self.allAddress.first {
+                    self.currentAddress = addrs
+                    self.refreshData()
+                }
+                self.refreshData()
+            }else {
+                self.showError(message: "Failed, please try again")
             }
         }
         
     }
+
 
 }

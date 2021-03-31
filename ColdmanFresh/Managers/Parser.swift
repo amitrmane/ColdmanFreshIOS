@@ -715,10 +715,11 @@ class Timeslot {
     
 }
 
-class Organization {
+class Organization : Codable {
     var organization_id = ""
     var organization_name = ""
     var organization_created_at = ""
+    var address = ""
 
     class func getData(array: [JSON]) -> [Organization] {
         var dataArr = [Organization]()
@@ -734,6 +735,9 @@ class Organization {
             if let value = dict["organization_created_at"].string {
                 data.organization_created_at = value
             }
+            if let value = dict["address"].string {
+                data.address = value
+            }
             dataArr.append(data)
         }
         
@@ -742,7 +746,7 @@ class Organization {
     
 }
 
-class Pincode {
+class Pincode : Codable {
     var pincodeId = ""
     var pincode = ""
     var area = ""

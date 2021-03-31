@@ -16,6 +16,7 @@ class CheckoutVC: SuperViewController {
     @IBOutlet weak var lblPromoDiscount: UILabel!
     @IBOutlet weak var lblSubTotal: UILabel!
     @IBOutlet weak var viewBaseTax: UIView!
+    @IBOutlet weak var lblDelivery: UILabel!
 
     @IBOutlet weak var viewAddress: UIView!
     @IBOutlet weak var lblAddress: UILabel!
@@ -41,6 +42,11 @@ class CheckoutVC: SuperViewController {
     var selectedGate : Gate!
     var selectedTimeslot : Timeslot!
     var selectedDate : Date!
+    var organizations = [Organization]()
+    var selectedOrganization : Organization!
+    var pincodes = [Pincode]()
+    var selectedPincode : Pincode!
+    var charges = "0"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,24 +57,6 @@ class CheckoutVC: SuperViewController {
         self.selectedDate = Date()
         self.getGateList()
         self.refreshData()
-        if let u = self.user {
-            if u.customer_type == "2" {
-                self.viewAddress.isHidden = false
-                self.viewAddressHeight.constant = 55
-            }else {
-                self.viewAddress.isHidden = true
-                self.viewAddressHeight.constant = 0
-            }
-        }else {
-            self.user = Utilities.getCurrentUser()
-            if let u = self.user, u.customer_type == "2" {
-                self.viewAddress.isHidden = false
-                self.viewAddressHeight.constant = 55
-            }else {
-                self.viewAddress.isHidden = true
-                self.viewAddressHeight.constant = 0
-            }
-        }
     }
     
     @IBAction func backTapped(_ sender: UIButton) {
@@ -142,8 +130,14 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
     
     func refreshData() {
         
-        if let addrs = self.currentAddress {
-            self.lblAddress.text = addrs.address
+        if let u = self.user, u.customer_type == "2" {
+            if let pin = self.selectedPincode, let address = self.currentAddress {
+                self.lblAddress.text = address.address
+            }
+        }else {
+            if let org = self.selectedOrganization {
+                self.lblAddress.text = org.address
+            }
         }
         
         let cartValues = self.addedMenus.map({ $0.displayPrice })
@@ -158,8 +152,13 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
         }else {
             self.lblPromoDiscount.text = "- ₹ 0.00"
         }
-        let total = (val) - (offerdiscount)
         
+        let charge = self.charges.toDouble() ?? 0.0
+
+        self.lblDelivery.text = "₹ \(String(format: "%.2f", charge))"
+        
+        let total = (val + charge) - (offerdiscount)
+
         self.lblSubTotal.text = "₹ \(String(format: "%.2f", total))"
         
         self.tblMenu.reloadData()
@@ -289,7 +288,8 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
         if let offer = self.selectedOffer {
             offerdiscount = offer.userDiscount.toDouble() ?? 0
         }
-        let total = (val) - (offerdiscount)
+        let charge = self.charges.toDouble() ?? 0.0
+        let total = (val + charge) - (offerdiscount)
 
         let options: [String:Any] = [
             "amount": "\(total * 100)", //This is in currency subunits. 100 = 100 paise= INR 1.
@@ -330,8 +330,11 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
         if let offer = self.selectedOffer {
             offerdiscount = offer.userDiscount.toDouble() ?? 0
         }
-        let total = (val) - (offerdiscount)
         
+        let charge = self.charges.toDouble() ?? 0.0
+        
+        let total = (val + charge) - (offerdiscount)
+
         self.showActivityIndicator()
         
         var params = [String: Any]()
@@ -353,6 +356,7 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
         params["order"] = "\(jsonString!)"
         params["user_id"] = self.user.user_id
         params["total"] = total
+        params["charges"] = charge
         params["transaction_id"] = paymentId
         params["discount_amount"] = offerdiscount
         params["coupon"] = self.selectedOffer == nil ? "" : self.selectedOffer.discount_coupon

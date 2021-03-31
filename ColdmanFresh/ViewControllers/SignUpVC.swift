@@ -176,28 +176,56 @@ class SignUpVC: SuperViewController {
             ApiManager.updateProfile(params: params, imageData: nil, fileName: "", mimeType: "") { (json) in
                 self.hideActivityIndicator()
                 if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-                    let user = UserProfile()
-                    user.fname = fname
-                    user.lname = lname
-                    user.mobileno = mob
-                    user.email = email
-                    user.birthdate = self.tfBirthDate.text ?? ""
-                    user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
-                    user.customer_type = self.btnCorporate.isSelected ? "1" : "2"
-                    user.id = u.id
-                    user.user_id = u.user_id
-                    let defaults = UserDefaults.standard
-                    
-                    // Use PropertyListEncoder to convert Player into Data / NSData
-                    do {
-                        defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
-                    }catch {
-                        print(error.localizedDescription)
-                    }
-                    self.delegate.loginSuccess(profile: user)
-                    self.dismiss(animated: true, completion: {
+                    if let userdict = dict["userdetails"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
+                        let defaults = UserDefaults.standard
                         
-                    })
+                        // Use PropertyListEncoder to convert Player into Data / NSData
+                        do {
+                            if self.btnCorporate.isSelected, let org = self.selectedOrganization {
+                                defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
+                            }else if !self.btnCorporate.isSelected, let pin = self.selectedPincode {
+                                defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
+                            }
+                        }catch {
+                            print(error.localizedDescription)
+                        }
+
+                        defaults.synchronize()
+                        self.delegate.loginSuccess(profile: user)
+                        self.dismiss(animated: true, completion: {
+                            
+                        })
+                        
+                    }else {
+                        let user = UserProfile()
+                        user.fname = fname
+                        user.lname = lname
+                        user.mobileno = mob
+                        user.email = email
+                        user.birthdate = self.tfBirthDate.text ?? ""
+                        user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
+                        user.customer_type = self.btnCorporate.isSelected ? "1" : "2"
+                        user.id = u.id
+                        user.user_id = u.user_id
+                        let defaults = UserDefaults.standard
+                        
+                        // Use PropertyListEncoder to convert Player into Data / NSData
+                        do {
+                            defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
+                            if self.btnCorporate.isSelected, let org = self.selectedOrganization {
+                                defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
+                            }else if !self.btnCorporate.isSelected, let pin = self.selectedPincode {
+                                defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
+                            }
+                        }catch {
+                            print(error.localizedDescription)
+                        }
+                        defaults.synchronize()
+                        self.delegate.loginSuccess(profile: user)
+                        self.dismiss(animated: true, completion: {
+                            
+                        })
+                    }
                 }else if let dict = json?.dictionary, let message = dict["message"]?.string {
                     self.showAlert(message)
                 }
@@ -234,6 +262,20 @@ class SignUpVC: SuperViewController {
                         self.hideActivityIndicator()
                         if let dict = json?.dictionary {
                             if let userdict = dict["userdetails"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
+                                let defaults = UserDefaults.standard
+                                
+                                // Use PropertyListEncoder to convert Player into Data / NSData
+                                do {
+                                    if self.btnCorporate.isSelected, let org = self.selectedOrganization {
+                                        defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
+                                    }else if !self.btnCorporate.isSelected, let pin = self.selectedPincode {
+                                        defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
+                                    }
+                                }catch {
+                                    print(error.localizedDescription)
+                                }
+
+                                defaults.synchronize()
                                 self.delegate.loginSuccess(profile: user)
                                 self.dismiss(animated: true, completion: {
                                     
@@ -253,9 +295,15 @@ class SignUpVC: SuperViewController {
                                 // Use PropertyListEncoder to convert Player into Data / NSData
                                 do {
                                     defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
+                                    if self.btnCorporate.isSelected, let org = self.selectedOrganization {
+                                        defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
+                                    }else if !self.btnCorporate.isSelected, let pin = self.selectedPincode {
+                                        defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
+                                    }
                                 }catch {
                                     print(error.localizedDescription)
                                 }
+                                defaults.synchronize()
                                 self.delegate.loginSuccess(profile: user)
                                 self.dismiss(animated: true, completion: {
                                     
@@ -389,10 +437,10 @@ extension SignUpVC {
             
             if let array = json?.array {
                 self.pincodes = Pincode.getData(array: array).filter({ $0.status == "1" })
-                if let u = self.user, let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
+                if let u = self.user,  u.customer_type == "2", let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
                     self.selectedPincode = pin
                     self.tfPromoCode.text = pin.pincode
-                }else if let u = self.user, let pin = self.pincodes.filter({ $0.pincodeId == u.organization_id }).first {
+                }else if let u = self.user,  u.customer_type == "2", let pin = self.pincodes.filter({ $0.pincodeId == u.organization_id }).first {
                     self.tfPromoCode.text = pin.pincode
                     self.selectedPincode = pin
                 }

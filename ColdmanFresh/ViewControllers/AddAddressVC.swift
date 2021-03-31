@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import DropDown
 
 class AddAddressVC: SuperViewController {
 
@@ -30,28 +31,14 @@ class AddAddressVC: SuperViewController {
     var user : UserProfile!
     var currentLoc : CLLocation!
     var selectedAddress : Address!
+    var pincodes = [Pincode]()
+    var selectedPincode : Pincode!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        /*Constants.locationManager.delegate = self
-        if let noLocation = Constants.locationManager.location {
-            let viewRegion = MKCoordinateRegion(center: noLocation.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
-            mapView.setRegion(viewRegion, animated: false)
-        }else {
-            Constants.locationManager.requestLocation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                if let noLocation = Constants.locationManager.location {
-                    let viewRegion = MKCoordinateRegion(center: noLocation.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
-                    self.mapView.setRegion(viewRegion, animated: false)
-                }else if let loc = self.currentLoc {
-                    let viewRegion = MKCoordinateRegion(center: loc.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
-                    self.mapView.setRegion(viewRegion, animated: false)
-                }
-            }
-        }
-        self.mapView.showsUserLocation = true*/
+        
         if let addr = self.selectedAddress {
             self.tfTitle.text = addr.title
             self.tfAddress.text = addr.address
@@ -64,7 +51,7 @@ class AddAddressVC: SuperViewController {
             self.tfPincode.text = addr.pincode
             self.tfCity.text = addr.city
         }
-            
+        self.getPincodeList()
     }
     
     @IBAction func backTapped(_ sender: UIButton) {
@@ -179,6 +166,39 @@ class AddAddressVC: SuperViewController {
         }
     }
    
+    override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.tfPincode {
+            self.showPincodeDropDown(textField)
+            return false
+        }
+        return true
+    }
+
+    func showPincodeDropDown(_ textField: UITextField) {
+        let dropDown = DropDown()
+
+        // The view to which the drop down will appear on
+        dropDown.anchorView = textField // UIView or UIBarButtonItem
+
+        // Top of drop down will be below the anchorView
+        dropDown.bottomOffset = CGPoint(x: 0, y:(textField.bounds.height))
+
+        dropDown.dismissMode = .automatic
+        dropDown.direction = .any
+        
+        // The list of items to display. Can be changed dynamically
+        dropDown.dataSource = self.pincodes.map { $0.pincode }
+        
+        // Action triggered on selection
+        dropDown.selectionAction = { [weak self] (index, item) in
+            let org = self?.pincodes[index]
+            self?.selectedPincode = org
+            textField.text = org?.pincode
+        }
+        
+        dropDown.show()
+    }
+
 }
 
 extension AddAddressVC : CLLocationManagerDelegate {
@@ -190,4 +210,38 @@ extension AddAddressVC : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+}
+
+extension AddAddressVC {
+    
+    func getPincodeList() {
+        
+        guard ApiManager.checkuser_online() else {
+            return
+        }
+        
+        self.showActivityIndicator()
+                
+        ApiManager.getPincodeList() { (json) in
+            self.hideActivityIndicator()
+            
+            if let array = json?.array {
+                self.pincodes = Pincode.getData(array: array).filter({ $0.status == "1" })
+                if let addrs = self.selectedAddress,  let pin = self.pincodes.filter({ $0.pincode == addrs.pincode }).first {
+                    self.selectedPincode = pin
+                    self.tfPincode.text = pin.pincode
+                }else if let u = self.user,  u.customer_type == "2", let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
+                    self.selectedPincode = pin
+                    self.tfPincode.text = pin.pincode
+                }else if let u = self.user,  u.customer_type == "2", let pin = self.pincodes.filter({ $0.pincodeId == u.organization_id }).first {
+                    self.tfPincode.text = pin.pincode
+                    self.selectedPincode = pin
+                }
+            }else {
+                self.showError(message: "Failed, please try again")
+            }
+        }
+        
+    }
+
 }

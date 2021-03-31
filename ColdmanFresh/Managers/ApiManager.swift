@@ -456,7 +456,7 @@ class ApiManager: NSObject {
     
     class func updateAddress(params: [String: Any], completion: @escaping (_ data: JSON?) -> Void) {
         
-        let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.add_address)!
+        let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.update_address)!
         
         self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
             .responseJSON { response in

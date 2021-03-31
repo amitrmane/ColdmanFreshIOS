@@ -200,6 +200,19 @@ class Utilities: NSObject {
         return nil
     }
     
+    class func getCurrentUserTypeDetails() -> Any? {
+        let defaults = UserDefaults.standard
+        guard let userData = defaults.object(forKey: "UserTypeDetails") as? Data else {
+            return nil
+        }
+        if let det = try? PropertyListDecoder().decode(Organization.self, from: userData) {
+            return det
+        }else if let det = try? PropertyListDecoder().decode(Pincode.self, from: userData) {
+            return det
+        }
+        return nil
+    }
+    
     class func getCharges(amount: Double, distanceInKM: Double, planSelected: String) -> Double {
         
         var deliveryCharges = 0.0
