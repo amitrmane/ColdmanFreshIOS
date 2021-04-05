@@ -289,7 +289,7 @@ class SuperViewController: UIViewController {
     // for time being added this method showWarningMessageLabel is not working
     func showError(message:String) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Food App", message: message, preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: AlertMessages.ALERT_TITLE, message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

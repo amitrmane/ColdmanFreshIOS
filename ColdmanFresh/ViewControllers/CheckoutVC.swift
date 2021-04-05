@@ -131,10 +131,12 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
     func refreshData() {
         
         if let u = self.user, u.customer_type == "2" {
+            self.viewSelection.isHidden = true
             if let pin = self.selectedPincode, let address = self.currentAddress {
                 self.lblAddress.text = address.address
             }
         }else {
+            self.viewSelection.isHidden = false
             if let org = self.selectedOrganization {
                 self.lblAddress.text = org.address
             }
