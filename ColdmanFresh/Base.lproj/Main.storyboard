@@ -2538,9 +2538,11 @@ support@coldmanfresh.in</string>
                     <connections>
                         <outlet property="btnBack" destination="Ft4-UH-vsQ" id="cEJ-SU-ejy"/>
                         <outlet property="btnPayOnline" destination="sME-HN-Tdw" id="fB8-6c-M7N"/>
+                        <outlet property="constraintLblDateTop" destination="bqI-Ml-PBG" id="Nag-UF-pJk"/>
                         <outlet property="lblAddress" destination="X9O-LC-FAt" id="eXW-f7-reW"/>
                         <outlet property="lblCartTotal" destination="vlb-af-jRd" id="Ycd-Mk-C7k"/>
                         <outlet property="lblDelivery" destination="iKs-am-8ag" id="rZ6-7J-bA5"/>
+                        <outlet property="lblGate" destination="Woo-nn-Va6" id="rME-ws-Mof"/>
                         <outlet property="lblPromoDiscount" destination="LlM-L6-llN" id="beO-Br-TYd"/>
                         <outlet property="lblSubTotal" destination="O6E-49-8cb" id="BuD-uF-srx"/>
                         <outlet property="tblMenu" destination="qdp-6X-v21" id="DjE-dP-SkY"/>

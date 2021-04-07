@@ -27,8 +27,10 @@ class CheckoutVC: SuperViewController {
     
     @IBOutlet weak var viewSelection: UIView!
     @IBOutlet weak var tfGate: UITextField!
+    @IBOutlet weak var lblGate: UILabel!
     @IBOutlet weak var tfDate: UITextField!
     @IBOutlet weak var tfTimeslot: UITextField!
+    @IBOutlet weak var constraintLblDateTop: NSLayoutConstraint!
 
     var addedMenus = [Menu]()
     var user : UserProfile!
@@ -53,10 +55,19 @@ class CheckoutVC: SuperViewController {
 
         // Do any additional setup after loading the view.
         razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyLive, andDelegate: self)
-        self.tfDate.text = Date().stringFromDate(Date.DateFormat.yyyyMMdd)
+        self.tfDate.text = Date().dateByAddingDays(1).stringFromDate(Date.DateFormat.yyyyMMdd)
         self.selectedDate = Date()
         self.getGateList()
         self.refreshData()
+        if let u = self.user, u.customer_type == "2" {
+            self.constraintLblDateTop.constant = -50
+            self.lblGate.isHidden = true
+            self.tfGate.isHidden = true
+        }else {
+            self.constraintLblDateTop.constant = 15
+            self.lblGate.isHidden = false
+            self.tfGate.isHidden = false
+        }
     }
     
     @IBAction func backTapped(_ sender: UIButton) {
@@ -69,14 +80,14 @@ class CheckoutVC: SuperViewController {
                 self.showAlert("Select gate")
                 return
             }
-            guard let _ = self.selectedDate else {
-                self.showAlert("Select date")
-                return
-            }
-            guard let _ = self.selectedTimeslot else {
-                self.showAlert("Select time slot")
-                return
-            }
+        }
+        guard let _ = self.selectedDate else {
+            self.showAlert("Select date")
+            return
+        }
+        guard let _ = self.selectedTimeslot else {
+            self.showAlert("Select time slot")
+            return
         }
         self.showPaymentForm()
     }
@@ -131,12 +142,10 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
     func refreshData() {
         
         if let u = self.user, u.customer_type == "2" {
-            self.viewSelection.isHidden = true
-            if let pin = self.selectedPincode, let address = self.currentAddress {
+            if let _ = self.selectedPincode, let address = self.currentAddress {
                 self.lblAddress.text = address.address
             }
         }else {
-            self.viewSelection.isHidden = false
             if let org = self.selectedOrganization {
                 self.lblAddress.text = org.address
             }
@@ -204,7 +213,7 @@ extension CheckoutVC : LoginSuccessProtocol {
     }
     
     func showDatePicker(_ textField: UITextField) {
-        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: Date(), minimumDate: Date(), maximumDate: nil, datePickerMode: UIDatePicker.Mode.date) { (date) in
+        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: Date().dateByAddingDays(1), minimumDate: Date().dateByAddingDays(1), maximumDate: nil, datePickerMode: UIDatePicker.Mode.date) { (date) in
             if let d = date {
                 self.selectedDate = d
                 textField.text = d.stringFromDate(Date.DateFormat.yyyyMMdd)
