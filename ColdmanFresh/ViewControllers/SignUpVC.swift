@@ -53,7 +53,7 @@ class SignUpVC: SuperViewController {
             }else if let date = Date().dateFromString(Date.DateFormat.ddMMyyyy.rawValue, dateString: u.birthdate) {
                 self.selectedDate = date
             }
-            if u.customer_type == "2" {
+            if u.customer_type == Constants.b2cHomeDelivery {
                 self.btnCorporate.isSelected = false
                 self.btnHomeDelivery.isSelected = true
                 if let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
@@ -167,8 +167,8 @@ class SignUpVC: SuperViewController {
             params["lname"] = lname
             params["birthdate"] = self.selectedDate == nil ? "" : self.selectedDate.stringFromDate(.ddMMyyyydash)
             params["mobileno"] = mob
-            params["customer_type"] = self.btnCorporate.isSelected ? "1" : "2"
-            params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
+            params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
+            params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
             params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
 
             self.showActivityIndicator()
@@ -203,8 +203,8 @@ class SignUpVC: SuperViewController {
                         user.mobileno = mob
                         user.email = email
                         user.birthdate = self.tfBirthDate.text ?? ""
-                        user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
-                        user.customer_type = self.btnCorporate.isSelected ? "1" : "2"
+                        user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
+                        user.customer_type = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
                         user.id = u.id
                         user.user_id = u.user_id
                         let defaults = UserDefaults.standard
@@ -247,8 +247,8 @@ class SignUpVC: SuperViewController {
             params["lname"] = lname
             params["birthdate"] = self.selectedDate == nil ? "" : self.selectedDate.stringFromDate(.ddMMyyyydash)
             params["mobileno"] = mob
-            params["customer_type"] = self.btnCorporate.isSelected ? "1" : "2"
-            params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
+            params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
+            params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
             params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
 
             self.showActivityIndicator()
@@ -288,8 +288,8 @@ class SignUpVC: SuperViewController {
                                 user.mobileno = mob
                                 user.email = email
                                 user.birthdate = self.tfBirthDate.text ?? ""
-                                user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincodeId
-                                user.customer_type = self.btnCorporate.isSelected ? "1" : "2"
+                                user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
+                                user.customer_type = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
                                 let defaults = UserDefaults.standard
                                 
                                 // Use PropertyListEncoder to convert Player into Data / NSData
@@ -409,7 +409,7 @@ extension SignUpVC {
             
             if let array = json?.array {
                 self.organizations = Organization.getData(array: array)
-                if let u = self.user, u.customer_type == "1", let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
+                if let u = self.user, u.customer_type == Constants.b2cCorporate, let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
                     self.selectedOrganization = org
                     self.tfPromoCode.text = org.organization_name
                 }else if let org = self.organizations.first {
@@ -437,10 +437,10 @@ extension SignUpVC {
             
             if let array = json?.array {
                 self.pincodes = Pincode.getData(array: array).filter({ $0.status == "1" })
-                if let u = self.user,  u.customer_type == "2", let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
+                if let u = self.user,  u.customer_type == Constants.b2cHomeDelivery, let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
                     self.selectedPincode = pin
                     self.tfPromoCode.text = pin.pincode
-                }else if let u = self.user,  u.customer_type == "2", let pin = self.pincodes.filter({ $0.pincodeId == u.organization_id }).first {
+                }else if let u = self.user,  u.customer_type == Constants.b2cHomeDelivery, let pin = self.pincodes.filter({ $0.pincode == u.organization_id }).first {
                     self.tfPromoCode.text = pin.pincode
                     self.selectedPincode = pin
                 }

@@ -2330,7 +2330,7 @@ support@coldmanfresh.in</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Xq-aC-QXh" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="139.5" width="374" height="35"/>
+                                                    <rect key="frame" x="5" y="105" width="374" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="K3V-7B-G79"/>
                                                     </constraints>
@@ -2358,13 +2358,13 @@ support@coldmanfresh.in</string>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeslot " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lys-Xd-dEE">
-                                                    <rect key="frame" x="5" y="189.5" width="374" height="16"/>
+                                                    <rect key="frame" x="5" y="155" width="374" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Timeslot" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qch-X5-ifR" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="210.5" width="374" height="35"/>
+                                                    <rect key="frame" x="5" y="176" width="374" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="eWk-lL-nx7"/>
                                                     </constraints>
@@ -2391,8 +2391,8 @@ support@coldmanfresh.in</string>
                                                         <outlet property="delegate" destination="s7u-mH-fva" id="3g8-SX-byk"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note:After 11 am todays selected date will be considered as tomorrow date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X7-bt-Bl6">
-                                                    <rect key="frame" x="5" y="105" width="374" height="26.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X7-bt-Bl6">
+                                                    <rect key="frame" x="5" y="105" width="374" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                                     <color key="textColor" red="0.81176470590000005" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2402,7 +2402,7 @@ support@coldmanfresh.in</string>
                                             <constraints>
                                                 <constraint firstItem="lys-Xd-dEE" firstAttribute="leading" secondItem="4Xq-aC-QXh" secondAttribute="leading" id="2G5-mM-pmS"/>
                                                 <constraint firstItem="M3E-K0-SGN" firstAttribute="leading" secondItem="KWh-P4-epq" secondAttribute="leading" id="6QN-eZ-u3e"/>
-                                                <constraint firstItem="4Xq-aC-QXh" firstAttribute="top" secondItem="2X7-bt-Bl6" secondAttribute="bottom" constant="8" id="8eS-2P-4TJ"/>
+                                                <constraint firstItem="4Xq-aC-QXh" firstAttribute="top" secondItem="2X7-bt-Bl6" secondAttribute="bottom" id="8eS-2P-4TJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="Woo-nn-Va6" secondAttribute="trailing" constant="5" id="93y-jc-wWM"/>
                                                 <constraint firstItem="Woo-nn-Va6" firstAttribute="top" secondItem="Gea-Fd-Jsq" secondAttribute="top" constant="10" id="Bl6-R6-gSo"/>
                                                 <constraint firstItem="Qch-X5-ifR" firstAttribute="trailing" secondItem="lys-Xd-dEE" secondAttribute="trailing" id="Euj-2j-IOf"/>
@@ -4160,7 +4160,7 @@ support@coldmanfresh.in</string>
         <image name="Cart" width="25" height="25"/>
         <image name="Explore" width="30" height="30"/>
         <image name="Settings" width="30" height="30"/>
-        <image name="alert" width="1045" height="698"/>
+        <image name="alert" width="1280" height="861"/>
         <image name="arrow-left" width="25" height="19"/>
         <image name="checked-checkbox" width="30" height="30"/>
         <image name="checkmark-white" width="26" height="26"/>

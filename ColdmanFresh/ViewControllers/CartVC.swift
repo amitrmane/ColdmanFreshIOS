@@ -60,7 +60,7 @@ class CartVC: SuperViewController {
         }
         if let user = Utilities.getCurrentUser() {
             self.user = user
-            if user.customer_type == "2" {
+            if user.customer_type == Constants.b2cHomeDelivery {
                 if let pin = Utilities.getCurrentUserTypeDetails() as? Pincode {
                     self.selectedPincode = pin
                     self.lblAddress.text = "Please select address"
@@ -113,7 +113,18 @@ class CartVC: SuperViewController {
     }
         
     @IBAction func checkOutTapped(_ sender: UIButton) {
-        if self.user.customer_type == "2" {
+        
+        let cartValues = self.addedMenus.map({ $0.displayPrice })
+        let val = cartValues.reduce(0, +)
+        
+        if val < 300 {
+            self.showAlert("Minimum order value should be ₹ 300. \nPlease add more items to the cart.")
+            return
+        }
+        if self.addedMenus.count > 0 {
+            Menu.saveCartItems(self.addedMenus)
+        }
+        if self.user.customer_type == Constants.b2cHomeDelivery {
             guard let _ = self.currentAddress else {
                 self.showAlert("Select address")
                 return
@@ -143,9 +154,13 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.addedMenus.count == 0 {
-            self.showNoRecordsView(tableView)
+            self.showNoRecordsViewWithLabel(self.tblMenu, message: "Cart is Empty.")
+            self.btnProceedCheckout.isHidden = true
+            self.viewBaseTax.isHidden = true
         }else {
             tableView.backgroundView = nil
+            self.btnProceedCheckout.isHidden = false
+            self.viewBaseTax.isHidden = false
         }
         return self.addedMenus.count
     }
@@ -193,6 +208,7 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
         }else {
             menu.displayPrice = menu.price * Double(menu.menuCount)
         }
+        Menu.saveCartItems(self.addedMenus)
         refreshData()
     }
     
@@ -208,11 +224,13 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
         }else {
             self.addedMenus.remove(at: sender.tag)
         }
+        Menu.saveCartItems(self.addedMenus)
         refreshData()
     }
     
     @objc func deleteTapped(_ sender: UIButton) {
         self.addedMenus.remove(at: sender.tag)
+        Menu.saveCartItems(self.addedMenus)
         refreshData()
     }
     
@@ -243,7 +261,7 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
         }
         
         var charge = 0.0
-        if let u = self.user, u.customer_type == "2", let addrs = self.currentAddress {
+        if let u = self.user, u.customer_type == Constants.b2cHomeDelivery, let addrs = self.currentAddress {
             self.lblAddress.text = addrs.address
             if let pin = self.pincodes.filter({ $0.pincode == addrs.pincode }).first {
                 self.selectedPincode = pin
@@ -335,7 +353,7 @@ extension CartVC {
             
             if let array = json?.array {
                 self.organizations = Organization.getData(array: array)
-                if let u = self.user, u.customer_type == "1", let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
+                if let u = self.user, u.customer_type == Constants.b2cCorporate, let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
                     self.selectedOrganization = org
                     
                     self.lblAddress.text = org.organization_name
@@ -367,7 +385,7 @@ extension CartVC {
                 }else if let addrs = self.allAddress.filter({ $0.primaryAddress == "1" }).first {
                     self.currentAddress = addrs
                     self.refreshData()
-                }else if self.allAddress.count == 1, let addrs = self.allAddress.first {
+                }else if let addrs = self.allAddress.first {
                     self.currentAddress = addrs
                     self.refreshData()
                 }

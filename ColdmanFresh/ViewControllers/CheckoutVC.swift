@@ -59,7 +59,7 @@ class CheckoutVC: SuperViewController {
         self.selectedDate = Date()
         self.getGateList()
         self.refreshData()
-        if let u = self.user, u.customer_type == "2" {
+        if let u = self.user, u.customer_type == Constants.b2cHomeDelivery {
             self.constraintLblDateTop.constant = -50
             self.lblGate.isHidden = true
             self.tfGate.isHidden = true
@@ -75,7 +75,7 @@ class CheckoutVC: SuperViewController {
     }
     
     @IBAction func payOnlineTapped(_ sender: UIButton) {
-        if let u = self.user, u.customer_type != "2" {
+        if let u = self.user, u.customer_type != Constants.b2cHomeDelivery {
             guard let _ = self.selectedGate else {
                 self.showAlert("Select gate")
                 return
@@ -141,9 +141,11 @@ extension CheckoutVC : UITableViewDataSource, UITableViewDelegate {
     
     func refreshData() {
         
-        if let u = self.user, u.customer_type == "2" {
+        if let u = self.user, u.customer_type == Constants.b2cHomeDelivery {
             if let _ = self.selectedPincode, let address = self.currentAddress {
                 self.lblAddress.text = address.address
+            }else if let address = self.currentAddress {
+                self.lblAddress.text = address.address                
             }
         }else {
             if let org = self.selectedOrganization {
@@ -386,10 +388,10 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
         }else {
             params["timeslot"] = ""
         }
-        if self.user.customer_type == "2" && self.currentAddress != nil {
+        if self.user.customer_type == Constants.b2cHomeDelivery && self.currentAddress != nil {
             params["delivery_address"] = self.currentAddress.address
-        }else {
-            params["delivery_address"] = ""
+        }else if self.user.customer_type == Constants.b2cCorporate {
+            params["delivery_address"] = self.selectedOrganization.address
         }
 
         print(params)

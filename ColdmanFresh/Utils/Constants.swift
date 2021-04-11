@@ -26,6 +26,8 @@ class Constants {
     
  //   static let APP_USER_COLOR = UIColor.init(hexString: Userdata.user_color)
     
+    static let b2cCorporate =  "B2C Corporate"
+    static let b2cHomeDelivery =  "B2C Home Delivery"
 
     static let locationManager = CLLocationManager()
 

@@ -230,10 +230,10 @@ extension AddAddressVC {
                 if let addrs = self.selectedAddress,  let pin = self.pincodes.filter({ $0.pincode == addrs.pincode }).first {
                     self.selectedPincode = pin
                     self.tfPincode.text = pin.pincode
-                }else if let u = self.user,  u.customer_type == "2", let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
+                }else if let u = self.user,  u.customer_type == Constants.b2cHomeDelivery, let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
                     self.selectedPincode = pin
                     self.tfPincode.text = pin.pincode
-                }else if let u = self.user,  u.customer_type == "2", let pin = self.pincodes.filter({ $0.pincodeId == u.organization_id }).first {
+                }else if let u = self.user,  u.customer_type == Constants.b2cHomeDelivery, let pin = self.pincodes.filter({ $0.pincode == u.organization_id }).first {
                     self.tfPincode.text = pin.pincode
                     self.selectedPincode = pin
                 }

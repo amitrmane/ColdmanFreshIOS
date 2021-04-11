@@ -80,27 +80,33 @@ class OTPVerificationVC: SuperViewController {
     }
 
     @IBAction func resendTapped(_ sender: UIButton) {
-        /*guard ApiManager.checkuser_online() else {
+        guard ApiManager.checkuser_online() else {
             self.showError(message: "Please check your internet connection")
             return
         }
         
         self.showActivityIndicator()
         
-        ApiManager.generateOTPFor(number: mobileNo) { (json, success, error) in
+        var param = [String: Any]()
+        param["mobileno"] = self.mobileNo
+        
+        ApiManager.sendOTP(params: param) { (json) in
             self.hideActivityIndicator()
-            if success {
-                if let dict = json?.dictionary, let result = dict["success"]?.bool, result {
+//            if success {
+                if let dict = json?.dictionary, let otp = dict["otp"]?.number {
+                    print(dict)
+                    self.otp = otp.stringValue
                     self.showToast(message: "OTP sent successfully.")
                     self.seconds = 1
                     self.setTimer()
                 }else {
                     self.showError(message: "Could not send OTP, please try again")
                 }
-            }else {
-                self.showError(message: error.rawValue)
-            }
-        }*/
+//            }else {
+//                //self.showError(message: error.rawValue)
+//            }
+        }
+
     }
     
     func verifyUserByNumber() {
@@ -116,25 +122,46 @@ class OTPVerificationVC: SuperViewController {
 //            if success {
                 if let dict = json?.dictionary {
                     if let userdict = dict["userdetails"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
-                        if self.isFromSettings {
-                            self.navigationController?.popToRootViewController(animated: false)
+                        if user.customer_type == Constants.b2cCorporate {
+                            self.getOrganizationList(user: user) { (s) in
+                                if s {
+                                    if self.isFromSettings {
+                                        self.navigationController?.popToRootViewController(animated: false)
+                                    }else {
+                                        print(user.id)
+                                        let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
+                                        cartvc.addedMenus = self.addedMenus
+                                        cartvc.user = user
+                                        self.navigationController?.pushViewController(cartvc, animated: true)
+                                    }
+                                }
+                            }
+                        }else if user.customer_type == Constants.b2cHomeDelivery {
+                            self.getPincodeList(user: user) { (s) in
+                                if s {
+                                    if self.isFromSettings {
+                                        self.navigationController?.popToRootViewController(animated: false)
+                                    }else {
+                                        print(user.id)
+                                        let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
+                                        cartvc.addedMenus = self.addedMenus
+                                        cartvc.user = user
+                                        self.navigationController?.pushViewController(cartvc, animated: true)
+                                    }
+                                }
+                            }
                         }else {
-                            print(user.id)
-                            let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
-                            cartvc.addedMenus = self.addedMenus
-//                            cartvc.backDelegate = self
-                            cartvc.user = user
-                            self.navigationController?.pushViewController(cartvc, animated: true)
-
-//                            let summaryvc = mainStoryboard.instantiateViewController(withIdentifier: "OrderSummaryVC") as! OrderSummaryVC
-//                            summaryvc.user = user
-//                            summaryvc.restaurent = self.restaurent
-//                            summaryvc.allTaxes = self.allTaxes
-//                            summaryvc.addedMenus = self.addedMenus
-//                            summaryvc.selectedAddr = self.selectedAddr
-//                            summaryvc.selectedOffer = self.selectedOffer
-//                            self.navigationController?.pushViewController(summaryvc, animated: true)
+                            if self.isFromSettings {
+                                self.navigationController?.popToRootViewController(animated: false)
+                            }else {
+                                print(user.id)
+                                let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
+                                cartvc.addedMenus = self.addedMenus
+                                cartvc.user = user
+                                self.navigationController?.pushViewController(cartvc, animated: true)
+                            }
                         }
+                        
                     }else {
                         self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "User not found, do you want to register with this mobile number?", buttons: ["No", "Yes"]) { (i) in
                             if i == 0 {
@@ -165,6 +192,78 @@ class OTPVerificationVC: SuperViewController {
         }
     }
     
+    func getOrganizationList(user: UserProfile, callback: @escaping ((_ result: Bool) -> Void)) {
+        
+        guard ApiManager.checkuser_online() else {
+            return
+        }
+        
+        self.showActivityIndicator()
+                
+        ApiManager.getOrganizationList() { (json) in
+            self.hideActivityIndicator()
+            
+            if let array = json?.array {
+                let organizations = Organization.getData(array: array)
+                let defaults = UserDefaults.standard
+                if let org = organizations.filter({ $0.organization_id == user.organization_id }).first {
+                    do {
+                        defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
+                    }catch {
+                        print(error.localizedDescription)
+                    }
+                }else if let org = organizations.first {
+                    do {
+                        defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
+                    }catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                defaults.synchronize()
+                callback(true)
+            }else {
+                self.showError(message: "Failed, please try again")
+            }
+        }
+        
+    }
+
+    func getPincodeList(user: UserProfile, callback: @escaping ((_ result: Bool) -> Void)) {
+        
+        guard ApiManager.checkuser_online() else {
+            return
+        }
+        
+        self.showActivityIndicator()
+                
+        ApiManager.getPincodeList() { (json) in
+            self.hideActivityIndicator()
+            
+            if let array = json?.array {
+                let pincodes = Pincode.getData(array: array).filter({ $0.status == "1" })
+                let defaults = UserDefaults.standard
+                if let pin = pincodes.filter({ $0.pincode == user.pincode }).first {
+                    do {
+                        defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
+                    }catch {
+                        print(error.localizedDescription)
+                    }
+                }else if let pin = pincodes.filter({ $0.pincode == user.organization_id }).first {
+                    do {
+                        defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
+                    }catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                defaults.synchronize()
+                callback(true)
+            }else {
+                self.showError(message: "Failed, please try again")
+            }
+        }
+        
+    }
+
 }
 
 extension OTPVerificationVC : LoginSuccessProtocol {
