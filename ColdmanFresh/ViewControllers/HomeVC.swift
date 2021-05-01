@@ -191,6 +191,7 @@ extension HomeVC {
             self.btnCart.badge = nil
             self.lblCartValue.text = ""
         }else {
+            self.addedMenus = Menu.getSavedCartItems()
             self.btnCart.badge = "\(self.addedMenus.count)"
             let val = self.addedMenus.map { $0.displayPrice }
             self.lblCartValue.text = " ₹ \(val.reduce(0, +)) "

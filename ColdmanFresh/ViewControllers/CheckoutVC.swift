@@ -49,13 +49,15 @@ class CheckoutVC: SuperViewController {
     var pincodes = [Pincode]()
     var selectedPincode : Pincode!
     var charges = "0"
+    var day = 1;
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyLive, andDelegate: self)
-        self.tfDate.text = Date().dateByAddingDays(1).stringFromDate(Date.DateFormat.yyyyMMdd)
+        day = Date().hour >= 22 ? 2 : 1
+        self.tfDate.text = Date().dateByAddingDays(day).stringFromDate(Date.DateFormat.yyyyMMdd)
         self.selectedDate = Date()
         self.getGateList()
         self.refreshData()
@@ -215,7 +217,8 @@ extension CheckoutVC : LoginSuccessProtocol {
     }
     
     func showDatePicker(_ textField: UITextField) {
-        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: Date().dateByAddingDays(1), minimumDate: Date().dateByAddingDays(1), maximumDate: nil, datePickerMode: UIDatePicker.Mode.date) { (date) in
+        day = Date().hour >= 22 ? 2 : 1
+        DatePickerDialog().show(AlertMessages.ALERT_TITLE, doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: Date().dateByAddingDays(day), minimumDate: Date().dateByAddingDays(day), maximumDate: nil, datePickerMode: UIDatePicker.Mode.date) { (date) in
             if let d = date {
                 self.selectedDate = d
                 textField.text = d.stringFromDate(Date.DateFormat.yyyyMMdd)
@@ -374,9 +377,9 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
         params["discount_amount"] = offerdiscount
         params["coupon"] = self.selectedOffer == nil ? "" : self.selectedOffer.discount_coupon
         if self.selectedDate != nil {
-            params["pickuptime"] = self.selectedDate.stringFromDate(Date.DateFormat.yyyyMMddHHmmss)
+            params["date"] = tfDate.text
         }else {
-            params["pickuptime"] = ""
+            params["date"] = ""
         }
         if self.selectedGate != nil {
             params["gate"] = self.selectedGate.gate_id
@@ -464,4 +467,34 @@ extension CheckoutVC {
         
     }
 
+}
+
+extension Formatter {
+    // create static date formatters for your date representations
+    static let preciseLocalTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "HH:mm:ss.SSS"
+        return formatter
+    }()
+    static let preciseGMTTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "HH:mm:ss.SSS"
+        return formatter
+    }()
+}
+
+extension Date {
+    // you can create a read-only computed property to return just the nanoseconds from your date time
+    var hour: Int { return Calendar.current.component(.hour,  from: self)   }
+    // the same for your local time
+    var preciseLocalTime: String {
+        return Formatter.preciseLocalTime.string(for: self) ?? ""
+    }
+    // or GMT time
+    var preciseGMTTime: String {
+        return Formatter.preciseGMTTime.string(for: self) ?? ""
+    }
 }

@@ -41,7 +41,7 @@ class SignUpVC: SuperViewController {
             self.tfMobile.text = mobileNo
             self.tfMobile.isUserInteractionEnabled = false
         }
-        self.getOrganizationList()
+        self.getPincodeList()
         if let u = self.user {
             self.lblTitle.text = "Edit Profile"
             self.tfName.text = u.fname + " " + u.lname
@@ -80,8 +80,8 @@ class SignUpVC: SuperViewController {
             self.btnLogin.setTitle("Back to settings", for: .normal)
             self.btnSignUp.setTitle("Save", for: .normal)
         }else {
-            self.btnCorporate.isSelected = true
-            self.btnHomeDelivery.isSelected = false
+            self.btnCorporate.isSelected = false
+            self.btnHomeDelivery.isSelected = true
         }
     }
 
@@ -412,11 +412,10 @@ extension SignUpVC {
                 if let u = self.user, u.customer_type == Constants.b2cCorporate, let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first {
                     self.selectedOrganization = org
                     self.tfPromoCode.text = org.organization_name
-                }else if let org = self.organizations.first {
+                }else if let u = self.user,  u.customer_type == Constants.b2cCorporate, let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first  {
                     self.selectedOrganization = org
                     self.tfPromoCode.text = org.organization_name
                 }
-                self.getPincodeList()
             }else {
                 self.showError(message: "Failed, please try again")
             }
@@ -440,10 +439,11 @@ extension SignUpVC {
                 if let u = self.user,  u.customer_type == Constants.b2cHomeDelivery, let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
                     self.selectedPincode = pin
                     self.tfPromoCode.text = pin.pincode
-                }else if let u = self.user,  u.customer_type == Constants.b2cHomeDelivery, let pin = self.pincodes.filter({ $0.pincode == u.organization_id }).first {
+                }else if let pin = self.pincodes.first {
                     self.tfPromoCode.text = pin.pincode
                     self.selectedPincode = pin
                 }
+                self.getOrganizationList()
             }else {
                 self.showError(message: "Failed, please try again")
             }

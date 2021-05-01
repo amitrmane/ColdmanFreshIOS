@@ -1603,11 +1603,11 @@ support@coldmanfresh.in</string>
             <objects>
                 <viewController storyboardIdentifier="CartVC" id="y0k-bd-sus" customClass="CartVC" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qh3-v1-mxk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="596"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSx-Tc-sa8">
-                                <rect key="frame" x="20" y="59" width="35" height="35"/>
+                                <rect key="frame" x="20" y="15" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="C4J-XH-iWB"/>
                                     <constraint firstAttribute="width" constant="35" id="e3H-pY-qd3"/>
@@ -1618,7 +1618,7 @@ support@coldmanfresh.in</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsP-tZ-sjt" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
-                                <rect key="frame" x="10" y="802" width="394" height="50"/>
+                                <rect key="frame" x="83.5" y="536" width="153" height="50"/>
                                 <color key="backgroundColor" red="0.81176470590000005" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="H10-t3-xVu"/>
@@ -1637,14 +1637,14 @@ support@coldmanfresh.in</string>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" estimatedRowHeight="140" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kQM-8z-pSl">
-                                <rect key="frame" x="10" y="97.5" width="394" height="694.5"/>
+                                <rect key="frame" x="10" y="53.5" width="300" height="472.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="TNF-5T-7lu">
-                                    <rect key="frame" x="0.0" y="141" width="394" height="300"/>
+                                    <rect key="frame" x="0.0" y="141" width="300" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-O0-G8K">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="1"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="1"/>
                                             <color key="backgroundColor" red="0.30980392159999998" green="0.71372549019999998" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="FSA-6t-hCE"/>
@@ -1654,22 +1654,22 @@ support@coldmanfresh.in</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-kB-ntU" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="11" width="364" height="55"/>
+                                            <rect key="frame" x="15" y="11" width="270" height="55"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered To -" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KW-j7-8OV">
-                                                    <rect key="frame" x="5" y="5" width="354" height="13.5"/>
+                                                    <rect key="frame" x="5" y="5" width="260" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No address found" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1TD-QP-UgT">
-                                                    <rect key="frame" x="5" y="23.5" width="354" height="14.5"/>
+                                                    <rect key="frame" x="5" y="23.5" width="260" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wte-Zl-yrk" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
-                                                    <rect key="frame" x="307" y="-1.5" width="52" height="27"/>
+                                                    <rect key="frame" x="213" y="-1.5" width="52" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <state key="normal" title="CHANGE">
@@ -1692,6 +1692,7 @@ support@coldmanfresh.in</string>
                                                 <constraint firstItem="1TD-QP-UgT" firstAttribute="top" secondItem="2KW-j7-8OV" secondAttribute="bottom" constant="5" id="HJ3-e2-O4t"/>
                                                 <constraint firstItem="2KW-j7-8OV" firstAttribute="leading" secondItem="d1m-kB-ntU" secondAttribute="leading" constant="5" id="IRd-GB-5Qy"/>
                                                 <constraint firstItem="2KW-j7-8OV" firstAttribute="top" secondItem="d1m-kB-ntU" secondAttribute="top" constant="5" id="Mpb-6q-7gw"/>
+                                                <constraint firstItem="Wte-Zl-yrk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d1m-kB-ntU" secondAttribute="leading" constant="20" symbolic="YES" id="MvK-Oa-h6N"/>
                                                 <constraint firstItem="1TD-QP-UgT" firstAttribute="leading" secondItem="2KW-j7-8OV" secondAttribute="leading" id="bQU-zz-TzU"/>
                                                 <constraint firstItem="2KW-j7-8OV" firstAttribute="trailing" secondItem="1TD-QP-UgT" secondAttribute="trailing" id="tOe-bU-IfS"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wte-Zl-yrk" secondAttribute="trailing" constant="5" id="tvV-CI-MUB"/>
@@ -1710,10 +1711,10 @@ support@coldmanfresh.in</string>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0H-ku-eAL" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="81" width="364" height="50"/>
+                                            <rect key="frame" x="15" y="81" width="270" height="50"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2Z-dr-7tG" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
-                                                    <rect key="frame" x="312" y="11.5" width="47" height="27"/>
+                                                    <rect key="frame" x="218" y="11.5" width="47" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <state key="normal" title="OFFERS">
@@ -1757,70 +1758,70 @@ support@coldmanfresh.in</string>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-cW-Iqy" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="141" width="364" height="149"/>
+                                            <rect key="frame" x="15" y="141" width="270" height="200"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2r-hU-qPd">
-                                                    <rect key="frame" x="5" y="10" width="182" height="16"/>
+                                                    <rect key="frame" x="5" y="10" width="135" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 100.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gk3-0W-tCP">
-                                                    <rect key="frame" x="197" y="10" width="157" height="16"/>
+                                                    <rect key="frame" x="150" y="10" width="110" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acx-nx-LcP">
-                                                    <rect key="frame" x="5" y="34" width="182" height="0.0"/>
+                                                    <rect key="frame" x="5" y="34" width="135" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVZ-1b-UNG">
-                                                    <rect key="frame" x="197" y="34" width="157" height="0.0"/>
+                                                    <rect key="frame" x="150" y="34" width="110" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Charges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrJ-zO-Cuz">
-                                                    <rect key="frame" x="5" y="39" width="182" height="16"/>
+                                                    <rect key="frame" x="5" y="39" width="135" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-W1-Lby">
-                                                    <rect key="frame" x="197" y="39" width="157" height="16"/>
+                                                    <rect key="frame" x="150" y="39" width="110" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promo Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rax-V0-TF0">
-                                                    <rect key="frame" x="5" y="71" width="182" height="16"/>
+                                                    <rect key="frame" x="5" y="71" width="135" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- ₹ 0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pv-tA-8wl">
-                                                    <rect key="frame" x="197" y="71" width="157" height="16"/>
+                                                    <rect key="frame" x="150" y="71" width="110" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grand Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3q6-uj-y7V">
-                                                    <rect key="frame" x="5" y="119" width="182" height="16"/>
+                                                    <rect key="frame" x="5" y="119" width="135" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 115.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgY-hH-Jnc">
-                                                    <rect key="frame" x="197" y="119" width="157" height="16"/>
+                                                    <rect key="frame" x="150" y="119" width="110" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVk-JB-9JU">
-                                                    <rect key="frame" x="5" y="102" width="349" height="1"/>
+                                                    <rect key="frame" x="5" y="102" width="255" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="6J2-oZ-mQt"/>
@@ -1829,9 +1830,20 @@ support@coldmanfresh.in</string>
                                                     <color key="textColor" red="0.41960784309999999" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8m-zL-BOI">
+                                                    <rect key="frame" x="5" y="137" width="260" height="73"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="73" id="Kh2-Qj-8Y0"/>
+                                                    </constraints>
+                                                    <string key="text">Note:Dear Customer, as per government directives, any orders placed for Saturday or Sunday delivery, the order will be delivered on Monday.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" systemColor="systemPinkColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="N8m-zL-BOI" firstAttribute="leading" secondItem="a8b-cW-Iqy" secondAttribute="leading" constant="5" id="0No-fa-dFs"/>
                                                 <constraint firstItem="acx-nx-LcP" firstAttribute="top" secondItem="h2r-hU-qPd" secondAttribute="bottom" constant="8" symbolic="YES" id="4iy-T6-8wk"/>
                                                 <constraint firstItem="ZAd-W1-Lby" firstAttribute="trailing" secondItem="TVZ-1b-UNG" secondAttribute="trailing" id="84Y-6z-xiZ"/>
                                                 <constraint firstItem="Rax-V0-TF0" firstAttribute="leading" secondItem="LrJ-zO-Cuz" secondAttribute="leading" id="8E5-Rq-tlo"/>
@@ -1843,9 +1855,12 @@ support@coldmanfresh.in</string>
                                                 <constraint firstItem="Gk3-0W-tCP" firstAttribute="leading" secondItem="h2r-hU-qPd" secondAttribute="trailing" constant="10" id="EZ4-z1-h2E"/>
                                                 <constraint firstItem="LrJ-zO-Cuz" firstAttribute="width" secondItem="acx-nx-LcP" secondAttribute="width" id="EaI-KL-Dxq"/>
                                                 <constraint firstItem="LrJ-zO-Cuz" firstAttribute="leading" secondItem="acx-nx-LcP" secondAttribute="leading" id="FYU-bw-D92"/>
+                                                <constraint firstItem="N8m-zL-BOI" firstAttribute="top" secondItem="3q6-uj-y7V" secondAttribute="bottom" constant="2" id="GI3-2B-YO1"/>
                                                 <constraint firstItem="Rax-V0-TF0" firstAttribute="top" secondItem="LrJ-zO-Cuz" secondAttribute="bottom" constant="16" id="N6Q-H4-dUj"/>
                                                 <constraint firstItem="h2r-hU-qPd" firstAttribute="top" secondItem="a8b-cW-Iqy" secondAttribute="top" constant="10" id="OOA-W9-EB5"/>
+                                                <constraint firstAttribute="bottom" secondItem="N8m-zL-BOI" secondAttribute="bottom" constant="-10" id="PRI-2E-V66"/>
                                                 <constraint firstItem="zgY-hH-Jnc" firstAttribute="centerY" secondItem="3q6-uj-y7V" secondAttribute="centerY" id="Sdj-Xv-R3g"/>
+                                                <constraint firstAttribute="trailing" secondItem="N8m-zL-BOI" secondAttribute="trailing" constant="5" id="TQ0-XR-Chy"/>
                                                 <constraint firstItem="acx-nx-LcP" firstAttribute="leading" secondItem="h2r-hU-qPd" secondAttribute="leading" id="Wwx-kH-L60"/>
                                                 <constraint firstAttribute="trailing" secondItem="Gk3-0W-tCP" secondAttribute="trailing" constant="10" id="Y85-lj-2rJ"/>
                                                 <constraint firstItem="ZAd-W1-Lby" firstAttribute="leading" secondItem="LrJ-zO-Cuz" secondAttribute="trailing" constant="10" id="YrZ-o8-IuJ"/>
@@ -1881,20 +1896,20 @@ support@coldmanfresh.in</string>
                                         <constraint firstAttribute="trailing" secondItem="M0H-ku-eAL" secondAttribute="trailing" constant="15" id="eBo-Ab-v0o"/>
                                         <constraint firstItem="d1m-kB-ntU" firstAttribute="leading" secondItem="TNF-5T-7lu" secondAttribute="leading" constant="15" id="eEe-Xh-vw1"/>
                                         <constraint firstAttribute="trailing" secondItem="d1m-kB-ntU" secondAttribute="trailing" constant="15" id="nH7-zC-a6Y"/>
-                                        <constraint firstAttribute="bottom" secondItem="a8b-cW-Iqy" secondAttribute="bottom" constant="10" id="pbA-ZP-YNI"/>
+                                        <constraint firstAttribute="bottom" secondItem="a8b-cW-Iqy" secondAttribute="bottom" constant="-41" id="pbA-ZP-YNI"/>
                                         <constraint firstItem="a8b-cW-Iqy" firstAttribute="top" secondItem="M0H-ku-eAL" secondAttribute="bottom" constant="10" id="vib-Oo-CRz"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CartCell" rowHeight="85" id="vyv-Rh-Crn" customClass="MenuCell" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="300" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vyv-Rh-Crn" id="djM-00-rzP">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLG-Ab-6td" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-sn-Z6j">
                                                             <rect key="frame" x="10" y="15" width="50" height="50"/>
@@ -1904,7 +1919,7 @@ support@coldmanfresh.in</string>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4U-Ne-8NO" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
-                                                            <rect key="frame" x="364" y="10" width="20" height="20"/>
+                                                            <rect key="frame" x="270" y="10" width="20" height="20"/>
                                                             <color key="backgroundColor" red="0.94901960780000005" green="0.14117647059999999" blue="0.49803921569999998" alpha="0.1178202025" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="bwQ-ZS-NG8"/>
@@ -1921,13 +1936,13 @@ support@coldmanfresh.in</string>
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sandwich" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdA-O6-s3f">
-                                                            <rect key="frame" x="70" y="10" width="289" height="18"/>
+                                                            <rect key="frame" x="70" y="10" width="195" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1b-R7-g45" customClass="CustomView" customModule="ColdmanFresh" customModuleProvider="target">
-                                                            <rect key="frame" x="294" y="42" width="90" height="30"/>
+                                                            <rect key="frame" x="200" y="42" width="90" height="30"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQ8-iO-7he">
                                                                     <rect key="frame" x="60" y="0.0" width="30" height="30"/>
@@ -2005,9 +2020,11 @@ support@coldmanfresh.in</string>
                                                         <constraint firstItem="VBT-ZF-HC7" firstAttribute="leading" secondItem="KdA-O6-s3f" secondAttribute="leading" id="3LJ-DG-WUy"/>
                                                         <constraint firstItem="e4U-Ne-8NO" firstAttribute="top" secondItem="KdA-O6-s3f" secondAttribute="top" id="3f1-nN-GRN"/>
                                                         <constraint firstAttribute="trailing" secondItem="e4U-Ne-8NO" secondAttribute="trailing" constant="10" id="4bh-r6-LUM"/>
+                                                        <constraint firstItem="t1b-R7-g45" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VBT-ZF-HC7" secondAttribute="trailing" constant="8" symbolic="YES" id="CNA-Mb-Xcr"/>
                                                         <constraint firstItem="flo-2O-zh6" firstAttribute="leading" secondItem="KdA-O6-s3f" secondAttribute="leading" id="H9Z-lU-ZQE"/>
                                                         <constraint firstItem="XNS-sn-Z6j" firstAttribute="centerY" secondItem="rLG-Ab-6td" secondAttribute="centerY" id="LcL-MG-z6m"/>
                                                         <constraint firstItem="VBT-ZF-HC7" firstAttribute="top" secondItem="KdA-O6-s3f" secondAttribute="bottom" constant="5" id="NSP-QV-cKI"/>
+                                                        <constraint firstItem="t1b-R7-g45" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="flo-2O-zh6" secondAttribute="trailing" constant="8" symbolic="YES" id="SEh-OA-WCU"/>
                                                         <constraint firstItem="flo-2O-zh6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VBT-ZF-HC7" secondAttribute="bottom" constant="2" id="adl-Nr-ZOp"/>
                                                         <constraint firstItem="flo-2O-zh6" firstAttribute="bottom" secondItem="t1b-R7-g45" secondAttribute="bottom" id="cGk-bR-dxI"/>
                                                         <constraint firstItem="e4U-Ne-8NO" firstAttribute="leading" secondItem="KdA-O6-s3f" secondAttribute="trailing" constant="5" id="ghw-7a-stZ"/>
@@ -2044,7 +2061,7 @@ support@coldmanfresh.in</string>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wy-0X-Yuc">
-                                <rect key="frame" x="65" y="61" width="284" height="26.5"/>
+                                <rect key="frame" x="65" y="17" width="190" height="26.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -2062,13 +2079,12 @@ support@coldmanfresh.in</string>
                             <constraint firstItem="dSx-Tc-sa8" firstAttribute="top" secondItem="3So-kh-Ukz" secondAttribute="top" constant="15" id="Q9o-TB-xGZ"/>
                             <constraint firstItem="PsP-tZ-sjt" firstAttribute="centerX" secondItem="3So-kh-Ukz" secondAttribute="centerX" id="VDR-mA-whT"/>
                             <constraint firstItem="5Wy-0X-Yuc" firstAttribute="top" secondItem="dSx-Tc-sa8" secondAttribute="top" constant="2" id="an8-2B-E1L"/>
-                            <constraint firstItem="PsP-tZ-sjt" firstAttribute="leading" secondItem="kQM-8z-pSl" secondAttribute="leading" id="exK-tX-SPi"/>
                             <constraint firstItem="kQM-8z-pSl" firstAttribute="top" secondItem="5Wy-0X-Yuc" secondAttribute="bottom" constant="10" id="gaJ-6b-tQn"/>
                             <constraint firstItem="5Wy-0X-Yuc" firstAttribute="leading" secondItem="dSx-Tc-sa8" secondAttribute="trailing" constant="10" id="kpZ-sN-eE9"/>
-                            <constraint firstItem="PsP-tZ-sjt" firstAttribute="trailing" secondItem="kQM-8z-pSl" secondAttribute="trailing" id="pRb-Iz-bWu"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cart" image="Cart" id="Att-qt-soY"/>
+                    <size key="freeformSize" width="320" height="596"/>
                     <connections>
                         <outlet property="btnAddress" destination="Wte-Zl-yrk" id="oSw-uo-eim"/>
                         <outlet property="btnBack" destination="dSx-Tc-sa8" id="K39-AN-ccJ"/>
@@ -2091,7 +2107,7 @@ support@coldmanfresh.in</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A63-at-SHM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3075" y="-929"/>
+            <point key="canvasLocation" x="3075" y="-929.57746478873241"/>
         </scene>
         <!--CheckoutVC-->
         <scene sceneID="71y-ov-0T8">
@@ -3362,6 +3378,397 @@ support@coldmanfresh.in</string>
             </objects>
             <point key="canvasLocation" x="4023" y="-126"/>
         </scene>
+        <!--About Us-->
+        <scene sceneID="6HK-SB-71D">
+            <objects>
+                <viewController storyboardIdentifier="AboutUsViewController" title="About Us" id="NOK-js-BfJ" customClass="AboutUsViewController" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZKX-A0-jQZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSj-if-7ic">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRZ-hB-sYs">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1058.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2G-jk-4d9">
+                                                <rect key="frame" x="20" y="55" width="335" height="264"/>
+                                                <string key="text">Coldman Fresh is a new initiative by Coldman Logistics Pvt Ltd. It is India's first B2C Corporate portal/app to provide farm fresh products directly shipped to consumers at the corporate organizations at the right time and right temperature. Coldman Logistics is into providing Temperature-Controlled Warehousing and Logistics Services to various Industries with a strong focus on technology driven operations .We offer End to End Solutions from Source to Consumption point. to know more click here.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISION AND MISSION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHI-lj-XJZ">
+                                                <rect key="frame" x="20" y="339" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytR-He-vgx">
+                                                <rect key="frame" x="20" y="374" width="335" height="183"/>
+                                                <string key="text">Coldman Fresh aims to be a link between Farmers and Customers for the supply of high-quality fresh fruits and vegetables with guaranteed food safety and grown under circumstances with attention to people and the environment. We will achieve this by acting with discretion, passion and commitment under the guidance of Man of Vision.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOOD SAFETY CERTIFICATES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNp-U9-4xQ">
+                                                <rect key="frame" x="8" y="577" width="359" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWf-Zh-aGv">
+                                                <rect key="frame" x="20" y="612" width="335" height="446.5"/>
+                                                <string key="text">Coldman Fresh is committed to its policy of bringing only the freshest, healthiest, most nutritious, and most importantly, safe produce available. We believe in strict environmental and health and safety controls and practices that are embodied in our ISO 22000:2018 and FSSAI certifications. COLDMAN FRESH QUALITY GUARANTEE No matter how small or large your order, Coldman Fresh guarantees that we will deliver only the highest quality produce that is fresh and delicious, and that when your customers experience its flavours, it tastes almost as if it had just been picked. We guarantee that you will be delighted with our fresh products and our personal service. We stand by our reputation. We stand by our name. We stand by our quality.
+
+USP FOR COLDMAN FRESH – We Deliver the Freshness of Farm to your Home.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABOUT US" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUa-4G-UOM">
+                                                <rect key="frame" x="20" y="20" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="tUa-4G-UOM" firstAttribute="top" secondItem="fRZ-hB-sYs" secondAttribute="top" constant="20" id="64G-Vx-nZX"/>
+                                            <constraint firstAttribute="trailing" secondItem="tUa-4G-UOM" secondAttribute="trailing" constant="20" id="H1D-5f-lWX"/>
+                                            <constraint firstItem="eNp-U9-4xQ" firstAttribute="top" secondItem="ytR-He-vgx" secondAttribute="bottom" constant="20" id="JJk-eA-7zT"/>
+                                            <constraint firstItem="FWf-Zh-aGv" firstAttribute="leading" secondItem="fRZ-hB-sYs" secondAttribute="leading" constant="20" id="Mqd-Y8-3zP"/>
+                                            <constraint firstAttribute="trailing" secondItem="uHI-lj-XJZ" secondAttribute="trailing" constant="20" id="QmW-Ju-XZ6"/>
+                                            <constraint firstItem="uHI-lj-XJZ" firstAttribute="top" secondItem="v2G-jk-4d9" secondAttribute="bottom" constant="20" id="RdD-Gk-aYh"/>
+                                            <constraint firstAttribute="trailing" secondItem="v2G-jk-4d9" secondAttribute="trailing" constant="20" id="Tt7-4b-0AC"/>
+                                            <constraint firstAttribute="trailing" secondItem="ytR-He-vgx" secondAttribute="trailing" constant="20" id="Txh-JL-8l3"/>
+                                            <constraint firstItem="ytR-He-vgx" firstAttribute="leading" secondItem="fRZ-hB-sYs" secondAttribute="leading" constant="20" id="Y80-Rv-pPK"/>
+                                            <constraint firstItem="eNp-U9-4xQ" firstAttribute="leading" secondItem="fRZ-hB-sYs" secondAttribute="leading" constant="8" id="cQx-mZ-Vl4"/>
+                                            <constraint firstItem="uHI-lj-XJZ" firstAttribute="leading" secondItem="fRZ-hB-sYs" secondAttribute="leading" constant="20" id="g8q-co-SWU"/>
+                                            <constraint firstAttribute="bottom" secondItem="FWf-Zh-aGv" secondAttribute="bottom" id="k4X-my-hBU"/>
+                                            <constraint firstItem="FWf-Zh-aGv" firstAttribute="top" secondItem="eNp-U9-4xQ" secondAttribute="bottom" constant="5" id="mZM-ke-iPK"/>
+                                            <constraint firstAttribute="trailing" secondItem="FWf-Zh-aGv" secondAttribute="trailing" constant="20" id="nho-mb-XEQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="eNp-U9-4xQ" secondAttribute="trailing" constant="8" id="qfa-G6-UqG"/>
+                                            <constraint firstItem="v2G-jk-4d9" firstAttribute="top" secondItem="tUa-4G-UOM" secondAttribute="bottom" constant="5" id="rxs-90-AT0"/>
+                                            <constraint firstItem="tUa-4G-UOM" firstAttribute="leading" secondItem="fRZ-hB-sYs" secondAttribute="leading" constant="20" id="tsW-b4-QLr"/>
+                                            <constraint firstItem="ytR-He-vgx" firstAttribute="top" secondItem="uHI-lj-XJZ" secondAttribute="bottom" constant="5" id="tyn-3G-2bT"/>
+                                            <constraint firstItem="v2G-jk-4d9" firstAttribute="leading" secondItem="fRZ-hB-sYs" secondAttribute="leading" constant="20" id="wFW-t8-aWS"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fRZ-hB-sYs" firstAttribute="leading" secondItem="hSj-if-7ic" secondAttribute="leading" id="PdS-YG-OHC"/>
+                                    <constraint firstItem="fRZ-hB-sYs" firstAttribute="top" secondItem="hSj-if-7ic" secondAttribute="top" id="RhI-P5-GXF"/>
+                                    <constraint firstAttribute="bottom" secondItem="fRZ-hB-sYs" secondAttribute="bottom" id="f7P-A0-zgM"/>
+                                    <constraint firstAttribute="trailing" secondItem="fRZ-hB-sYs" secondAttribute="trailing" id="rKq-Q6-avV"/>
+                                    <constraint firstItem="fRZ-hB-sYs" firstAttribute="width" secondItem="hSj-if-7ic" secondAttribute="width" id="sJT-yi-EDx"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="2xr-Ae-zVR"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="VVL-sd-mUK"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QkB-jI-4UE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hSj-if-7ic" firstAttribute="top" secondItem="QkB-jI-4UE" secondAttribute="top" id="AyW-kX-bSt"/>
+                            <constraint firstItem="hSj-if-7ic" firstAttribute="trailing" secondItem="QkB-jI-4UE" secondAttribute="trailing" id="PRn-Rj-c5N"/>
+                            <constraint firstItem="hSj-if-7ic" firstAttribute="leading" secondItem="QkB-jI-4UE" secondAttribute="leading" id="TSA-zv-lpr"/>
+                            <constraint firstItem="hSj-if-7ic" firstAttribute="bottom" secondItem="QkB-jI-4UE" secondAttribute="bottom" id="dgn-E7-ajW"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="scrollView" destination="hSj-if-7ic" id="w90-uH-YaN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wxh-PA-OgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4776.811594202899" y="-127.23214285714285"/>
+        </scene>
+        <!--Contac Us View Controller-->
+        <scene sceneID="3Ir-eV-Fmr">
+            <objects>
+                <viewController storyboardIdentifier="ContacUsViewController" id="YUE-Y0-aUU" customClass="ContacUsViewController" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gas-tp-R1n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="8G0-MR-2wq">
+                                <rect key="frame" x="20" y="60" width="335" height="93"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wZT-Gr-n4a">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="nameTextField:" destination="SMZ-WZ-aG5" eventType="editingDidEnd" id="lOt-Qr-iKP"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9T0-A4-j17">
+                                        <rect key="frame" x="0.0" y="59" width="335" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ryS-pg-Icx">
+                                <rect key="frame" x="20" y="198.5" width="335" height="216.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Message*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzl-SH-Po4">
+                                <rect key="frame" x="20" y="173" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dr7-Fb-Mcx">
+                                <rect key="frame" x="111" y="427" width="153" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="aCs-Vh-oJJ"/>
+                                    <constraint firstAttribute="height" constant="42" id="vbZ-IF-mf5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="SEND"/>
+                                <connections>
+                                    <action selector="sendFunctionClick:" destination="YUE-Y0-aUU" eventType="touchUpInside" id="Y55-dv-Wvo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwA-Ny-gkF">
+                                <rect key="frame" x="20" y="10" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ekk-bN-QRm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ryS-pg-Icx" firstAttribute="leading" secondItem="Ekk-bN-QRm" secondAttribute="leading" constant="20" id="07b-MF-FnQ"/>
+                            <constraint firstItem="Ekk-bN-QRm" firstAttribute="trailing" secondItem="dr7-Fb-Mcx" secondAttribute="trailing" constant="111" id="1da-eV-NVQ"/>
+                            <constraint firstItem="Ekk-bN-QRm" firstAttribute="bottom" secondItem="dr7-Fb-Mcx" secondAttribute="bottom" constant="198" id="2ha-Vf-6FK"/>
+                            <constraint firstItem="UwA-Ny-gkF" firstAttribute="leading" secondItem="Ekk-bN-QRm" secondAttribute="leading" constant="20" id="6f9-xS-8HC"/>
+                            <constraint firstItem="dr7-Fb-Mcx" firstAttribute="leading" secondItem="Ekk-bN-QRm" secondAttribute="leading" constant="111" id="AZH-Kr-IQp"/>
+                            <constraint firstItem="wzl-SH-Po4" firstAttribute="leading" secondItem="Ekk-bN-QRm" secondAttribute="leading" constant="20" id="DI9-IP-wOy"/>
+                            <constraint firstItem="wzl-SH-Po4" firstAttribute="top" secondItem="8G0-MR-2wq" secondAttribute="bottom" constant="20" id="Ga1-3v-jug"/>
+                            <constraint firstItem="Ekk-bN-QRm" firstAttribute="trailing" secondItem="wzl-SH-Po4" secondAttribute="trailing" constant="20" id="HRm-mP-gD9"/>
+                            <constraint firstItem="8G0-MR-2wq" firstAttribute="top" secondItem="UwA-Ny-gkF" secondAttribute="bottom" constant="20" id="N38-sY-lcx"/>
+                            <constraint firstItem="dr7-Fb-Mcx" firstAttribute="top" secondItem="ryS-pg-Icx" secondAttribute="bottom" constant="12" id="Oap-QK-K1g"/>
+                            <constraint firstItem="8G0-MR-2wq" firstAttribute="leading" secondItem="Ekk-bN-QRm" secondAttribute="leading" constant="20" id="T69-d3-6hg"/>
+                            <constraint firstItem="Ekk-bN-QRm" firstAttribute="trailing" secondItem="ryS-pg-Icx" secondAttribute="trailing" constant="20" id="gAX-bT-ED3"/>
+                            <constraint firstItem="UwA-Ny-gkF" firstAttribute="top" secondItem="Ekk-bN-QRm" secondAttribute="top" constant="10" id="nXm-5A-aCo"/>
+                            <constraint firstItem="ryS-pg-Icx" firstAttribute="top" secondItem="wzl-SH-Po4" secondAttribute="bottom" constant="5" id="p6q-4g-THh"/>
+                            <constraint firstItem="Ekk-bN-QRm" firstAttribute="trailing" secondItem="UwA-Ny-gkF" secondAttribute="trailing" constant="20" id="waS-IV-vP6"/>
+                            <constraint firstItem="Ekk-bN-QRm" firstAttribute="trailing" secondItem="8G0-MR-2wq" secondAttribute="trailing" constant="20" id="yH7-PQ-6pV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="wZT-Gr-n4a" id="lUu-E1-nTo"/>
+                        <outlet property="subjectTextField" destination="9T0-A4-j17" id="xbf-Vx-JDg"/>
+                        <outlet property="yourMessage" destination="ryS-pg-Icx" id="Wt2-vr-Ypt"/>
+                    </connections>
+                </viewController>
+                <exit id="SMZ-WZ-aG5" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9u-2k-h5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5473.125" y="-140.49295774647888"/>
+        </scene>
+        <!--Pricing Policy View Controller-->
+        <scene sceneID="QVv-M7-MNL">
+            <objects>
+                <viewController storyboardIdentifier="PricingPolicyViewController" id="0Fz-qg-QaI" customClass="PricingPolicyViewController" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PfI-RD-r4x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICING POLICY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1LF-6y-h9X">
+                                <rect key="frame" x="20" y="20" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qB-xY-n5l">
+                                <rect key="frame" x="20" y="90" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" textAlignment="justified" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxW-1l-K08">
+                                <rect key="frame" x="20" y="120" width="335" height="547"/>
+                                <mutableString key="text">All contents of the site are offered on an "as is" basis without any warranty whatsoever either express or implied.  Coldman Fresh makes no representations, express or implied, including without limitation implied warranties of merchantability and fitness for a particular purpose. 
+
+All materials on this site are protected as the copyrights, trade dress, trademarks and/ or other intellectual properties owned by Coldman or by other parties that have licensed their material to Coldman Fresh.  All rights not expressly granted are reserved. The Pricing of fruits &amp; vegetables are very dynamic and is dependent upon various external factors. Though we ensure the rates of products to be as low as possible however due to external factors like natural calamity, pandemic, epidemic, supply unavailability, strikes etc; the rates vary. </mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ySi-JL-EUn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8qB-xY-n5l" firstAttribute="leading" secondItem="ySi-JL-EUn" secondAttribute="leading" constant="20" id="0CU-Hm-hsB"/>
+                            <constraint firstItem="ySi-JL-EUn" firstAttribute="trailing" secondItem="QxW-1l-K08" secondAttribute="trailing" constant="20" id="0Wv-cf-8Wg"/>
+                            <constraint firstItem="QxW-1l-K08" firstAttribute="leading" secondItem="ySi-JL-EUn" secondAttribute="leading" constant="20" id="8JK-ft-xvg"/>
+                            <constraint firstItem="ySi-JL-EUn" firstAttribute="trailing" secondItem="8qB-xY-n5l" secondAttribute="trailing" constant="20" id="LhH-lq-VX8"/>
+                            <constraint firstItem="8qB-xY-n5l" firstAttribute="top" secondItem="1LF-6y-h9X" secondAttribute="bottom" constant="40" id="VJt-ku-Mya"/>
+                            <constraint firstItem="1LF-6y-h9X" firstAttribute="top" secondItem="ySi-JL-EUn" secondAttribute="top" constant="20" id="cUj-tf-3Um"/>
+                            <constraint firstItem="1LF-6y-h9X" firstAttribute="leading" secondItem="ySi-JL-EUn" secondAttribute="leading" constant="20" id="hO7-QC-7zT"/>
+                            <constraint firstItem="QxW-1l-K08" firstAttribute="top" secondItem="8qB-xY-n5l" secondAttribute="bottom" id="hy7-5J-IKb"/>
+                            <constraint firstItem="ySi-JL-EUn" firstAttribute="trailing" secondItem="1LF-6y-h9X" secondAttribute="trailing" constant="20" id="jg8-XL-p6y"/>
+                            <constraint firstItem="QxW-1l-K08" firstAttribute="bottom" secondItem="ySi-JL-EUn" secondAttribute="bottom" id="vVX-pT-23l"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOz-ON-TA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6412" y="-120.08995502248877"/>
+        </scene>
+        <!--Privacy Policy View Controller-->
+        <scene sceneID="Mnn-Fu-C9d">
+            <objects>
+                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="qU2-ex-sUO" customClass="PrivacyPolicyViewController" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fZM-k1-yXD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sef-9H-ye6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTf-iI-Vze">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1458.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRIVACY POLICY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9k2-x3-6SZ">
+                                                <rect key="frame" x="20" y="20" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g60-z3-bWZ">
+                                                <rect key="frame" x="20" y="55" width="335" height="264"/>
+                                                <string key="text">All contents of the site are offered on an "as is" basis without any warranty whatsoever either express or implied. Coldman makes no representations, express or implied, including without limitation implied warranties of merchantability and fitness for a particular purpose. Coldman does not guarantee the functions contained in the site will be uninterrupted or error-free, that this site or its server will be free of viruses or other harmful components, or defects will be corrected even if Coldman is aware of them.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright and Trademark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFN-L2-WMv">
+                                                <rect key="frame" x="20" y="339" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-eg-FMm">
+                                                <rect key="frame" x="20" y="374" width="335" height="142.5"/>
+                                                <string key="text">Unless otherwise noted, all materials on this site are protected as the copyrights, trade dress, trademarks and/ or other intellectual properties owned by Coldman or by other parties that have licensed their material to Coldman. All rights not expressly granted are reserved.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ja-uf-IAr">
+                                                <rect key="frame" x="20" y="536.5" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucu-82-cLd">
+                                                <rect key="frame" x="20" y="571.5" width="335" height="304.5"/>
+                                                <string key="text">Use of the materials included on this site is for informational and shopping purposes only. You agree you will not distribute, publish, transmit, modify, display or create derivative works from or exploit the contents of this site in any way. You agree to indemnify, defend and hold harmless Coldman for any and all unauthorized uses you may make of any material on the site. You acknowledge the unauthorized use of the contents could cause irreparable harm to Coldman and that in the event of an unauthorized use, Coldman shall be entitled to an injunction in addition to any other remedies available at law or in equity.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback and Submissions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol1-wn-lfV">
+                                                <rect key="frame" x="20" y="896" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nF-jJ-wU2">
+                                                <rect key="frame" x="20" y="931" width="335" height="527.5"/>
+                                                <string key="text">You agree you are and shall remain solely responsible for the contents of any submissions you make, and you will not submit material that is unlawful, defamatory, abusive or obscene. You agree that you will not submit anything to the site that will violate any right of any third party, including copyright, trademark, privacy or other personal or proprietary right(s). While we appreciate your interest in Coldman, we do not want and cannot accept any ideas you consider to be proprietary regarding designs, product technology or other suggestions you may have developed. Consequently, any material you submit to this site will be deemed a grant of a royalty free non-exclusive right and license to use, reproduce, modify, display, transmit, adapt, publish, translate, create derivative works from and distribute these materials throughout the universe in any medium and through any methods of distribution, transmission and display whether now known or hereafter devised. In addition, you warrant that all so-called "moral rights" have been waived.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="tFN-L2-WMv" firstAttribute="top" secondItem="g60-z3-bWZ" secondAttribute="bottom" constant="20" id="1bE-yD-v0Y"/>
+                                            <constraint firstItem="9k2-x3-6SZ" firstAttribute="leading" secondItem="QTf-iI-Vze" secondAttribute="leading" constant="20" id="2DB-It-dcv"/>
+                                            <constraint firstItem="QBT-eg-FMm" firstAttribute="leading" secondItem="QTf-iI-Vze" secondAttribute="leading" constant="20" id="98V-VI-n2v"/>
+                                            <constraint firstAttribute="trailing" secondItem="QBT-eg-FMm" secondAttribute="trailing" constant="20" id="APl-TO-6l1"/>
+                                            <constraint firstItem="0ja-uf-IAr" firstAttribute="leading" secondItem="QTf-iI-Vze" secondAttribute="leading" constant="20" id="E8X-7T-kWy"/>
+                                            <constraint firstAttribute="trailing" secondItem="g60-z3-bWZ" secondAttribute="trailing" constant="20" id="Ilm-DI-o7a"/>
+                                            <constraint firstItem="8nF-jJ-wU2" firstAttribute="leading" secondItem="QTf-iI-Vze" secondAttribute="leading" constant="20" id="M0D-L8-ahl"/>
+                                            <constraint firstItem="g60-z3-bWZ" firstAttribute="leading" secondItem="QTf-iI-Vze" secondAttribute="leading" constant="20" id="OBd-BJ-vQt"/>
+                                            <constraint firstItem="8nF-jJ-wU2" firstAttribute="top" secondItem="Ol1-wn-lfV" secondAttribute="bottom" constant="5" id="PYC-0n-cnD"/>
+                                            <constraint firstAttribute="bottom" secondItem="8nF-jJ-wU2" secondAttribute="bottom" id="QaB-hb-1x5"/>
+                                            <constraint firstItem="tFN-L2-WMv" firstAttribute="leading" secondItem="QTf-iI-Vze" secondAttribute="leading" constant="20" id="SRr-qh-kT0"/>
+                                            <constraint firstItem="Ucu-82-cLd" firstAttribute="top" secondItem="0ja-uf-IAr" secondAttribute="bottom" constant="5" id="T7e-PI-Ki1"/>
+                                            <constraint firstItem="QBT-eg-FMm" firstAttribute="top" secondItem="tFN-L2-WMv" secondAttribute="bottom" constant="5" id="XaS-IM-03I"/>
+                                            <constraint firstItem="Ucu-82-cLd" firstAttribute="top" secondItem="0ja-uf-IAr" secondAttribute="bottom" constant="5" id="YLS-Ni-u2V"/>
+                                            <constraint firstAttribute="trailing" secondItem="tFN-L2-WMv" secondAttribute="trailing" constant="20" id="Yxk-6q-TbF"/>
+                                            <constraint firstItem="Ucu-82-cLd" firstAttribute="top" secondItem="0ja-uf-IAr" secondAttribute="bottom" constant="5" id="bcg-wR-Alt"/>
+                                            <constraint firstItem="Ucu-82-cLd" firstAttribute="leading" secondItem="QTf-iI-Vze" secondAttribute="leading" constant="20" id="fyD-vZ-DoM"/>
+                                            <constraint firstItem="Ol1-wn-lfV" firstAttribute="top" secondItem="Ucu-82-cLd" secondAttribute="bottom" constant="20" id="iBC-wX-3eV"/>
+                                            <constraint firstAttribute="trailing" secondItem="0ja-uf-IAr" secondAttribute="trailing" constant="20" id="jfh-DZ-SVZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="9k2-x3-6SZ" secondAttribute="trailing" constant="20" id="jjN-Hh-hiU"/>
+                                            <constraint firstAttribute="trailing" secondItem="8nF-jJ-wU2" secondAttribute="trailing" constant="20" id="nMV-GN-a3s"/>
+                                            <constraint firstItem="g60-z3-bWZ" firstAttribute="top" secondItem="9k2-x3-6SZ" secondAttribute="bottom" constant="5" id="pxt-I8-NTD"/>
+                                            <constraint firstItem="Ol1-wn-lfV" firstAttribute="leading" secondItem="QTf-iI-Vze" secondAttribute="leading" constant="20" id="rSb-sc-l5J"/>
+                                            <constraint firstItem="QBT-eg-FMm" firstAttribute="top" secondItem="tFN-L2-WMv" secondAttribute="bottom" constant="5" id="thA-8j-k5j"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ol1-wn-lfV" secondAttribute="trailing" constant="20" id="vIK-8O-uwv"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ucu-82-cLd" secondAttribute="trailing" constant="20" id="w4y-Hp-aOG"/>
+                                            <constraint firstItem="0ja-uf-IAr" firstAttribute="top" secondItem="QBT-eg-FMm" secondAttribute="bottom" constant="20" id="wgk-K3-uun"/>
+                                            <constraint firstItem="9k2-x3-6SZ" firstAttribute="top" secondItem="QTf-iI-Vze" secondAttribute="top" constant="20" id="yOV-1I-7Ae"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="QTf-iI-Vze" firstAttribute="top" secondItem="sef-9H-ye6" secondAttribute="top" id="FxE-Rc-qNM"/>
+                                    <constraint firstItem="QTf-iI-Vze" firstAttribute="trailing" secondItem="sef-9H-ye6" secondAttribute="trailing" id="akO-6w-c0n"/>
+                                    <constraint firstItem="QTf-iI-Vze" firstAttribute="width" secondItem="sef-9H-ye6" secondAttribute="width" multiplier="0.641333" constant="134.5" id="k9t-fQ-UI6"/>
+                                    <constraint firstItem="QTf-iI-Vze" firstAttribute="leading" secondItem="sef-9H-ye6" secondAttribute="leading" id="t7u-5d-giY"/>
+                                    <constraint firstItem="QTf-iI-Vze" firstAttribute="bottom" secondItem="sef-9H-ye6" secondAttribute="bottom" id="yBE-hp-JqK"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="G6T-sQ-voD"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="tQp-Wb-X5A"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8P6-Ys-wfh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sef-9H-ye6" firstAttribute="bottom" secondItem="8P6-Ys-wfh" secondAttribute="bottom" id="0lg-oE-3hJ"/>
+                            <constraint firstItem="sef-9H-ye6" firstAttribute="trailing" secondItem="8P6-Ys-wfh" secondAttribute="trailing" id="8Em-8W-aLO"/>
+                            <constraint firstItem="sef-9H-ye6" firstAttribute="bottom" secondItem="8P6-Ys-wfh" secondAttribute="bottom" id="OHc-sl-Tjh"/>
+                            <constraint firstItem="sef-9H-ye6" firstAttribute="trailing" secondItem="8P6-Ys-wfh" secondAttribute="trailing" id="RDv-DC-QDg"/>
+                            <constraint firstItem="sef-9H-ye6" firstAttribute="top" secondItem="8P6-Ys-wfh" secondAttribute="top" id="UDu-g2-T5r"/>
+                            <constraint firstItem="sef-9H-ye6" firstAttribute="leading" secondItem="8P6-Ys-wfh" secondAttribute="leading" id="am8-4j-hgj"/>
+                            <constraint firstItem="sef-9H-ye6" firstAttribute="top" secondItem="8P6-Ys-wfh" secondAttribute="top" id="hb3-Y9-x6s"/>
+                            <constraint firstItem="sef-9H-ye6" firstAttribute="leading" secondItem="8P6-Ys-wfh" secondAttribute="leading" id="kuY-li-DgD"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="scrollView" destination="sef-9H-ye6" id="3AN-Yu-E4e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SnF-8u-nmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7356" y="-118.74062968515743"/>
+        </scene>
         <!--Address List View Controller-->
         <scene sceneID="v4c-63-amh">
             <objects>
@@ -4155,12 +4562,290 @@ support@coldmanfresh.in</string>
             </objects>
             <point key="canvasLocation" x="1127.536231884058" y="-127.23214285714285"/>
         </scene>
+        <!--Terms And Condition View Controller-->
+        <scene sceneID="Lut-ys-Q6s">
+            <objects>
+                <viewController storyboardIdentifier="TermsAndConditionViewController" id="zwt-Ea-zeO" customClass="TermsAndConditionViewController" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jkh-Yf-Fke">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBZ-Wi-Ndh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K45-Id-zdM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1716.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TERMS OF USE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCN-2z-Gba">
+                                                <rect key="frame" x="20" y="20" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANQ-br-kwS">
+                                                <rect key="frame" x="20" y="55" width="335" height="264"/>
+                                                <string key="text">All contents of the site are offered on an "as is" basis without any warranty whatsoever either express or implied.  Coldman makes no representations, express or implied, including without limitation implied warranties of merchantability and fitness for a particular purpose. Coldman does not guarantee the functions contained in the website will be uninterrupted or error-free, that this site or its server will be free of viruses or other harmful components, or defects will be corrected even if Coldman is aware of them.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rf-F0-qb2">
+                                                <rect key="frame" x="20" y="339" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP5-YA-BcJ">
+                                                <rect key="frame" x="20" y="374" width="335" height="223.5"/>
+                                                <string key="text">Orders will be delivered on first come first serve basis and submitting your order here, does not confirm the order. Coldman will give update the status on app / website to confirm your order. Your order will be delivered only on full payment of the order amount through online payment. The delivery of your order is subject to availability of delivery slots and stocks at the store. The permit details provided will be verified by the Delivery Representative. </string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright and Trademark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46q-uA-0Xa">
+                                                <rect key="frame" x="20" y="617.5" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcP-WH-Mln">
+                                                <rect key="frame" x="20" y="652.5" width="335" height="122"/>
+                                                <string key="text">All materials on this site are protected as the copyrights, trade dress, trademarks and/ or other intellectual properties owned by Coldman or by other parties that have licensed their material to Coldman.  All rights not expressly granted are reserved.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCt-Gw-cL9">
+                                                <rect key="frame" x="20" y="794.5" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nd1-HQ-xDv">
+                                                <rect key="frame" x="20" y="829.5" width="335" height="304.5"/>
+                                                <string key="text">Use of the materials included on this site is for informational and shopping purposes only. You agree you will not distribute, publish, transmit, modify, display or create derivative works from or exploit the contents of this site in any way. You agree to indemnify, defend and hold harmless Coldman for any and all unauthorized uses you may make of any material on the site. You acknowledge the unauthorized use of the contents could cause irreparable harm to Coldman and that in the event of an unauthorized use, Coldman shall be entitled to an injunction in addition to any other remedies available at law or in equity.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback and Submissions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nj7-OM-wkp">
+                                                <rect key="frame" x="20" y="1154" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXn-Eb-BaK">
+                                                <rect key="frame" x="20" y="1189" width="335" height="527.5"/>
+                                                <string key="text">You agree you are and shall remain solely responsible for the contents of any submissions you make, and you will not submit material that is unlawful, defamatory, abusive or obscene. You agree that you will not submit anything to the site that will violate any right of any third party, including copyright, trademark, privacy or other personal or proprietary right(s).
+While we appreciate your interest in Coldman, we do not want and cannot accept any ideas you consider to be proprietary regarding designs, product technology or other suggestions you may have developed. Consequently, any material you submit to this site will be deemed a grant of a royalty free non-exclusive right and license to use, reproduce, modify, display, transmit, adapt, publish, translate, create derivative works from and distribute these materials throughout the universe in any medium and through any methods of distribution, transmission and display whether now known or hereafter devised. In addition, you warrant that all so-called "moral rights" have been waived.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="46q-uA-0Xa" secondAttribute="trailing" constant="20" id="0sO-qU-4er"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nj7-OM-wkp" secondAttribute="trailing" constant="20" id="1iX-zu-vhB"/>
+                                            <constraint firstItem="6rf-F0-qb2" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="61k-nR-r1K"/>
+                                            <constraint firstItem="XP5-YA-BcJ" firstAttribute="top" secondItem="6rf-F0-qb2" secondAttribute="bottom" constant="5" id="6aP-zK-Iqi"/>
+                                            <constraint firstItem="qcP-WH-Mln" firstAttribute="top" secondItem="46q-uA-0Xa" secondAttribute="bottom" constant="5" id="9Sw-sk-HtZ"/>
+                                            <constraint firstItem="WXn-Eb-BaK" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="9fz-dR-tQI"/>
+                                            <constraint firstItem="Nj7-OM-wkp" firstAttribute="top" secondItem="Nd1-HQ-xDv" secondAttribute="bottom" constant="20" id="D1X-lw-6PX"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nd1-HQ-xDv" secondAttribute="trailing" constant="20" id="D8j-Nu-03o"/>
+                                            <constraint firstItem="ANQ-br-kwS" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="DAd-Rh-1B3"/>
+                                            <constraint firstAttribute="trailing" secondItem="WXn-Eb-BaK" secondAttribute="trailing" constant="20" id="EyY-G9-GNE"/>
+                                            <constraint firstItem="ANQ-br-kwS" firstAttribute="top" secondItem="MCN-2z-Gba" secondAttribute="bottom" constant="5" id="HYq-JJ-EfB"/>
+                                            <constraint firstAttribute="trailing" secondItem="rCt-Gw-cL9" secondAttribute="trailing" constant="20" id="Ksr-V8-SwW"/>
+                                            <constraint firstAttribute="trailing" secondItem="ANQ-br-kwS" secondAttribute="trailing" constant="20" id="LyE-bn-AjM"/>
+                                            <constraint firstItem="rCt-Gw-cL9" firstAttribute="top" secondItem="qcP-WH-Mln" secondAttribute="bottom" constant="20" id="MiT-oM-3XB"/>
+                                            <constraint firstItem="qcP-WH-Mln" firstAttribute="top" secondItem="46q-uA-0Xa" secondAttribute="bottom" constant="5" id="NKK-Oi-BDg"/>
+                                            <constraint firstItem="46q-uA-0Xa" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="O3N-aG-jld"/>
+                                            <constraint firstAttribute="trailing" secondItem="XP5-YA-BcJ" secondAttribute="trailing" constant="20" id="Pqz-6o-74q"/>
+                                            <constraint firstAttribute="bottom" secondItem="WXn-Eb-BaK" secondAttribute="bottom" id="S5h-bJ-iQ4"/>
+                                            <constraint firstItem="XP5-YA-BcJ" firstAttribute="top" secondItem="6rf-F0-qb2" secondAttribute="bottom" constant="5" id="THQ-hw-6Cp"/>
+                                            <constraint firstItem="MCN-2z-Gba" firstAttribute="top" secondItem="K45-Id-zdM" secondAttribute="top" constant="20" id="U4Q-Yc-NW8"/>
+                                            <constraint firstAttribute="trailing" secondItem="6rf-F0-qb2" secondAttribute="trailing" constant="20" id="VQK-bv-Zcx"/>
+                                            <constraint firstItem="qcP-WH-Mln" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="Vlt-nM-8gL"/>
+                                            <constraint firstItem="Nd1-HQ-xDv" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="Yui-iy-hEC"/>
+                                            <constraint firstItem="qcP-WH-Mln" firstAttribute="top" secondItem="46q-uA-0Xa" secondAttribute="bottom" constant="5" id="bs0-SC-Jqd"/>
+                                            <constraint firstAttribute="trailing" secondItem="MCN-2z-Gba" secondAttribute="trailing" constant="20" id="cMg-GX-Zyv"/>
+                                            <constraint firstItem="Nj7-OM-wkp" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="jbz-c8-5W4"/>
+                                            <constraint firstItem="WXn-Eb-BaK" firstAttribute="top" secondItem="Nj7-OM-wkp" secondAttribute="bottom" constant="5" id="kcO-lC-vXf"/>
+                                            <constraint firstItem="6rf-F0-qb2" firstAttribute="top" secondItem="ANQ-br-kwS" secondAttribute="bottom" constant="20" id="lpf-UV-xTk"/>
+                                            <constraint firstItem="XP5-YA-BcJ" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="mpN-g7-8aA"/>
+                                            <constraint firstItem="WXn-Eb-BaK" firstAttribute="top" secondItem="Nj7-OM-wkp" secondAttribute="bottom" constant="5" id="nHN-ZJ-07Y"/>
+                                            <constraint firstAttribute="trailing" secondItem="qcP-WH-Mln" secondAttribute="trailing" constant="20" id="pBE-ya-XsE"/>
+                                            <constraint firstItem="rCt-Gw-cL9" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="pEG-pQ-Lbq"/>
+                                            <constraint firstItem="Nd1-HQ-xDv" firstAttribute="top" secondItem="rCt-Gw-cL9" secondAttribute="bottom" constant="5" id="tue-v1-MXx"/>
+                                            <constraint firstItem="MCN-2z-Gba" firstAttribute="leading" secondItem="K45-Id-zdM" secondAttribute="leading" constant="20" id="xZS-fB-FkK"/>
+                                            <constraint firstItem="46q-uA-0Xa" firstAttribute="top" secondItem="XP5-YA-BcJ" secondAttribute="bottom" constant="20" id="xqx-de-FHb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="K45-Id-zdM" firstAttribute="top" secondItem="HBZ-Wi-Ndh" secondAttribute="top" id="9iX-Dv-hCx"/>
+                                    <constraint firstItem="K45-Id-zdM" firstAttribute="trailing" secondItem="HBZ-Wi-Ndh" secondAttribute="trailing" constant="60" id="KlK-Tn-dMg"/>
+                                    <constraint firstItem="K45-Id-zdM" firstAttribute="width" secondItem="HBZ-Wi-Ndh" secondAttribute="width" multiplier="0.641333" constant="134.5" id="V05-Om-jY5"/>
+                                    <constraint firstItem="K45-Id-zdM" firstAttribute="leading" secondItem="HBZ-Wi-Ndh" secondAttribute="leading" id="jUp-rK-9Th"/>
+                                    <constraint firstItem="K45-Id-zdM" firstAttribute="bottom" secondItem="HBZ-Wi-Ndh" secondAttribute="bottom" id="zlu-Ip-dLf"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="h0C-1m-Hx3"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="pMs-ZX-cRc"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zwt-Ea-zeO" id="gjD-Y0-yxe"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Vwm-Rg-R9W"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="bottom" secondItem="Vwm-Rg-R9W" secondAttribute="bottom" id="3Q6-zN-ZMD"/>
+                            <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="trailing" secondItem="Vwm-Rg-R9W" secondAttribute="trailing" id="68t-wD-CW4"/>
+                            <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="trailing" secondItem="Vwm-Rg-R9W" secondAttribute="trailing" id="Y85-uY-8nd"/>
+                            <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="top" secondItem="Vwm-Rg-R9W" secondAttribute="top" id="bUx-Aa-aSS"/>
+                            <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="leading" secondItem="Vwm-Rg-R9W" secondAttribute="leading" id="gGi-Vu-Wr9"/>
+                            <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="leading" secondItem="Vwm-Rg-R9W" secondAttribute="leading" id="sf8-IM-jhX"/>
+                            <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="bottom" secondItem="Vwm-Rg-R9W" secondAttribute="bottom" id="srW-CA-I1n"/>
+                            <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="top" secondItem="Vwm-Rg-R9W" secondAttribute="top" id="t2T-jH-skO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="HBZ-Wi-Ndh" id="Ka7-vl-rxn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Mh-O1-FKJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8138" y="-94"/>
+        </scene>
+        <!--Return Cancellation Refund Policy View Controller-->
+        <scene sceneID="q2u-TI-3gh">
+            <objects>
+                <viewController storyboardIdentifier="ReturnCancellationRefundPolicyViewController" id="SSU-up-DU4" customClass="ReturnCancellationRefundPolicyViewController" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DOb-64-zP3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mil-Lz-zzK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hx0-Wx-iNE">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1133.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coldman Fresh Return Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KY-VR-hGz">
+                                                <rect key="frame" x="20" y="20" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLM-wh-Bv4">
+                                                <rect key="frame" x="20" y="55" width="335" height="243.5"/>
+                                                <string key="text">In case customer receives a damaged product at the time of delivery, you can return the product immediately to the delivery personal, your amount will be deposited to your wallet within 24-48 hours. Since fruits and vegetables are perishable items, return request must be raised within 12 hours of delivery, if the reason for return is genuine and issue has been found from company’s end, we will REPLACE the items in next order or REFUND to your account.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coldman Fresh Refund Policy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhp-vI-70O">
+                                                <rect key="frame" x="20" y="318.5" width="335" height="60"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga6-Cl-8Mc">
+                                                <rect key="frame" x="20" y="383.5" width="335" height="588.5"/>
+                                                <string key="text">1. Billed but Not Delivered – 
+We ensure to deliver the right Quality at right Quantity at right Place. Still if you find any item missing in the order, we will refund the charged amount for particular item to your account.
+
+2. Damaged products-
+ If the item delivered is having quality issue, customer has to send the clear photo graph to our customer care by mentioning order id. We will be happy to assist you and we would replace the item in next order or would initiate a refund to your account.
+
+3. Shelf Life / Perishability- 
+Handling and storage of fruits and vegetables is of utmost importance when you bring them home.
+Vegetables &amp; fruits have very short shelf life. 
+Though your products are MAP bags which ensure better shelf life, we recommend the fruits and vegetables should be consumed immediately or stored in refrigerator at 8-10 degree or room temperature (20-25 degree) and avoid direct sunlight. The issue noticed after 12 hours will not be entitled for refund.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coldman fresh Cancellation policy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ag4-Ia-kGw">
+                                                <rect key="frame" x="20" y="992" width="335" height="55"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                                <color key="textColor" red="0.21088618040000001" green="0.51082497839999996" blue="0.76868361230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0f-A3-w9T">
+                                                <rect key="frame" x="20" y="1052" width="335" height="81.5"/>
+                                                <string key="text">Customer can cancel the order on the same day of placing order by calling our customer care. Amount will be refund within 24 hours to your account.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ga6-Cl-8Mc" secondAttribute="trailing" constant="20" id="0wW-k5-Ztz"/>
+                                            <constraint firstAttribute="trailing" secondItem="MLM-wh-Bv4" secondAttribute="trailing" constant="20" id="40Z-2r-fbE"/>
+                                            <constraint firstAttribute="trailing" secondItem="mhp-vI-70O" secondAttribute="trailing" constant="20" id="4Kp-F7-6mr"/>
+                                            <constraint firstAttribute="bottom" secondItem="f0f-A3-w9T" secondAttribute="bottom" id="BdW-pd-asB"/>
+                                            <constraint firstItem="ga6-Cl-8Mc" firstAttribute="top" secondItem="mhp-vI-70O" secondAttribute="bottom" constant="5" id="By0-u4-OBd"/>
+                                            <constraint firstItem="mhp-vI-70O" firstAttribute="top" secondItem="MLM-wh-Bv4" secondAttribute="bottom" constant="20" id="CEa-Rm-jio"/>
+                                            <constraint firstItem="8KY-VR-hGz" firstAttribute="leading" secondItem="Hx0-Wx-iNE" secondAttribute="leading" constant="20" id="Kex-eh-4Cv"/>
+                                            <constraint firstItem="8KY-VR-hGz" firstAttribute="top" secondItem="Hx0-Wx-iNE" secondAttribute="top" constant="20" id="LPc-a2-Xcv"/>
+                                            <constraint firstItem="f0f-A3-w9T" firstAttribute="top" secondItem="ag4-Ia-kGw" secondAttribute="bottom" constant="5" id="UUd-FY-Ken"/>
+                                            <constraint firstAttribute="trailing" secondItem="f0f-A3-w9T" secondAttribute="trailing" constant="20" id="Xh8-Hr-3fs"/>
+                                            <constraint firstItem="ga6-Cl-8Mc" firstAttribute="leading" secondItem="Hx0-Wx-iNE" secondAttribute="leading" constant="20" id="b6T-aR-uOS"/>
+                                            <constraint firstItem="f0f-A3-w9T" firstAttribute="top" secondItem="ag4-Ia-kGw" secondAttribute="bottom" constant="5" id="bJp-1Q-faP"/>
+                                            <constraint firstAttribute="trailing" secondItem="ag4-Ia-kGw" secondAttribute="trailing" constant="20" id="bgf-rB-evP"/>
+                                            <constraint firstItem="ag4-Ia-kGw" firstAttribute="leading" secondItem="Hx0-Wx-iNE" secondAttribute="leading" constant="20" id="dgj-Va-9rV"/>
+                                            <constraint firstItem="MLM-wh-Bv4" firstAttribute="leading" secondItem="Hx0-Wx-iNE" secondAttribute="leading" constant="20" id="fx6-fj-Bwl"/>
+                                            <constraint firstAttribute="trailing" secondItem="8KY-VR-hGz" secondAttribute="trailing" constant="20" id="hLq-qm-AVE"/>
+                                            <constraint firstItem="mhp-vI-70O" firstAttribute="leading" secondItem="Hx0-Wx-iNE" secondAttribute="leading" constant="20" id="kRb-vs-7m1"/>
+                                            <constraint firstItem="f0f-A3-w9T" firstAttribute="top" secondItem="ag4-Ia-kGw" secondAttribute="bottom" constant="5" id="knI-a0-UD6"/>
+                                            <constraint firstItem="ag4-Ia-kGw" firstAttribute="top" secondItem="ga6-Cl-8Mc" secondAttribute="bottom" constant="20" id="mhV-IH-2pZ"/>
+                                            <constraint firstItem="ga6-Cl-8Mc" firstAttribute="top" secondItem="mhp-vI-70O" secondAttribute="bottom" constant="5" id="nUL-iF-cqP"/>
+                                            <constraint firstItem="f0f-A3-w9T" firstAttribute="leading" secondItem="Hx0-Wx-iNE" secondAttribute="leading" constant="20" id="nWz-jL-URa"/>
+                                            <constraint firstItem="MLM-wh-Bv4" firstAttribute="top" secondItem="8KY-VR-hGz" secondAttribute="bottom" constant="5" id="utf-hK-ijp"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Hx0-Wx-iNE" firstAttribute="leading" secondItem="mil-Lz-zzK" secondAttribute="leading" id="2ug-0f-Ie7"/>
+                                    <constraint firstItem="Hx0-Wx-iNE" firstAttribute="top" secondItem="mil-Lz-zzK" secondAttribute="top" id="kpY-L4-YIO"/>
+                                    <constraint firstItem="Hx0-Wx-iNE" firstAttribute="trailing" secondItem="mil-Lz-zzK" secondAttribute="trailing" id="ogq-hW-DFd"/>
+                                    <constraint firstItem="Hx0-Wx-iNE" firstAttribute="width" secondItem="mil-Lz-zzK" secondAttribute="width" multiplier="0.641333" constant="134.5" id="pLc-Mh-Bxd"/>
+                                    <constraint firstItem="Hx0-Wx-iNE" firstAttribute="bottom" secondItem="mil-Lz-zzK" secondAttribute="bottom" id="rLp-US-j5r"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="eAi-Oe-Xo9"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="6GJ-9J-Shv"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="izE-1I-1uU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mil-Lz-zzK" firstAttribute="trailing" secondItem="izE-1I-1uU" secondAttribute="trailing" id="0Hr-rk-aMr"/>
+                            <constraint firstItem="mil-Lz-zzK" firstAttribute="top" secondItem="izE-1I-1uU" secondAttribute="top" id="8dL-5X-Mzy"/>
+                            <constraint firstItem="mil-Lz-zzK" firstAttribute="leading" secondItem="izE-1I-1uU" secondAttribute="leading" id="Haa-cW-q4a"/>
+                            <constraint firstItem="mil-Lz-zzK" firstAttribute="top" secondItem="izE-1I-1uU" secondAttribute="top" id="LC6-s1-op8"/>
+                            <constraint firstItem="mil-Lz-zzK" firstAttribute="bottom" secondItem="izE-1I-1uU" secondAttribute="bottom" id="QNa-xs-QrO"/>
+                            <constraint firstItem="mil-Lz-zzK" firstAttribute="trailing" secondItem="izE-1I-1uU" secondAttribute="trailing" id="R01-Ta-Ync"/>
+                            <constraint firstItem="mil-Lz-zzK" firstAttribute="leading" secondItem="izE-1I-1uU" secondAttribute="leading" id="ouM-CM-mcj"/>
+                            <constraint firstItem="mil-Lz-zzK" firstAttribute="bottom" secondItem="izE-1I-1uU" secondAttribute="bottom" id="uEK-cG-els"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="mil-Lz-zzK" id="EXP-MX-wY6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ald-Zx-pc1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8916" y="-94"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Cart" width="25" height="25"/>
         <image name="Explore" width="30" height="30"/>
         <image name="Settings" width="30" height="30"/>
-        <image name="alert" width="1280" height="861"/>
+        <image name="alert" width="1547" height="1031"/>
         <image name="arrow-left" width="25" height="19"/>
         <image name="checked-checkbox" width="30" height="30"/>
         <image name="checkmark-white" width="26" height="26"/>
@@ -4177,11 +4862,17 @@ support@coldmanfresh.in</string>
         <image name="sort-down" width="20" height="20"/>
         <image name="truck" width="24" height="24"/>
         <image name="unchecked-checkbox" width="30" height="30"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

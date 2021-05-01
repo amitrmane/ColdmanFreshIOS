@@ -16,7 +16,7 @@ class SettingsVC: SuperViewController {
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var btnLogin: CustomButton!
 
-    var settingsArray = ["Manage Addresses", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
+    var settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy","Privacy Policy","Terms & Condition","Return,Refund and cancellation", "FAQs", "Help & Support"]
     var profile : UserProfile!
 
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class SettingsVC: SuperViewController {
             self.lblMobile.text = "Mobile - NA"
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
-            self.settingsArray = ["Manage Addresses",  "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
+            self.settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy", "Privacy Policy","Terms & Condition", "Return, Refund and cancellation", "FAQs", "Help & Support"]
             self.tblSettings.reloadData()
             return
         }
@@ -46,7 +46,7 @@ class SettingsVC: SuperViewController {
             self.lblMobile.text = "Mobile - NA"
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
-            self.settingsArray = ["Manage Addresses", "Privacy Policy", "Cancellation & Refund Policy", "FAQs", "Help & Support"]
+            self.settingsArray = ["Manage Addresses","About Us" , "Contact Us","Pricing Policy", "Privacy Policy","Terms & Condition", "Return, Refund and cancellation", "FAQs", "Help & Support"]
             self.tblSettings.reloadData()
             return
         }
@@ -104,13 +104,22 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
         case "Manage Addresses":
             cell.ivMenu.image = UIImage(named: "address")
             break
-        case "Terms & Conditions":
+        case "About Us":
+            cell.ivMenu.image = UIImage(named: "terms")
+            break
+        case "Contact Us":
+            cell.ivMenu.image = UIImage(named: "terms")
+            break
+        case "Pricing Policy":
             cell.ivMenu.image = UIImage(named: "terms")
             break
         case "Privacy Policy":
             cell.ivMenu.image = UIImage(named: "terms")
             break
-        case "Cancellation & Refund Policy":
+        case "Terms & Condition":
+            cell.ivMenu.image = UIImage(named: "terms")
+            break
+        case "Return, Refund and cancellation":
             cell.ivMenu.image = UIImage(named: "terms")
             break
         case "FAQs":
@@ -143,20 +152,35 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
             addressvc.user = user
             self.navigationController?.pushViewController(addressvc, animated: true)
             break
-        case "Terms & Conditions":
-            if let link = Constants.WebLinks.terms_and_conditions.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: link) {
-                openWeb(contentLink: url, pageName: "Terms & Conditions")
-            }
+        case "About Us":
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondViewController = storyboard.instantiateViewController(withIdentifier: "AboutUsViewController")
+            present(secondViewController, animated: false, completion: nil)
+            break
+        case "Contact Us":
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondViewController = storyboard.instantiateViewController(withIdentifier: "ContacUsViewController")
+            present(secondViewController, animated: false, completion: nil)
+            break
+        case "Pricing Policy":
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondViewController = storyboard.instantiateViewController(withIdentifier: "PricingPolicyViewController")
+            present(secondViewController, animated: false, completion: nil)
             break
         case "Privacy Policy":
-            if let link = Constants.WebLinks.privacy_policy.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: link) {
-                openWeb(contentLink: url, pageName: "Privacy Policy")
-            }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondViewController = storyboard.instantiateViewController(withIdentifier: "PrivacyPolicyViewController")
+            present(secondViewController, animated: false, completion: nil)
             break
-        case "Cancellation & Refund Policy":
-            if let link = Constants.WebLinks.cancellation_and_refund.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: link) {
-                openWeb(contentLink: url, pageName: "Cancellation & Refund Policy")
-            }
+        case "Terms & Condition":
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondViewController = storyboard.instantiateViewController(withIdentifier: "TermsAndConditionViewController")
+            present(secondViewController, animated: false, completion: nil)
+            break
+        case "Return, Refund and cancellation":
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondViewController = storyboard.instantiateViewController(withIdentifier: "ReturnCancellationRefundPolicyViewController")
+            present(secondViewController, animated: false, completion: nil)
             break
         case "FAQs":
             if let link = Constants.WebLinks.faqs.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: link) {

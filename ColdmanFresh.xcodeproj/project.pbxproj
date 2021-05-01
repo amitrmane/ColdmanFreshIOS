@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63282F982633DF60001EB850 /* PricingPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282F972633DF60001EB850 /* PricingPolicyViewController.swift */; };
+		63282F9B2633E485001EB850 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282F9A2633E485001EB850 /* PrivacyPolicyViewController.swift */; };
+		63282F9E2633F155001EB850 /* TermsAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282F9D2633F155001EB850 /* TermsAndConditionViewController.swift */; };
+		63282FA12633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282FA02633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift */; };
+		638B3B802632A5A500A61441 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B3B7F2632A5A500A61441 /* AboutUsViewController.swift */; };
+		638B3B832632E11D00A61441 /* ContacUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B3B822632E11D00A61441 /* ContacUsViewController.swift */; };
 		DF0791B425AC3AC0005AE966 /* TableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0791B325AC3AC0005AE966 /* TableViewCells.swift */; };
 		DF56602C25AF381D00A1DCA0 /* OrderHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602525AF381D00A1DCA0 /* OrderHistoryVC.swift */; };
 		DF56602D25AF381D00A1DCA0 /* OTPVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602625AF381D00A1DCA0 /* OTPVerificationVC.swift */; };
@@ -48,6 +54,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63282F972633DF60001EB850 /* PricingPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingPolicyViewController.swift; sourceTree = "<group>"; };
+		63282F9A2633E485001EB850 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		63282F9D2633F155001EB850 /* TermsAndConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionViewController.swift; sourceTree = "<group>"; };
+		63282FA02633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnCancellationRefundPolicyViewController.swift; sourceTree = "<group>"; };
+		638B3B7F2632A5A500A61441 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		638B3B822632E11D00A61441 /* ContacUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacUsViewController.swift; sourceTree = "<group>"; };
 		744775290AA13BA4DDC98B8B /* Pods_ColdmanFresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColdmanFresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		927874A4D225F1F93B31C262 /* Pods-ColdmanFresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColdmanFresh.release.xcconfig"; path = "Target Support Files/Pods-ColdmanFresh/Pods-ColdmanFresh.release.xcconfig"; sourceTree = "<group>"; };
 		DF0791B325AC3AC0005AE966 /* TableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCells.swift; sourceTree = "<group>"; };
@@ -143,6 +155,12 @@
 				DFA611DF25C1E0B1003177F8 /* AddressListViewController.swift */,
 				DFA611E025C1E0B1003177F8 /* OffersVC.swift */,
 				DF93203C25F4EE69000AA167 /* WelcomeAlertVC.swift */,
+				638B3B7F2632A5A500A61441 /* AboutUsViewController.swift */,
+				638B3B822632E11D00A61441 /* ContacUsViewController.swift */,
+				63282F972633DF60001EB850 /* PricingPolicyViewController.swift */,
+				63282F9A2633E485001EB850 /* PrivacyPolicyViewController.swift */,
+				63282F9D2633F155001EB850 /* TermsAndConditionViewController.swift */,
+				63282FA02633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -327,16 +345,19 @@
 				DFD83B3725A6DF220096FCBC /* HomeVC.swift in Sources */,
 				DFD83B4F25A6E1770096FCBC /* Parser.swift in Sources */,
 				DF5E6D1425B8C6600055AC5F /* ProductListVC.swift in Sources */,
+				63282FA12633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift in Sources */,
 				DFB734A525B607DB0085E1EC /* CartVC.swift in Sources */,
 				DF93203D25F4EE69000AA167 /* WelcomeAlertVC.swift in Sources */,
 				DFD83B5F25A6E1F40096FCBC /* Protocols.swift in Sources */,
 				DF56603225AF381D00A1DCA0 /* PhoneVerificationVC.swift in Sources */,
 				DFB1377B25A6F7C6006408CF /* SettingsVC.swift in Sources */,
 				DFD83B5E25A6E1F40096FCBC /* Structs.swift in Sources */,
+				63282F9B2633E485001EB850 /* PrivacyPolicyViewController.swift in Sources */,
 				DFD83B3325A6DF220096FCBC /* AppDelegate.swift in Sources */,
 				DFA611E325C1E0B1003177F8 /* OffersVC.swift in Sources */,
 				DF56603125AF381D00A1DCA0 /* SupportVC.swift in Sources */,
 				DF0791B425AC3AC0005AE966 /* TableViewCells.swift in Sources */,
+				63282F9E2633F155001EB850 /* TermsAndConditionViewController.swift in Sources */,
 				DFD07E7625AC2A1D000B8273 /* CollectionViewCells.swift in Sources */,
 				DFD83B5A25A6E1F40096FCBC /* Constants.swift in Sources */,
 				DFB1377725A6F758006408CF /* TabBarVC.swift in Sources */,
@@ -344,10 +365,13 @@
 				DFA611E125C1E0B1003177F8 /* AddAddressVC.swift in Sources */,
 				DF56603025AF381D00A1DCA0 /* SignUpVC.swift in Sources */,
 				DFD83B5D25A6E1F40096FCBC /* Extensions.swift in Sources */,
+				638B3B832632E11D00A61441 /* ContacUsViewController.swift in Sources */,
 				DFD83B6025A6E1F40096FCBC /* DatePickerDialog.swift in Sources */,
 				DFA611E225C1E0B1003177F8 /* AddressListViewController.swift in Sources */,
 				DF56602E25AF381D00A1DCA0 /* WebVC.swift in Sources */,
+				638B3B802632A5A500A61441 /* AboutUsViewController.swift in Sources */,
 				DFD83B4E25A6E1770096FCBC /* Reachability.swift in Sources */,
+				63282F982633DF60001EB850 /* PricingPolicyViewController.swift in Sources */,
 				DF56602C25AF381D00A1DCA0 /* OrderHistoryVC.swift in Sources */,
 				DFA611E625C59B97003177F8 /* CheckoutVC.swift in Sources */,
 				DF75298925DAED7A008696F6 /* OrderDetailsVC.swift in Sources */,
@@ -503,8 +527,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZJPJ9F322D;
 				INFOPLIST_FILE = ColdmanFresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -512,9 +537,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipl.coldmanfresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -526,8 +552,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZJPJ9F322D;
 				INFOPLIST_FILE = ColdmanFresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -535,9 +562,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipl.coldmanfresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
