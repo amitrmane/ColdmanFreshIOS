@@ -37,7 +37,8 @@ class CartVC: SuperViewController {
 
     @IBOutlet weak var btnProceedCheckout: UIButton!
     @IBOutlet weak var btnBack: UIButton!
-
+    @IBOutlet weak var lastFirstName: UILabel!
+    
     var addedMenus = [Menu]()
 //    var allTaxes = [Tax]()
     var user : UserProfile!
@@ -88,6 +89,7 @@ class CartVC: SuperViewController {
         }else {
             Utilities.removeValueForKeyFromDefaults(Constants.Keys.cart)
         }
+        NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
         self.navigationController?.popToRootViewController(animated: true)
     }
 
@@ -262,6 +264,7 @@ extension CartVC : UITableViewDataSource, UITableViewDelegate {
         
         var charge = 0.0
         if let u = self.user, u.customer_type == Constants.b2cHomeDelivery, let addrs = self.currentAddress {
+            self.lastFirstName.text = addrs.fname + " " + addrs.lname
             self.lblAddress.text = addrs.address
             if let pin = self.pincodes.filter({ $0.pincode == addrs.pincode }).first {
                 self.selectedPincode = pin

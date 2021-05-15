@@ -25,7 +25,9 @@ class HomeVC: SuperViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
+        AppUpdater.shared.showUpdate(withConfirmation: false)
+
         if let _ = Utilities.getValueForKeyFromUserDefaults("isAlertConfirmed") {
             self.getSliderImages()
         }else {
@@ -54,6 +56,34 @@ class HomeVC: SuperViewController {
     @objc func refreshPage() {
         self.getSliderImages()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.refreshData(firstLoad: true)
+    }
+    
+    @objc func methodOfReceivedNotification(notification: Notification) {
+        DispatchQueue.global(qos: .userInitiated).async {
+        ApiManager.getMenusData { (json) in
+            if let dict = json?.dictionary {
+                if let array = dict["menus"]?.array {
+                    self.menus = Menu.getMenuData(array: array)
+                }
+                if let array = dict["main_categories"]?.array {
+                    self.categories = Categories.getCategoriesData(array: array)
+                }
+                if let array = dict["sub_categories"]?.array {
+                    self.subCategories = SubCategories.getCategoriesData(array: array)
+                }
+//                DispatchQueue.main.async {
+                self.refreshData(firstLoad: true)
+//                }
+            }else {
+                self.showNoRecordsViewWithLabel(self.cvCategories, message: "Failed to fetch categories, please try again later. \n To reload just tap again on home button")
+            }
+        }
+    }
+    }
+
 
 
     @IBAction func cartTapped(_ sender: UIButton) {

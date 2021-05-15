@@ -86,7 +86,7 @@ extension AddressListViewController : UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         let address = self.allAddress[indexPath.row]
         cell.lblTitle.text = address.title
-        let fulladdr = address.address + " \(address.landmark)"
+        let fulladdr = address.address
         cell.lblDesc.text = fulladdr
         if isFromHome {
             if let addr = self.selectedAddr, addr.id == address.id {

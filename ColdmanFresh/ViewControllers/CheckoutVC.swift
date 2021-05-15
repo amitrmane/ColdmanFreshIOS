@@ -363,7 +363,7 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
             menuItem["menu_name"] = menu.menu_name
             menuItem["menu_price"] = menu.menu_price
             menuItem["qty"] = "\(menu.menuCount)"
-            menuItem["menu_variation"] = "\(menu.selectedVariation != nil ? menu.selectedVariation.name : "")"
+            menuItem["variation_id"] = menu.variation.first.map { $0.variation_id }
             orderItemDetails.append(menuItem)
         }
         

@@ -165,7 +165,6 @@ class SignUpVC: SuperViewController {
             params["user_id"] = "\(u.id)"
             params["fname"] = fname
             params["lname"] = lname
-            params["birthdate"] = self.selectedDate == nil ? "" : self.selectedDate.stringFromDate(.ddMMyyyydash)
             params["mobileno"] = mob
             params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
             params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode

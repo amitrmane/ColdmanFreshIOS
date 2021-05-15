@@ -13,6 +13,7 @@
 		63282FA12633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282FA02633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift */; };
 		638B3B802632A5A500A61441 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B3B7F2632A5A500A61441 /* AboutUsViewController.swift */; };
 		638B3B832632E11D00A61441 /* ContacUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B3B822632E11D00A61441 /* ContacUsViewController.swift */; };
+		63B086DC264704E7009F87FF /* AppUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B086DB264704E7009F87FF /* AppUpdater.swift */; };
 		DF0791B425AC3AC0005AE966 /* TableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0791B325AC3AC0005AE966 /* TableViewCells.swift */; };
 		DF56602C25AF381D00A1DCA0 /* OrderHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602525AF381D00A1DCA0 /* OrderHistoryVC.swift */; };
 		DF56602D25AF381D00A1DCA0 /* OTPVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF56602625AF381D00A1DCA0 /* OTPVerificationVC.swift */; };
@@ -60,6 +61,7 @@
 		63282FA02633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnCancellationRefundPolicyViewController.swift; sourceTree = "<group>"; };
 		638B3B7F2632A5A500A61441 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		638B3B822632E11D00A61441 /* ContacUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacUsViewController.swift; sourceTree = "<group>"; };
+		63B086DB264704E7009F87FF /* AppUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUpdater.swift; sourceTree = "<group>"; };
 		744775290AA13BA4DDC98B8B /* Pods_ColdmanFresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColdmanFresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		927874A4D225F1F93B31C262 /* Pods-ColdmanFresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColdmanFresh.release.xcconfig"; path = "Target Support Files/Pods-ColdmanFresh/Pods-ColdmanFresh.release.xcconfig"; sourceTree = "<group>"; };
 		DF0791B325AC3AC0005AE966 /* TableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCells.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				DFD83B3625A6DF220096FCBC /* HomeVC.swift */,
 				DF5E6D1325B8C6600055AC5F /* ProductListVC.swift */,
 				DFB1377A25A6F7C6006408CF /* SettingsVC.swift */,
+				63B086DB264704E7009F87FF /* AppUpdater.swift */,
 				DFB734A725B6A4820085E1EC /* VariationPopupVC.swift */,
 				DFB734A425B607DB0085E1EC /* CartVC.swift */,
 				DFA611E525C59B97003177F8 /* CheckoutVC.swift */,
@@ -346,6 +349,7 @@
 				DFD83B4F25A6E1770096FCBC /* Parser.swift in Sources */,
 				DF5E6D1425B8C6600055AC5F /* ProductListVC.swift in Sources */,
 				63282FA12633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift in Sources */,
+				63B086DC264704E7009F87FF /* AppUpdater.swift in Sources */,
 				DFB734A525B607DB0085E1EC /* CartVC.swift in Sources */,
 				DF93203D25F4EE69000AA167 /* WelcomeAlertVC.swift in Sources */,
 				DFD83B5F25A6E1F40096FCBC /* Protocols.swift in Sources */,
