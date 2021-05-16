@@ -125,7 +125,6 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
         cell.btnAdd.imageView!.tag = indexPath.section
         cell.btnAdd.addTarget(self, action: #selector(addToCartTapped(_:)), for: .touchUpInside)
         
-        if m.addedToCart == true {
         cell.btnPlus.tag = indexPath.row
         cell.btnPlus.imageView!.tag = indexPath.section
         cell.btnPlus.addTarget(self, action: #selector(plusTapped), for: .touchUpInside)
@@ -133,7 +132,6 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
         cell.btnMinus.tag = indexPath.row
         cell.btnMinus.imageView!.tag = indexPath.section
         cell.btnMinus.addTarget(self, action: #selector(minusTapped), for: .touchUpInside)
-        }
 
         return cell
     }
