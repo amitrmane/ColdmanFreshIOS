@@ -55,7 +55,7 @@ class CheckoutVC: SuperViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyLive, andDelegate: self)
+        razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyTest, andDelegate: self)
         day = Date().hour >= 22 ? 2 : 1
         self.tfDate.text = Date().dateByAddingDays(day).stringFromDate(Date.DateFormat.yyyyMMdd)
         self.selectedDate = Date()
@@ -188,7 +188,7 @@ extension CheckoutVC : LoginSuccessProtocol {
     func loginSuccess(profile: UserProfile) {
         print(profile)
         user = profile
-        self.callSaveOrderAPI(paymentId: paymentId)
+//        self.callSaveOrderAPI(paymentId: paymentId)
 //        let ordervc = mainStoryboard.instantiateViewController(withIdentifier: "OrderSummaryVC") as! OrderSummaryVC
 //        ordervc.restaurent = self.restaurent
 //        ordervc.user = self.user
@@ -361,7 +361,7 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
             var menuItem = [String: Any]()
             menuItem["menu_id"] = "\(menu.menu_id)"
             menuItem["menu_name"] = menu.menu_name
-            menuItem["menu_price"] = menu.menu_price
+            menuItem["menu_price"] = "\(menu.price)"
             menuItem["qty"] = "\(menu.menuCount)"
             menuItem["variation_id"] = menu.variation.first.map { $0.variation_id }
             orderItemDetails.append(menuItem)
@@ -372,8 +372,9 @@ extension CheckoutVC : RazorpayPaymentCompletionProtocolWithData, RazorpayPaymen
         params["order"] = "\(jsonString!)"
         params["user_id"] = self.user.user_id
         params["total"] = total
-        params["charges"] = charge
+        params["delivery_charges"] = charge
         params["transaction_id"] = paymentId
+        params["coming_from"] = "3"
         params["discount_amount"] = offerdiscount
         params["coupon"] = self.selectedOffer == nil ? "" : self.selectedOffer.discount_coupon
         if self.selectedDate != nil {

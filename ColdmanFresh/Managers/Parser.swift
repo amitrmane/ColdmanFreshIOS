@@ -106,7 +106,8 @@ class Menu : Codable {
             }
             if let value = dict["menu_price"].string {
                 data.menu_price = value
-                data.price = value.toDouble() ?? 0
+                let listItems = value.components(separatedBy: "/")
+                data.price = listItems.first!.toDouble() ?? 0
             }
             if let value = dict["variation"].array {
                 data.variation = Variation.getVariationData(array: value)

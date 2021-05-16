@@ -110,7 +110,7 @@ extension OrderDetailsVC : UITableViewDataSource, UITableViewDelegate {
         
         let menu = self.addedMenus[indexPath.row]
         cell.lblTitle.text = menu.menu_name + " x (\(menu.qty))"
-        cell.lblOrderValue.text = "₹ \(menu.menu_price)"
+        cell.lblOrderValue.text = "₹ \(menu.price)"
         
         return cell
     }

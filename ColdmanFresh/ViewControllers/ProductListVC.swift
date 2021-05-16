@@ -102,7 +102,7 @@ extension ProductListVC : UITableViewDataSource, UITableViewDelegate {
             cell.ivMenu.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"), options: .continueInBackground, completed: nil)
         }
         
-        cell.lblStarRating.text = " ₹ " + m.menu_price + " "
+        cell.lblStarRating.text = " ₹ " + "\(m.price)" + " "
         cell.lblMenuCount.text = "\(m.menuCount)"
         
         if m.menu_status == "Available" {
