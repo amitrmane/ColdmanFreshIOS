@@ -14,16 +14,27 @@ class PhoneVerificationVC: SuperViewController {
     @IBOutlet weak var tfPhoneNumber : CustomTextField!
     @IBOutlet weak var btnSendCode : CustomButton!
     
+    @IBOutlet weak var newRegistration: CustomButton!
     var addedMenus = [Menu]()
 //    var allTaxes = [Tax]()
     var isFromSettings = false
+    var isFromSignUp = false
+    var params = [String: Any]()
+    var mobileNumberString : String = ""
+    
 //    var selectedAddr : Address!
 //    var selectedOffer : Offers!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tfPhoneNumber.text = mobileNumberString
         // Do any additional setup after loading the view.
+        if isFromSignUp {
+            newRegistration.isHidden = true
+        }else {
+            newRegistration.isHidden = false
+
+        }
         
     }
     
@@ -46,7 +57,7 @@ class PhoneVerificationVC: SuperViewController {
     @IBAction func signUpTapped(_ sender: UIButton) {
         let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
         signupvc.delegate = self
-        self.present(signupvc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(signupvc, animated: true)
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
@@ -70,7 +81,7 @@ class PhoneVerificationVC: SuperViewController {
         var param = [String: Any]()
         param["mobileno"] = no
         
-        ApiManager.sendOTP(params: param) { (json) in
+        ApiManager.sendOTP(params: param) { [self] (json) in
             self.hideActivityIndicator()
 //            if success {
                 if let dict = json?.dictionary, let otp = dict["otp"]?.number {
@@ -81,7 +92,12 @@ class PhoneVerificationVC: SuperViewController {
 //                    verifyvc.restaurent = self.restaurent
 //                    verifyvc.allTaxes = self.allTaxes
                     verifyvc.addedMenus = self.addedMenus
+                    if isFromSignUp {
+                        verifyvc.isFromSignUp = self.isFromSignUp
+                        verifyvc.params = params
+                    }else {
                     verifyvc.isFromSettings = self.isFromSettings
+                    }
 //                    verifyvc.selectedOffer = self.selectedOffer
                     self.navigationController?.pushViewController(verifyvc, animated: true)
                 }else {

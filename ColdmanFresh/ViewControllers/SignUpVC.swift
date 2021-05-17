@@ -47,7 +47,7 @@ class SignUpVC: SuperViewController {
             self.tfName.text = u.fname + " " + u.lname
             self.tfMobile.text = u.mobileno
             self.tfEmail.text = u.email
-            self.tfBirthDate.text = u.birthdate
+//            self.tfBirthDate.text = u.birthdate
             if let date = Date().dateFromString(Date.DateFormat.yyyyMMdd.rawValue, dateString: u.birthdate) {
                 self.selectedDate = date
             }else if let date = Date().dateFromString(Date.DateFormat.ddMMyyyy.rawValue, dateString: u.birthdate) {
@@ -86,10 +86,10 @@ class SignUpVC: SuperViewController {
     }
 
     @IBAction func loginTapped(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: {
-            
-        })
-
+//        self.dismiss(animated: true, completion: {
+//
+//        })
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     @IBAction func corporateTapped(_ sender: UIButton) {
@@ -201,7 +201,7 @@ class SignUpVC: SuperViewController {
                         user.lname = lname
                         user.mobileno = mob
                         user.email = email
-                        user.birthdate = self.tfBirthDate.text ?? ""
+//                        user.birthdate = self.tfBirthDate.text ?? ""
                         user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
                         user.customer_type = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
                         user.id = u.id
@@ -230,7 +230,7 @@ class SignUpVC: SuperViewController {
                 }
             }
         }else {
-            
+
             var params = [String: Any]()
             var fname = ""
             var lname = ""
@@ -249,75 +249,84 @@ class SignUpVC: SuperViewController {
             params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
             params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
             params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
-
-            self.showActivityIndicator()
             
-            ApiManager.signUp(params: params) { (json) in
-                self.hideActivityIndicator()
-                if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-                    self.showActivityIndicator()
-                    
-                    ApiManager.verifyOTP(mobNo: mob) { (json) in
-                        self.hideActivityIndicator()
-                        if let dict = json?.dictionary {
-                            if let userdict = dict["userdetails"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
-                                let defaults = UserDefaults.standard
-                                
-                                // Use PropertyListEncoder to convert Player into Data / NSData
-                                do {
-                                    if self.btnCorporate.isSelected, let org = self.selectedOrganization {
-                                        defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
-                                    }else if !self.btnCorporate.isSelected, let pin = self.selectedPincode {
-                                        defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
-                                    }
-                                }catch {
-                                    print(error.localizedDescription)
-                                }
-
-                                defaults.synchronize()
-                                self.delegate.loginSuccess(profile: user)
-                                self.dismiss(animated: true, completion: {
-                                    
-                                })
-                                
-                            }else {
-                                let user = UserProfile()
-                                user.fname = fname
-                                user.lname = lname
-                                user.mobileno = mob
-                                user.email = email
-                                user.birthdate = self.tfBirthDate.text ?? ""
-                                user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
-                                user.customer_type = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
-                                let defaults = UserDefaults.standard
-                                
-                                // Use PropertyListEncoder to convert Player into Data / NSData
-                                do {
-                                    defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
-                                    if self.btnCorporate.isSelected, let org = self.selectedOrganization {
-                                        defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
-                                    }else if !self.btnCorporate.isSelected, let pin = self.selectedPincode {
-                                        defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
-                                    }
-                                }catch {
-                                    print(error.localizedDescription)
-                                }
-                                defaults.synchronize()
-                                self.delegate.loginSuccess(profile: user)
-                                self.dismiss(animated: true, completion: {
-                                    
-                                })
-                            }
-                        }else {
-                            self.showError(message: "User registration failed, please try again.")
-                        }
-                    }
-                }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-                    self.showAlert(message)
-                }else {
-                    self.showError(message: "User registration failed, please try again.")
-                }
-            }
+            let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "PhoneVerificationVC") as! PhoneVerificationVC
+            loginvc.isFromSignUp = true
+            loginvc.mobileNumberString = self.tfMobile.text!
+            loginvc.params = params
+            self.navigationController?.pushViewController(loginvc, animated: true)
+            
+            
+            
+//
+//            self.showActivityIndicator()
+//
+//            ApiManager.signUp(params: params) { (json) in
+//                self.hideActivityIndicator()
+//                if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
+//                    self.showActivityIndicator()
+//
+//                    ApiManager.verifyOTP(mobNo: mob) { (json) in
+//                        self.hideActivityIndicator()
+//                        if let dict = json?.dictionary {
+//                            if let userdict = dict["userdetails"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
+//                                let defaults = UserDefaults.standard
+//
+//                                // Use PropertyListEncoder to convert Player into Data / NSData
+//                                do {
+//                                    if self.btnCorporate.isSelected, let org = self.selectedOrganization {
+//                                        defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
+//                                    }else if !self.btnCorporate.isSelected, let pin = self.selectedPincode {
+//                                        defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
+//                                    }
+//                                }catch {
+//                                    print(error.localizedDescription)
+//                                }
+//
+//                                defaults.synchronize()
+//                                self.delegate.loginSuccess(profile: user)
+//                                self.dismiss(animated: true, completion: {
+//
+//                                })
+//
+//                            }else {
+//                                let user = UserProfile()
+//                                user.fname = fname
+//                                user.lname = lname
+//                                user.mobileno = mob
+//                                user.email = email
+//                                user.birthdate = self.tfBirthDate.text ?? ""
+//                                user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
+//                                user.customer_type = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
+//                                let defaults = UserDefaults.standard
+//
+//                                // Use PropertyListEncoder to convert Player into Data / NSData
+//                                do {
+//                                    defaults.set(try PropertyListEncoder().encode(user), forKey: "User")
+//                                    if self.btnCorporate.isSelected, let org = self.selectedOrganization {
+//                                        defaults.set(try PropertyListEncoder().encode(org), forKey: "UserTypeDetails")
+//                                    }else if !self.btnCorporate.isSelected, let pin = self.selectedPincode {
+//                                        defaults.set(try PropertyListEncoder().encode(pin), forKey: "UserTypeDetails")
+//                                    }
+//                                }catch {
+//                                    print(error.localizedDescription)
+//                                }
+//                                defaults.synchronize()
+//                                self.delegate.loginSuccess(profile: user)
+//                                self.dismiss(animated: true, completion: {
+//
+//                                })
+//                            }
+//                        }else {
+//                            self.showError(message: "User registration failed, please try again.")
+//                        }
+//                    }
+//                }else if let dict = json?.dictionary, let message = dict["message"]?.string {
+//                    self.showAlert(message)
+//                }else {
+//                    self.showError(message: "User registration failed, please try again.")
+//                }
+//            }
             
         }
     }
@@ -380,10 +389,10 @@ class SignUpVC: SuperViewController {
     }
     
     override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == self.tfBirthDate {
-            self.showDatePicker(textField)
-            return false
-        }
+//        if textField == self.tfBirthDate {
+//            self.showDatePicker(textField)
+//            return false
+//        }
         if textField == self.tfPromoCode {
             self.showOrganizationDropDown(textField)
             return false

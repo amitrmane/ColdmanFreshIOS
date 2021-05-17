@@ -826,6 +826,7 @@
                     <connections>
                         <outlet property="btnSendCode" destination="IW4-vM-NcO" id="7K4-wf-t7u"/>
                         <outlet property="lblInfo" destination="9Ny-fc-4Wv" id="bZY-LT-YDU"/>
+                        <outlet property="newRegistration" destination="ffh-IM-cAh" id="MWv-bV-aHz"/>
                         <outlet property="tfPhoneNumber" destination="pTT-fo-KSC" id="7ub-4s-vvs"/>
                     </connections>
                 </viewController>
