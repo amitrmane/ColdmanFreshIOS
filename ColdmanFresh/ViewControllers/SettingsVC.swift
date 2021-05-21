@@ -16,7 +16,7 @@ class SettingsVC: SuperViewController {
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var btnLogin: CustomButton!
 
-    var settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy","Privacy Policy","Terms & Condition","Return,Refund and cancellation", "FAQs", "Help & Support"]
+    var settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy","Privacy Policy","Terms & Condition","Return, Refund and cancellation", "FAQs", "Help & Support"]
     var profile : UserProfile!
 
     override func viewDidLoad() {

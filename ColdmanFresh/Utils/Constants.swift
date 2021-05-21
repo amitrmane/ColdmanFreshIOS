@@ -13,7 +13,7 @@ let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
 class Constants {
    
-    static let baseURL:String = "http://103.96.40.37:34/coldmanfresh/api/"//http://coldmanfresh.in/api/
+    static let baseURL:String = "https://coldmanfresh.in/api/"//http://coldmanfresh.in/api/
     static let baseDownloadURL:String = "https://coldmanfresh.in/uploads/"
     static let appBarColour = UIColor.red//(hexString: "4884ED")//UIColor(red: 24.0/255.0, green: 153.0/255.0, blue: 203.0/255.0, alpha: 1)
     

@@ -26,15 +26,16 @@ class HomeVC: SuperViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
-        AppUpdater.shared.showUpdate(withConfirmation: false)
 
         if let _ = Utilities.getValueForKeyFromUserDefaults("isAlertConfirmed") {
+            AppUpdater.shared.showUpdate(withConfirmation: false)
             self.getSliderImages()
         }else {
             self.getSliderImages()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 let messageVC = mainStoryboard.instantiateViewController(withIdentifier: "WelcomeAlertVC") as! WelcomeAlertVC
                 messageVC.closeCallBack = {
+                    AppUpdater.shared.showUpdate(withConfirmation: false)
                     self.getSliderImages()
                 }
                 self.present(messageVC, animated: true, completion: nil)

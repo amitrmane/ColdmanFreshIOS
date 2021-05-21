@@ -134,9 +134,7 @@ class OTPVerificationVC: SuperViewController {
                                         ApiManager.signUp(params: self.params) { (json) in
                                                         self.hideActivityIndicator()
                                                         if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-//                                                            self.showActivityIndicator()
-                                                            let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
-                                                            self.navigationController?.pushViewController(cartvc, animated: true)
+                                                            self.navigationController?.popToRootViewController(animated: false)
                                     }else if let dict = json?.dictionary, let message = dict["message"]?.string {
                                         self.hideActivityIndicator()
                                                             self.showAlert(message)
@@ -166,9 +164,7 @@ class OTPVerificationVC: SuperViewController {
                                         ApiManager.signUp(params: self.params) { (json) in
                                                         self.hideActivityIndicator()
                                                         if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-//                                                            self.showActivityIndicator()
-                                                            let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
-                                                            self.navigationController?.pushViewController(cartvc, animated: true)
+                                                            self.navigationController?.popToRootViewController(animated: false)
                                     }else if let dict = json?.dictionary, let message = dict["message"]?.string {
                                         self.hideActivityIndicator()
                                                             self.showAlert(message)
@@ -196,9 +192,7 @@ class OTPVerificationVC: SuperViewController {
                                 ApiManager.signUp(params: self.params) { (json) in
                                                 self.hideActivityIndicator()
                                                 if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-//                                                            self.showActivityIndicator()
-                                                    let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
-                                                    self.navigationController?.pushViewController(cartvc, animated: true)
+                                                    self.navigationController?.popToRootViewController(animated: false)
                             }else if let dict = json?.dictionary, let message = dict["message"]?.string {
                                 self.hideActivityIndicator()
                                                     self.showAlert(message)

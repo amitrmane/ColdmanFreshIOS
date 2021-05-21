@@ -55,7 +55,7 @@ class CheckoutVC: SuperViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyTest, andDelegate: self)
+        razorpay = RazorpayCheckout.initWithKey(Constants.Keys.razorPayKeyLive, andDelegate: self)
         day = Date().hour >= 22 ? 2 : 1
         self.tfDate.text = Date().dateByAddingDays(day).stringFromDate(Date.DateFormat.yyyyMMdd)
         self.selectedDate = Date()
