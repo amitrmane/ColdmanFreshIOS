@@ -78,7 +78,7 @@ class SettingsVC: SuperViewController {
             let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
             signupvc.user = self.profile
             signupvc.delegate = self
-            self.present(signupvc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(signupvc, animated: true)
         }
     }
 

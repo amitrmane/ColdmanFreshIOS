@@ -18,7 +18,7 @@ class PhoneVerificationVC: SuperViewController {
     var addedMenus = [Menu]()
 //    var allTaxes = [Tax]()
     var isFromSettings = false
-    var isFromSignUp = false
+    var isCartTap = false
     var params = [String: Any]()
     var mobileNumberString : String = ""
     
@@ -29,13 +29,6 @@ class PhoneVerificationVC: SuperViewController {
         super.viewDidLoad()
         tfPhoneNumber.text = mobileNumberString
         // Do any additional setup after loading the view.
-        if isFromSignUp {
-            newRegistration.isHidden = true
-        }else {
-            newRegistration.isHidden = false
-
-        }
-        
     }
     
     @IBAction func backTapped(_ sender: UIButton) {
@@ -88,16 +81,12 @@ class PhoneVerificationVC: SuperViewController {
                     print(dict)
                     let verifyvc = mainStoryboard.instantiateViewController(withIdentifier: "OTPVerificationVC") as! OTPVerificationVC
                     verifyvc.mobileNo = no
+                    verifyvc.isCartTap = isCartTap
                     verifyvc.otp = otp.stringValue
 //                    verifyvc.restaurent = self.restaurent
 //                    verifyvc.allTaxes = self.allTaxes
                     verifyvc.addedMenus = self.addedMenus
-                    if isFromSignUp {
-                        verifyvc.isFromSignUp = self.isFromSignUp
-                        verifyvc.params = params
-                    }else {
                     verifyvc.isFromSettings = self.isFromSettings
-                    }
 //                    verifyvc.selectedOffer = self.selectedOffer
                     self.navigationController?.pushViewController(verifyvc, animated: true)
                 }else {
@@ -173,24 +162,22 @@ extension PhoneVerificationVC : LoginSuccessProtocol {
                     }else {
                         self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "User not found, do you want to register with this mobile number?", buttons: ["No", "Yes"]) { (i) in
                             if i == 0 {
-                                self.navigationController?.popViewController(animated: true)
+                                self.navigationController?.popToRootViewController(animated: false)
                             }else {
                                 let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
                                 signupvc.delegate = self
-                                signupvc.mobileNo = mobNo
-                                self.present(signupvc, animated: true, completion: nil)
+                                self.navigationController?.pushViewController(signupvc, animated: true)
                             }
                         }
                     }
                 }else {
                     self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "User not found, do you want to register with this mobile number?", buttons: ["No", "Yes"]) { (i) in
                         if i == 0 {
-                            self.navigationController?.popViewController(animated: true)
+                            self.navigationController?.popToRootViewController(animated: false)
                         }else {
                             let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
                             signupvc.delegate = self
-                            signupvc.mobileNo = mobNo
-                            self.present(signupvc, animated: true, completion: nil)
+                            self.navigationController?.pushViewController(signupvc, animated: true)
                         }
                     }
                 }

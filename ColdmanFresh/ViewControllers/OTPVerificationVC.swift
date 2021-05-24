@@ -20,6 +20,7 @@ class OTPVerificationVC: SuperViewController {
     var mobileNo = ""
     var otp = ""
     var isFromSettings = false
+    var isCartTap = false
     var isFromSignUp = false
     var params = [String: Any]()
 
@@ -78,10 +79,29 @@ class OTPVerificationVC: SuperViewController {
             return
         }
         
-        self.verifyUserByNumber()
-        
+        if self.isFromSignUp {
+            if otp == self.tfOTP.text {
+                self.showActivityIndicator()
+            ApiManager.signUp(params: self.params) { (json) in
+                            self.hideActivityIndicator()
+                            if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
+                                self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "Thank you for registring with us.", buttons: ["OK"]) { (i) in
+                            let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "PhoneVerificationVC") as! PhoneVerificationVC
+                            self.navigationController?.pushViewController(loginvc, animated: true)                                    }
+        }else if let dict = json?.dictionary, let message = dict["message"]?.string {
+            self.hideActivityIndicator()
+                                self.showAlert(message)
+                            }else {
+                                self.hideActivityIndicator()
+                                self.showError(message: "User registration failed, please try again.")
+                            }
+        }
     }
-
+        }else {
+            self.verifyUserByNumber()
+        }
+    }
+    
     @IBAction func resendTapped(_ sender: UIButton) {
         guard ApiManager.checkuser_online() else {
             self.showError(message: "Please check your internet connection")
@@ -119,118 +139,77 @@ class OTPVerificationVC: SuperViewController {
         }
         
         self.showActivityIndicator()
-        ApiManager.verifyOTP(mobNo: self.mobileNo) { (json) in
+        ApiManager.verifyOTP(mobNo: self.mobileNo) { [self] (json) in
 //            if success {
-                if let dict = json?.dictionary {
+            if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
                     if let userdict = dict["userdetails"]?.dictionary, let user = UserProfile.getUserDetails(dict: userdict) {
                         if user.customer_type == Constants.b2cCorporate {
-                            self.getOrganizationList(user: user) { (s) in
+                            self.getOrganizationList(user: user) { [self] (s) in
                                 if s {
-                                    if self.isFromSettings {
-                                        self.hideActivityIndicator()
-                                        self.navigationController?.popToRootViewController(animated: false)
-                                    }else if self.isFromSignUp {
-                                        print(user.id)
-                                        ApiManager.signUp(params: self.params) { (json) in
-                                                        self.hideActivityIndicator()
-                                                        if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-                                                            self.navigationController?.popToRootViewController(animated: false)
-                                    }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-                                        self.hideActivityIndicator()
-                                                            self.showAlert(message)
-                                                        }else {
-                                                            self.hideActivityIndicator()
-                                                            self.showError(message: "User registration failed, please try again.")
-                                                        }
-                                }
-                                    }else {
-                                        self.hideActivityIndicator()
+                                    self.hideActivityIndicator()
+                                    if isCartTap {
                                         print(user.id)
                                         let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
                                         cartvc.addedMenus = self.addedMenus
                                         cartvc.user = user
                                         self.navigationController?.pushViewController(cartvc, animated: true)
+                                    }else {
+                                        self.navigationController?.popToRootViewController(animated: false)
                                     }
                                 }
                             }
                         }else if user.customer_type == Constants.b2cHomeDelivery {
                             self.hideActivityIndicator()
-                            self.getPincodeList(user: user) { (s) in
+                            self.getPincodeList(user: user) { [self] (s) in
                                 if s {
-                                    if self.isFromSettings {
-                                        self.navigationController?.popToRootViewController(animated: false)
-                                    }else if self.isFromSignUp {
-                                        print(user.id)
-                                        ApiManager.signUp(params: self.params) { (json) in
-                                                        self.hideActivityIndicator()
-                                                        if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-                                                            self.navigationController?.popToRootViewController(animated: false)
-                                    }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-                                        self.hideActivityIndicator()
-                                                            self.showAlert(message)
-                                                        }else {
-                                                            self.hideActivityIndicator()
-                                                            self.showError(message: "User registration failed, please try again.")
-                                                        }
-                                }
-                                    }else {
-                                        self.hideActivityIndicator()
+                                    self.hideActivityIndicator()
+                                    if isCartTap {
                                         print(user.id)
                                         let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
                                         cartvc.addedMenus = self.addedMenus
                                         cartvc.user = user
                                         self.navigationController?.pushViewController(cartvc, animated: true)
+                                    }else {
+                                        self.navigationController?.popToRootViewController(animated: false)
                                     }
                                 }
                             }
                         }else {
                             self.hideActivityIndicator()
-                            if self.isFromSettings {
-                                self.navigationController?.popToRootViewController(animated: false)
-                            }else if self.isFromSignUp {
-                                print(user.id)
-                                ApiManager.signUp(params: self.params) { (json) in
-                                                self.hideActivityIndicator()
-                                                if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-                                                    self.navigationController?.popToRootViewController(animated: false)
-                            }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-                                self.hideActivityIndicator()
-                                                    self.showAlert(message)
-                                                }else {
-                                                    self.hideActivityIndicator()
-                                                    self.showError(message: "User registration failed, please try again.")
-                                                }
-                        }
-                            }else {
-                                self.hideActivityIndicator()
+                            if isCartTap {
                                 print(user.id)
                                 let cartvc = mainStoryboard.instantiateViewController(withIdentifier: "CartVC") as! CartVC
                                 cartvc.addedMenus = self.addedMenus
                                 cartvc.user = user
                                 self.navigationController?.pushViewController(cartvc, animated: true)
+                            }else {
+                                self.navigationController?.popToRootViewController(animated: false)
                             }
                         }
                     }else {
                         self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "User not found, do you want to register with this mobile number?", buttons: ["No", "Yes"]) { (i) in
                             if i == 0 {
-                                self.navigationController?.popViewController(animated: true)
+                                self.navigationController?.popToRootViewController(animated: false)
                             }else {
                                 let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
                                 signupvc.delegate = self
                                 signupvc.mobileNo = self.mobileNo
-                                self.present(signupvc, animated: true, completion: nil)
+                                self.navigationController?.pushViewController(signupvc, animated: true)
                             }
                         }
                     }
                 }else {
+                     let dict = json?.dictionary
+                    let status = dict!["status"]
+                    print(status?.rawValue ?? "")
                     self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "User not found, do you want to register with this mobile number?", buttons: ["No", "Yes"]) { (i) in
                         if i == 0 {
-                            self.navigationController?.popViewController(animated: true)
+                            self.navigationController?.popToRootViewController(animated: false)
                         }else {
                             let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
                             signupvc.delegate = self
                             signupvc.mobileNo = self.mobileNo
-                            self.present(signupvc, animated: true, completion: nil)
+                            self.navigationController?.pushViewController(signupvc, animated: true)
                         }
                     }
                 }

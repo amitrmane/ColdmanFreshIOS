@@ -37,12 +37,10 @@ class SignUpVC: SuperViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if mobileNo != "" {
-            self.tfMobile.text = mobileNo
-            self.tfMobile.isUserInteractionEnabled = false
-        }
         self.getPincodeList()
         if let u = self.user {
+            self.tfMobile.text = mobileNo
+            self.tfMobile.isUserInteractionEnabled = false
             self.lblTitle.text = "Edit Profile"
             self.tfName.text = u.fname + " " + u.lname
             self.tfMobile.text = u.mobileno
@@ -191,9 +189,7 @@ class SignUpVC: SuperViewController {
 
                         defaults.synchronize()
                         self.delegate.loginSuccess(profile: user)
-                        self.dismiss(animated: true, completion: {
-                            
-                        })
+                        self.navigationController?.popViewController(animated: true)
                         
                     }else {
                         let user = UserProfile()
@@ -201,7 +197,6 @@ class SignUpVC: SuperViewController {
                         user.lname = lname
                         user.mobileno = mob
                         user.email = email
-//                        user.birthdate = self.tfBirthDate.text ?? ""
                         user.organization_id = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
                         user.customer_type = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
                         user.id = u.id
@@ -221,9 +216,7 @@ class SignUpVC: SuperViewController {
                         }
                         defaults.synchronize()
                         self.delegate.loginSuccess(profile: user)
-                        self.dismiss(animated: true, completion: {
-                            
-                        })
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }else if let dict = json?.dictionary, let message = dict["message"]?.string {
                     self.showAlert(message)
@@ -244,18 +237,42 @@ class SignUpVC: SuperViewController {
             params["password"] = "12345"
             params["fname"] = fname
             params["lname"] = lname
-            params["birthdate"] = self.selectedDate == nil ? "" : self.selectedDate.stringFromDate(.ddMMyyyydash)
             params["mobileno"] = mob
             params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
             params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
             params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
+
+            var param = [String: Any]()
+            param["mobileno"] = mob
+            self.showActivityIndicator()
+
+            ApiManager.sendOTP(params: params) { [self] (json) in
+                self.hideActivityIndicator()
+    //            if success {
+                    if let dict = json?.dictionary, let otp = dict["otp"]?.number {
+                        let verifyvc = mainStoryboard.instantiateViewController(withIdentifier: "OTPVerificationVC") as! OTPVerificationVC
+                        verifyvc.otp = otp.stringValue
+                        verifyvc.isFromSignUp = true
+                            verifyvc.params = params
+                        self.navigationController?.pushViewController(verifyvc, animated: true)
+                    }else {
+                        self.showError(message: "Could not send OTP, please try again")
+                    }
+    //            }else {
+    //                //self.showError(message: error.rawValue)
+    //            }
+            }
             
-            let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "PhoneVerificationVC") as! PhoneVerificationVC
-            loginvc.isFromSignUp = true
-            loginvc.mobileNumberString = self.tfMobile.text!
-            loginvc.params = params
-            self.navigationController?.pushViewController(loginvc, animated: true)
             
+            
+            
+
+//            let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "PhoneVerificationVC") as! PhoneVerificationVC
+//            loginvc.isFromSignUp = true
+//            loginvc.mobileNumberString = self.tfMobile.text!
+//            loginvc.params = params
+//            self.navigationController?.pushViewController(loginvc, animated: true)
+
             
             
 //

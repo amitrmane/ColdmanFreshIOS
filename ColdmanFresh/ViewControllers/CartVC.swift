@@ -72,6 +72,7 @@ class CartVC: SuperViewController {
                 self.btnAddress.isHidden = true
                 if let org = Utilities.getCurrentUserTypeDetails() as? Organization {
                     self.selectedOrganization = org
+                    self.lastFirstName.text = org.organization_name
                     self.lblAddress.text = org.address
                 }else {
                     self.getOrganizationList()
