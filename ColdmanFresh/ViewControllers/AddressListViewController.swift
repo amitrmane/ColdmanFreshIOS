@@ -61,10 +61,11 @@ class AddressListViewController: SuperViewController {
                 }else {
                     self.tblAddresses.backgroundView = nil
                 }
-                self.tblAddresses.reloadData()
             }else {
+                self.allAddress.removeAll()
                 self.showError(message: "No address found, please add new address.")
             }
+            self.tblAddresses.reloadData()
         }
         
     }
@@ -84,27 +85,82 @@ extension AddressListViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
+//        if user.customer_type == Constants.b2cHomeDelivery {
         let address = self.allAddress[indexPath.row]
         cell.lblTitle.text = address.title
         let fulladdr = address.address
         cell.lblDesc.text = fulladdr
         if isFromHome {
             if let addr = self.selectedAddr, addr.id == address.id {
-                cell.accessoryType = .checkmark
+//                cell.accessoryType = .checkmark
             }else if address.primaryAddress == "1" && self.selectedAddr == nil {
-                cell.accessoryType = .checkmark
+                cell.primaryLabel.isHidden = false
+//                cell.accessoryType = .checkmark
             }else {
-                cell.accessoryType = .none
+       //         cell.accessoryType = .none
+                cell.primaryLabel.isHidden = true
             }
-        }else {
+        }
+        else {
             if let addr = self.selectedAddr, addr.id == address.id {
-                cell.accessoryType = .checkmark
+                cell.primaryLabel.isHidden = false
+//                cell.accessoryType = .checkmark
             }else {
+                cell.primaryLabel.isHidden = true
                 cell.accessoryType = .none
             }
         }
+//        }else {
+//            if let org = Utilities.getCurrentUserTypeDetails() as? Organization {
+//                cell.lblTitle.text = org.organization_name
+//                cell.lblDesc.text = org.address
+//            }
+//        }
+        
+        cell.editButton.tag = indexPath.row
+        cell.editButton.addTarget(self, action: #selector(editTapped(_:)), for: .touchUpInside)
+        
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self, action: #selector(deleteTapped(_:)), for: .touchUpInside)
+
+
+        
         return cell
     }
+    
+    
+    @objc func editTapped(_ sender: UIButton){
+            let address = self.allAddress[sender.tag]
+            let addVC = mainStoryboard.instantiateViewController(withIdentifier: "AddAddressVC") as! AddAddressVC
+            addVC.user = self.user
+            addVC.selectedAddress = address
+            self.navigationController?.pushViewController(addVC, animated: true)
+}
+    
+    @objc func deleteTapped(_ sender: UIButton){
+            let address = self.allAddress[sender.tag]
+//            let addVC = mainStoryboard.instantiateViewController(withIdentifier: "AddAddressVC") as! AddAddressVC
+//            addVC.user = self.user
+//            addVC.selectedAddress = address
+//            self.navigationController?.pushViewController(addVC, animated: true)
+        var params = [String: Any]()
+        params["user_id"] = self.user.user_id
+        params["id"] = address.id
+        self.showActivityIndicator()
+        
+        ApiManager.deleteAddress(params: params) { [self] (json) in
+            self.hideActivityIndicator()
+                if let dict = json?.dictionary, let status = dict["status"]?.number, (status == 200) {
+                    self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: (dict["message"]?.string)!, buttons: ["OK"]) { _ in
+                        getUserAdresses()
+                    }
+                }else if let dict = json?.dictionary, let message = dict["message"]?.string {
+                    self.showAlert(message)
+                }
+        }
+
+
+}
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -119,7 +175,7 @@ extension AddressListViewController : UITableViewDataSource, UITableViewDelegate
         let address = self.allAddress[indexPath.row]
         let fulladdr = address.address + " \(address.landmark)"
         let height = fulladdr.heightWithConstrainedWidth(ScreenSize.SCREEN_WIDTH - 100, font: .boldSystemFont(ofSize: 13))
-        return 70 + height
+        return 85 + height
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

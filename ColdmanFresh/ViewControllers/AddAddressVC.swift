@@ -11,7 +11,10 @@ import MapKit
 import CoreLocation
 import DropDown
 
-class AddAddressVC: SuperViewController {
+public typealias successClosure = (CLLocationCoordinate2D) -> Void
+public typealias failureClosure = (NSError) -> Void
+
+class AddAddressVC: SuperViewController{
 
     @IBOutlet weak var lblInfo: UILabel!
     @IBOutlet weak var tfTitle: CustomTextField!
@@ -27,24 +30,62 @@ class AddAddressVC: SuperViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnSave: UIButton!
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var alternateMobileNumber: CustomTextField!
+    
     var user : UserProfile!
     var currentLoc : CLLocation!
     var selectedAddress : Address!
     var pincodes = [Pincode]()
     var selectedPincode : Pincode!
+    
+    
+    fileprivate var pointAnnotation: MKPointAnnotation!
+    fileprivate var userTrackingButton: MKUserTrackingBarButtonItem!
+
+    fileprivate let locationManager: CLLocationManager = CLLocationManager()
+
+    fileprivate var success: successClosure?
+    fileprivate var failure: failureClosure?
+
+    fileprivate var isInitialized = false
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    convenience public init(success: @escaping successClosure, failure: failureClosure? = nil) {
+        self.init()
+        self.success = success
+        self.failure = failure
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.contentOffset.x = 0
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
 
-        // Do any additional setup after loading the view.
-        
+        success: do { }
+//        self.mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        self.mapView.showsUserLocation = true
+        self.mapView.delegate = self
+        self.mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        self.view.addSubview(self.mapView)
+
         if let addr = self.selectedAddress {
             self.tfTitle.text = addr.title
             self.tfAddress.text = addr.address
             self.tfFirstName.text = addr.fname
             self.tfLastName.text = addr.lname
             self.tfMobNo.text = addr.mobileno
+            self.alternateMobileNumber.text = addr.alternateMobileNumber
             self.tfEmail.text = addr.email
             self.tfLandmark.text = addr.landmark
             self.tfFlatno.text = addr.door_flat_no
@@ -52,6 +93,13 @@ class AddAddressVC: SuperViewController {
             self.tfCity.text = addr.city
         }
         self.getPincodeList()
+        
+        self.userTrackingButton = MKUserTrackingBarButtonItem(mapView: self.mapView)
+//        self.toolbarItems = [self.userTrackingButton, flexibleButton]
+        self.navigationController?.isToolbarHidden = false
+
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
     }
     
     @IBAction func backTapped(_ sender: UIButton) {
@@ -125,6 +173,7 @@ class AddAddressVC: SuperViewController {
         params["fname"] = fname
         params["lname"] = lname
         params["mobileno"] = mobno
+        params["alternate_mobileno"] = self.alternateMobileNumber.text
         params["email"] = email
         params["pincode"] = pin
         params["city"] = city
@@ -198,19 +247,64 @@ class AddAddressVC: SuperViewController {
         
         dropDown.show()
     }
-
-}
-
-extension AddAddressVC : CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
-        self.currentLoc = locations.first
-    }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
+    func getAddressFromLatLon(pdblLatitude: Double, withLongitude pdblLongitude: Double) {
+            var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+//            let lat: Double = Double("\(pdblLatitude)")!
+//            //21.228124
+//            let lon: Double = Double("\(pdblLongitude)")!
+            //72.833770
+            let ceo: CLGeocoder = CLGeocoder()
+            center.latitude = pdblLatitude
+            center.longitude = pdblLongitude
+
+            let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+
+
+            ceo.reverseGeocodeLocation(loc, completionHandler:
+                {(placemarks, error) in
+                    if (error != nil)
+                    {
+                        print("reverse geodcode fail: \(error!.localizedDescription)")
+                    }
+                    let pm = placemarks! as [CLPlacemark]
+
+                    if pm.count > 0 {
+                        let pm = placemarks![0]
+                    
+                        var addressString : String = ""
+                        if pm.subLocality != nil {
+                            addressString = addressString + pm.subLocality! + ", "
+                        }
+                        if pm.thoroughfare != nil {
+                            addressString = addressString + pm.thoroughfare! + ", "
+                        }
+                        if pm.locality != nil {
+                            addressString = addressString + pm.locality! + ", "
+                        }
+                        if pm.country != nil {
+                            addressString = addressString + pm.country! + ", "
+                        }
+
+                        self.tfAddress.text = addressString
+
+                        print(addressString)
+                  }
+            })
+
+        }
 }
+
+//extension AddAddressVC : CLLocationManagerDelegate {
+//    private func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print(locations)
+//        self.currentLoc = locations.first
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        print(error)
+//    }
+//}
 
 extension AddAddressVC {
     
@@ -244,4 +338,77 @@ extension AddAddressVC {
         
     }
 
+}
+
+
+// MARK: - Internal methods
+
+internal extension AddAddressVC {
+
+    @objc func didTapCancelButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    @objc func didTapDoneButton() {
+        guard CLLocationCoordinate2DIsValid(self.mapView.centerCoordinate) else {
+            self.failure?(NSError(domain: "LocationPickerControllerErrorDomain",
+                code: 0,
+                userInfo: [NSLocalizedDescriptionKey: "Invalid coordinate"]))
+            return
+        }
+
+        self.success?(self.mapView.centerCoordinate)
+
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - MKMapView delegate
+
+extension AddAddressVC: MKMapViewDelegate {
+
+    public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        guard self.isInitialized else {
+            return
+        }
+        self.pointAnnotation.coordinate = mapView.region.center
+        
+        getAddressFromLatLon(pdblLatitude: self.pointAnnotation.coordinate.latitude, withLongitude: self.pointAnnotation.coordinate.longitude)
+    }
+}
+
+
+// MARK: - CLLocationManager delegate
+
+extension AddAddressVC: CLLocationManagerDelegate {
+
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            break
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
+        }
+    }
+
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let newLocation = locations.last, !self.isInitialized else {
+            return
+        }
+
+        self.locationManager.stopUpdatingLocation()
+
+        let centerCoordinate = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        let region = MKCoordinateRegion(center: centerCoordinate, span: span)
+        self.mapView.setRegion(region, animated: true)
+
+        self.pointAnnotation = MKPointAnnotation()
+        self.pointAnnotation.coordinate = newLocation.coordinate
+        self.mapView.addAnnotation(self.pointAnnotation)
+
+        self.isInitialized = true
+    }
 }

@@ -255,6 +255,89 @@ class ApiManager: NSObject {
             }
     }
     
+    class func feedackAdd(params: [String: Any], completion: @escaping (_ data: JSON?) -> Void) {
+        
+        let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.feedback_save)!
+        
+        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .responseJSON { response in
+                
+                guard response.error == nil
+                else
+                {
+                    DispatchQueue.main.async(execute: {
+                        print("--------error-------------\n")
+                        if let d = response.data {
+                            print(String(data: d, encoding: .utf8) ?? "")
+                        }
+                        // show alert
+                        completion(nil)
+                    })
+                    return
+                }
+                if let value: Any = response.value as Any? {
+                    
+                    let json = JSON.init(value)
+                    
+                    //print("json",json)
+                    
+                    ApiManager.parseResponse(json: json) { (parsedjson) in
+                        completion(parsedjson)
+                    }
+                }
+                else
+                {
+                    print("error fetching response")
+                    DispatchQueue.main.async {
+                        // show alert
+                        completion(nil)
+                    }
+                }
+            }
+    }
+    
+    class func feedackView(params: [String: Any], completion: @escaping (_ data: JSON?) -> Void) {
+        
+        let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.feedback_view)!
+        
+        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .responseJSON { response in
+                
+                guard response.error == nil
+                else
+                {
+                    DispatchQueue.main.async(execute: {
+                        print("--------error-------------\n")
+                        if let d = response.data {
+                            print(String(data: d, encoding: .utf8) ?? "")
+                        }
+                        // show alert
+                        completion(nil)
+                    })
+                    return
+                }
+                if let value: Any = response.value as Any? {
+                    
+                    let json = JSON.init(value)
+                    
+                    //print("json",json)
+                    
+                    ApiManager.parseResponse(json: json) { (parsedjson) in
+                        completion(parsedjson)
+                    }
+                }
+                else
+                {
+                    print("error fetching response")
+                    DispatchQueue.main.async {
+                        // show alert
+                        completion(nil)
+                    }
+                }
+            }
+    }
+
+    
     class func updateProfile(params: [String : Any], imageData: Data?, fileName: String, mimeType: String, completion: @escaping (_ data: JSON?) -> Void) {
         
         let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.update_profile)!
@@ -457,6 +540,45 @@ class ApiManager: NSObject {
     class func updateAddress(params: [String: Any], completion: @escaping (_ data: JSON?) -> Void) {
         
         let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.update_address)!
+        
+        self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .responseJSON { response in
+                
+                guard response.error == nil
+                else
+                {
+                    DispatchQueue.main.async(execute: {
+                        print("--------error-------------\n")
+                        // show alert
+                        completion(nil)
+                    })
+                    return
+                }
+                if let value: Any = response.value as Any? {
+                    
+                    let json = JSON.init(value)
+                    
+                    //print("json",json)
+                    
+                    ApiManager.parseResponse(json: json) { (parsedjson) in
+                        completion(parsedjson)
+                    }
+                }
+                else
+                {
+                    print("error fetching response")
+                    DispatchQueue.main.async {
+                        // show alert
+                        completion(nil)
+                    }
+                }
+            }
+    }
+
+    
+    class func deleteAddress(params: [String: Any], completion: @escaping (_ data: JSON?) -> Void) {
+        
+        let url1 = URL(string: Constants.baseURL + Constants.ApiEndPoint.delete_address)!
         
         self.alamoFireManager.request(url1, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
             .responseJSON { response in

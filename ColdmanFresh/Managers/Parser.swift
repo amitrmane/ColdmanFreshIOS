@@ -273,6 +273,7 @@ class UserProfile : Codable {
     var address = ""
     var role = ""
     var profileImage = ""
+    var alternateMobileNumber = ""
     
     var user_id = ""
     var fname = ""
@@ -339,6 +340,9 @@ class UserProfile : Codable {
         }
         if let value = dict["created_at"]?.string {
             user.created_at = value
+        }
+        if let value = dict["alternate_mobileno"]?.string {
+            user.alternateMobileNumber = value
         }
         let defaults = UserDefaults.standard
         
@@ -471,6 +475,39 @@ class OrderDetails {
     }
 }
 
+class FeedbackValue  {
+    var user_id = ""
+    var app_user_interface_rating = ""
+    var product_quality_rating = ""
+    var packing_quality_rating = ""
+    var delivery_condition_rating = ""
+    var delivery_boy_rating = ""
+    
+    class func getFeedack(array: [JSON]) -> [FeedbackValue] {
+        let resArr = [FeedbackValue]()
+        for dict in array {
+            let res = FeedbackValue()
+            if let value = dict["user_id"].number {
+                res.user_id = "\(value.intValue)"
+            }
+            if let value = dict["app_user_interface_rating"].number {
+                res.app_user_interface_rating = "\(value.intValue)"
+            }
+            if let value = dict["packing_quality_rating"].number {
+                res.packing_quality_rating = "\(value.intValue)"
+            }
+            if let value = dict["delivery_condition_rating"].number {
+                res.delivery_condition_rating = "\(value.intValue)"
+            }
+            if let value = dict["delivery_boy_rating"].number {
+                res.delivery_boy_rating = "\(value.intValue)"
+            }
+}
+        return resArr
+    }
+
+}
+
 class Address {
     var id = ""
     var user_id = ""
@@ -489,6 +526,7 @@ class Address {
     var mobileno = ""
     var city = ""
     var pincode = ""
+    var alternateMobileNumber = ""
 
     class func getAllAddresses(array: [JSON]) -> [Address] {
         var resArr = [Address]()
@@ -547,6 +585,9 @@ class Address {
             }
             if let value = dict["mobileno"].string {
                 res.mobileno = value
+            }
+            if let value = dict["alternate_mobileno"].string {
+                res.alternateMobileNumber = value
             }
             if let value = dict["city"].string {
                 res.city = value

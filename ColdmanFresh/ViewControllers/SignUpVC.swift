@@ -18,12 +18,14 @@ class SignUpVC: SuperViewController {
     @IBOutlet weak var tfMobile: UITextField!
     @IBOutlet weak var tfBirthDate: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var tLName: UITextField!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var ivLogo: UIImageView!
     @IBOutlet weak var tfPromoCode: UITextField!
     @IBOutlet weak var btnCorporate: UIButton!
     @IBOutlet weak var btnHomeDelivery: UIButton!
-
+    @IBOutlet weak var alternateMobileNumber: UITextField!
+    
     var delegate : LoginSuccessProtocol!
     var mobileNo = ""
     var user : UserProfile!
@@ -42,9 +44,11 @@ class SignUpVC: SuperViewController {
             self.tfMobile.text = mobileNo
             self.tfMobile.isUserInteractionEnabled = false
             self.lblTitle.text = "Edit Profile"
-            self.tfName.text = u.fname + " " + u.lname
+            self.tfName.text = u.fname
+            self.tLName.text = u.lname
             self.tfMobile.text = u.mobileno
             self.tfEmail.text = u.email
+            self.alternateMobileNumber.text = u.alternateMobileNumber
 //            self.tfBirthDate.text = u.birthdate
             if let date = Date().dateFromString(Date.DateFormat.yyyyMMdd.rawValue, dateString: u.birthdate) {
                 self.selectedDate = date
@@ -55,7 +59,7 @@ class SignUpVC: SuperViewController {
                 self.btnCorporate.isSelected = false
                 self.btnHomeDelivery.isSelected = true
                 if let pin = self.pincodes.filter({ $0.pincode == u.pincode }).first {
-                    self.tfPromoCode.text = pin.pincode
+                    self.tfPromoCode.text = "Select Value"
                     self.selectedPincode = pin
                 }else if let pin = self.pincodes.filter({ $0.pincodeId == u.organization_id }).first {
                     self.tfPromoCode.text = pin.pincode
@@ -102,15 +106,23 @@ class SignUpVC: SuperViewController {
         self.btnCorporate.isSelected = !btnCorporate.isSelected
         self.btnHomeDelivery.isSelected = !btnHomeDelivery.isSelected
         
+        let decimalCharacters = CharacterSet.decimalDigits
+        let decimalRange = self.tfPromoCode.text!.rangeOfCharacter(from: decimalCharacters)
+
         if btnCorporate.isSelected {
             if let org = self.organizations.first {
                 self.selectedOrganization = org
-                self.tfPromoCode.text = org.organization_name
+                
+                if decimalRange != nil || self.tfPromoCode.text == "Servicable Pin Codes" || self.tfPromoCode.text == "Select Your Organization" {
+                self.tfPromoCode.text = "Select Your Organization"
+                }
             }
         }else {
             if let pin = self.pincodes.first {
                 self.selectedPincode = pin
-                self.tfPromoCode.text = pin.pincode
+                if decimalRange == nil {
+                self.tfPromoCode.text = "Servicable Pin Codes"
+                }
             }
         }
     }
@@ -130,10 +142,16 @@ class SignUpVC: SuperViewController {
     @IBAction func signUpTapped(_ sender: UIButton) {
         self.view.endEditing(true)
         
-        guard let name = self.tfName.text, name != "" else {
+        guard let fname = self.tfName.text, fname != "" else {
             self.showAlert("Enter name")
             return
         }
+        
+        guard let lname = self.tLName.text, lname != "" else {
+            self.showAlert("Enter name")
+            return
+        }
+
 
         guard let email = self.tfEmail.text, email.isValidEmail() else {
             self.showAlert("Enter valid email")
@@ -151,19 +169,20 @@ class SignUpVC: SuperViewController {
         if let u = self.user {
             // update user
             var params = [String: Any]()
-            var fname = ""
-            var lname = ""
-            let separr = name.components(separatedBy: " ")
-            if let first = separr.first {
-                fname = first
-                lname = separr.filter { $0 != first }.joined(separator: " ")
-            }
+//            var fname = ""
+//            var lname = ""
+//            let separr = fname.components(separatedBy: " ")
+//            if let first = separr.first {
+//                fname = first
+//                lname = separr.filter { $0 != first }.joined(separator: " ")
+//            }
             
             params["email"] = email
             params["user_id"] = "\(u.id)"
             params["fname"] = fname
             params["lname"] = lname
             params["mobileno"] = mob
+            params["alternate_mobileno"] = self.alternateMobileNumber.text
             params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
             params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
             params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
@@ -225,25 +244,26 @@ class SignUpVC: SuperViewController {
         }else {
 
             var params = [String: Any]()
-            var fname = ""
-            var lname = ""
-            let separr = name.components(separatedBy: " ")
-            if let first = separr.first {
-                fname = first
-                lname = separr.filter { $0 != first }.joined(separator: " ")
-            }
+//            var fname = ""
+//            var lname = ""
+//            let separr = name.components(separatedBy: " ")
+//            if let first = separr.first {
+//                fname = first
+//                lname = separr.filter { $0 != first }.joined(separator: " ")
+//            }
             
             params["email"] = email
             params["password"] = "12345"
             params["fname"] = fname
             params["lname"] = lname
             params["mobileno"] = mob
+            params["alternate_mobileno"] = self.alternateMobileNumber.text
             params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
             params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
             params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
 
-            var param = [String: Any]()
-            param["mobileno"] = mob
+//            var param = [String: Any]()
+//            param["mobileno"] = mob
             self.showActivityIndicator()
 
             ApiManager.sendOTP(params: params) { [self] (json) in
@@ -439,7 +459,7 @@ extension SignUpVC {
                     self.tfPromoCode.text = org.organization_name
                 }else if let u = self.user,  u.customer_type == Constants.b2cCorporate, let org = self.organizations.filter({ $0.organization_id == u.organization_id }).first  {
                     self.selectedOrganization = org
-                    self.tfPromoCode.text = org.organization_name
+                    self.tfPromoCode.text = "Select Your Organization"
                 }
             }else {
                 self.showError(message: "Failed, please try again")
@@ -465,7 +485,7 @@ extension SignUpVC {
                     self.selectedPincode = pin
                     self.tfPromoCode.text = pin.pincode
                 }else if let pin = self.pincodes.first {
-                    self.tfPromoCode.text = pin.pincode
+                    self.tfPromoCode.text = "Servicable Pin Codes"
                     self.selectedPincode = pin
                 }
                 self.getOrganizationList()

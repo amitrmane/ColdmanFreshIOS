@@ -21,7 +21,10 @@ class MenuCell: UITableViewCell {
     @IBOutlet weak var btnPlus: UIButton!
     @IBOutlet weak var btnMinus: UIButton!
     @IBOutlet weak var viewBaseCounter: CustomView!
-
+    @IBOutlet weak var editButton: CustomButton!
+    @IBOutlet weak var deleteButton: CustomButton!
+    
+    @IBOutlet weak var primaryLabel: UILabel!
     @IBOutlet weak var lblGate: UILabel!
     @IBOutlet weak var lblTimeSlot: UILabel!
     @IBOutlet weak var lblPickupTime: UILabel!

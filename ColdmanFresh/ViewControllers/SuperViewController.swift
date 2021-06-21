@@ -9,7 +9,7 @@
 import UIKit
 //import Material
 
-class SuperViewController: UIViewController {
+class SuperViewController: UIViewController, UIScrollViewDelegate {
 
     internal var hideNavBar = true
     internal var _isLogInView = false
