@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6323765A2674AA82002090BE /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632376592674AA82002090BE /* FloatRatingView.swift */; };
+		6323765C2674B254002090BE /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323765B2674B254002090BE /* Feedback.swift */; };
 		63282F982633DF60001EB850 /* PricingPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282F972633DF60001EB850 /* PricingPolicyViewController.swift */; };
 		63282F9B2633E485001EB850 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282F9A2633E485001EB850 /* PrivacyPolicyViewController.swift */; };
 		63282F9E2633F155001EB850 /* TermsAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282F9D2633F155001EB850 /* TermsAndConditionViewController.swift */; };
 		63282FA12633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63282FA02633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift */; };
+		6344612E2680270800CD1464 /* FeedbackRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344612D2680270800CD1464 /* FeedbackRatingViewController.swift */; };
 		638B3B802632A5A500A61441 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B3B7F2632A5A500A61441 /* AboutUsViewController.swift */; };
 		638B3B832632E11D00A61441 /* ContacUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B3B822632E11D00A61441 /* ContacUsViewController.swift */; };
 		63B086DC264704E7009F87FF /* AppUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B086DB264704E7009F87FF /* AppUpdater.swift */; };
@@ -55,10 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		632376592674AA82002090BE /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		6323765B2674B254002090BE /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		63282F972633DF60001EB850 /* PricingPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingPolicyViewController.swift; sourceTree = "<group>"; };
 		63282F9A2633E485001EB850 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		63282F9D2633F155001EB850 /* TermsAndConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionViewController.swift; sourceTree = "<group>"; };
 		63282FA02633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnCancellationRefundPolicyViewController.swift; sourceTree = "<group>"; };
+		6344612D2680270800CD1464 /* FeedbackRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRatingViewController.swift; sourceTree = "<group>"; };
 		638B3B7F2632A5A500A61441 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		638B3B822632E11D00A61441 /* ContacUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacUsViewController.swift; sourceTree = "<group>"; };
 		63B086DB264704E7009F87FF /* AppUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUpdater.swift; sourceTree = "<group>"; };
@@ -164,6 +170,8 @@
 				63282F9A2633E485001EB850 /* PrivacyPolicyViewController.swift */,
 				63282F9D2633F155001EB850 /* TermsAndConditionViewController.swift */,
 				63282FA02633F3E0001EB850 /* ReturnCancellationRefundPolicyViewController.swift */,
+				6323765B2674B254002090BE /* Feedback.swift */,
+				6344612D2680270800CD1464 /* FeedbackRatingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -217,6 +225,7 @@
 		DFD83B5125A6E1F40096FCBC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				632376592674AA82002090BE /* FloatRatingView.swift */,
 				DFD83B5225A6E1F40096FCBC /* Constants.swift */,
 				DFD83B5325A6E1F40096FCBC /* Utilities.swift */,
 				DFD83B5425A6E1F40096FCBC /* Enums.swift */,
@@ -365,6 +374,7 @@
 				DFD07E7625AC2A1D000B8273 /* CollectionViewCells.swift in Sources */,
 				DFD83B5A25A6E1F40096FCBC /* Constants.swift in Sources */,
 				DFB1377725A6F758006408CF /* TabBarVC.swift in Sources */,
+				6344612E2680270800CD1464 /* FeedbackRatingViewController.swift in Sources */,
 				DFD83B6125A6E1F40096FCBC /* CustomElements.swift in Sources */,
 				DFA611E125C1E0B1003177F8 /* AddAddressVC.swift in Sources */,
 				DF56603025AF381D00A1DCA0 /* SignUpVC.swift in Sources */,
@@ -373,9 +383,11 @@
 				DFD83B6025A6E1F40096FCBC /* DatePickerDialog.swift in Sources */,
 				DFA611E225C1E0B1003177F8 /* AddressListViewController.swift in Sources */,
 				DF56602E25AF381D00A1DCA0 /* WebVC.swift in Sources */,
+				6323765A2674AA82002090BE /* FloatRatingView.swift in Sources */,
 				638B3B802632A5A500A61441 /* AboutUsViewController.swift in Sources */,
 				DFD83B4E25A6E1770096FCBC /* Reachability.swift in Sources */,
 				63282F982633DF60001EB850 /* PricingPolicyViewController.swift in Sources */,
+				6323765C2674B254002090BE /* Feedback.swift in Sources */,
 				DF56602C25AF381D00A1DCA0 /* OrderHistoryVC.swift in Sources */,
 				DFA611E625C59B97003177F8 /* CheckoutVC.swift in Sources */,
 				DF75298925DAED7A008696F6 /* OrderDetailsVC.swift in Sources */,
@@ -533,7 +545,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = ZJPJ9F322D;
 				INFOPLIST_FILE = ColdmanFresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -541,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipl.coldmanfresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -558,7 +570,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = ZJPJ9F322D;
 				INFOPLIST_FILE = ColdmanFresh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -566,7 +578,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipl.coldmanfresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

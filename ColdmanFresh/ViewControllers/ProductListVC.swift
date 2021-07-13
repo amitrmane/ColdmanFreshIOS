@@ -61,6 +61,7 @@ class ProductListVC: SuperViewController {
             }else {
                 let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "PhoneVerificationVC") as! PhoneVerificationVC
                 loginvc.addedMenus = self.addedMenus
+                loginvc.isCartTap = true
                 //        loginvc.delegate = self
                 self.navigationController?.pushViewController(loginvc, animated: true)
             }

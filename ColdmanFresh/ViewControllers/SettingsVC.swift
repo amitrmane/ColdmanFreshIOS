@@ -16,7 +16,8 @@ class SettingsVC: SuperViewController {
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var btnLogin: CustomButton!
 
-    var settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy","Privacy Policy","Terms & Condition","Return, Refund and cancellation", "FAQs", "Help & Support"]
+
+    var settingsArray : [String] = [String]()
     var profile : UserProfile!
 
     override func viewDidLoad() {
@@ -26,7 +27,6 @@ class SettingsVC: SuperViewController {
         self.tblSettings.tableFooterView = UIView(frame: CGRect.zero)
     }
     
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let defaults = UserDefaults.standard
@@ -36,6 +36,7 @@ class SettingsVC: SuperViewController {
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
             self.settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy", "Privacy Policy","Terms & Condition", "Return, Refund and cancellation", "FAQs", "Help & Support"]
+
             self.tblSettings.reloadData()
             return
         }
@@ -46,7 +47,7 @@ class SettingsVC: SuperViewController {
             self.lblMobile.text = "Mobile - NA"
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
-            self.settingsArray = ["Manage Addresses","About Us" , "Contact Us","Pricing Policy", "Privacy Policy","Terms & Condition", "Return, Refund and cancellation", "FAQs", "Help & Support"]
+            self.settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy", "Privacy Policy","Terms & Condition", "Return, Refund and cancellation", "FAQs", "Help & Support"]
             self.tblSettings.reloadData()
             return
         }
@@ -59,11 +60,15 @@ class SettingsVC: SuperViewController {
             self.lblMobile.text = user.mobileno
             self.lblEmail.text = user.email
             self.btnLogin.setTitle("Edit", for: UIControl.State.normal)
+            self.settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy", "Privacy Policy","Terms & Condition", "Return, Refund and cancellation", "FAQs", "Help & Support","Feedback"]
+
         }else {
             self.lblName.text = "Login to order food"
             self.lblMobile.text = "Mobile - NA"
             self.lblEmail.text = "Email - NA"
             self.btnLogin.setTitle("Login", for: UIControl.State.normal)
+            self.settingsArray = ["Manage Addresses","About Us","Contact Us","Pricing Policy", "Privacy Policy","Terms & Condition", "Return, Refund and cancellation", "FAQs", "Help & Support"]
+
         }
         self.tblSettings.reloadData()
 
@@ -78,7 +83,7 @@ class SettingsVC: SuperViewController {
             let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
             signupvc.user = self.profile
             signupvc.delegate = self
-            self.present(signupvc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(signupvc, animated: true)
         }
     }
 
@@ -127,6 +132,9 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
             break
         case "Help & Support":
             cell.ivMenu.image = UIImage(named: "support")
+            break
+        case "Feedback":
+            cell.ivMenu.image = UIImage(named: "terms")
             break
         case "Logout":
             cell.ivMenu.image = UIImage(named: "logout")
@@ -189,6 +197,10 @@ extension SettingsVC : UITableViewDataSource, UITableViewDelegate {
             break
         case "Help & Support":
             let addressvc = mainStoryboard.instantiateViewController(withIdentifier: "SupportVC") as! SupportVC
+            self.navigationController?.pushViewController(addressvc, animated: true)
+            break
+        case "Feedback":
+            let addressvc = mainStoryboard.instantiateViewController(withIdentifier: "Feedback") as! Feedback
             self.navigationController?.pushViewController(addressvc, animated: true)
             break
         case "Logout":

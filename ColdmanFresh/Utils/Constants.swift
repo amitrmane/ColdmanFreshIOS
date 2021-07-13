@@ -47,11 +47,16 @@ class Constants {
         static let verify_otp = "verify_otp"
         static let sign_up = "sign-up"
         static let update_address = "update-address"
+        static let delete_address = "delete-address"
         static let add_address = "add-address"
         static let save_order = "save-order"
         static let menus = "menus"
         static let coupons = "coupons"
         static let pincode = "pincode"
+        static let feedback_save = "save-feedback-rating"
+        static let feedback_view = "view-feedback-rating"
+        static let notes = "app-data"
+        static let city = "city"
     }
   
     struct WebLinks {
