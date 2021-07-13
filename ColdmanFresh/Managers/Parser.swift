@@ -822,3 +822,31 @@ class Pincode : Codable {
     }
     
 }
+
+class City : Codable {
+    var city_id = ""
+    var city_name = ""
+    var status = ""
+
+    class func getData(array: [JSON]) -> [City] {
+        var dataArr = [City]()
+        
+        for dict in array {
+            let data = City()
+            if let value = dict["city_id"].string {
+                data.city_id = value
+            }
+            if let value = dict["city_name"].string {
+                data.city_name = value
+            }
+            if let value = dict["status"].string {
+                data.status = value
+            }
+            dataArr.append(data)
+        }
+        
+        return dataArr
+    }
+    
+}
+

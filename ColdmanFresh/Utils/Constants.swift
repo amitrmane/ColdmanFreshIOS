@@ -55,7 +55,8 @@ class Constants {
         static let pincode = "pincode"
         static let feedback_save = "save-feedback-rating"
         static let feedback_view = "view-feedback-rating"
-
+        static let notes = "app-data"
+        static let city = "city"
     }
   
     struct WebLinks {

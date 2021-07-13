@@ -37,6 +37,7 @@ class AddAddressVC: SuperViewController{
     var currentLoc : CLLocation!
     var selectedAddress : Address!
     var pincodes = [Pincode]()
+    var cities = [City]()
     var selectedPincode : Pincode!
     
     
@@ -220,9 +221,38 @@ class AddAddressVC: SuperViewController{
             self.showPincodeDropDown(textField)
             return false
         }
+        if textField == self.tfCity {
+            self.showCityList(textField)
+            return false
+        }
         return true
     }
+    
+    
+    func showCityList(_ textField: UITextField) {
+        let dropDown = DropDown()
+        dropDown.anchorView = textField // UIView or UIBarButtonItem
 
+        // Top of drop down will be below the anchorView
+        dropDown.bottomOffset = CGPoint(x: 0, y:(textField.bounds.height))
+
+        dropDown.dismissMode = .automatic
+        dropDown.direction = .any
+        
+        // The list of items to display. Can be changed dynamically
+        dropDown.dataSource = self.cities.map { $0.city_name }
+        
+        // Action triggered on selection
+        dropDown.selectionAction = { [weak self] (index, item) in
+            let org = self?.cities[index]
+//            self?.selectedPincode = org
+            textField.text = org?.city_name
+        }
+        
+        dropDown.show()
+
+    }
+    
     func showPincodeDropDown(_ textField: UITextField) {
         let dropDown = DropDown()
 
@@ -336,10 +366,26 @@ extension AddAddressVC {
             }
         }
         
+        self.showActivityIndicator()
+        ApiManager.getUserCity(userid: user.user_id) { (json) in
+            self.hideActivityIndicator()
+            if let array = json?.array {
+                self.cities = City.getData(array: array).filter({ $0.status == "1" })
+                if let addrs = self.selectedAddress,  let city = self.cities.filter({ $0.city_name == addrs.pincode }).first {
+                    self.tfCity.text = city.city_name
+//                    self.selectedPincode = pin
+//                    self.tfPincode.text = pin.pincode
+                }else  {
+//                    self.tfCity.text = city.city_name
+//                    self.selectedPincode = pin
+//                    self.tfPincode.text = pin.pincode
+                }
+            }else {
+                self.showError(message: "Failed, please try again")
+            }
     }
-
+    }
 }
-
 
 // MARK: - Internal methods
 

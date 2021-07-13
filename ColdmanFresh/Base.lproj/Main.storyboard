@@ -531,7 +531,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qO-Ou-mxP" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
-                                            <rect key="frame" x="339" y="60" width="60" height="30"/>
+                                            <rect key="frame" x="339" y="80" width="60" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="Nna-bQ-mMy"/>
                                                 <constraint firstAttribute="height" constant="30" id="ZIv-xW-Pxo"/>
@@ -577,7 +577,7 @@
                                         <constraint firstItem="n4X-Vd-2qT" firstAttribute="trailing" secondItem="cSp-Nx-ezv" secondAttribute="trailing" id="cvk-r9-CyT"/>
                                         <constraint firstItem="cSp-Nx-ezv" firstAttribute="top" secondItem="ObY-Uk-G8B" secondAttribute="top" constant="30" id="cxE-LK-eJP"/>
                                         <constraint firstItem="n4X-Vd-2qT" firstAttribute="leading" secondItem="cSp-Nx-ezv" secondAttribute="leading" id="fdy-5t-hCO"/>
-                                        <constraint firstItem="7qO-Ou-mxP" firstAttribute="centerY" secondItem="ObY-Uk-G8B" secondAttribute="centerY" id="sIO-Zr-67w"/>
+                                        <constraint firstItem="7qO-Ou-mxP" firstAttribute="centerY" secondItem="ObY-Uk-G8B" secondAttribute="centerY" constant="20" id="sIO-Zr-67w"/>
                                         <constraint firstAttribute="trailing" secondItem="7qO-Ou-mxP" secondAttribute="trailing" constant="15" id="vef-7d-TB1"/>
                                         <constraint firstItem="nBa-nf-68g" firstAttribute="trailing" secondItem="n4X-Vd-2qT" secondAttribute="trailing" id="w1g-7r-Kd8"/>
                                     </constraints>
@@ -653,6 +653,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zuH-tc-zcq" firstAttribute="top" secondItem="U1d-fP-Acx" secondAttribute="top" id="AXA-ci-7Zb"/>
+                            <constraint firstItem="vgS-pf-3JR" firstAttribute="leading" secondItem="zuH-tc-zcq" secondAttribute="trailing" constant="-80" id="Bg9-hi-fbO"/>
                             <constraint firstItem="zuH-tc-zcq" firstAttribute="leading" secondItem="e1W-HK-C0b" secondAttribute="leading" id="CE9-Uk-bzD"/>
                             <constraint firstItem="U1d-fP-Acx" firstAttribute="trailing" secondItem="vgS-pf-3JR" secondAttribute="trailing" constant="5" id="GtD-GD-XQE"/>
                             <constraint firstItem="U1d-fP-Acx" firstAttribute="bottom" secondItem="zuH-tc-zcq" secondAttribute="bottom" id="q4r-Oh-aSb"/>
@@ -706,7 +707,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTT-fo-KSC" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="152" width="291" height="45"/>
+                                        <rect key="frame" x="20" y="145" width="291" height="45"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Qib-Yq-riM"/>
@@ -736,55 +737,16 @@
                                             <action selector="loginTapped:" destination="dlm-S7-gTw" eventType="touchUpInside" id="mvX-jo-y2E"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-IM-cAh" customClass="CustomButton" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="333" width="291" height="50"/>
-                                        <color key="backgroundColor" red="0.33869558166954544" green="0.7693973183631897" blue="0.34696774551190884" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="SIGN UP">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="7"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="signUpTapped:" destination="dlm-S7-gTw" eventType="touchUpInside" id="zGS-F3-5Ov"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already registered users" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-Vl-y0v">
-                                        <rect key="frame" x="20" y="217" width="291" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="0.35999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Register Click on Signup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aq-hv-IBx">
-                                        <rect key="frame" x="20" y="310" width="291" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ffh-IM-cAh" firstAttribute="trailing" secondItem="IW4-vM-NcO" secondAttribute="trailing" id="2xh-HB-kdc"/>
-                                    <constraint firstItem="pTT-fo-KSC" firstAttribute="top" secondItem="9Ny-fc-4Wv" secondAttribute="bottom" constant="20" id="33M-oj-sIa"/>
-                                    <constraint firstItem="5aq-hv-IBx" firstAttribute="leading" secondItem="TpR-cT-mtv" secondAttribute="leading" constant="20" id="5je-o8-SeH"/>
-                                    <constraint firstItem="ffh-IM-cAh" firstAttribute="top" secondItem="5aq-hv-IBx" secondAttribute="bottom" constant="5" id="7bA-Lq-hp5"/>
-                                    <constraint firstItem="ffh-IM-cAh" firstAttribute="leading" secondItem="IW4-vM-NcO" secondAttribute="leading" id="Agj-Vb-g22"/>
-                                    <constraint firstItem="sPX-Vl-y0v" firstAttribute="leading" secondItem="TpR-cT-mtv" secondAttribute="leading" constant="20" id="C7Z-1a-jsA"/>
-                                    <constraint firstItem="sPX-Vl-y0v" firstAttribute="top" secondItem="pTT-fo-KSC" secondAttribute="bottom" constant="20" id="J7b-jH-zTq"/>
-                                    <constraint firstItem="IW4-vM-NcO" firstAttribute="top" secondItem="sPX-Vl-y0v" secondAttribute="bottom" constant="5" id="NEn-nZ-y8F"/>
+                                    <constraint firstItem="pTT-fo-KSC" firstAttribute="top" secondItem="9Ny-fc-4Wv" secondAttribute="bottom" constant="13" id="33M-oj-sIa"/>
                                     <constraint firstItem="4qp-HC-Xg1" firstAttribute="trailing" secondItem="9Ny-fc-4Wv" secondAttribute="trailing" id="Nku-L5-Ixs"/>
                                     <constraint firstItem="4qp-HC-Xg1" firstAttribute="top" secondItem="TpR-cT-mtv" secondAttribute="top" constant="30" id="NwX-QL-eGa"/>
-                                    <constraint firstAttribute="bottom" secondItem="ffh-IM-cAh" secondAttribute="bottom" constant="35" id="T7X-PE-zv3"/>
-                                    <constraint firstItem="ffh-IM-cAh" firstAttribute="height" secondItem="IW4-vM-NcO" secondAttribute="height" id="Uve-Ew-cLd"/>
                                     <constraint firstItem="9Ny-fc-4Wv" firstAttribute="top" secondItem="4qp-HC-Xg1" secondAttribute="bottom" constant="21" id="Wy0-Sg-pHE"/>
                                     <constraint firstItem="IW4-vM-NcO" firstAttribute="leading" secondItem="pTT-fo-KSC" secondAttribute="leading" id="Xn7-Ea-ms1"/>
-                                    <constraint firstAttribute="trailing" secondItem="sPX-Vl-y0v" secondAttribute="trailing" constant="20" id="ZJ4-WO-deA"/>
-                                    <constraint firstAttribute="trailing" secondItem="5aq-hv-IBx" secondAttribute="trailing" constant="20" id="Zc2-am-Je3"/>
                                     <constraint firstItem="IW4-vM-NcO" firstAttribute="trailing" secondItem="pTT-fo-KSC" secondAttribute="trailing" id="acO-bj-RZW"/>
-                                    <constraint firstItem="5aq-hv-IBx" firstAttribute="top" secondItem="IW4-vM-NcO" secondAttribute="bottom" constant="20" id="cSK-16-b06"/>
+                                    <constraint firstItem="IW4-vM-NcO" firstAttribute="top" secondItem="pTT-fo-KSC" secondAttribute="bottom" constant="26" id="bf1-3i-sgv"/>
                                     <constraint firstItem="9Ny-fc-4Wv" firstAttribute="leading" secondItem="TpR-cT-mtv" secondAttribute="leading" constant="20" id="fI9-62-grC"/>
                                     <constraint firstItem="pTT-fo-KSC" firstAttribute="trailing" secondItem="9Ny-fc-4Wv" secondAttribute="trailing" id="gEX-cb-I0D"/>
                                     <constraint firstItem="pTT-fo-KSC" firstAttribute="leading" secondItem="9Ny-fc-4Wv" secondAttribute="leading" id="iLo-At-P5X"/>
@@ -853,6 +815,7 @@
                         <color key="backgroundColor" red="0.97647058819999999" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ADU-4R-kJM" firstAttribute="leading" secondItem="TpR-cT-mtv" secondAttribute="leading" id="07A-bk-VK4"/>
+                            <constraint firstItem="TpR-cT-mtv" firstAttribute="top" secondItem="VFy-zO-FbN" secondAttribute="bottom" constant="99.5" id="4M5-O0-7zu"/>
                             <constraint firstItem="rDj-CL-MAP" firstAttribute="top" secondItem="Osh-C8-kYp" secondAttribute="bottom" constant="15" id="66u-Yt-Mq7"/>
                             <constraint firstItem="rDj-CL-MAP" firstAttribute="centerX" secondItem="ymf-A5-HoE" secondAttribute="centerX" id="CNs-Bw-2R9"/>
                             <constraint firstItem="ymf-A5-HoE" firstAttribute="trailing" secondItem="VFy-zO-FbN" secondAttribute="trailing" constant="5" id="I7f-aL-0Hq"/>
@@ -872,7 +835,6 @@
                     <connections>
                         <outlet property="btnSendCode" destination="IW4-vM-NcO" id="7K4-wf-t7u"/>
                         <outlet property="lblInfo" destination="9Ny-fc-4Wv" id="bZY-LT-YDU"/>
-                        <outlet property="newRegistration" destination="ffh-IM-cAh" id="MWv-bV-aHz"/>
                         <outlet property="tfPhoneNumber" destination="pTT-fo-KSC" id="7ub-4s-vvs"/>
                     </connections>
                 </viewController>
@@ -2190,10 +2152,18 @@ support@coldmanfresh.in</string>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="G1S-H6-w2R">
+                                <rect key="frame" x="230" y="45" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="5bt-3S-YKa"/>
+                                    <constraint firstAttribute="height" constant="50" id="CNv-c9-NTN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3So-kh-Ukz"/>
                         <color key="backgroundColor" red="0.91372549020000005" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="3So-kh-Ukz" firstAttribute="trailing" secondItem="G1S-H6-w2R" secondAttribute="trailing" constant="15" id="3iQ-pP-Uhn"/>
                             <constraint firstItem="3So-kh-Ukz" firstAttribute="bottom" secondItem="PsP-tZ-sjt" secondAttribute="bottom" constant="10" id="4E7-ml-rN4"/>
                             <constraint firstItem="5Wy-0X-Yuc" firstAttribute="centerX" secondItem="3So-kh-Ukz" secondAttribute="centerX" id="6ZM-Xk-Y27"/>
                             <constraint firstItem="PsP-tZ-sjt" firstAttribute="top" secondItem="kQM-8z-pSl" secondAttribute="bottom" constant="10" id="8cQ-uA-DE9"/>
@@ -2202,6 +2172,7 @@ support@coldmanfresh.in</string>
                             <constraint firstItem="dSx-Tc-sa8" firstAttribute="leading" secondItem="3So-kh-Ukz" secondAttribute="leading" constant="20" id="NOj-D1-CKd"/>
                             <constraint firstItem="dSx-Tc-sa8" firstAttribute="top" secondItem="3So-kh-Ukz" secondAttribute="top" constant="15" id="Q9o-TB-xGZ"/>
                             <constraint firstItem="PsP-tZ-sjt" firstAttribute="centerX" secondItem="3So-kh-Ukz" secondAttribute="centerX" id="VDR-mA-whT"/>
+                            <constraint firstItem="G1S-H6-w2R" firstAttribute="top" secondItem="Qh3-v1-mxk" secondAttribute="top" constant="45" id="YRA-ub-cZ2"/>
                             <constraint firstItem="5Wy-0X-Yuc" firstAttribute="top" secondItem="dSx-Tc-sa8" secondAttribute="top" constant="2" id="an8-2B-E1L"/>
                             <constraint firstItem="kQM-8z-pSl" firstAttribute="top" secondItem="5Wy-0X-Yuc" secondAttribute="bottom" constant="10" id="gaJ-6b-tQn"/>
                             <constraint firstItem="5Wy-0X-Yuc" firstAttribute="leading" secondItem="dSx-Tc-sa8" secondAttribute="trailing" constant="10" id="kpZ-sN-eE9"/>
@@ -2222,6 +2193,7 @@ support@coldmanfresh.in</string>
                         <outlet property="lblPromoDiscount" destination="2Pv-tA-8wl" id="seI-CH-KtF"/>
                         <outlet property="lblSubTotal" destination="zgY-hH-Jnc" id="F0O-Fi-HwO"/>
                         <outlet property="lblTax" destination="TVZ-1b-UNG" id="Tmw-Wx-RSD"/>
+                        <outlet property="notes" destination="N8m-zL-BOI" id="x9B-8K-YIA"/>
                         <outlet property="tblMenu" destination="kQM-8z-pSl" id="JIe-Zs-8iy"/>
                         <outlet property="viewAddress" destination="d1m-kB-ntU" id="CH3-nB-ESo"/>
                         <outlet property="viewAddressHeight" destination="vgr-K0-bw8" id="HZK-Pz-gtN"/>
@@ -2658,6 +2630,13 @@ support@coldmanfresh.in</string>
                                     <action selector="payOnlineTapped:" destination="s7u-mH-fva" eventType="touchUpInside" id="xFV-jN-Gby"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="pP4-rS-8cw">
+                                <rect key="frame" x="324" y="45" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="47Z-zv-HEV"/>
+                                    <constraint firstAttribute="width" constant="75" id="aSw-PW-IxA"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="swK-HN-vQs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2667,6 +2646,7 @@ support@coldmanfresh.in</string>
                             <constraint firstItem="Wci-BM-Y7F" firstAttribute="top" secondItem="swK-HN-vQs" secondAttribute="top" constant="15" id="7jE-7a-SUH"/>
                             <constraint firstItem="Wci-BM-Y7F" firstAttribute="top" secondItem="Ft4-UH-vsQ" secondAttribute="top" constant="2" id="AwE-b8-hCV"/>
                             <constraint firstItem="sME-HN-Tdw" firstAttribute="top" secondItem="qdp-6X-v21" secondAttribute="bottom" constant="5" id="HzT-Lz-o19"/>
+                            <constraint firstItem="pP4-rS-8cw" firstAttribute="top" secondItem="Iub-Z0-SRR" secondAttribute="top" constant="45" id="Kdx-Yz-o0K"/>
                             <constraint firstItem="Wci-BM-Y7F" firstAttribute="centerX" secondItem="swK-HN-vQs" secondAttribute="centerX" id="MDW-1T-guY"/>
                             <constraint firstItem="swK-HN-vQs" firstAttribute="trailing" secondItem="sME-HN-Tdw" secondAttribute="trailing" constant="10" id="Q6v-fL-nIU"/>
                             <constraint firstItem="swK-HN-vQs" firstAttribute="trailing" secondItem="qdp-6X-v21" secondAttribute="trailing" id="Se2-Yv-xZz"/>
@@ -2674,6 +2654,7 @@ support@coldmanfresh.in</string>
                             <constraint firstItem="qdp-6X-v21" firstAttribute="top" secondItem="Wci-BM-Y7F" secondAttribute="bottom" constant="15" id="g8c-qj-Kcg"/>
                             <constraint firstItem="Wci-BM-Y7F" firstAttribute="leading" secondItem="Ft4-UH-vsQ" secondAttribute="trailing" constant="10" id="l7B-ce-qPc"/>
                             <constraint firstItem="sME-HN-Tdw" firstAttribute="leading" secondItem="swK-HN-vQs" secondAttribute="leading" constant="10" id="p4j-Ue-amw"/>
+                            <constraint firstItem="swK-HN-vQs" firstAttribute="trailing" secondItem="pP4-rS-8cw" secondAttribute="trailing" constant="15" id="uiO-YM-KPf"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2933,8 +2914,11 @@ support@coldmanfresh.in</string>
                                     <action selector="backTapped:" destination="PfI-uT-7oz" eventType="touchUpInside" id="7Tp-L8-XGX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itq-Fp-ih5">
-                                <rect key="frame" x="55" y="56" width="304" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itq-Fp-ih5">
+                                <rect key="frame" x="138" y="56" width="221" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="221" id="HIH-S7-BO6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -2969,7 +2953,7 @@ support@coldmanfresh.in</string>
                             <constraint firstItem="Ll4-Ya-aAd" firstAttribute="bottom" secondItem="Ryh-hk-D3h" secondAttribute="bottom" id="AlF-xM-blP"/>
                             <constraint firstItem="Ll4-Ya-aAd" firstAttribute="trailing" secondItem="Ryh-hk-D3h" secondAttribute="trailing" id="DCR-wG-uAc"/>
                             <constraint firstItem="ICC-YK-ri1" firstAttribute="height" secondItem="5pw-Ng-kXu" secondAttribute="height" id="GTX-Ui-sYn"/>
-                            <constraint firstItem="itq-Fp-ih5" firstAttribute="centerX" secondItem="Ll4-Ya-aAd" secondAttribute="centerX" id="H06-Nw-L7Y"/>
+                            <constraint firstItem="itq-Fp-ih5" firstAttribute="centerX" secondItem="Ll4-Ya-aAd" secondAttribute="centerX" constant="41.5" id="H06-Nw-L7Y"/>
                             <constraint firstAttribute="trailing" secondItem="Eu2-Tq-Zz7" secondAttribute="trailing" id="I6R-A5-2UB"/>
                             <constraint firstItem="Eu2-Tq-Zz7" firstAttribute="top" secondItem="itq-Fp-ih5" secondAttribute="bottom" constant="15" id="Iva-fW-uXo"/>
                             <constraint firstItem="Ryh-hk-D3h" firstAttribute="top" secondItem="Eu2-Tq-Zz7" secondAttribute="bottom" constant="10" id="JbB-vi-bs0"/>
@@ -2980,7 +2964,6 @@ support@coldmanfresh.in</string>
                             <constraint firstItem="itq-Fp-ih5" firstAttribute="top" secondItem="5pw-Ng-kXu" secondAttribute="top" constant="2" id="Tfr-IO-kmE"/>
                             <constraint firstItem="ICC-YK-ri1" firstAttribute="centerY" secondItem="itq-Fp-ih5" secondAttribute="centerY" id="Tma-lr-MHj"/>
                             <constraint firstItem="Ll4-Ya-aAd" firstAttribute="trailing" secondItem="ICC-YK-ri1" secondAttribute="trailing" constant="20" id="joQ-PT-jv4"/>
-                            <constraint firstItem="itq-Fp-ih5" firstAttribute="leading" secondItem="8ta-Vn-H6P" secondAttribute="leading" id="m7M-hX-tNu"/>
                             <constraint firstItem="5pw-Ng-kXu" firstAttribute="top" secondItem="Ll4-Ya-aAd" secondAttribute="top" constant="10" id="tq8-hI-out"/>
                             <constraint firstItem="ICC-YK-ri1" firstAttribute="width" secondItem="5pw-Ng-kXu" secondAttribute="width" id="yZZ-OM-HMe"/>
                         </constraints>
@@ -3257,7 +3240,7 @@ support@coldmanfresh.in</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="zbi-lw-Lun">
                                                 <rect key="frame" x="20" y="5" width="374" height="602"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Title*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VVM-O0-pQe" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter Property Type*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VVM-O0-pQe" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -3367,11 +3350,31 @@ support@coldmanfresh.in</string>
                                                             <outlet property="delegate" destination="xf3-z4-xDf" id="HfN-ad-C0K"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter City*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Bv-bH-EEV" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select City*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Bv-bH-EEV" customClass="CustomTextField" customModule="ColdmanFresh" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="511" width="374" height="40"/>
                                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showRightView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="down_arrow"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColour">
+                                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAddPadding" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="delegate" destination="xf3-z4-xDf" id="ICS-uQ-3P4"/>
                                                         </connections>
@@ -3569,13 +3572,22 @@ USP FOR COLDMAN FRESH – We Deliver the Freshness of Farm to your Home.</string
                                 <viewLayoutGuide key="contentLayoutGuide" id="2xr-Ae-zVR"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="VVL-sd-mUK"/>
                             </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="2F2-28-jtE">
+                                <rect key="frame" x="324" y="44" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="P51-5t-4Tl"/>
+                                    <constraint firstAttribute="height" constant="50" id="dd4-cb-NWW"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QkB-jI-4UE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hSj-if-7ic" firstAttribute="top" secondItem="QkB-jI-4UE" secondAttribute="top" id="AyW-kX-bSt"/>
+                            <constraint firstItem="QkB-jI-4UE" firstAttribute="trailing" secondItem="2F2-28-jtE" secondAttribute="trailing" constant="15" id="PPQ-3Z-D1z"/>
                             <constraint firstItem="hSj-if-7ic" firstAttribute="trailing" secondItem="QkB-jI-4UE" secondAttribute="trailing" id="PRn-Rj-c5N"/>
                             <constraint firstItem="hSj-if-7ic" firstAttribute="leading" secondItem="QkB-jI-4UE" secondAttribute="leading" id="TSA-zv-lpr"/>
+                            <constraint firstItem="2F2-28-jtE" firstAttribute="top" secondItem="QkB-jI-4UE" secondAttribute="top" id="ckw-L4-kL5"/>
                             <constraint firstItem="hSj-if-7ic" firstAttribute="bottom" secondItem="QkB-jI-4UE" secondAttribute="bottom" id="dgn-E7-ajW"/>
                         </constraints>
                     </view>
@@ -3720,12 +3732,21 @@ All materials on this site are protected as the copyrights, trade dress, tradema
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="27X-E3-GiK">
+                                <rect key="frame" x="324" y="59" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PRn-ux-wOh"/>
+                                    <constraint firstAttribute="width" constant="75" id="yQY-8N-jvO"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ySi-JL-EUn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8qB-xY-n5l" firstAttribute="leading" secondItem="ySi-JL-EUn" secondAttribute="leading" constant="20" id="0CU-Hm-hsB"/>
                             <constraint firstItem="ySi-JL-EUn" firstAttribute="trailing" secondItem="QxW-1l-K08" secondAttribute="trailing" constant="20" id="0Wv-cf-8Wg"/>
+                            <constraint firstItem="27X-E3-GiK" firstAttribute="top" secondItem="ySi-JL-EUn" secondAttribute="top" constant="15" id="31J-O2-RIa"/>
+                            <constraint firstItem="ySi-JL-EUn" firstAttribute="trailing" secondItem="27X-E3-GiK" secondAttribute="trailing" constant="15" id="6jE-h2-AxW"/>
                             <constraint firstItem="QxW-1l-K08" firstAttribute="leading" secondItem="ySi-JL-EUn" secondAttribute="leading" constant="20" id="8JK-ft-xvg"/>
                             <constraint firstItem="ySi-JL-EUn" firstAttribute="trailing" secondItem="8qB-xY-n5l" secondAttribute="trailing" constant="20" id="LhH-lq-VX8"/>
                             <constraint firstItem="8qB-xY-n5l" firstAttribute="top" secondItem="1LF-6y-h9X" secondAttribute="bottom" constant="40" id="VJt-ku-Mya"/>
@@ -3851,15 +3872,24 @@ All materials on this site are protected as the copyrights, trade dress, tradema
                                 <viewLayoutGuide key="contentLayoutGuide" id="G6T-sQ-voD"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="tQp-Wb-X5A"/>
                             </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="Jur-B4-zyD">
+                                <rect key="frame" x="295" y="49" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="AdK-xp-su1"/>
+                                    <constraint firstAttribute="height" constant="50" id="Ibv-tv-KQQ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8P6-Ys-wfh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sef-9H-ye6" firstAttribute="bottom" secondItem="8P6-Ys-wfh" secondAttribute="bottom" id="0lg-oE-3hJ"/>
                             <constraint firstItem="sef-9H-ye6" firstAttribute="trailing" secondItem="8P6-Ys-wfh" secondAttribute="trailing" id="8Em-8W-aLO"/>
+                            <constraint firstItem="8P6-Ys-wfh" firstAttribute="trailing" secondItem="Jur-B4-zyD" secondAttribute="trailing" constant="5" id="B6U-Rp-MiJ"/>
                             <constraint firstItem="sef-9H-ye6" firstAttribute="bottom" secondItem="8P6-Ys-wfh" secondAttribute="bottom" id="OHc-sl-Tjh"/>
                             <constraint firstItem="sef-9H-ye6" firstAttribute="trailing" secondItem="8P6-Ys-wfh" secondAttribute="trailing" id="RDv-DC-QDg"/>
                             <constraint firstItem="sef-9H-ye6" firstAttribute="top" secondItem="8P6-Ys-wfh" secondAttribute="top" id="UDu-g2-T5r"/>
+                            <constraint firstItem="Jur-B4-zyD" firstAttribute="top" secondItem="8P6-Ys-wfh" secondAttribute="top" constant="5" id="Z7p-r4-3at"/>
                             <constraint firstItem="sef-9H-ye6" firstAttribute="leading" secondItem="8P6-Ys-wfh" secondAttribute="leading" id="am8-4j-hgj"/>
                             <constraint firstItem="sef-9H-ye6" firstAttribute="top" secondItem="8P6-Ys-wfh" secondAttribute="top" id="hb3-Y9-x6s"/>
                             <constraint firstItem="sef-9H-ye6" firstAttribute="leading" secondItem="8P6-Ys-wfh" secondAttribute="leading" id="kuY-li-DgD"/>
@@ -4068,10 +4098,18 @@ All materials on this site are protected as the copyrights, trade dress, tradema
                                     <action selector="addTapped:" destination="6hR-EB-xTt" eventType="touchUpInside" id="QOS-qY-Kk0"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="LOL-ty-LUt">
+                                <rect key="frame" x="58" y="47" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="97p-cq-LbE"/>
+                                    <constraint firstAttribute="width" constant="75" id="aM5-A0-gM5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Yf-Rl-fcB"/>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="LOL-ty-LUt" firstAttribute="top" secondItem="3Yf-Rl-fcB" secondAttribute="top" constant="3" id="19E-S8-ho7"/>
                             <constraint firstItem="hep-dB-ANS" firstAttribute="top" secondItem="3Yf-Rl-fcB" secondAttribute="top" constant="20" id="7Ko-yX-WvB"/>
                             <constraint firstItem="hep-dB-ANS" firstAttribute="leading" secondItem="3Yf-Rl-fcB" secondAttribute="leading" constant="20" id="9KK-K1-ngK"/>
                             <constraint firstItem="3Yf-Rl-fcB" firstAttribute="trailing" secondItem="xxS-hD-PAa" secondAttribute="trailing" constant="10" id="Ab2-fP-eoW"/>
@@ -4079,6 +4117,8 @@ All materials on this site are protected as the copyrights, trade dress, tradema
                             <constraint firstItem="xxS-hD-PAa" firstAttribute="top" secondItem="Mw2-hk-B8k" secondAttribute="bottom" constant="3" id="CdT-Cg-Ehs"/>
                             <constraint firstItem="99N-WZ-wtl" firstAttribute="centerX" secondItem="3Yf-Rl-fcB" secondAttribute="centerX" id="Fba-t6-scQ"/>
                             <constraint firstItem="Mw2-hk-B8k" firstAttribute="top" secondItem="3Yf-Rl-fcB" secondAttribute="top" constant="20" id="Kiv-9F-KVq"/>
+                            <constraint firstItem="LOL-ty-LUt" firstAttribute="leading" secondItem="hep-dB-ANS" secondAttribute="trailing" constant="3" id="d6n-iy-OU6"/>
+                            <constraint firstItem="99N-WZ-wtl" firstAttribute="leading" secondItem="LOL-ty-LUt" secondAttribute="trailing" constant="3" id="gx3-JI-rth"/>
                             <constraint firstItem="Mw2-hk-B8k" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="99N-WZ-wtl" secondAttribute="trailing" constant="8" symbolic="YES" id="lUm-cw-LHS"/>
                             <constraint firstItem="3Yf-Rl-fcB" firstAttribute="bottom" secondItem="xxS-hD-PAa" secondAttribute="bottom" constant="10" id="qNu-V3-0my"/>
                             <constraint firstItem="xxS-hD-PAa" firstAttribute="top" secondItem="99N-WZ-wtl" secondAttribute="bottom" constant="10" id="tQI-cz-SqV"/>
@@ -4243,6 +4283,13 @@ All materials on this site are protected as the copyrights, trade dress, tradema
                                     <outlet property="delegate" destination="whL-kq-qsE" id="bTo-bP-LYv"/>
                                 </connections>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="Mp1-lR-A2S">
+                                <rect key="frame" x="324" y="49" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SEd-4G-h1f"/>
+                                    <constraint firstAttribute="width" constant="75" id="lEx-a0-iYD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OhL-E3-MX5"/>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4253,7 +4300,9 @@ All materials on this site are protected as the copyrights, trade dress, tradema
                             <constraint firstItem="IHE-7n-Oys" firstAttribute="top" secondItem="5uK-uQ-9VA" secondAttribute="bottom" constant="15" id="NSi-tn-7Lc"/>
                             <constraint firstItem="Pia-ry-MWD" firstAttribute="centerX" secondItem="OhL-E3-MX5" secondAttribute="centerX" id="NpX-Ta-0CD"/>
                             <constraint firstItem="Pia-ry-MWD" firstAttribute="centerY" secondItem="5uK-uQ-9VA" secondAttribute="centerY" id="YXB-Tw-DPb"/>
+                            <constraint firstItem="Mp1-lR-A2S" firstAttribute="top" secondItem="OhL-E3-MX5" secondAttribute="top" constant="5" id="dGU-ek-fD0"/>
                             <constraint firstItem="5uK-uQ-9VA" firstAttribute="top" secondItem="OhL-E3-MX5" secondAttribute="top" constant="20" id="eKL-wz-d6J"/>
+                            <constraint firstItem="OhL-E3-MX5" firstAttribute="trailing" secondItem="Mp1-lR-A2S" secondAttribute="trailing" constant="15" id="eX0-z3-bUY"/>
                             <constraint firstItem="IHE-7n-Oys" firstAttribute="leading" secondItem="OhL-E3-MX5" secondAttribute="leading" constant="15" id="glr-7U-zFq"/>
                         </constraints>
                     </view>
@@ -4889,12 +4938,21 @@ While we appreciate your interest in Coldman, we do not want and cannot accept a
                                     <outlet property="delegate" destination="zwt-Ea-zeO" id="gjD-Y0-yxe"/>
                                 </connections>
                             </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="xqT-P5-LWd">
+                                <rect key="frame" x="324" y="44" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2YO-o2-0g7"/>
+                                    <constraint firstAttribute="width" constant="75" id="vv9-oj-axn"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vwm-Rg-R9W"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="bottom" secondItem="Vwm-Rg-R9W" secondAttribute="bottom" id="3Q6-zN-ZMD"/>
                             <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="trailing" secondItem="Vwm-Rg-R9W" secondAttribute="trailing" id="68t-wD-CW4"/>
+                            <constraint firstItem="Vwm-Rg-R9W" firstAttribute="trailing" secondItem="xqT-P5-LWd" secondAttribute="trailing" constant="15" id="KQk-f1-oJS"/>
+                            <constraint firstItem="xqT-P5-LWd" firstAttribute="top" secondItem="Vwm-Rg-R9W" secondAttribute="top" id="MM9-RK-Rx8"/>
                             <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="trailing" secondItem="Vwm-Rg-R9W" secondAttribute="trailing" id="Y85-uY-8nd"/>
                             <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="top" secondItem="Vwm-Rg-R9W" secondAttribute="top" id="bUx-Aa-aSS"/>
                             <constraint firstItem="HBZ-Wi-Ndh" firstAttribute="leading" secondItem="Vwm-Rg-R9W" secondAttribute="leading" id="gGi-Vu-Wr9"/>
@@ -5050,23 +5108,23 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                                 <color key="textColor" red="0.29319935521464258" green="0.58691996151639014" blue="0.30367531604134301" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Please rate our service in the following survey." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76c-gt-g6t">
-                                <rect key="frame" x="20" y="189" width="374" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Please rate our service in the following survey." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76c-gt-g6t">
+                                <rect key="frame" x="20" y="181" width="374" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dear Customer, hope you liked the products &amp; Service from Coldman Fresh." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zif-GA-ArT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dear Customer, hope you liked the products &amp; Service from Coldman Fresh." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zif-GA-ArT">
                                 <rect key="frame" x="20" y="124" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VM0-QB-HwQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCe-S9-Mcq" customClass="FloatRatingView" customModule="ColdmanFresh">
-                                <rect key="frame" x="44" y="257.5" width="325" height="40"/>
+                                <rect key="frame" x="44" y="236.5" width="325" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="325" id="0E9-fK-cUH"/>
@@ -5076,25 +5134,25 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
-                                        <integer key="value" value="1"/>
+                                        <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="App User Interface" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGW-dl-gFn">
-                                <rect key="frame" x="30" y="234.5" width="354" height="18"/>
+                                <rect key="frame" x="30" y="215.5" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTW-4f-pXA" customClass="FloatRatingView" customModule="ColdmanFresh">
-                                <rect key="frame" x="44" y="349.5" width="325" height="40"/>
+                                <rect key="frame" x="44" y="312.5" width="325" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="YHL-EW-vhg"/>
@@ -5104,25 +5162,25 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
-                                        <integer key="value" value="1"/>
+                                        <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Product Quality" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLb-Z0-9xc">
-                                <rect key="frame" x="30" y="326.5" width="354" height="18"/>
+                                <rect key="frame" x="30" y="291.5" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Y-nP-KvD" customClass="FloatRatingView" customModule="ColdmanFresh">
-                                <rect key="frame" x="44" y="447.5" width="325" height="40"/>
+                                <rect key="frame" x="44" y="388.5" width="325" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3NN-bA-nM8"/>
@@ -5132,25 +5190,25 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
-                                        <integer key="value" value="1"/>
+                                        <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Packing Quality" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOR-4E-uef">
-                                <rect key="frame" x="30" y="424.5" width="354" height="18"/>
+                                <rect key="frame" x="30" y="367.5" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZk-xc-nIn" customClass="FloatRatingView" customModule="ColdmanFresh">
-                                <rect key="frame" x="44" y="546.5" width="325" height="40"/>
+                                <rect key="frame" x="44" y="464.5" width="325" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tFQ-Nc-M88"/>
@@ -5160,25 +5218,25 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
-                                        <integer key="value" value="1"/>
+                                        <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" text="Delivery Condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBZ-Pp-xrZ">
-                                <rect key="frame" x="30" y="523.5" width="354" height="18"/>
+                                <rect key="frame" x="30" y="443.5" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4N-rb-gL2" customClass="FloatRatingView" customModule="ColdmanFresh">
-                                <rect key="frame" x="44" y="643.5" width="325" height="40"/>
+                                <rect key="frame" x="44" y="542.5" width="325" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="325" id="dOW-G6-eTN"/>
@@ -5188,25 +5246,25 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
-                                        <integer key="value" value="1"/>
+                                        <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Delivery Boy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLe-jx-kyb">
-                                <rect key="frame" x="30" y="620.5" width="354" height="18"/>
+                                <rect key="frame" x="30" y="519.5" width="354" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAx-km-5rV">
-                                <rect key="frame" x="154" y="715.5" width="90" height="40"/>
+                                <rect key="frame" x="154" y="602.5" width="90" height="40"/>
                                 <color key="backgroundColor" red="0.33869558170000003" green="0.76939731840000003" blue="0.34696774549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="6WA-FL-JCl"/>
@@ -5253,36 +5311,45 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                                     <action selector="SkipView:" destination="NgZ-OL-TS7" eventType="touchUpInside" id="Iz5-jG-thb"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="3hX-LE-tLB">
+                                <rect key="frame" x="324" y="49" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="k6h-QT-XaQ"/>
+                                    <constraint firstAttribute="width" constant="75" id="vjs-DB-Wb7"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="47A-ab-iRn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QBZ-Pp-xrZ" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="30" id="5ra-fu-xb3"/>
-                            <constraint firstItem="fAx-km-5rV" firstAttribute="top" secondItem="T4N-rb-gL2" secondAttribute="bottom" constant="32" id="6jb-jh-dsr"/>
-                            <constraint firstItem="cLe-jx-kyb" firstAttribute="top" secondItem="kZk-xc-nIn" secondAttribute="bottom" constant="34" id="8Mp-aA-usl"/>
+                            <constraint firstItem="fAx-km-5rV" firstAttribute="top" secondItem="T4N-rb-gL2" secondAttribute="bottom" constant="20" id="6jb-jh-dsr"/>
+                            <constraint firstItem="cLe-jx-kyb" firstAttribute="top" secondItem="kZk-xc-nIn" secondAttribute="bottom" constant="15" id="8Mp-aA-usl"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="T4N-rb-gL2" secondAttribute="trailing" constant="45" id="BB4-iF-a9A"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="cLe-jx-kyb" secondAttribute="trailing" constant="30" id="BwL-T9-2m3"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="76c-gt-g6t" secondAttribute="trailing" constant="20" id="CLw-Dp-sqp"/>
                             <constraint firstItem="SCe-S9-Mcq" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="44" id="EDq-p7-vmT"/>
+                            <constraint firstItem="3hX-LE-tLB" firstAttribute="top" secondItem="47A-ab-iRn" secondAttribute="top" constant="5" id="EIj-Td-SIW"/>
                             <constraint firstItem="zif-GA-ArT" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="20" id="Il0-E2-T5C"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="QBZ-Pp-xrZ" secondAttribute="trailing" constant="30" id="ImD-u4-gqe"/>
-                            <constraint firstItem="bTW-4f-pXA" firstAttribute="top" secondItem="yLb-Z0-9xc" secondAttribute="bottom" constant="5" id="Jei-NF-KAh"/>
+                            <constraint firstItem="bTW-4f-pXA" firstAttribute="top" secondItem="yLb-Z0-9xc" secondAttribute="bottom" constant="3" id="Jei-NF-KAh"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="kZk-xc-nIn" secondAttribute="trailing" constant="45" id="KXn-99-gMZ"/>
+                            <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="3hX-LE-tLB" secondAttribute="trailing" constant="15" id="LPb-0k-qhh"/>
                             <constraint firstItem="zif-GA-ArT" firstAttribute="top" secondItem="YvO-6K-hJo" secondAttribute="bottom" constant="20" id="LWJ-4K-HAo"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YvO-6K-hJo" secondAttribute="trailing" symbolic="YES" id="La9-SD-b1Q"/>
                             <constraint firstItem="T4N-rb-gL2" firstAttribute="top" secondItem="cLe-jx-kyb" secondAttribute="bottom" constant="5" id="MWO-sd-Pr7"/>
                             <constraint firstItem="76c-gt-g6t" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="20" id="NJw-bH-9n9"/>
                             <constraint firstItem="T4N-rb-gL2" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="44" id="NKa-Yx-dZS"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="QBZ-Pp-xrZ" secondAttribute="trailing" constant="30" id="OJR-wR-aPx"/>
-                            <constraint firstItem="XGW-dl-gFn" firstAttribute="top" secondItem="76c-gt-g6t" secondAttribute="bottom" constant="25" id="OgQ-ti-tx7"/>
+                            <constraint firstItem="XGW-dl-gFn" firstAttribute="top" secondItem="76c-gt-g6t" secondAttribute="bottom" constant="15" id="OgQ-ti-tx7"/>
                             <constraint firstItem="YvO-6K-hJo" firstAttribute="top" secondItem="47A-ab-iRn" secondAttribute="top" constant="20" id="Q5e-iR-JNq"/>
-                            <constraint firstItem="QBZ-Pp-xrZ" firstAttribute="top" secondItem="Q0Y-nP-KvD" secondAttribute="bottom" constant="36" id="Rse-aP-DpE"/>
+                            <constraint firstItem="QBZ-Pp-xrZ" firstAttribute="top" secondItem="Q0Y-nP-KvD" secondAttribute="bottom" constant="15" id="Rse-aP-DpE"/>
                             <constraint firstItem="cLe-jx-kyb" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="30" id="TJd-R0-x0y"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="SCe-S9-Mcq" secondAttribute="trailing" constant="45" id="VNX-7O-nVq"/>
                             <constraint firstItem="J4S-lr-0YT" firstAttribute="centerY" secondItem="YvO-6K-hJo" secondAttribute="centerY" id="Wik-uc-cSI"/>
-                            <constraint firstItem="GOR-4E-uef" firstAttribute="top" secondItem="bTW-4f-pXA" secondAttribute="bottom" constant="35" id="ZTC-gB-5S2"/>
+                            <constraint firstItem="GOR-4E-uef" firstAttribute="top" secondItem="bTW-4f-pXA" secondAttribute="bottom" constant="15" id="ZTC-gB-5S2"/>
                             <constraint firstItem="J4S-lr-0YT" firstAttribute="height" secondItem="YvO-6K-hJo" secondAttribute="height" id="Zig-XS-WrS"/>
-                            <constraint firstItem="yLb-Z0-9xc" firstAttribute="top" secondItem="SCe-S9-Mcq" secondAttribute="bottom" constant="29" id="aUZ-y3-9J3"/>
+                            <constraint firstItem="yLb-Z0-9xc" firstAttribute="top" secondItem="SCe-S9-Mcq" secondAttribute="bottom" constant="15" id="aUZ-y3-9J3"/>
                             <constraint firstItem="J4S-lr-0YT" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="18" id="akG-fB-9AQ"/>
                             <constraint firstItem="fAx-km-5rV" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="154" id="amL-sC-8y7"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fAx-km-5rV" secondAttribute="trailing" id="btZ-kv-p20"/>
@@ -5290,11 +5357,10 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                             <constraint firstItem="YvO-6K-hJo" firstAttribute="leading" secondItem="J4S-lr-0YT" secondAttribute="trailing" constant="15" id="cwa-sd-qMT"/>
                             <constraint firstItem="GOR-4E-uef" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="30" id="dit-DK-AZ4"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="XGW-dl-gFn" secondAttribute="trailing" constant="30" id="eDW-4F-B6c"/>
-                            <constraint firstItem="SCe-S9-Mcq" firstAttribute="top" secondItem="XGW-dl-gFn" secondAttribute="bottom" constant="5" id="eaT-Yg-lMp"/>
+                            <constraint firstItem="SCe-S9-Mcq" firstAttribute="top" secondItem="XGW-dl-gFn" secondAttribute="bottom" constant="3" id="eaT-Yg-lMp"/>
                             <constraint firstItem="kZk-xc-nIn" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="44" id="fNa-Mg-HqR"/>
-                            <constraint firstItem="Q0Y-nP-KvD" firstAttribute="top" secondItem="GOR-4E-uef" secondAttribute="bottom" constant="5" id="fk8-lV-Giz"/>
-                            <constraint firstItem="T4N-rb-gL2" firstAttribute="top" secondItem="cLe-jx-kyb" secondAttribute="bottom" constant="5" id="gcH-Hi-iIN"/>
-                            <constraint firstItem="76c-gt-g6t" firstAttribute="top" secondItem="zif-GA-ArT" secondAttribute="bottom" constant="15" id="h6B-Rr-Dfc"/>
+                            <constraint firstItem="Q0Y-nP-KvD" firstAttribute="top" secondItem="GOR-4E-uef" secondAttribute="bottom" constant="3" id="fk8-lV-Giz"/>
+                            <constraint firstItem="76c-gt-g6t" firstAttribute="top" secondItem="zif-GA-ArT" secondAttribute="bottom" constant="7" id="h6B-Rr-Dfc"/>
                             <constraint firstItem="bTW-4f-pXA" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="44" id="qV4-pf-00l"/>
                             <constraint firstItem="yLb-Z0-9xc" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="30" id="qk2-NL-I4O"/>
                             <constraint firstItem="XGW-dl-gFn" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="30" id="r9r-9R-FRt"/>
@@ -5302,7 +5368,7 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                             <constraint firstItem="Q0Y-nP-KvD" firstAttribute="leading" secondItem="47A-ab-iRn" secondAttribute="leading" constant="44" id="u9T-VI-GTd"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="bTW-4f-pXA" secondAttribute="trailing" constant="45" id="w2t-gk-iPa"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="GOR-4E-uef" secondAttribute="trailing" constant="30" id="w4T-O2-qGd"/>
-                            <constraint firstItem="kZk-xc-nIn" firstAttribute="top" secondItem="QBZ-Pp-xrZ" secondAttribute="bottom" constant="5" id="x6s-iU-fNQ"/>
+                            <constraint firstItem="kZk-xc-nIn" firstAttribute="top" secondItem="QBZ-Pp-xrZ" secondAttribute="bottom" constant="3" id="x6s-iU-fNQ"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="yLb-Z0-9xc" secondAttribute="trailing" constant="30" id="ybe-Uw-9mi"/>
                             <constraint firstItem="47A-ab-iRn" firstAttribute="trailing" secondItem="Q0Y-nP-KvD" secondAttribute="trailing" constant="45" id="zdp-Bf-Wfs"/>
                         </constraints>
@@ -5324,7 +5390,6 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
         <!--Feedback Rating View Controller-->
         <scene sceneID="TC1-5w-SRi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qw5-CI-uz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="FeedbackRatingViewController" id="XrY-rH-nvR" customClass="FeedbackRatingViewController" customModule="ColdmanFresh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ed-iI-TFd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -5635,6 +5700,13 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                                     <action selector="SkipView:" destination="XrY-rH-nvR" eventType="touchUpInside" id="b6B-Ca-4lE"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logofull" translatesAutoresizingMaskIntoConstraints="NO" id="YKm-MX-SJ4">
+                                <rect key="frame" x="324" y="20" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="U5c-8h-iM2"/>
+                                    <constraint firstAttribute="width" constant="75" id="mU5-jv-1ID"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vB4-4u-5FQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -5662,6 +5734,7 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                             <constraint firstItem="bv1-JU-oTW" firstAttribute="top" secondItem="uGN-rk-NT2" secondAttribute="bottom" constant="15" id="EnC-7c-Es6"/>
                             <constraint firstItem="vB4-4u-5FQ" firstAttribute="trailing" secondItem="zGC-Ql-1Ph" secondAttribute="trailing" constant="60" id="Fsj-Bv-rXO"/>
                             <constraint firstItem="S3L-N2-5eF" firstAttribute="leading" secondItem="vB4-4u-5FQ" secondAttribute="leading" constant="60" id="H9h-0N-0UV"/>
+                            <constraint firstItem="YKm-MX-SJ4" firstAttribute="top" secondItem="1ed-iI-TFd" secondAttribute="top" constant="20" id="LLK-an-dnD"/>
                             <constraint firstItem="vB4-4u-5FQ" firstAttribute="trailing" secondItem="XME-yF-oca" secondAttribute="trailing" constant="30" id="LoY-Ec-E2E"/>
                             <constraint firstItem="vB4-4u-5FQ" firstAttribute="trailing" secondItem="S3L-N2-5eF" secondAttribute="trailing" constant="60" id="M50-cw-g26"/>
                             <constraint firstItem="vB4-4u-5FQ" firstAttribute="trailing" secondItem="8lD-36-bzT" secondAttribute="trailing" constant="60" id="MAQ-H9-puL"/>
@@ -5670,6 +5743,7 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                             <constraint firstItem="vB4-4u-5FQ" firstAttribute="trailing" secondItem="wuO-wX-hio" secondAttribute="trailing" constant="60" id="NL4-Wd-bye"/>
                             <constraint firstItem="aH6-dU-giZ" firstAttribute="leading" secondItem="vB4-4u-5FQ" secondAttribute="leading" constant="30" id="Np6-ve-XSj"/>
                             <constraint firstItem="vB4-4u-5FQ" firstAttribute="trailing" secondItem="CLU-6Q-b8Y" secondAttribute="trailing" constant="60" id="OLB-cH-RbO"/>
+                            <constraint firstItem="vB4-4u-5FQ" firstAttribute="trailing" secondItem="YKm-MX-SJ4" secondAttribute="trailing" constant="15" id="Oya-60-jyf"/>
                             <constraint firstItem="A6h-pe-MW5" firstAttribute="leading" secondItem="vB4-4u-5FQ" secondAttribute="leading" constant="30" id="PMC-dh-ZY2"/>
                             <constraint firstItem="zGC-Ql-1Ph" firstAttribute="top" secondItem="TAs-Yv-w5m" secondAttribute="bottom" id="QA7-8B-kFh"/>
                             <constraint firstItem="TAs-Yv-w5m" firstAttribute="leading" secondItem="vB4-4u-5FQ" secondAttribute="leading" constant="30" id="QDh-OQ-Mo9"/>
@@ -5731,6 +5805,7 @@ Though your products are MAP bags which ensure better shelf life, we recommend t
                         <outlet property="floatRatingView4" destination="8lD-36-bzT" id="2eS-pc-EHT"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qw5-CI-uz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="10528.985507246378" y="-94.419642857142847"/>
         </scene>

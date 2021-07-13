@@ -27,6 +27,36 @@ class Feedback: SuperViewController, FloatRatingViewDelegate {
 //        skipButton.layer.borderWidth = 1
 //        skipButton.layer.borderColor = UIColor.blue.cgColor
         
+        var params = [String: Any]()
+        if let user = Utilities.getCurrentUser() {
+        params["user_id"] = "\(user.user_id)"
+        }
+        
+        self.showActivityIndicator()
+        
+        ApiManager.feedackView(params: params) { [self] (json) in
+            self.hideActivityIndicator()
+                if let dict = json?.dictionary, let status = dict["status"]?.number, (status == 200) {
+                    if let address = dict["user_rating"]?.dictionary {
+                        if let value = address["app_user_interface_rating"]?.string {
+                            floatRatingView.rating = value.toDouble()!
+                        }
+                        if let value = address["product_quality_rating"]?.string {
+                            floatRatingView1.rating = value.toDouble()!
+                        }
+                        if let value = address["packing_quality_rating"]?.string {
+                            floatRatingView2.rating = value.toDouble()!
+                        }
+                        if let value = address["delivery_condition_rating"]?.string {
+                            floatRatingView3.rating = value.toDouble()!
+                        }
+                        if let value = address["delivery_boy_rating"]?.string {
+                            floatRatingView4.rating = value.toDouble()!
+                        }
+                    }
+                }
+        }
+        
         // Do any additional setup after loading the view.
         floatRatingView.backgroundColor = UIColor.clear
         floatRatingView.delegate = self
@@ -60,9 +90,10 @@ class Feedback: SuperViewController, FloatRatingViewDelegate {
     
     @IBAction func SubmitView(_ sender: Any) {
         
+        if (self.floatRatingView.rating != 0 || self.floatRatingView1.rating != 0 || self.floatRatingView2.rating != 0 || self.floatRatingView3.rating != 0 || self.floatRatingView4.rating != 0) {
         var params = [String: Any]()
         if let user = Utilities.getCurrentUser() {
-        params["user_id"] = "\(user.id)"
+        params["user_id"] = "\(user.user_id)"
         params["app_user_interface_rating"] = self.floatRatingView.rating
         params["product_quality_rating"] = self.floatRatingView1.rating
         params["packing_quality_rating"] = self.floatRatingView2.rating
@@ -84,6 +115,10 @@ class Feedback: SuperViewController, FloatRatingViewDelegate {
                 }else if let dict = json?.dictionary, let message = dict["message"]?.string {
                     self.showAlert(message)
                 }
+        }
+        }else {
+            self.showAlert("Please select any one and submit your feedback")
+
         }
     
 

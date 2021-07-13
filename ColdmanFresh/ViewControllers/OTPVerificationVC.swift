@@ -81,21 +81,22 @@ class OTPVerificationVC: SuperViewController {
         
         if self.isFromSignUp {
             if otp == self.tfOTP.text {
-                self.showActivityIndicator()
-            ApiManager.signUp(params: self.params) { (json) in
-                            self.hideActivityIndicator()
-                            if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
+//                self.showActivityIndicator()
+//            ApiManager.signUp(params: self.params) { (json) in
+//                            self.hideActivityIndicator()
+//                            if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
                                 self.ShowAlertOrActionSheet(preferredStyle: .alert, title: AlertMessages.ALERT_TITLE, message: "Thank you for registring with us.", buttons: ["OK"]) { (i) in
-                            let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "PhoneVerificationVC") as! PhoneVerificationVC
-                            self.navigationController?.pushViewController(loginvc, animated: true)                                    }
-        }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-            self.hideActivityIndicator()
-                                self.showAlert(message)
-                            }else {
-                                self.hideActivityIndicator()
-                                self.showError(message: "User registration failed, please try again.")
-                            }
-        }
+                            let loginvc = mainStoryboard.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+                            self.navigationController?.pushViewController(loginvc, animated: true)
+            }
+//        }else if let dict = json?.dictionary, let message = dict["message"]?.string {
+//            self.hideActivityIndicator()
+//                                self.showAlert(message)
+//                            }else {
+//                                self.hideActivityIndicator()
+//                                self.showError(message: "User registration failed, please try again.")
+//                            }
+//        }
     }
         }else {
             self.verifyUserByNumber()

@@ -89,7 +89,14 @@ class PhoneVerificationVC: SuperViewController {
                     verifyvc.isFromSettings = self.isFromSettings
 //                    verifyvc.selectedOffer = self.selectedOffer
                     self.navigationController?.pushViewController(verifyvc, animated: true)
-                }else {
+                }else if let dict = json?.dictionary, let otp = dict["message"]?.string  {
+                    if (otp == "Un-registered Mobile-number, Please Singup first") {
+                    let signupvc = mainStoryboard.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
+                    signupvc.delegate = self
+                    signupvc.mobileNo = no
+                    self.navigationController?.pushViewController(signupvc, animated: true)
+                    }
+                    }else {
                     self.showError(message: "Could not send OTP, please try again")
                 }
 //            }else {

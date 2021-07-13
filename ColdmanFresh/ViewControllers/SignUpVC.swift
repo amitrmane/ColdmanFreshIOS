@@ -39,6 +39,7 @@ class SignUpVC: SuperViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.tfMobile.text = mobileNo
         self.getPincodeList()
         if let u = self.user {
             self.tfMobile.text = mobileNo
@@ -162,10 +163,17 @@ class SignUpVC: SuperViewController {
             self.showAlert("Enter valid mobile")
             return
         }
-
-
         
-        
+        guard let altMob =  self.alternateMobileNumber.text?.isPhoneNumber else {
+            self.showAlert("Enter valid mobile")
+            return
+        }
+
+        if (self.tfPromoCode.text == "Servicable Pin Codes" || self.tfPromoCode.text == "Select Your Organization") {
+            self.showAlert("Enter valid User Type")
+            return
+        }
+
         if let u = self.user {
             // update user
             var params = [String: Any]()
@@ -182,7 +190,7 @@ class SignUpVC: SuperViewController {
             params["fname"] = fname
             params["lname"] = lname
             params["mobileno"] = mob
-            params["alternate_mobileno"] = self.alternateMobileNumber.text
+            params["alternate_mobileno"] = altMob
             params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
             params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
             params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
@@ -257,31 +265,32 @@ class SignUpVC: SuperViewController {
             params["fname"] = fname
             params["lname"] = lname
             params["mobileno"] = mob
-            params["alternate_mobileno"] = self.alternateMobileNumber.text
+            params["alternate_mobileno"] = altMob
             params["customer_type"] = self.btnCorporate.isSelected ? Constants.b2cCorporate : Constants.b2cHomeDelivery
             params["organization_id"] = self.btnCorporate.isSelected ? self.selectedOrganization.organization_id : self.selectedPincode.pincode
             params["pincode"] = self.btnCorporate.isSelected ? "" : self.selectedPincode.pincode
 
 //            var param = [String: Any]()
 //            param["mobileno"] = mob
-            self.showActivityIndicator()
-
-            ApiManager.sendOTP(params: params) { [self] (json) in
-                self.hideActivityIndicator()
-    //            if success {
-                    if let dict = json?.dictionary, let otp = dict["otp"]?.number {
-                        let verifyvc = mainStoryboard.instantiateViewController(withIdentifier: "OTPVerificationVC") as! OTPVerificationVC
-                        verifyvc.otp = otp.stringValue
-                        verifyvc.isFromSignUp = true
-                            verifyvc.params = params
-                        self.navigationController?.pushViewController(verifyvc, animated: true)
-                    }else {
-                        self.showError(message: "Could not send OTP, please try again")
-                    }
-    //            }else {
-    //                //self.showError(message: error.rawValue)
-    //            }
-            }
+//            self.showActivityIndicator()
+//
+//            ApiManager.sendOTP(params: params) { [self] (json) in
+//                self.hideActivityIndicator()
+//    //            if success {
+//                    if let dict = json?.dictionary, let otp = dict["otp"]?.number {
+//                        let verifyvc = mainStoryboard.instantiateViewController(withIdentifier: "OTPVerificationVC") as! OTPVerificationVC
+//                        verifyvc.otp = otp.stringValue
+//                        verifyvc.isFromSignUp = true
+//                            verifyvc.params = params
+//                        self.navigationController?.pushViewController(verifyvc, animated: true)
+//                    }else {
+//                        self.showError(message: "Could not send OTP, please try again")
+//                    }
+//    //            }else {
+//    //                //self.showError(message: error.rawValue)
+//    //            }
+//            }
+            
             
             
             
@@ -295,14 +304,64 @@ class SignUpVC: SuperViewController {
 
             
             
-//
-//            self.showActivityIndicator()
-//
-//            ApiManager.signUp(params: params) { (json) in
+
+            self.showActivityIndicator()
+
+            ApiManager.signUp(params: params) { (json) in
 //                self.hideActivityIndicator()
-//                if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
-//                    self.showActivityIndicator()
-//
+                if let dict = json?.dictionary, let status = dict["status"]?.number, status == 200 {
+                                ApiManager.sendOTP(params: params) { [self] (json) in
+                                    self.hideActivityIndicator()
+                        //            if success {
+                                        if let dict = json?.dictionary, let otp = dict["otp"]?.number {
+                                            let verifyvc = mainStoryboard.instantiateViewController(withIdentifier: "OTPVerificationVC") as! OTPVerificationVC
+                                            verifyvc.otp = otp.stringValue
+                                            verifyvc.mobileNo = mob
+                                            verifyvc.isFromSignUp = true
+                                                verifyvc.params = params
+                                            self.navigationController?.pushViewController(verifyvc, animated: true)
+                                        }else {
+                                            self.hideActivityIndicator()
+                                            self.showError(message: "Could not send OTP, please try again")
+                                        }
+                        //            }else {
+                        //                //self.showError(message: error.rawValue)
+                        //            }
+                                }
+
+//                                            let verifyvc = mainStoryboard.instantiateViewController(withIdentifier: "OTPVerificationVC") as! OTPVerificationVC
+////                                            verifyvc.otp = otp.stringValue
+//                                            verifyvc.isFromSignUp = true
+//                                                verifyvc.params = params
+//                                            self.navigationController?.pushViewController(verifyvc, animated: true)
+                                }else if let dict = json?.dictionary, let message = dict["message"]?.string {
+                                            self.showAlert(message)
+                                        }else {
+                                            self.showError(message: "User registration failed, please try again.")
+                                        }
+//                else {
+//                                            self.showError(message: "Could not send OTP, please try again")
+//                                        }
+                        //            }else {
+                        //                //self.showError(message: error.rawValue)
+                        //            }
+//            }
+//                    self.hideActivityIndicator()
+        //            if success {
+//                        if let dict = json?.dictionary, let otp = dict["otp"]?.number {
+//                            let verifyvc = mainStoryboard.instantiateViewController(withIdentifier: "OTPVerificationVC") as! OTPVerificationVC
+//                            verifyvc.otp = otp.stringValue
+//                            verifyvc.isFromSignUp = true
+//                                verifyvc.params = params
+//                            self.navigationController?.pushViewController(verifyvc, animated: true)
+//                        }else {
+//                            self.showError(message: "Could not send OTP, please try again")
+//                        }
+        //            }else {
+        //                //self.showError(message: error.rawValue)
+        //            }
+//                }
+                
 //                    ApiManager.verifyOTP(mobNo: mob) { (json) in
 //                        self.hideActivityIndicator()
 //                        if let dict = json?.dictionary {
@@ -358,12 +417,8 @@ class SignUpVC: SuperViewController {
 //                            self.showError(message: "User registration failed, please try again.")
 //                        }
 //                    }
-//                }else if let dict = json?.dictionary, let message = dict["message"]?.string {
-//                    self.showAlert(message)
-//                }else {
-//                    self.showError(message: "User registration failed, please try again.")
-//                }
-//            }
+                
+            }
             
         }
     }

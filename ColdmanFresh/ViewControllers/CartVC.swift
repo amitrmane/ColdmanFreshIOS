@@ -38,6 +38,7 @@ class CartVC: SuperViewController {
     @IBOutlet weak var btnProceedCheckout: UIButton!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var lastFirstName: UILabel!
+    @IBOutlet weak var notes: UILabel!
     
     var addedMenus = [Menu]()
 //    var allTaxes = [Tax]()
@@ -78,6 +79,16 @@ class CartVC: SuperViewController {
                     self.getOrganizationList()
                 }
             }
+            
+            self.showActivityIndicator()
+                    
+            ApiManager.getUserNotes(userid: user.user_id) { (json) in
+                self.hideActivityIndicator()
+                if let notesString = json?["checkout_note"].string {
+                    self.notes.text = notesString
+                }
+            }
+            
         }
     }
     
