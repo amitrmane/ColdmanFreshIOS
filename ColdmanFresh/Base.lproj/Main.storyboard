@@ -2690,11 +2690,11 @@ support@coldmanfresh.in</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ryh-hk-D3h">
-                                <rect key="frame" x="0.0" y="155" width="414" height="707"/>
+                                <rect key="frame" x="0.0" y="160" width="414" height="702"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="PIf-t1-9Lr" customClass="MenuCell" customModule="ColdmanFresh" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="122.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="122.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PIf-t1-9Lr" id="Emf-M1-Mrh">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="122.5"/>
@@ -2915,9 +2915,9 @@ support@coldmanfresh.in</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itq-Fp-ih5">
-                                <rect key="frame" x="138" y="56" width="221" height="23"/>
+                                <rect key="frame" x="145" y="56" width="210" height="23"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="221" id="HIH-S7-BO6"/>
+                                    <constraint firstAttribute="width" constant="210" id="HIH-S7-BO6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2931,7 +2931,7 @@ support@coldmanfresh.in</string>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" placeholder="Search Product" translatesAutoresizingMaskIntoConstraints="NO" id="Eu2-Tq-Zz7">
-                                <rect key="frame" x="0.0" y="94" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="PfI-uT-7oz" id="Ilo-VH-PMh"/>
@@ -2953,7 +2953,7 @@ support@coldmanfresh.in</string>
                             <constraint firstItem="Ll4-Ya-aAd" firstAttribute="bottom" secondItem="Ryh-hk-D3h" secondAttribute="bottom" id="AlF-xM-blP"/>
                             <constraint firstItem="Ll4-Ya-aAd" firstAttribute="trailing" secondItem="Ryh-hk-D3h" secondAttribute="trailing" id="DCR-wG-uAc"/>
                             <constraint firstItem="ICC-YK-ri1" firstAttribute="height" secondItem="5pw-Ng-kXu" secondAttribute="height" id="GTX-Ui-sYn"/>
-                            <constraint firstItem="itq-Fp-ih5" firstAttribute="centerX" secondItem="Ll4-Ya-aAd" secondAttribute="centerX" constant="41.5" id="H06-Nw-L7Y"/>
+                            <constraint firstItem="itq-Fp-ih5" firstAttribute="centerX" secondItem="Ll4-Ya-aAd" secondAttribute="centerX" constant="43" id="H06-Nw-L7Y"/>
                             <constraint firstAttribute="trailing" secondItem="Eu2-Tq-Zz7" secondAttribute="trailing" id="I6R-A5-2UB"/>
                             <constraint firstItem="Eu2-Tq-Zz7" firstAttribute="top" secondItem="itq-Fp-ih5" secondAttribute="bottom" constant="15" id="Iva-fW-uXo"/>
                             <constraint firstItem="Ryh-hk-D3h" firstAttribute="top" secondItem="Eu2-Tq-Zz7" secondAttribute="bottom" constant="10" id="JbB-vi-bs0"/>
